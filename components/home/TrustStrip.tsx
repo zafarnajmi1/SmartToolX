@@ -3,7 +3,7 @@ import { toolCount } from "@/lib/tools";
 const items = [
   {
     value: "0.0s",
-    label: "Every calculation runs in your browser — no server delay, no waiting.",
+    label: "Every calculation runs in your browser. No server delay and no waiting.",
   },
   {
     value: "100%",
@@ -12,7 +12,7 @@ const items = [
   {
     value: `${toolCount}+`,
     label:
-      "Tools across health, finance, text, and conversion — growing weekly.",
+      "Tools across health, finance, text, files, and conversion. We add more each week.",
   },
 ];
 

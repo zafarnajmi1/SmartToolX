@@ -6,12 +6,16 @@ import type { CmsData } from "@/lib/cms-types";
 const FILE = path.join(process.cwd(), "data", "cms.json");
 
 function mergeCms(stored: Partial<CmsData>): CmsData {
+  const seo = { ...DEFAULT_CMS.seo };
+  for (const [path, entry] of Object.entries(stored.seo ?? {})) {
+    seo[path] = { ...(DEFAULT_CMS.seo[path] ?? {}), ...entry };
+  }
   return {
     site: { ...DEFAULT_CMS.site, ...stored.site },
     social: { ...DEFAULT_CMS.social, ...stored.social },
     privacy: { ...DEFAULT_CMS.privacy, ...stored.privacy },
     terms: { ...DEFAULT_CMS.terms, ...stored.terms },
-    seo: { ...DEFAULT_CMS.seo, ...stored.seo },
+    seo,
   };
 }
 

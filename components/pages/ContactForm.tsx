@@ -42,7 +42,7 @@ export function ContactForm() {
         </button>
         {sent ? (
           <p className="text-steel font-mono text-[13px]">
-            Thanks — we will get back to you shortly.
+            Thanks. We will get back to you shortly.
           </p>
         ) : null}
       </div>

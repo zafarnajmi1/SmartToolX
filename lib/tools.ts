@@ -29,7 +29,7 @@ export const tools: Tool[] = [
     slug: "bmi-calculator",
     name: "BMI Calculator",
     icon: "BMI",
-    description: "Check your body mass index with height and weight.",
+    description: "Check BMI using cm, meters, feet, kg, lb, or stone.",
     category: "health",
   },
   {
@@ -78,14 +78,14 @@ export const tools: Tool[] = [
     slug: "calorie-calculator",
     name: "Calorie Calculator",
     icon: "kcal",
-    description: "Daily calorie needs from age, weight, height, and activity.",
+    description: "Daily calories from age, height, weight, and activity. Use cm, feet, kg, lb, or stone.",
     category: "health",
   },
   {
     slug: "bmr-calculator",
     name: "BMR Calculator",
     icon: "BMR",
-    description: "Basal metabolic rate using the Mifflin-St Jeor formula.",
+    description: "Resting calories from age, sex, height, and weight. Use cm, feet, kg, lb, or stone.",
     category: "health",
   },
   {
@@ -363,7 +363,7 @@ export const categoryPages = {
   },
   converters: {
     title: "Converters",
-    description: "Currency, units, and more — convert without leaving the page.",
+    description: "Currency, units, and more. Convert without leaving the page.",
     slugs: tools.filter((tool) => tool.category === "convert").map((t) => t.slug),
   },
   "text-tools": {
@@ -379,6 +379,12 @@ export const categoryPages = {
       ...tools.filter((tool) => tool.category === "finance").map((t) => t.slug),
       "currency-converter",
     ],
+  },
+  "file-converter": {
+    title: "File Converter",
+    description:
+      "PDF, Word, Excel, and image converters that run in your browser.",
+    slugs: [...fileConverterSlugs],
   },
 } as const;
 

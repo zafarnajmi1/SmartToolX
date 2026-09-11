@@ -15,8 +15,8 @@ export function Hero() {
         solved <span className="text-amber font-mono font-medium">in .04s</span>
       </h1>
       <p className="text-text-dim mt-[22px] max-w-[540px] text-[19px] leading-[1.6]">
-        Calculators, converters, and generators built for speed and accuracy —
-        no sign-up, no clutter, just the answer.
+        Free calculators, converters, and generators. Open a tool, enter your
+        numbers, and get the answer in your browser. No account needed.
       </p>
       <div className="mt-[34px] flex flex-wrap gap-[14px]">
         <Button href="/tools">Browse all tools</Button>

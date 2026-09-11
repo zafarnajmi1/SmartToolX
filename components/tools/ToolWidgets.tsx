@@ -23,7 +23,8 @@ function localISODate(date: Date) {
   return `${y}-${m}-${d}`;
 }
 
-type BmiUnit = "metric" | "imperial";
+type BmiHeightUnit = "cm" | "m" | "ftin" | "in";
+type BmiWeightUnit = "kg" | "lb" | "stlb" | "st";
 type BmiTone = "under" | "normal" | "over" | "obese";
 
 const bmiFieldClass =
@@ -36,27 +37,98 @@ const bmiTagClass: Record<BmiTone, string> = {
   obese: "bg-[rgba(225,123,107,0.15)] text-[#E17B6B]",
 };
 
-function computeBmi(
-  unit: BmiUnit,
-  heightCm: string,
-  heightFt: string,
-  heightIn: string,
-  weight: string,
+const INCH_M = 0.0254;
+const LB_KG = 0.45359237;
+const STONE_LB = 14;
+
+function bmiAmount(value: string) {
+  if (value.trim() === "") return null;
+  const parsed = Number(value);
+  return Number.isFinite(parsed) && parsed >= 0 ? parsed : null;
+}
+
+function trimAmount(value: number, digits: number) {
+  const rounded = Number(value.toFixed(digits));
+  if (!Number.isFinite(rounded) || rounded < 0) return "";
+  return String(rounded);
+}
+
+function heightToMeters(
+  unit: BmiHeightUnit,
+  primary: string,
+  extra: string,
 ) {
-  let bmi: number;
-  if (unit === "metric") {
-    const h = parseFloat(heightCm) / 100;
-    const w = parseFloat(weight);
-    if (!h || !w) return null;
-    bmi = w / (h * h);
-  } else {
-    const ft = parseFloat(heightFt) || 0;
-    const inch = parseFloat(heightIn) || 0;
-    const totalIn = ft * 12 + inch;
-    const w = parseFloat(weight);
-    if (!totalIn || !w) return null;
-    bmi = (703 * w) / (totalIn * totalIn);
+  if (unit === "cm") {
+    const cm = bmiAmount(primary);
+    return cm && cm > 0 ? cm / 100 : null;
   }
+  if (unit === "m") {
+    const meters = bmiAmount(primary);
+    return meters && meters > 0 ? meters : null;
+  }
+  if (unit === "in") {
+    const inches = bmiAmount(primary);
+    return inches && inches > 0 ? inches * INCH_M : null;
+  }
+  const feet = bmiAmount(primary) ?? 0;
+  const inches = bmiAmount(extra) ?? 0;
+  const totalInches = feet * 12 + inches;
+  return totalInches > 0 ? totalInches * INCH_M : null;
+}
+
+function weightToKg(unit: BmiWeightUnit, primary: string, extra: string) {
+  if (unit === "kg") {
+    const kg = bmiAmount(primary);
+    return kg && kg > 0 ? kg : null;
+  }
+  if (unit === "lb") {
+    const pounds = bmiAmount(primary);
+    return pounds && pounds > 0 ? pounds * LB_KG : null;
+  }
+  if (unit === "st") {
+    const stone = bmiAmount(primary);
+    return stone && stone > 0 ? stone * STONE_LB * LB_KG : null;
+  }
+  const stone = bmiAmount(primary) ?? 0;
+  const pounds = bmiAmount(extra) ?? 0;
+  const totalPounds = stone * STONE_LB + pounds;
+  return totalPounds > 0 ? totalPounds * LB_KG : null;
+}
+
+function metersToHeight(unit: BmiHeightUnit, meters: number) {
+  if (unit === "cm") return { primary: trimAmount(meters * 100, 1), extra: "" };
+  if (unit === "m") return { primary: trimAmount(meters, 2), extra: "" };
+  const totalInches = meters / INCH_M;
+  if (unit === "in") return { primary: trimAmount(totalInches, 1), extra: "" };
+  const feet = Math.floor(totalInches / 12 + 1e-9);
+  const inches = Math.max(0, totalInches - feet * 12);
+  return { primary: String(feet), extra: trimAmount(inches, 1) };
+}
+
+function kgToWeight(unit: BmiWeightUnit, kg: number) {
+  if (unit === "kg") return { primary: trimAmount(kg, 1), extra: "" };
+  const totalPounds = kg / LB_KG;
+  if (unit === "lb") return { primary: trimAmount(totalPounds, 1), extra: "" };
+  if (unit === "st") {
+    return { primary: trimAmount(totalPounds / STONE_LB, 2), extra: "" };
+  }
+  const stone = Math.floor(totalPounds / STONE_LB + 1e-9);
+  const pounds = Math.max(0, totalPounds - stone * STONE_LB);
+  return { primary: String(stone), extra: trimAmount(pounds, 1) };
+}
+
+function computeBmi(
+  heightUnit: BmiHeightUnit,
+  heightPrimary: string,
+  heightExtra: string,
+  weightUnit: BmiWeightUnit,
+  weightPrimary: string,
+  weightExtra: string,
+) {
+  const meters = heightToMeters(heightUnit, heightPrimary, heightExtra);
+  const kg = weightToKg(weightUnit, weightPrimary, weightExtra);
+  if (meters == null || kg == null) return null;
+  const bmi = kg / (meters * meters);
   if (!Number.isFinite(bmi) || bmi <= 0) return null;
 
   const tone: BmiTone =
@@ -74,16 +146,76 @@ function computeBmi(
 }
 
 export function BmiCalculator() {
-  const [unit, setUnit] = useState<BmiUnit>("metric");
-  const [heightCm, setHeightCm] = useState("");
-  const [heightFt, setHeightFt] = useState("");
-  const [heightIn, setHeightIn] = useState("");
-  const [weight, setWeight] = useState("");
+  const [heightUnit, setHeightUnit] = useState<BmiHeightUnit>("cm");
+  const [heightPrimary, setHeightPrimary] = useState("");
+  const [heightExtra, setHeightExtra] = useState("");
+  const [weightUnit, setWeightUnit] = useState<BmiWeightUnit>("kg");
+  const [weightPrimary, setWeightPrimary] = useState("");
+  const [weightExtra, setWeightExtra] = useState("");
   const [result, setResult] = useState<ReturnType<typeof computeBmi>>(null);
 
-  function calculate() {
-    setResult(computeBmi(unit, heightCm, heightFt, heightIn, weight));
+  function calculate(
+    nextHeightUnit = heightUnit,
+    nextHeightPrimary = heightPrimary,
+    nextHeightExtra = heightExtra,
+    nextWeightUnit = weightUnit,
+    nextWeightPrimary = weightPrimary,
+    nextWeightExtra = weightExtra,
+  ) {
+    setResult(
+      computeBmi(
+        nextHeightUnit,
+        nextHeightPrimary,
+        nextHeightExtra,
+        nextWeightUnit,
+        nextWeightPrimary,
+        nextWeightExtra,
+      ),
+    );
   }
+
+  function changeHeightUnit(next: BmiHeightUnit) {
+    const meters = heightToMeters(heightUnit, heightPrimary, heightExtra);
+    if (meters != null) {
+      const converted = metersToHeight(next, meters);
+      setHeightPrimary(converted.primary);
+      setHeightExtra(converted.extra);
+      calculate(
+        next,
+        converted.primary,
+        converted.extra,
+        weightUnit,
+        weightPrimary,
+        weightExtra,
+      );
+    } else {
+      setHeightExtra("");
+    }
+    setHeightUnit(next);
+  }
+
+  function changeWeightUnit(next: BmiWeightUnit) {
+    const kg = weightToKg(weightUnit, weightPrimary, weightExtra);
+    if (kg != null) {
+      const converted = kgToWeight(next, kg);
+      setWeightPrimary(converted.primary);
+      setWeightExtra(converted.extra);
+      calculate(
+        heightUnit,
+        heightPrimary,
+        heightExtra,
+        next,
+        converted.primary,
+        converted.extra,
+      );
+    } else {
+      setWeightExtra("");
+    }
+    setWeightUnit(next);
+  }
+
+  const heightUsesPair = heightUnit === "ftin";
+  const weightUsesPair = weightUnit === "stlb";
 
   return (
     <div className="grid grid-cols-2 gap-10 max-[760px]:grid-cols-1">
@@ -93,84 +225,163 @@ export function BmiCalculator() {
           calculate();
         }}
       >
-        <div className="mb-6 flex w-fit overflow-hidden rounded border border-line">
-          <button
-            type="button"
-            className={`cursor-pointer border-0 px-4 py-2 font-mono text-[12.5px] ${
-              unit === "metric"
-                ? "bg-amber text-bg"
-                : "bg-transparent text-text-dim"
-            }`}
-            onClick={() => setUnit("metric")}
-          >
-            Metric (cm/kg)
-          </button>
-          <button
-            type="button"
-            className={`cursor-pointer border-0 px-4 py-2 font-mono text-[12.5px] ${
-              unit === "imperial"
-                ? "bg-amber text-bg"
-                : "bg-transparent text-text-dim"
-            }`}
-            onClick={() => setUnit("imperial")}
-          >
-            Imperial (ft/lb)
-          </button>
-        </div>
+        <p className="text-text-dim mb-5 text-[14px] leading-[1.5]">
+          Pick the units you know. Height and weight can use different systems.
+        </p>
 
-        {unit === "metric" ? (
-          <label className="mb-5 block">
-            <span className="mb-2 block font-mono text-[12px] tracking-[0.06em] text-text-dim uppercase">
-              Height (cm)
-            </span>
+        <div className="mb-5">
+          <span className="mb-2 block font-mono text-[12px] tracking-[0.06em] text-text-dim uppercase">
+            Height
+          </span>
+          <select
+            aria-label="Height unit"
+            value={heightUnit}
+            onChange={(event) =>
+              changeHeightUnit(event.target.value as BmiHeightUnit)
+            }
+            className={`${bmiFieldClass} mb-2.5`}
+          >
+            <option value="cm">Centimeters (cm)</option>
+            <option value="m">Meters (m)</option>
+            <option value="ftin">Feet and inches</option>
+            <option value="in">Inches (in)</option>
+          </select>
+          {heightUsesPair ? (
+            <div className="grid grid-cols-2 gap-[10px]">
+              <label>
+                <span className="mb-1.5 block font-mono text-[11px] tracking-[0.06em] text-text-dim uppercase">
+                  Feet
+                </span>
+                <input
+                  type="number"
+                  min="0"
+                  step="any"
+                  inputMode="decimal"
+                  placeholder="5"
+                  aria-label="Height in feet"
+                  value={heightPrimary}
+                  onChange={(event) => setHeightPrimary(event.target.value)}
+                  className={bmiFieldClass}
+                />
+              </label>
+              <label>
+                <span className="mb-1.5 block font-mono text-[11px] tracking-[0.06em] text-text-dim uppercase">
+                  Inches
+                </span>
+                <input
+                  type="number"
+                  min="0"
+                  step="any"
+                  inputMode="decimal"
+                  placeholder="10"
+                  aria-label="Height in inches"
+                  value={heightExtra}
+                  onChange={(event) => setHeightExtra(event.target.value)}
+                  className={bmiFieldClass}
+                />
+              </label>
+            </div>
+          ) : (
             <input
               type="number"
+              min="0"
+              step="any"
               inputMode="decimal"
-              placeholder="e.g. 170"
-              value={heightCm}
-              onChange={(event) => setHeightCm(event.target.value)}
+              placeholder={
+                heightUnit === "cm"
+                  ? "170"
+                  : heightUnit === "m"
+                    ? "1.70"
+                    : "67"
+              }
+              aria-label={
+                heightUnit === "cm"
+                  ? "Height in centimeters"
+                  : heightUnit === "m"
+                    ? "Height in meters"
+                    : "Height in inches"
+              }
+              value={heightPrimary}
+              onChange={(event) => setHeightPrimary(event.target.value)}
               className={bmiFieldClass}
             />
-          </label>
-        ) : (
-          <label className="mb-5 block">
-            <span className="mb-2 block font-mono text-[12px] tracking-[0.06em] text-text-dim uppercase">
-              Height (ft / in)
-            </span>
-            <div className="flex gap-[10px]">
-              <input
-                type="number"
-                inputMode="decimal"
-                placeholder="ft"
-                value={heightFt}
-                onChange={(event) => setHeightFt(event.target.value)}
-                className={bmiFieldClass}
-              />
-              <input
-                type="number"
-                inputMode="decimal"
-                placeholder="in"
-                value={heightIn}
-                onChange={(event) => setHeightIn(event.target.value)}
-                className={bmiFieldClass}
-              />
-            </div>
-          </label>
-        )}
+          )}
+        </div>
 
-        <label className="mb-5 block">
+        <div className="mb-5">
           <span className="mb-2 block font-mono text-[12px] tracking-[0.06em] text-text-dim uppercase">
-            {unit === "metric" ? "Weight (kg)" : "Weight (lb)"}
+            Weight
           </span>
-          <input
-            type="number"
-            inputMode="decimal"
-            placeholder="e.g. 65"
-            value={weight}
-            onChange={(event) => setWeight(event.target.value)}
-            className={bmiFieldClass}
-          />
-        </label>
+          <select
+            aria-label="Weight unit"
+            value={weightUnit}
+            onChange={(event) =>
+              changeWeightUnit(event.target.value as BmiWeightUnit)
+            }
+            className={`${bmiFieldClass} mb-2.5`}
+          >
+            <option value="kg">Kilograms (kg)</option>
+            <option value="lb">Pounds (lb)</option>
+            <option value="stlb">Stone and pounds</option>
+            <option value="st">Stone (st)</option>
+          </select>
+          {weightUsesPair ? (
+            <div className="grid grid-cols-2 gap-[10px]">
+              <label>
+                <span className="mb-1.5 block font-mono text-[11px] tracking-[0.06em] text-text-dim uppercase">
+                  Stone
+                </span>
+                <input
+                  type="number"
+                  min="0"
+                  step="any"
+                  inputMode="decimal"
+                  placeholder="10"
+                  aria-label="Weight in stone"
+                  value={weightPrimary}
+                  onChange={(event) => setWeightPrimary(event.target.value)}
+                  className={bmiFieldClass}
+                />
+              </label>
+              <label>
+                <span className="mb-1.5 block font-mono text-[11px] tracking-[0.06em] text-text-dim uppercase">
+                  Pounds
+                </span>
+                <input
+                  type="number"
+                  min="0"
+                  step="any"
+                  inputMode="decimal"
+                  placeholder="8"
+                  aria-label="Extra pounds"
+                  value={weightExtra}
+                  onChange={(event) => setWeightExtra(event.target.value)}
+                  className={bmiFieldClass}
+                />
+              </label>
+            </div>
+          ) : (
+            <input
+              type="number"
+              min="0"
+              step="any"
+              inputMode="decimal"
+              placeholder={
+                weightUnit === "kg" ? "65" : weightUnit === "lb" ? "143" : "10.2"
+              }
+              aria-label={
+                weightUnit === "kg"
+                  ? "Weight in kilograms"
+                  : weightUnit === "lb"
+                    ? "Weight in pounds"
+                    : "Weight in stone"
+              }
+              value={weightPrimary}
+              onChange={(event) => setWeightPrimary(event.target.value)}
+              className={bmiFieldClass}
+            />
+          )}
+        </div>
 
         <button
           type="submit"

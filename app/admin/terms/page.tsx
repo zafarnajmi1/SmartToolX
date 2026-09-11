@@ -2,6 +2,11 @@ import Link from "next/link";
 import { AdminShell } from "@/components/admin/AdminShell";
 import { LegalForm } from "@/components/admin/LegalForm";
 import { getCms } from "@/lib/cms";
+import { seoMetadata } from "@/lib/seo";
+
+export async function generateMetadata() {
+  return seoMetadata("/admin/terms");
+}
 
 export default async function AdminTermsPage() {
   const cms = await getCms();

@@ -1,6 +1,11 @@
 import { AdminShell } from "@/components/admin/AdminShell";
 import { SeoForm } from "@/components/admin/SeoForm";
 import { getCms } from "@/lib/cms";
+import { seoMetadata } from "@/lib/seo";
+
+export async function generateMetadata() {
+  return seoMetadata("/admin/seo");
+}
 
 export default async function AdminSeoPage() {
   const cms = await getCms();

@@ -14,7 +14,7 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         title="Tell us what to build next"
-        description="Questions, corrections, or a tool you want added — send a note and we will take a look."
+        description="Questions, corrections, or a tool you want added? Send a note and we will take a look."
       />
       <ContactForm />
     </section>

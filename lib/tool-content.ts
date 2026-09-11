@@ -14,29 +14,28 @@ function guide(tool: Tool, extras: Partial<ToolContent> = {}): ToolContent {
   const kw = extras.keyword ?? `free ${name.toLowerCase()} online`;
   return {
     keyword: kw,
-    articleTitle:
-      extras.articleTitle ?? `Free ${name} Online — Instant, Accurate, No Sign-up`,
+    articleTitle: extras.articleTitle ?? `How this ${name.toLowerCase()} works`,
     paragraphs: extras.paragraphs ?? [
-      `Searchers looking for a ${kw} land here because the ${name.toLowerCase()} runs in your browser and returns a result immediately. There is no account wall and no app to install.`,
-      `Enter your values above. SmartToolX uses standard formulas so you can check BMI, payments, conversions, or text counts without sending numbers to a server (currency rates and QR images are the exceptions).`,
-      `Use this ${name.toLowerCase()} for everyday decisions, then verify anything high-stakes with a professional. Bookmark the page if you use this keyword search often — the tool stays free.`,
+      `People looking for a ${kw} can use this page without making an account. The ${name.toLowerCase()} runs in your browser and shows a result as soon as the fields make sense.`,
+      `Enter your values above. Most SmartToolX tools keep the numbers on your device. Live currency rates and QR images are the exceptions because they need a short network request.`,
+      `Use the result for everyday checks. For medical, legal, or large money decisions, confirm with a professional. The tool stays free if you want to bookmark it.`,
     ],
     faqs: extras.faqs ?? [
       {
         q: `How do I use this ${name}?`,
-        a: `Fill in the fields above. The result updates as you type. Empty fields show a dash until you enter a valid number or text.`,
+        a: `Fill in the fields above. The result updates as you type. Empty fields stay blank until you enter a valid number or text.`,
       },
       {
         q: `Is the ${name} free?`,
-        a: `Yes. Every SmartToolX calculator and converter is free, with no sign-up and no paywalled result.`,
+        a: `Yes. Every SmartToolX calculator and converter is free. There is no paywalled result.`,
       },
       {
         q: `Does this ${name} save my data?`,
         a: `No. Inputs stay in your browser unless a tool needs a public API, such as live currency rates or QR image rendering.`,
       },
       {
-        q: `Is this ${name} accurate enough for Google-style “best calculator” searches?`,
-        a: `We use the same published formulas people expect from a top-ranked ${name.toLowerCase()}. Always double-check medical, legal, or large-money decisions.`,
+        q: `How accurate is this ${name}?`,
+        a: `We use the same published formulas you would expect from a standard ${name.toLowerCase()}. Always double-check medical, legal, or large money decisions.`,
       },
     ],
   };
@@ -45,11 +44,11 @@ function guide(tool: Tool, extras: Partial<ToolContent> = {}): ToolContent {
 const custom: Record<string, Partial<ToolContent>> = {
   "bmi-calculator": {
     keyword: "BMI calculator",
-    articleTitle: "BMI Calculator — Free Body Mass Index Chart Online",
+    articleTitle: "How to check BMI online",
     paragraphs: [
-      "A BMI calculator is one of the most searched health tools on Google. This free BMI calculator uses the WHO formula: weight (kg) divided by height (m) squared.",
-      "Adult BMI categories: under 18.5 underweight, 18.5–24.9 normal, 25–29.9 overweight, 30+ obese. BMI is a screening number, not a diagnosis. Athletes and older adults may need extra context from a clinician.",
-      "No sign-up. Enter height and weight above, then click Calculate BMI. Pair it with the calorie calculator and body fat calculator on SmartToolX for a fuller picture.",
+      "A BMI calculator is one of the most searched health tools on Google. This page uses the WHO formula: weight in kilograms divided by height in metres squared.",
+      "Adult categories: under 18.5 underweight, 18.5 to 24.9 normal, 25 to 29.9 overweight, 30 and above obese. BMI is a screening number, not a diagnosis. Athletes and older adults may need extra context from a clinician.",
+      "No account needed. Choose height in centimeters, meters, feet and inches, or inches. Choose weight in kilograms, pounds, or stone. Mix units if that is how you know your numbers, then click Calculate BMI.",
     ],
     faqs: [
       {
@@ -57,8 +56,12 @@ const custom: Record<string, Partial<ToolContent>> = {
         a: "A BMI between 18.5 and 24.9 is generally considered a healthy weight range for most adults.",
       },
       {
+        q: "Which height and weight units can I use?",
+        a: "Height: centimeters, meters, feet and inches, or inches. Weight: kilograms, pounds, stone, or stone and pounds. You can mix them, for example 5 ft 10 in and 75 kg.",
+      },
+      {
         q: "Is BMI accurate for everyone?",
-        a: "Not always. BMI can overestimate body fat in muscular people and underestimate it in older adults who've lost muscle mass. It's a general screening tool, not a full health assessment.",
+        a: "Not always. BMI can overestimate body fat in muscular people and underestimate it in older adults who have lost muscle mass. It is a general screening tool, not a full health assessment.",
       },
       {
         q: "How often should I check my BMI?",
@@ -68,84 +71,104 @@ const custom: Record<string, Partial<ToolContent>> = {
   },
   "loan-emi-calculator": {
     keyword: "EMI calculator",
-    articleTitle: "EMI Calculator — Monthly Loan Payment Online",
+    articleTitle: "How loan EMI is calculated",
     paragraphs: [
-      "An EMI calculator is a top finance query. Equated monthly installment uses EMI = P × r × (1+r)^n / ((1+r)^n − 1), where r is the monthly rate and n is the number of months.",
+      "Equated monthly installment uses EMI = P × r × (1+r)^n / ((1+r)^n − 1), where r is the monthly rate and n is the number of months.",
       "Enter loan amount, annual interest, and tenure. You get the monthly EMI and total payable. Compare offers before you sign.",
       "This EMI calculator runs locally. It does not replace a bank quote, but it matches the standard reducing-balance formula used across home, car, and personal loans.",
     ],
   },
   "percentage-calculator": {
     keyword: "percentage calculator",
-    articleTitle: "Percentage Calculator — What Is X Percent of Y?",
+    articleTitle: "How to find a percentage of a number",
     paragraphs: [
-      "People search “what is 18 percent of 250” every day. This percentage calculator answers that, plus the increased total after adding a percent.",
+      "People search things like “what is 18 percent of 250” every day. This percentage calculator answers that, plus the increased total after adding a percent.",
       "Formula: (value × percent) / 100. Use it for discounts, tax, exam scores, and growth.",
       "Results update as you type. Combine with the discount calculator or GST calculator when you are shopping or invoicing.",
     ],
   },
   "calorie-calculator": {
     keyword: "calorie calculator",
-    articleTitle: "Calorie Calculator — Daily Calorie Needs (TDEE)",
+    articleTitle: "How daily calorie needs are estimated",
     paragraphs: [
-      "A calorie calculator estimates TDEE: calories to maintain weight given age, sex, height, weight, and activity. We use Mifflin-St Jeor BMR times an activity factor — the same approach used by widely ranked nutrition tools.",
-      "Sedentary 1.2, light 1.375, moderate 1.55, active 1.725, very active 1.9. Cut ~500 kcal/day for gradual fat loss only with medical guidance.",
-      "This is informational. Needs vary with muscle mass, hormones, and health conditions.",
+      "A calorie calculator estimates TDEE: calories to maintain weight given age, sex, height, weight, and activity. We use Mifflin-St Jeor BMR times an activity factor, the same approach used by many nutrition tools.",
+      "Height can be centimeters, meters, feet and inches, or inches. Weight can be kilograms, pounds, or stone. Mix units if that is how you know your numbers. Activity is written in plain language so you can pick the closest match.",
+      "This is informational. Needs vary with muscle mass, hormones, and health conditions. A cut of about 500 kcal a day is a common starting point for gradual fat loss only with medical guidance.",
+    ],
+    faqs: [
+      {
+        q: "Which units can I use?",
+        a: "Height: centimeters, meters, feet and inches, or inches. Weight: kilograms, pounds, stone, or stone and pounds. Age is in years. You can mix units, for example 5 ft 10 in and 75 kg.",
+      },
+      {
+        q: "What does the activity level mean?",
+        a: "Sedentary is desk work with little exercise. Light is 1 to 3 days a week. Moderate is 3 to 5 days. Active is 6 to 7 days. Very active is hard training or a physical job.",
+      },
+      {
+        q: "Is this the same as BMR?",
+        a: "BMR is calories at rest. This calorie calculator multiplies BMR by your activity level to estimate daily maintenance calories (TDEE).",
+      },
     ],
   },
   "currency-converter": {
     keyword: "currency converter",
-    articleTitle: "Live Currency Converter — 150+ Exchange Rates",
+    articleTitle: "How live currency conversion works here",
     paragraphs: [
-      "A live currency converter is a high-intent Google query for travelers and freelancers. Rates refresh from a public FX feed about once a minute.",
+      "This converter is built for travelers and freelancers who need a quick mid-market figure. Rates refresh from a public FX feed about once a minute.",
       "Pick amount, from, and to. USD, EUR, GBP, INR, and 160+ other codes are included.",
       "Mid-market rates can differ from what a bank or card charges. Check the Rate line for the raw multiplier.",
     ],
   },
   "word-counter": {
     keyword: "word counter",
-    articleTitle: "Word Counter — Words, Characters, Reading Time",
+    articleTitle: "Count words, characters, and reading time",
     paragraphs: [
-      "A word counter is essential for essays, captions, and SEO briefs. This live word counter tallies words, characters, and estimated reading time at 200 words per minute.",
+      "A word counter helps with essays, captions, and SEO briefs. This one tallies words, characters, and estimated reading time at 200 words per minute.",
       "Paste text above. Counts update as you type. No upload and no account.",
       "Use it with the case converter and slug generator when you publish.",
     ],
   },
   "unit-converter": {
     keyword: "unit converter",
-    articleTitle: "Unit Converter — Length, Weight, Volume, Temperature",
+    articleTitle: "Convert length, weight, volume, and more",
     paragraphs: [
-      "Unit converter searches cover km to miles, kg to lbs, Celsius to Fahrenheit, and more. This converter includes length, weight, volume, temperature, area, speed, time, data, pressure, energy, power, and angle.",
+      "Common searches include km to miles, kg to lbs, and Celsius to Fahrenheit. This converter also covers area, speed, time, data, pressure, energy, power, and angle.",
       "Pick a type, amount, from, and to. Conversion uses standard SI factors.",
-      "For a dedicated temperature-only page, use the Temperature Converter — it ranks for that exact keyword.",
+      "If you only need temperature, the Temperature Converter page is a shorter path for that search.",
     ],
   },
   "pdf-to-word": {
     keyword: "PDF to Word converter",
-    articleTitle: "PDF to Word Converter — Editable Documents in the Browser",
+    articleTitle: "Turn a PDF into an editable Word file",
     paragraphs: [
       "Upload a PDF and get back an editable Word document. Text is extracted in your browser so the file is not sent to a server.",
       "Drop a PDF above, click Convert to Word, then download the .docx file.",
       "Scanned image-only PDFs may return little text. Use PDF to JPG if you need page images instead.",
     ],
     faqs: [
-      { q: "Will my formatting stay the same?", a: "Text is preserved. Complex layouts, tables, and images are simplified in the Word file." },
+      {
+        q: "Will my formatting stay the same?",
+        a: "Text is preserved. Complex layouts, tables, and images are simplified in the Word file.",
+      },
       { q: "Is there a file size limit?", a: "Files up to 25MB are supported." },
-      { q: "Are my files kept private?", a: "Yes. Conversion runs in your browser. Files are not uploaded." },
+      {
+        q: "Are my files kept private?",
+        a: "Yes. Conversion runs in your browser. Files are not uploaded.",
+      },
     ],
   },
   "word-to-pdf": {
     keyword: "Word to PDF converter",
-    articleTitle: "Word to PDF Converter — Shareable PDFs from DOCX",
+    articleTitle: "Turn a Word document into a PDF",
     paragraphs: [
       "Turn a Word document into a PDF you can send or print. The conversion runs locally in your browser.",
       "Drop a .docx file above and click Convert to PDF.",
-      "Older .doc files are not supported — save as .docx in Word first.",
+      "Older .doc files are not supported. Save as .docx in Word first.",
     ],
   },
   "pdf-to-jpg": {
     keyword: "PDF to JPG converter",
-    articleTitle: "PDF to JPG Converter — Export Every Page as an Image",
+    articleTitle: "Export PDF pages as JPG images",
     paragraphs: [
       "Export each PDF page as a JPG. Multi-page files download as a zip of images.",
       "Drop a PDF above and click Convert to JPG.",
@@ -154,7 +177,7 @@ const custom: Record<string, Partial<ToolContent>> = {
   },
   "jpg-to-pdf": {
     keyword: "JPG to PDF converter",
-    articleTitle: "JPG to PDF Converter — Combine Images into One PDF",
+    articleTitle: "Combine images into one PDF",
     paragraphs: [
       "Combine one or more JPG or PNG images into a single PDF. Page order follows your upload order.",
       "Drop images above and click Convert to PDF.",
@@ -163,7 +186,7 @@ const custom: Record<string, Partial<ToolContent>> = {
   },
   "excel-to-pdf": {
     keyword: "Excel to PDF converter",
-    articleTitle: "Excel to PDF Converter — Print-Ready Spreadsheets",
+    articleTitle: "Turn a spreadsheet into a PDF",
     paragraphs: [
       "Convert a spreadsheet into a PDF for sharing or printing. .xlsx and CSV files are supported.",
       "Drop a file above and click Convert to PDF.",
@@ -172,53 +195,71 @@ const custom: Record<string, Partial<ToolContent>> = {
   },
   "ppt-to-pdf": {
     keyword: "PPT to PDF converter",
-    articleTitle: "PPT to PDF Converter — Slide Decks as PDFs",
+    articleTitle: "Turn slides into a PDF",
     paragraphs: [
-      "Convert a PowerPoint deck into a PDF. Upload a .pptx file and download a shareable document.",
+      "Convert a PowerPoint deck into a PDF. Upload a .ppt or .pptx file and download a shareable document.",
       "Drop your slides above and click Convert to PDF.",
-      "Slide text is extracted in your browser. Older .ppt files should be saved as .pptx first.",
+      "Slide layouts are processed in your browser so the file stays on your device.",
     ],
   },
   "compress-pdf": {
     keyword: "compress PDF",
-    articleTitle: "Compress PDF — Smaller Files Without a Server",
+    articleTitle: "Make a PDF smaller without a server",
     paragraphs: [
       "Rewrite a PDF with object streams to trim file size for email and uploads.",
       "Drop a PDF above and click Compress File.",
       "How much it shrinks depends on how the original was saved. Text stays sharp.",
     ],
     faqs: [
-      { q: "Will the quality be affected?", a: "Text stays fully sharp. The file is rewritten; image-heavy PDFs may shrink more than text-only files." },
-      { q: "How much smaller will my file be?", a: "It varies. Already-optimized PDFs may barely change. Others often drop noticeably." },
-      { q: "Are my files kept private?", a: "Yes. Compression runs in your browser. Files are not uploaded." },
+      {
+        q: "Will the quality be affected?",
+        a: "Text stays fully sharp. The file is rewritten. Image-heavy PDFs may shrink more than text-only files.",
+      },
+      {
+        q: "How much smaller will my file be?",
+        a: "It varies. Already-optimized PDFs may barely change. Others often drop noticeably.",
+      },
+      {
+        q: "Are my files kept private?",
+        a: "Yes. Compression runs in your browser. Files are not uploaded.",
+      },
     ],
   },
   "merge-pdf": {
     keyword: "merge PDF",
-    articleTitle: "Merge PDF — Combine Multiple PDFs into One",
+    articleTitle: "Combine several PDFs into one",
     paragraphs: [
       "Upload two or more PDFs and combine them into a single document in the order you add them.",
       "Drop files above, remove any you do not need, then click Merge Files.",
       "Each file can be up to 25MB. You can merge up to 20 files at once.",
     ],
     faqs: [
-      { q: "Can I reorder the files before merging?", a: "Remove and re-add files in the order you want. Pages keep each file’s original order." },
-      { q: "Is there a limit on how many files I can merge?", a: "You can merge up to 20 files at once." },
-      { q: "Are my files kept private?", a: "Yes. Merging runs in your browser. Files are not uploaded." },
+      {
+        q: "Can I reorder the files before merging?",
+        a: "Remove and re-add files in the order you want. Pages keep each file’s original order.",
+      },
+      {
+        q: "Is there a limit on how many files I can merge?",
+        a: "You can merge up to 20 files at once.",
+      },
+      {
+        q: "Are my files kept private?",
+        a: "Yes. Merging runs in your browser. Files are not uploaded.",
+      },
     ],
   },
   "pdf-to-png": {
     keyword: "PDF to PNG converter",
-    articleTitle: "PDF to PNG Converter — Crisp Page Images",
+    articleTitle: "Export PDF pages as PNG images",
     paragraphs: [
       "Export each PDF page as a PNG. Multi-page files download as a zip.",
       "Drop a PDF above and click Convert to PNG.",
-      "PNG keeps sharp edges, useful for slides and screenshots.",
+      "PNG keeps sharp edges, which helps for slides and screenshots.",
     ],
   },
   "png-to-pdf": {
     keyword: "PNG to PDF converter",
-    articleTitle: "PNG to PDF Converter — Images into One Document",
+    articleTitle: "Turn PNG images into one PDF",
     paragraphs: [
       "Combine one or more PNG images into a single PDF. Pages follow your upload order.",
       "Drop PNG files above and click Convert to PDF.",
@@ -227,9 +268,9 @@ const custom: Record<string, Partial<ToolContent>> = {
   },
   "date-difference-calculator": {
     keyword: "date difference calculator",
-    articleTitle: "Date Difference Calculator — Days Between Two Dates",
+    articleTitle: "Find the time between two dates",
     paragraphs: [
-      "A date difference calculator answers how much time sits between two calendar dates: years, months, weeks, and total days.",
+      "This calculator answers how much time sits between two calendar dates: years, months, weeks, and total days.",
       "Pick a start date and an end date above. The result updates as soon as both dates are valid. If the end date is earlier, the duration is still shown as a positive gap.",
       "Use it for project timelines, leave days, or the span between two events. It runs in your browser and does not save the dates you enter.",
     ],
@@ -246,6 +287,245 @@ const custom: Record<string, Partial<ToolContent>> = {
         q: "Are hours and time zones included?",
         a: "This tool compares calendar dates only, not clock time. Each date is counted as a full day in your local calendar.",
       },
+    ],
+  },
+  "age-calculator": {
+    keyword: "age calculator",
+    articleTitle: "Find exact age from a date of birth",
+    paragraphs: [
+      "Enter a date of birth to see age in years, months, and days. The count uses your local calendar.",
+      "Useful for forms, school records, and quick checks. It does not store the date you type.",
+      "If you need the gap between two other dates, use the Date Difference Calculator instead.",
+    ],
+  },
+  "qr-code-generator": {
+    keyword: "QR code generator",
+    articleTitle: "Create a QR code from a link or text",
+    paragraphs: [
+      "Paste a URL or short message and this page draws a scannable QR code. Download the image for print or screens.",
+      "Keep the text reasonably short so phones can scan it cleanly.",
+      "The encoded content is used only to draw the image. There is no SmartToolX account involved.",
+    ],
+  },
+  "bmr-calculator": {
+    keyword: "BMR calculator",
+    articleTitle: "Estimate basal metabolic rate",
+    paragraphs: [
+      "BMR is a rough estimate of the calories your body uses at rest. This page uses the Mifflin-St Jeor formula from age, sex, height, and weight.",
+      "Enter age in years. Height can be centimeters, meters, feet and inches, or inches. Weight can be kilograms, pounds, or stone. Mix units if that is how you know your numbers.",
+      "It is a starting point, not a lab measurement. Muscle mass and health conditions can move the real number. For daily calories including activity, open the Calorie Calculator next.",
+    ],
+    faqs: [
+      {
+        q: "Which units can I use for BMR?",
+        a: "Height: centimeters, meters, feet and inches, or inches. Weight: kilograms, pounds, stone, or stone and pounds. Age is in years. You can mix units, for example 5 ft 10 in and 75 kg.",
+      },
+      {
+        q: "What does BMR mean?",
+        a: "Basal metabolic rate is an estimate of the calories your body would use at rest. It does not include walking, work, or exercise.",
+      },
+      {
+        q: "Which formula does this calculator use?",
+        a: "Mifflin-St Jeor. Weight is converted to kilograms and height to centimeters before the formula runs.",
+      },
+    ],
+  },
+  "body-fat-calculator": {
+    keyword: "body fat calculator",
+    articleTitle: "Estimate body fat percentage",
+    paragraphs: [
+      "This estimate uses the Deurenberg method from BMI, age, and sex. It is a screening figure, not a DEXA or caliper test.",
+      "Enter the fields above to see a percentage. Athletes and older adults often need a clinician’s view as well.",
+      "Pair it with the BMI calculator if you want the underlying index too.",
+    ],
+  },
+  "pregnancy-due-date-calculator": {
+    keyword: "due date calculator",
+    articleTitle: "Estimate a pregnancy due date",
+    paragraphs: [
+      "Enter the first day of your last period. The estimate uses Naegele’s rule of 280 days.",
+      "This is informational only. A clinician confirms dating with history and, when needed, ultrasound.",
+      "Cycle length and ovulation timing can shift the real due date.",
+    ],
+  },
+  "ovulation-calculator": {
+    keyword: "ovulation calculator",
+    articleTitle: "Estimate ovulation and the fertile window",
+    paragraphs: [
+      "Enter cycle length and the first day of your last period to see an ovulation day and fertile window.",
+      "This is a calendar estimate. It does not replace ovulation tests or medical advice.",
+      "Irregular cycles can make the window less reliable.",
+    ],
+  },
+  "water-intake-calculator": {
+    keyword: "water intake calculator",
+    articleTitle: "Get a daily water goal from body weight",
+    paragraphs: [
+      "This guide uses about 35 ml of water per kilogram of body weight. It is a simple starting point, not a medical prescription.",
+      "Heat, exercise, and health conditions can raise or lower what you actually need.",
+      "Enter weight above to see a daily litre target.",
+    ],
+  },
+  "compound-interest-calculator": {
+    keyword: "compound interest calculator",
+    articleTitle: "See how compound interest grows a balance",
+    paragraphs: [
+      "Enter principal, annual rate, time, and how often interest compounds. You get a future value from the standard compound interest formula.",
+      "Useful for savings accounts, deposits, and long-term planning. Fees and taxes are not included.",
+      "For monthly investing, try the SIP calculator.",
+    ],
+  },
+  "gst-calculator": {
+    keyword: "GST calculator",
+    articleTitle: "Add or remove GST and VAT",
+    paragraphs: [
+      "Enter an amount and a tax rate to add GST or peel it out of a gross price. You see tax and the net or gross total.",
+      "Works the same way for VAT in many countries. Confirm the rate that applies to your invoice.",
+      "For a simple percent of a number, the Percentage Calculator is quicker.",
+    ],
+  },
+  "tip-calculator": {
+    keyword: "tip calculator",
+    articleTitle: "Split a bill with tip",
+    paragraphs: [
+      "Enter the bill, tip percent, and how many people are paying. You get the tip and each person’s share.",
+      "Handy at restaurants when you want a clean split.",
+      "If you only need a percent of a number, use the Percentage Calculator.",
+    ],
+  },
+  "discount-calculator": {
+    keyword: "discount calculator",
+    articleTitle: "Find the sale price and amount saved",
+    paragraphs: [
+      "Enter the original price and discount percent. You see how much you save and what you pay.",
+      "Useful in shops, on invoices, and when comparing offers.",
+      "Stack it with the GST calculator if tax sits on top of the sale price.",
+    ],
+  },
+  "sip-calculator": {
+    keyword: "SIP calculator",
+    articleTitle: "Estimate SIP future value",
+    paragraphs: [
+      "Enter a monthly amount, expected annual return, and number of years. The result is a projected future value for a systematic investment plan.",
+      "Markets vary. This is a formula, not a promise of returns.",
+      "For a one-time deposit, the Compound Interest Calculator may fit better.",
+    ],
+  },
+  "simple-interest-calculator": {
+    keyword: "simple interest calculator",
+    articleTitle: "Calculate simple interest on a loan",
+    paragraphs: [
+      "Simple interest is principal × rate × time. This page also shows the total payable.",
+      "Common for short-term loans where interest does not compound.",
+      "For compounding, switch to the Compound Interest Calculator.",
+    ],
+  },
+  "case-converter": {
+    keyword: "case converter",
+    articleTitle: "Change text to upper, lower, or title case",
+    paragraphs: [
+      "Paste text and switch it to UPPERCASE, lowercase, Title Case, or sentence case.",
+      "Built for headlines, captions, and messy drafts. Copy the result when it looks right.",
+      "Nothing is stored after you leave the page.",
+    ],
+  },
+  "password-generator": {
+    keyword: "password generator",
+    articleTitle: "Create a random password in your browser",
+    paragraphs: [
+      "Pick a length and character mix, then generate a password on this page. The value is created on your device.",
+      "Store it in a password manager. We do not save what you generate.",
+      "Longer passwords with mixed characters are harder to guess.",
+    ],
+  },
+  "lorem-ipsum-generator": {
+    keyword: "lorem ipsum generator",
+    articleTitle: "Generate placeholder text for layouts",
+    paragraphs: [
+      "Get classic lorem ipsum paragraphs for wireframes and draft pages.",
+      "Choose how much text you need, then copy it into your layout.",
+      "This is dummy text only. It does not mean anything.",
+    ],
+  },
+  "text-reverser": {
+    keyword: "reverse text",
+    articleTitle: "Reverse letters or words in a sentence",
+    paragraphs: [
+      "Paste any block of text and reverse the characters or the word order.",
+      "Useful for puzzles, checks, and quick edits.",
+      "The original text never leaves your browser.",
+    ],
+  },
+  "base64-encoder": {
+    keyword: "Base64 encoder",
+    articleTitle: "Encode or decode Base64 text",
+    paragraphs: [
+      "Paste text to encode it as Base64, or paste Base64 to decode it back.",
+      "Handy for tokens, data URLs, and debugging. Work stays on your device.",
+      "Large files belong in a dedicated encoder. This page is for text.",
+    ],
+  },
+  "slug-generator": {
+    keyword: "slug generator",
+    articleTitle: "Turn a title into a URL slug",
+    paragraphs: [
+      "Paste a page title and get a lowercase, hyphenated slug you can use in a URL.",
+      "Built for blogs, docs, and CMS permalinks.",
+      "Edit the result if you want a shorter keyword-focused slug.",
+    ],
+  },
+  "temperature-converter": {
+    keyword: "temperature converter",
+    articleTitle: "Convert Celsius, Fahrenheit, and Kelvin",
+    paragraphs: [
+      "Enter a temperature and pick the from and to units. The page uses the standard conversion formulas.",
+      "Built for cooking, weather, and homework.",
+      "For other measurements, open the Unit Converter.",
+    ],
+  },
+  "number-to-words": {
+    keyword: "number to words",
+    articleTitle: "Spell out a number in English",
+    paragraphs: [
+      "Type a number and see it written in words. Useful for cheques, invoices, and formal writing.",
+      "The wording follows common English for whole numbers.",
+      "Currency names are not added. Append “only” or a currency yourself if you need that style.",
+    ],
+  },
+  "binary-converter": {
+    keyword: "binary converter",
+    articleTitle: "Convert decimal, binary, and hex",
+    paragraphs: [
+      "Enter a value in one base and see decimal, binary, and hexadecimal together.",
+      "Built for classwork and quick checks. Invalid input is ignored until the number is clean.",
+      "This is integer conversion, not floating-point.",
+    ],
+  },
+  "color-converter": {
+    keyword: "color converter",
+    articleTitle: "Convert HEX colors to RGB",
+    paragraphs: [
+      "Paste a HEX code to get RGB, or the other way around. Copy whichever format your CSS or design tool needs.",
+      "Accepts common 6-digit hex values.",
+      "This is a format converter, not a full palette tool.",
+    ],
+  },
+  "roman-numeral-converter": {
+    keyword: "Roman numeral converter",
+    articleTitle: "Convert numbers to Roman numerals",
+    paragraphs: [
+      "Enter a number from 1 to 3999 to see the Roman numeral form.",
+      "Useful for dates, outlines, and clock faces.",
+      "Numbers outside that range are not part of the usual Roman set this page uses.",
+    ],
+  },
+  "time-calculator": {
+    keyword: "time calculator",
+    articleTitle: "Add hours, minutes, and seconds",
+    paragraphs: [
+      "Enter hours, minutes, and seconds to get a total duration, including a breakdown back into h, m, and s.",
+      "Useful for logs, workouts, and video lengths.",
+      "This adds clock time. It does not convert time zones.",
     ],
   },
 };

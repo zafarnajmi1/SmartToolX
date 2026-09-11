@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
 import { LoginForm } from "@/components/admin/LoginForm";
+import { seoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: { absolute: "Admin login — SmartToolX" },
-  robots: { index: false, follow: false },
-};
+export async function generateMetadata() {
+  return seoMetadata("/admin/login");
+}
 
 export default function AdminLoginPage() {
   return (

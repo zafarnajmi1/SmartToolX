@@ -1,11 +1,10 @@
-import type { Metadata } from "next";
+import { seoMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: { absolute: "Admin — SmartToolX" },
-  robots: { index: false, follow: false },
-};
+export async function generateMetadata() {
+  return seoMetadata("/admin");
+}
 
 export default function AdminLayout({
   children,

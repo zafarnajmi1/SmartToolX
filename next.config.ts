@@ -14,8 +14,9 @@ const nextConfig: NextConfig = {
     "@tailwindcss/postcss",
     "@tailwindcss/node",
     "@tailwindcss/oxide",
+    "@tailwindcss/oxide-darwin-arm64",
   ],
-  transpilePackages: ["docx-preview", "html2canvas", "mammoth"],
+  transpilePackages: ["docx", "docx-preview", "html2canvas", "mammoth"],
 };
 
 export default nextConfig;

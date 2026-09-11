@@ -15,7 +15,7 @@ export default function AboutPage() {
         <PageHeader
           eyebrow="About"
           title="A toolkit that stays out of the way"
-          description="SmartToolX is built for one job: give you the number, the conversion, or the count — immediately. No accounts, no ads in the result, no extra steps."
+          description="SmartToolX is built for one job: give you the number, the conversion, or the count right away. No accounts, no ads in the result, no extra steps."
         />
         <div className="text-text-dim max-w-[640px] space-y-4 text-[16px] leading-[1.7]">
           <p>

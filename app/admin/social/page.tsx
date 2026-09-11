@@ -2,6 +2,11 @@ import Link from "next/link";
 import { AdminShell } from "@/components/admin/AdminShell";
 import { SocialForm } from "@/components/admin/SocialForm";
 import { getCms } from "@/lib/cms";
+import { seoMetadata } from "@/lib/seo";
+
+export async function generateMetadata() {
+  return seoMetadata("/admin/social");
+}
 
 export default async function AdminSocialPage() {
   const cms = await getCms();

@@ -65,10 +65,10 @@ function toMetadata(entry: SeoEntry, siteUrl: string): Metadata {
 }
 
 const DEFAULT_DESCRIPTION =
-  "Calculators, converters, and generators built for speed and accuracy.";
+  "Free calculators, converters, and file tools that run in your browser.";
 
 export function jsonLdFor(entry: SeoEntry, siteUrl: string) {
-  return {
+  const data: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": entry.schemaType,
     name: entry.h1,
@@ -86,4 +86,10 @@ export function jsonLdFor(entry: SeoEntry, siteUrl: string) {
     image: entry.ogImage,
     keywords: entry.keywords,
   };
+  if (entry.schemaType === "SoftwareApplication") {
+    data.applicationCategory = "UtilitiesApplication";
+    data.operatingSystem = "Any";
+    data.offers = { "@type": "Offer", price: "0", priceCurrency: "USD" };
+  }
+  return data;
 }

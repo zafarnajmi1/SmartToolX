@@ -51,6 +51,15 @@ function FinanceIcon(props: IconProps) {
   );
 }
 
+function FilesIcon(props: IconProps) {
+  return (
+    <svg {...iconProps(props)}>
+      <path d="M4.5 2.5h5l3 3V13.5H4.5z" />
+      <path d="M9.5 2.5V5.5H12.5" />
+    </svg>
+  );
+}
+
 function AboutIcon(props: IconProps) {
   return (
     <svg {...iconProps(props)}>
@@ -65,6 +74,7 @@ const icons: Record<NavIconName, ComponentType<IconProps>> = {
   converters: ConvertersIcon,
   text: TextIcon,
   finance: FinanceIcon,
+  files: FilesIcon,
   about: AboutIcon,
 };
 

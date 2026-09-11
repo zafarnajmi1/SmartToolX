@@ -30,49 +30,272 @@ function mifflin(weight: number, height: number, age: number, male: boolean) {
     : 10 * weight + 6.25 * height - 5 * age - 161;
 }
 
+type BmrHeightUnit = "cm" | "m" | "ftin" | "in";
+type BmrWeightUnit = "kg" | "lb" | "stlb" | "st";
+
+const BMR_INCH_M = 0.0254;
+const BMR_LB_KG = 0.45359237;
+const BMR_STONE_LB = 14;
+
+function bmrAmount(value: string) {
+  if (value.trim() === "") return null;
+  const parsed = Number(value);
+  return Number.isFinite(parsed) && parsed >= 0 ? parsed : null;
+}
+
+function bmrTrim(value: number, digits: number) {
+  const rounded = Number(value.toFixed(digits));
+  if (!Number.isFinite(rounded) || rounded < 0) return "";
+  return String(rounded);
+}
+
+function bmrHeightToCm(unit: BmrHeightUnit, primary: string, extra: string) {
+  if (unit === "cm") {
+    const cm = bmrAmount(primary);
+    return cm && cm > 0 ? cm : null;
+  }
+  if (unit === "m") {
+    const meters = bmrAmount(primary);
+    return meters && meters > 0 ? meters * 100 : null;
+  }
+  if (unit === "in") {
+    const inches = bmrAmount(primary);
+    return inches && inches > 0 ? inches * BMR_INCH_M * 100 : null;
+  }
+  const feet = bmrAmount(primary) ?? 0;
+  const inches = bmrAmount(extra) ?? 0;
+  const totalInches = feet * 12 + inches;
+  return totalInches > 0 ? totalInches * BMR_INCH_M * 100 : null;
+}
+
+function bmrWeightToKg(unit: BmrWeightUnit, primary: string, extra: string) {
+  if (unit === "kg") {
+    const kg = bmrAmount(primary);
+    return kg && kg > 0 ? kg : null;
+  }
+  if (unit === "lb") {
+    const pounds = bmrAmount(primary);
+    return pounds && pounds > 0 ? pounds * BMR_LB_KG : null;
+  }
+  if (unit === "st") {
+    const stone = bmrAmount(primary);
+    return stone && stone > 0 ? stone * BMR_STONE_LB * BMR_LB_KG : null;
+  }
+  const stone = bmrAmount(primary) ?? 0;
+  const pounds = bmrAmount(extra) ?? 0;
+  const totalPounds = stone * BMR_STONE_LB + pounds;
+  return totalPounds > 0 ? totalPounds * BMR_LB_KG : null;
+}
+
+function bmrCmToHeight(unit: BmrHeightUnit, cm: number) {
+  if (unit === "cm") return { primary: bmrTrim(cm, 1), extra: "" };
+  if (unit === "m") return { primary: bmrTrim(cm / 100, 2), extra: "" };
+  const totalInches = cm / (BMR_INCH_M * 100);
+  if (unit === "in") return { primary: bmrTrim(totalInches, 1), extra: "" };
+  const feet = Math.floor(totalInches / 12 + 1e-9);
+  const inches = Math.max(0, totalInches - feet * 12);
+  return { primary: String(feet), extra: bmrTrim(inches, 1) };
+}
+
+function bmrKgToWeight(unit: BmrWeightUnit, kg: number) {
+  if (unit === "kg") return { primary: bmrTrim(kg, 1), extra: "" };
+  const totalPounds = kg / BMR_LB_KG;
+  if (unit === "lb") return { primary: bmrTrim(totalPounds, 1), extra: "" };
+  if (unit === "st") {
+    return { primary: bmrTrim(totalPounds / BMR_STONE_LB, 2), extra: "" };
+  }
+  const stone = Math.floor(totalPounds / BMR_STONE_LB + 1e-9);
+  const pounds = Math.max(0, totalPounds - stone * BMR_STONE_LB);
+  return { primary: String(stone), extra: bmrTrim(pounds, 1) };
+}
+
 export function CalorieCalculator() {
   const [age, setAge] = useState("");
-  const [height, setHeight] = useState("");
-  const [weight, setWeight] = useState("");
+  const [heightUnit, setHeightUnit] = useState<BmrHeightUnit>("cm");
+  const [heightPrimary, setHeightPrimary] = useState("");
+  const [heightExtra, setHeightExtra] = useState("");
+  const [weightUnit, setWeightUnit] = useState<BmrWeightUnit>("kg");
+  const [weightPrimary, setWeightPrimary] = useState("");
+  const [weightExtra, setWeightExtra] = useState("");
   const [sex, setSex] = useState("male");
   const [activity, setActivity] = useState("1.55");
 
+  function changeHeightUnit(next: BmrHeightUnit) {
+    const cm = bmrHeightToCm(heightUnit, heightPrimary, heightExtra);
+    if (cm != null) {
+      const converted = bmrCmToHeight(next, cm);
+      setHeightPrimary(converted.primary);
+      setHeightExtra(converted.extra);
+    } else {
+      setHeightExtra("");
+    }
+    setHeightUnit(next);
+  }
+
+  function changeWeightUnit(next: BmrWeightUnit) {
+    const kg = bmrWeightToKg(weightUnit, weightPrimary, weightExtra);
+    if (kg != null) {
+      const converted = bmrKgToWeight(next, kg);
+      setWeightPrimary(converted.primary);
+      setWeightExtra(converted.extra);
+    } else {
+      setWeightExtra("");
+    }
+    setWeightUnit(next);
+  }
+
   const calories = useMemo(() => {
     const a = parseNumber(age);
-    const h = parseNumber(height);
-    const w = parseNumber(weight);
+    const h = bmrHeightToCm(heightUnit, heightPrimary, heightExtra);
+    const w = bmrWeightToKg(weightUnit, weightPrimary, weightExtra);
     const factor = Number(activity);
-    if (a == null || h == null || w == null || a <= 0 || h <= 0 || w <= 0) {
-      return null;
-    }
+    if (a == null || h == null || w == null || a <= 0) return null;
     return mifflin(w, h, a, sex === "male") * factor;
-  }, [age, height, weight, sex, activity]);
+  }, [
+    age,
+    heightUnit,
+    heightPrimary,
+    heightExtra,
+    weightUnit,
+    weightPrimary,
+    weightExtra,
+    sex,
+    activity,
+  ]);
 
   return (
     <div className="grid gap-8 md:grid-cols-2">
       <div className="grid gap-4">
-        <Field label="Age">
-          <Input type="number" value={age} placeholder="0" onChange={(e) => setAge(e.target.value)} />
+        <Field label="Age (years)">
+          <Input
+            type="number"
+            min="1"
+            step="1"
+            inputMode="numeric"
+            value={age}
+            placeholder="30"
+            onChange={(e) => setAge(e.target.value)}
+          />
         </Field>
-        <Field label="Height (cm)">
-          <Input type="number" value={height} placeholder="0" onChange={(e) => setHeight(e.target.value)} />
+        <Field label="Height unit">
+          <Select
+            value={heightUnit}
+            onChange={(e) => changeHeightUnit(e.target.value as BmrHeightUnit)}
+          >
+            <option value="cm">Centimeters (cm)</option>
+            <option value="m">Meters (m)</option>
+            <option value="ftin">Feet and inches</option>
+            <option value="in">Inches (in)</option>
+          </Select>
         </Field>
-        <Field label="Weight (kg)">
-          <Input type="number" value={weight} placeholder="0" onChange={(e) => setWeight(e.target.value)} />
+        {heightUnit === "ftin" ? (
+          <div className="grid grid-cols-2 gap-3">
+            <Field label="Feet">
+              <Input
+                type="number"
+                min="0"
+                step="any"
+                inputMode="decimal"
+                value={heightPrimary}
+                placeholder="5"
+                onChange={(e) => setHeightPrimary(e.target.value)}
+              />
+            </Field>
+            <Field label="Inches">
+              <Input
+                type="number"
+                min="0"
+                step="any"
+                inputMode="decimal"
+                value={heightExtra}
+                placeholder="10"
+                onChange={(e) => setHeightExtra(e.target.value)}
+              />
+            </Field>
+          </div>
+        ) : (
+          <Field label="Height">
+            <Input
+              type="number"
+              min="0"
+              step="any"
+              inputMode="decimal"
+              value={heightPrimary}
+              placeholder={
+                heightUnit === "cm"
+                  ? "170"
+                  : heightUnit === "m"
+                    ? "1.70"
+                    : "67"
+              }
+              onChange={(e) => setHeightPrimary(e.target.value)}
+            />
+          </Field>
+        )}
+        <Field label="Weight unit">
+          <Select
+            value={weightUnit}
+            onChange={(e) => changeWeightUnit(e.target.value as BmrWeightUnit)}
+          >
+            <option value="kg">Kilograms (kg)</option>
+            <option value="lb">Pounds (lb)</option>
+            <option value="stlb">Stone and pounds</option>
+            <option value="st">Stone (st)</option>
+          </Select>
         </Field>
+        {weightUnit === "stlb" ? (
+          <div className="grid grid-cols-2 gap-3">
+            <Field label="Stone">
+              <Input
+                type="number"
+                min="0"
+                step="any"
+                inputMode="decimal"
+                value={weightPrimary}
+                placeholder="10"
+                onChange={(e) => setWeightPrimary(e.target.value)}
+              />
+            </Field>
+            <Field label="Pounds">
+              <Input
+                type="number"
+                min="0"
+                step="any"
+                inputMode="decimal"
+                value={weightExtra}
+                placeholder="8"
+                onChange={(e) => setWeightExtra(e.target.value)}
+              />
+            </Field>
+          </div>
+        ) : (
+          <Field label="Weight">
+            <Input
+              type="number"
+              min="0"
+              step="any"
+              inputMode="decimal"
+              value={weightPrimary}
+              placeholder={
+                weightUnit === "kg" ? "65" : weightUnit === "lb" ? "143" : "10.2"
+              }
+              onChange={(e) => setWeightPrimary(e.target.value)}
+            />
+          </Field>
+        )}
         <Field label="Sex">
           <Select value={sex} onChange={(e) => setSex(e.target.value)}>
             <option value="male">Male</option>
             <option value="female">Female</option>
           </Select>
         </Field>
-        <Field label="Activity">
+        <Field label="Activity level">
           <Select value={activity} onChange={(e) => setActivity(e.target.value)}>
-            <option value="1.2">Sedentary</option>
-            <option value="1.375">Light</option>
-            <option value="1.55">Moderate</option>
-            <option value="1.725">Active</option>
-            <option value="1.9">Very active</option>
+            <option value="1.2">Sedentary (desk work, little exercise)</option>
+            <option value="1.375">Light (exercise 1 to 3 days a week)</option>
+            <option value="1.55">Moderate (exercise 3 to 5 days a week)</option>
+            <option value="1.725">Active (exercise 6 to 7 days a week)</option>
+            <option value="1.9">Very active (hard training or physical job)</option>
           </Select>
         </Field>
       </div>
@@ -86,29 +309,175 @@ export function CalorieCalculator() {
 
 export function BmrCalculator() {
   const [age, setAge] = useState("");
-  const [height, setHeight] = useState("");
-  const [weight, setWeight] = useState("");
+  const [heightUnit, setHeightUnit] = useState<BmrHeightUnit>("cm");
+  const [heightPrimary, setHeightPrimary] = useState("");
+  const [heightExtra, setHeightExtra] = useState("");
+  const [weightUnit, setWeightUnit] = useState<BmrWeightUnit>("kg");
+  const [weightPrimary, setWeightPrimary] = useState("");
+  const [weightExtra, setWeightExtra] = useState("");
   const [sex, setSex] = useState("male");
+
+  function changeHeightUnit(next: BmrHeightUnit) {
+    const cm = bmrHeightToCm(heightUnit, heightPrimary, heightExtra);
+    if (cm != null) {
+      const converted = bmrCmToHeight(next, cm);
+      setHeightPrimary(converted.primary);
+      setHeightExtra(converted.extra);
+    } else {
+      setHeightExtra("");
+    }
+    setHeightUnit(next);
+  }
+
+  function changeWeightUnit(next: BmrWeightUnit) {
+    const kg = bmrWeightToKg(weightUnit, weightPrimary, weightExtra);
+    if (kg != null) {
+      const converted = bmrKgToWeight(next, kg);
+      setWeightPrimary(converted.primary);
+      setWeightExtra(converted.extra);
+    } else {
+      setWeightExtra("");
+    }
+    setWeightUnit(next);
+  }
+
   const bmr = useMemo(() => {
     const a = parseNumber(age);
-    const h = parseNumber(height);
-    const w = parseNumber(weight);
-    if (a == null || h == null || w == null || a <= 0 || h <= 0 || w <= 0) return null;
+    const h = bmrHeightToCm(heightUnit, heightPrimary, heightExtra);
+    const w = bmrWeightToKg(weightUnit, weightPrimary, weightExtra);
+    if (a == null || h == null || w == null || a <= 0) return null;
     return mifflin(w, h, a, sex === "male");
-  }, [age, height, weight, sex]);
+  }, [
+    age,
+    heightUnit,
+    heightPrimary,
+    heightExtra,
+    weightUnit,
+    weightPrimary,
+    weightExtra,
+    sex,
+  ]);
 
   return (
     <div className="grid gap-8 md:grid-cols-2">
       <div className="grid gap-4">
-        <Field label="Age">
-          <Input type="number" value={age} placeholder="0" onChange={(e) => setAge(e.target.value)} />
+        <Field label="Age (years)">
+          <Input
+            type="number"
+            min="1"
+            step="1"
+            inputMode="numeric"
+            value={age}
+            placeholder="30"
+            onChange={(e) => setAge(e.target.value)}
+          />
         </Field>
-        <Field label="Height (cm)">
-          <Input type="number" value={height} placeholder="0" onChange={(e) => setHeight(e.target.value)} />
+        <Field label="Height unit">
+          <Select
+            value={heightUnit}
+            onChange={(e) => changeHeightUnit(e.target.value as BmrHeightUnit)}
+          >
+            <option value="cm">Centimeters (cm)</option>
+            <option value="m">Meters (m)</option>
+            <option value="ftin">Feet and inches</option>
+            <option value="in">Inches (in)</option>
+          </Select>
         </Field>
-        <Field label="Weight (kg)">
-          <Input type="number" value={weight} placeholder="0" onChange={(e) => setWeight(e.target.value)} />
+        {heightUnit === "ftin" ? (
+          <div className="grid grid-cols-2 gap-3">
+            <Field label="Feet">
+              <Input
+                type="number"
+                min="0"
+                step="any"
+                inputMode="decimal"
+                value={heightPrimary}
+                placeholder="5"
+                onChange={(e) => setHeightPrimary(e.target.value)}
+              />
+            </Field>
+            <Field label="Inches">
+              <Input
+                type="number"
+                min="0"
+                step="any"
+                inputMode="decimal"
+                value={heightExtra}
+                placeholder="10"
+                onChange={(e) => setHeightExtra(e.target.value)}
+              />
+            </Field>
+          </div>
+        ) : (
+          <Field label="Height">
+            <Input
+              type="number"
+              min="0"
+              step="any"
+              inputMode="decimal"
+              value={heightPrimary}
+              placeholder={
+                heightUnit === "cm"
+                  ? "170"
+                  : heightUnit === "m"
+                    ? "1.70"
+                    : "67"
+              }
+              onChange={(e) => setHeightPrimary(e.target.value)}
+            />
+          </Field>
+        )}
+        <Field label="Weight unit">
+          <Select
+            value={weightUnit}
+            onChange={(e) => changeWeightUnit(e.target.value as BmrWeightUnit)}
+          >
+            <option value="kg">Kilograms (kg)</option>
+            <option value="lb">Pounds (lb)</option>
+            <option value="stlb">Stone and pounds</option>
+            <option value="st">Stone (st)</option>
+          </Select>
         </Field>
+        {weightUnit === "stlb" ? (
+          <div className="grid grid-cols-2 gap-3">
+            <Field label="Stone">
+              <Input
+                type="number"
+                min="0"
+                step="any"
+                inputMode="decimal"
+                value={weightPrimary}
+                placeholder="10"
+                onChange={(e) => setWeightPrimary(e.target.value)}
+              />
+            </Field>
+            <Field label="Pounds">
+              <Input
+                type="number"
+                min="0"
+                step="any"
+                inputMode="decimal"
+                value={weightExtra}
+                placeholder="8"
+                onChange={(e) => setWeightExtra(e.target.value)}
+              />
+            </Field>
+          </div>
+        ) : (
+          <Field label="Weight">
+            <Input
+              type="number"
+              min="0"
+              step="any"
+              inputMode="decimal"
+              value={weightPrimary}
+              placeholder={
+                weightUnit === "kg" ? "65" : weightUnit === "lb" ? "143" : "10.2"
+              }
+              onChange={(e) => setWeightPrimary(e.target.value)}
+            />
+          </Field>
+        )}
         <Field label="Sex">
           <Select value={sex} onChange={(e) => setSex(e.target.value)}>
             <option value="male">Male</option>

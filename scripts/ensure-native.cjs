@@ -3,10 +3,19 @@ const path = require("node:path");
 
 const root = path.join(__dirname, "..", "node_modules");
 const id = `${process.platform}-${process.arch}`;
-const file = `lightningcss.${id}.node`;
-const src = path.join(root, `lightningcss-${id}`, file);
-const dest = path.join(root, "lightningcss", file);
 
-if (fs.existsSync(src) && fs.existsSync(path.dirname(dest))) {
-  fs.copyFileSync(src, dest);
+function copyNative(src, dest) {
+  if (fs.existsSync(src) && fs.existsSync(path.dirname(dest))) {
+    fs.copyFileSync(src, dest);
+  }
 }
+
+copyNative(
+  path.join(root, `lightningcss-${id}`, `lightningcss.${id}.node`),
+  path.join(root, "lightningcss", `lightningcss.${id}.node`),
+);
+
+copyNative(
+  path.join(root, "@tailwindcss", `oxide-${id}`, `tailwindcss-oxide.${id}.node`),
+  path.join(root, "@tailwindcss", "oxide", `tailwindcss-oxide.${id}.node`),
+);
