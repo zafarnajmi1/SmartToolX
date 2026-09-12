@@ -56,10 +56,17 @@ function baseName(file: File) {
   return file.name.replace(/\.[^/.]+$/, "") || "document";
 }
 
+function asArrayBuffer(bytes: Uint8Array): ArrayBuffer {
+  return bytes.buffer.slice(
+    bytes.byteOffset,
+    bytes.byteOffset + bytes.byteLength,
+  ) as ArrayBuffer;
+}
+
 function pdfBlob(bytes: Uint8Array) {
   const copy = new Uint8Array(bytes.byteLength);
   copy.set(bytes);
-  return new Blob([copy], { type: "application/pdf" });
+  return new Blob([asArrayBuffer(copy)], { type: "application/pdf" });
 }
 
 function escapeXml(value: string) {
@@ -588,7 +595,7 @@ async function renderPdfPages(
     const raw = new Uint8Array(await blob.arrayBuffer());
     const dpi = options.imageDpi ?? 72;
     const stamped = mime === "image/jpeg" ? stampJpegDpi(raw, dpi) : stampPngDpi(raw, dpi);
-    blobs.push(new Blob([stamped], { type: mime }));
+    blobs.push(new Blob([asArrayBuffer(stamped)], { type: mime }));
   }
   return blobs;
 }
@@ -886,7 +893,9 @@ async function pdfImageToPng(raw: unknown) {
   const data = img.data;
   if (data && data.length >= 2 && data[0] === 0xff && data[1] === 0xd8) {
     try {
-      const blob = new Blob([new Uint8Array(data)], { type: "image/jpeg" });
+      const blob = new Blob([asArrayBuffer(new Uint8Array(data))], {
+        type: "image/jpeg",
+      });
       const bitmap = await createImageBitmap(blob);
       const canvas = document.createElement("canvas");
       canvas.width = bitmap.width;
@@ -1113,7 +1122,7 @@ function pdfTextOf(obj: unknown): string {
     }
   }
   const raw = String(obj);
-  const wrapped = raw.match(/^\((.*)\)$/s);
+  const wrapped = raw.match(/^\(([\s\S]*)\)$/);
   if (wrapped) return wrapped[1].replace(/\\([()\\nrt])/g, "$1");
   return raw.replace(/^\//, "");
 }
@@ -6373,7 +6382,7 @@ async function inflateZlib(bytes: Uint8Array) {
   const run = async (format: "deflate" | "deflate-raw", data: Uint8Array) => {
     const stream = new DecompressionStream(format);
     const writer = stream.writable.getWriter();
-    await writer.write(data);
+    await writer.write(asArrayBuffer(data));
     await writer.close();
     return new Uint8Array(await new Response(stream.readable).arrayBuffer());
   };
