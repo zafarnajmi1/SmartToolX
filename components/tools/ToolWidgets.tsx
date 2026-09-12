@@ -431,6 +431,13 @@ export function BmiCalculator() {
   );
 }
 
+function money(value: number) {
+  return `$${value.toLocaleString(undefined, {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })}`;
+}
+
 export function PercentageCalculator() {
   const [value, setValue] = useState("");
   const [percent, setPercent] = useState("");
@@ -445,27 +452,30 @@ export function PercentageCalculator() {
     result == null || parsedValue == null ? null : parsedValue + result;
   const ofLabel =
     parsedPercent == null || parsedValue == null
-      ? "Result"
+      ? "Percent amount"
       : `${parsedPercent}% of ${parsedValue}`;
 
   return (
     <div className="grid gap-8 md:grid-cols-2">
       <div className="grid gap-4">
-        <Field label="Value">
+        <Field label="Number">
           <Input
             type="number"
+            min="0"
+            step="any"
             inputMode="decimal"
             value={value}
-            placeholder="0"
+            placeholder="250"
             onChange={(event) => setValue(event.target.value)}
           />
         </Field>
         <Field label="Percent">
           <Input
             type="number"
+            step="any"
             inputMode="decimal"
             value={percent}
-            placeholder="0"
+            placeholder="18"
             onChange={(event) => setPercent(event.target.value)}
           />
         </Field>
@@ -476,7 +486,7 @@ export function PercentageCalculator() {
           value={result == null ? "—" : result.toFixed(2)}
         />
         <Result
-          label="After increase"
+          label="Number plus this percent"
           value={increased == null ? "—" : increased.toFixed(2)}
           steel
         />
@@ -490,7 +500,7 @@ export function LoanEmiCalculator() {
   const [rate, setRate] = useState("");
   const [years, setYears] = useState("");
 
-  const emi = useMemo(() => {
+  const result = useMemo(() => {
     const p = parseNumber(amount);
     const annual = parseNumber(rate);
     const tenure = parseNumber(years);
@@ -505,11 +515,14 @@ export function LoanEmiCalculator() {
       return null;
     }
     const monthlyRate = annual / 12 / 100;
-    const n = tenure * 12;
-    if (monthlyRate === 0) return p / n;
-    const pow = (1 + monthlyRate) ** n;
-    const value = (p * monthlyRate * pow) / (pow - 1);
-    return Number.isFinite(value) ? value : null;
+    const months = tenure * 12;
+    const emi =
+      monthlyRate === 0
+        ? p / months
+        : (p * monthlyRate * (1 + monthlyRate) ** months) /
+          ((1 + monthlyRate) ** months - 1);
+    if (!Number.isFinite(emi) || emi <= 0) return null;
+    return { emi, total: emi * months };
   }, [amount, rate, years]);
 
   return (
@@ -518,45 +531,47 @@ export function LoanEmiCalculator() {
         <Field label="Loan amount">
           <Input
             type="number"
+            min="0"
+            step="any"
             inputMode="decimal"
             value={amount}
-            placeholder="0"
+            placeholder="500000"
             onChange={(event) => setAmount(event.target.value)}
           />
         </Field>
-        <Field label="Interest % / year">
+        <Field label="Annual interest percent">
           <Input
             type="number"
+            min="0"
+            step="any"
             inputMode="decimal"
             value={rate}
-            placeholder="0"
+            placeholder="8.5"
             onChange={(event) => setRate(event.target.value)}
           />
         </Field>
-        <Field label="Tenure (years)">
+        <Field label="Loan tenure (years)">
           <Input
             type="number"
+            min="0"
+            step="any"
             inputMode="decimal"
             value={years}
-            placeholder="0"
+            placeholder="20"
             onChange={(event) => setYears(event.target.value)}
           />
         </Field>
       </div>
       <div className="border-line bg-bg flex flex-col justify-center gap-6 rounded-[6px] border px-[26px] py-[22px]">
         <Result
-          label="Loan EMI"
-          value={emi == null ? "—" : `$${Math.round(emi).toLocaleString()}`}
+          label="Monthly EMI"
+          value={result == null ? "—" : money(result.emi)}
           hint="/mo"
           steel
         />
         <Result
           label="Total payable"
-          value={
-            emi == null
-              ? "—"
-              : `$${Math.round(emi * Number(years) * 12).toLocaleString()}`
-          }
+          value={result == null ? "—" : money(result.total)}
         />
       </div>
     </div>
@@ -590,12 +605,217 @@ export function WordCounter() {
   );
 }
 
+const CURRENCY_NAMES: Record<string, string> = {
+  AED: "UAE Dirham",
+  AFN: "Afghan Afghani",
+  ALL: "Albanian Lek",
+  AMD: "Armenian Dram",
+  ANG: "Netherlands Antillean Guilder",
+  AOA: "Angolan Kwanza",
+  ARS: "Argentine Peso",
+  AUD: "Australian Dollar",
+  AWG: "Aruban Florin",
+  AZN: "Azerbaijani Manat",
+  BAM: "Bosnia-Herzegovina Mark",
+  BBD: "Barbadian Dollar",
+  BDT: "Bangladeshi Taka",
+  BGN: "Bulgarian Lev",
+  BHD: "Bahraini Dinar",
+  BIF: "Burundian Franc",
+  BMD: "Bermudian Dollar",
+  BND: "Brunei Dollar",
+  BOB: "Bolivian Boliviano",
+  BRL: "Brazilian Real",
+  BSD: "Bahamian Dollar",
+  BTN: "Bhutanese Ngultrum",
+  BWP: "Botswana Pula",
+  BYN: "Belarusian Ruble",
+  BZD: "Belize Dollar",
+  CAD: "Canadian Dollar",
+  CDF: "Congolese Franc",
+  CHF: "Swiss Franc",
+  CLP: "Chilean Peso",
+  CNY: "Chinese Yuan",
+  COP: "Colombian Peso",
+  CRC: "Costa Rican Colon",
+  CUP: "Cuban Peso",
+  CVE: "Cape Verdean Escudo",
+  CZK: "Czech Koruna",
+  DJF: "Djiboutian Franc",
+  DKK: "Danish Krone",
+  DOP: "Dominican Peso",
+  DZD: "Algerian Dinar",
+  EGP: "Egyptian Pound",
+  ERN: "Eritrean Nakfa",
+  ETB: "Ethiopian Birr",
+  EUR: "Euro",
+  FJD: "Fijian Dollar",
+  FKP: "Falkland Islands Pound",
+  FOK: "Faroese Krona",
+  GBP: "British Pound",
+  GEL: "Georgian Lari",
+  GGP: "Guernsey Pound",
+  GHS: "Ghanaian Cedi",
+  GIP: "Gibraltar Pound",
+  GMD: "Gambian Dalasi",
+  GNF: "Guinean Franc",
+  GTQ: "Guatemalan Quetzal",
+  GYD: "Guyanese Dollar",
+  HKD: "Hong Kong Dollar",
+  HNL: "Honduran Lempira",
+  HRK: "Croatian Kuna",
+  HTG: "Haitian Gourde",
+  HUF: "Hungarian Forint",
+  IDR: "Indonesian Rupiah",
+  ILS: "Israeli Shekel",
+  IMP: "Isle of Man Pound",
+  INR: "Indian Rupee",
+  IQD: "Iraqi Dinar",
+  IRR: "Iranian Rial",
+  ISK: "Icelandic Krona",
+  JEP: "Jersey Pound",
+  JMD: "Jamaican Dollar",
+  JOD: "Jordanian Dinar",
+  JPY: "Japanese Yen",
+  KES: "Kenyan Shilling",
+  KGS: "Kyrgyzstani Som",
+  KHR: "Cambodian Riel",
+  KID: "Kiribati Dollar",
+  KMF: "Comorian Franc",
+  KRW: "South Korean Won",
+  KWD: "Kuwaiti Dinar",
+  KYD: "Cayman Islands Dollar",
+  KZT: "Kazakhstani Tenge",
+  LAK: "Lao Kip",
+  LBP: "Lebanese Pound",
+  LKR: "Sri Lankan Rupee",
+  LRD: "Liberian Dollar",
+  LSL: "Lesotho Loti",
+  LYD: "Libyan Dinar",
+  MAD: "Moroccan Dirham",
+  MDL: "Moldovan Leu",
+  MGA: "Malagasy Ariary",
+  MKD: "Macedonian Denar",
+  MMK: "Myanmar Kyat",
+  MNT: "Mongolian Tugrik",
+  MOP: "Macanese Pataca",
+  MRU: "Mauritanian Ouguiya",
+  MUR: "Mauritian Rupee",
+  MVR: "Maldivian Rufiyaa",
+  MWK: "Malawian Kwacha",
+  MXN: "Mexican Peso",
+  MYR: "Malaysian Ringgit",
+  MZN: "Mozambican Metical",
+  NAD: "Namibian Dollar",
+  NGN: "Nigerian Naira",
+  NIO: "Nicaraguan Cordoba",
+  NOK: "Norwegian Krone",
+  NPR: "Nepalese Rupee",
+  NZD: "New Zealand Dollar",
+  OMR: "Omani Rial",
+  PAB: "Panamanian Balboa",
+  PEN: "Peruvian Sol",
+  PGK: "Papua New Guinean Kina",
+  PHP: "Philippine Peso",
+  PKR: "Pakistani Rupee",
+  PLN: "Polish Zloty",
+  PYG: "Paraguayan Guarani",
+  QAR: "Qatari Riyal",
+  RON: "Romanian Leu",
+  RSD: "Serbian Dinar",
+  RUB: "Russian Ruble",
+  RWF: "Rwandan Franc",
+  SAR: "Saudi Riyal",
+  SBD: "Solomon Islands Dollar",
+  SCR: "Seychellois Rupee",
+  SDG: "Sudanese Pound",
+  SEK: "Swedish Krona",
+  SGD: "Singapore Dollar",
+  SHP: "Saint Helena Pound",
+  SLE: "Sierra Leonean Leone",
+  SLL: "Sierra Leonean Leone",
+  SOS: "Somali Shilling",
+  SRD: "Surinamese Dollar",
+  SSP: "South Sudanese Pound",
+  STN: "Sao Tome Dobra",
+  SYP: "Syrian Pound",
+  SZL: "Eswatini Lilangeni",
+  THB: "Thai Baht",
+  TJS: "Tajikistani Somoni",
+  TMT: "Turkmenistani Manat",
+  TND: "Tunisian Dinar",
+  TOP: "Tongan Paanga",
+  TRY: "Turkish Lira",
+  TTD: "Trinidad and Tobago Dollar",
+  TVD: "Tuvaluan Dollar",
+  TWD: "New Taiwan Dollar",
+  TZS: "Tanzanian Shilling",
+  UAH: "Ukrainian Hryvnia",
+  UGX: "Ugandan Shilling",
+  USD: "US Dollar",
+  UYU: "Uruguayan Peso",
+  UZS: "Uzbekistani Som",
+  VES: "Venezuelan Bolivar",
+  VND: "Vietnamese Dong",
+  VUV: "Vanuatu Vatu",
+  WST: "Samoan Tala",
+  XAF: "Central African CFA Franc",
+  XCD: "East Caribbean Dollar",
+  XDR: "IMF Special Drawing Right",
+  XOF: "West African CFA Franc",
+  XPF: "CFP Franc",
+  YER: "Yemeni Rial",
+  ZAR: "South African Rand",
+  ZMW: "Zambian Kwacha",
+  ZWL: "Zimbabwean Dollar",
+};
+
+const POPULAR_CURRENCIES = [
+  "USD",
+  "EUR",
+  "GBP",
+  "INR",
+  "PKR",
+  "AED",
+  "SAR",
+  "CAD",
+  "AUD",
+  "JPY",
+  "CNY",
+  "CHF",
+  "SGD",
+  "HKD",
+  "NZD",
+  "ZAR",
+  "BRL",
+  "MXN",
+  "KRW",
+  "TRY",
+];
+
+function currencyLabel(code: string) {
+  const name = CURRENCY_NAMES[code];
+  return name ? `${name} (${code})` : code;
+}
+
+function orderedCurrencyCodes(codes: string[]) {
+  const available = new Set(codes);
+  const popular = POPULAR_CURRENCIES.filter((code) => available.has(code));
+  const popularSet = new Set(popular);
+  const rest = codes
+    .filter((code) => !popularSet.has(code))
+    .sort((a, b) => currencyLabel(a).localeCompare(currencyLabel(b)));
+  return [...popular, ...rest];
+}
+
 export function CurrencyConverter() {
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState("1");
   const [from, setFrom] = useState("USD");
   const [to, setTo] = useState("EUR");
   const { rates } = useExchangeRates();
-  const codes = rates ? Object.keys(rates).sort() : ["USD", "EUR"];
+  const codes = rates
+    ? orderedCurrencyCodes(Object.keys(rates))
+    : orderedCurrencyCodes(["USD", "EUR"]);
 
   const parsedAmount = parseNumber(amount);
   const converted =
@@ -611,26 +831,32 @@ export function CurrencyConverter() {
         <Field label="Amount">
           <Input
             type="number"
+            min="0"
+            step="any"
             inputMode="decimal"
             value={amount}
-            placeholder="0"
+            placeholder="100"
             onChange={(event) => setAmount(event.target.value)}
           />
         </Field>
-        <Field label="From">
+        <Field label="From currency">
           <Select
             value={from}
             onChange={(event) => setFrom(event.target.value)}
           >
             {codes.map((code) => (
-              <option key={code}>{code}</option>
+              <option key={code} value={code}>
+                {currencyLabel(code)}
+              </option>
             ))}
           </Select>
         </Field>
-        <Field label="To">
+        <Field label="To currency">
           <Select value={to} onChange={(event) => setTo(event.target.value)}>
             {codes.map((code) => (
-              <option key={code}>{code}</option>
+              <option key={code} value={code}>
+                {currencyLabel(code)}
+              </option>
             ))}
           </Select>
         </Field>

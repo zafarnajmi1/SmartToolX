@@ -614,53 +614,94 @@ export function WaterIntakeCalculator() {
   );
 }
 
+function money(value: number) {
+  return `$${value.toLocaleString(undefined, {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })}`;
+}
+
 export function CompoundInterestCalculator() {
   const [principal, setPrincipal] = useState("");
   const [rate, setRate] = useState("");
   const [years, setYears] = useState("");
   const [n, setN] = useState("12");
-  const future = useMemo(() => {
+  const result = useMemo(() => {
     const p = parseNumber(principal);
     const r = parseNumber(rate);
     const t = parseNumber(years);
     const times = parseNumber(n);
-    if (p == null || r == null || t == null || times == null || p < 0 || t < 0 || times <= 0) {
+    if (
+      p == null ||
+      r == null ||
+      t == null ||
+      times == null ||
+      p < 0 ||
+      r < 0 ||
+      t < 0 ||
+      times <= 0
+    ) {
       return null;
     }
-    const value = p * (1 + r / 100 / times) ** (times * t);
-    return Number.isFinite(value) ? value : null;
+    const future = p * (1 + r / 100 / times) ** (times * t);
+    if (!Number.isFinite(future)) return null;
+    return { future, interest: future - p };
   }, [principal, rate, years, n]);
 
   return (
     <div className="grid gap-8 md:grid-cols-2">
       <div className="grid gap-4">
-        <Field label="Principal">
-          <Input type="number" value={principal} placeholder="0" onChange={(e) => setPrincipal(e.target.value)} />
+        <Field label="Starting amount">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={principal}
+            placeholder="10000"
+            onChange={(e) => setPrincipal(e.target.value)}
+          />
         </Field>
-        <Field label="Annual rate %">
-          <Input type="number" value={rate} placeholder="0" onChange={(e) => setRate(e.target.value)} />
+        <Field label="Annual interest percent">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={rate}
+            placeholder="8"
+            onChange={(e) => setRate(e.target.value)}
+          />
         </Field>
-        <Field label="Years">
-          <Input type="number" value={years} placeholder="0" onChange={(e) => setYears(e.target.value)} />
+        <Field label="Time (years)">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={years}
+            placeholder="5"
+            onChange={(e) => setYears(e.target.value)}
+          />
         </Field>
-        <Field label="Compounds / year">
+        <Field label="Compounded">
           <Select value={n} onChange={(e) => setN(e.target.value)}>
-            <option value="1">Annually</option>
-            <option value="4">Quarterly</option>
-            <option value="12">Monthly</option>
-            <option value="365">Daily</option>
+            <option value="1">Once a year</option>
+            <option value="4">Every 3 months</option>
+            <option value="12">Every month</option>
+            <option value="365">Every day</option>
           </Select>
         </Field>
       </div>
       <Box>
-        <Result label="Future value" value={future == null ? "—" : `$${future.toFixed(2)}`} steel />
+        <Result
+          label="Amount after interest"
+          value={result == null ? "—" : money(result.future)}
+          steel
+        />
         <Result
           label="Interest earned"
-          value={
-            future == null || parseNumber(principal) == null
-              ? "—"
-              : `$${(future - Number(principal)).toFixed(2)}`
-          }
+          value={result == null ? "—" : money(result.interest)}
         />
       </Box>
     </div>
@@ -669,25 +710,59 @@ export function CompoundInterestCalculator() {
 
 export function GstCalculator() {
   const [amount, setAmount] = useState("");
-  const [rate, setRate] = useState("");
+  const [rate, setRate] = useState("18");
+  const [mode, setMode] = useState("add");
   const parsed = parseNumber(amount);
   const pct = parseNumber(rate);
-  const tax = parsed == null || pct == null || parsed < 0 || pct < 0 ? null : (parsed * pct) / 100;
-  const total = tax == null || parsed == null ? null : parsed + tax;
+  const valid =
+    parsed != null && pct != null && parsed >= 0 && pct >= 0 && pct < 1000;
+  const adding = mode === "add";
+  const tax = !valid
+    ? null
+    : adding
+      ? (parsed * pct) / 100
+      : parsed - parsed / (1 + pct / 100);
+  const other = !valid || tax == null ? null : adding ? parsed + tax : parsed - tax;
 
   return (
     <div className="grid gap-8 md:grid-cols-2">
       <div className="grid gap-4">
-        <Field label="Net amount">
-          <Input type="number" value={amount} placeholder="0" onChange={(e) => setAmount(e.target.value)} />
+        <Field label="What do you want to do">
+          <Select value={mode} onChange={(e) => setMode(e.target.value)}>
+            <option value="add">Add GST to a price</option>
+            <option value="remove">Take GST out of a price</option>
+          </Select>
         </Field>
-        <Field label="GST / VAT %">
-          <Input type="number" value={rate} placeholder="0" onChange={(e) => setRate(e.target.value)} />
+        <Field label={adding ? "Amount before tax" : "Amount including tax"}>
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={amount}
+            placeholder="1000"
+            onChange={(e) => setAmount(e.target.value)}
+          />
+        </Field>
+        <Field label="GST or VAT percent">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={rate}
+            placeholder="18"
+            onChange={(e) => setRate(e.target.value)}
+          />
         </Field>
       </div>
       <Box>
-        <Result label="Tax" value={tax == null ? "—" : tax.toFixed(2)} />
-        <Result label="Gross" value={total == null ? "—" : total.toFixed(2)} steel />
+        <Result label="Tax amount" value={tax == null ? "—" : money(tax)} />
+        <Result
+          label={adding ? "Amount with tax" : "Amount before tax"}
+          value={other == null ? "—" : money(other)}
+          steel
+        />
       </Box>
     </div>
   );
@@ -695,8 +770,8 @@ export function GstCalculator() {
 
 export function TipCalculator() {
   const [bill, setBill] = useState("");
-  const [tip, setTip] = useState("");
-  const [people, setPeople] = useState("");
+  const [tip, setTip] = useState("15");
+  const [people, setPeople] = useState("1");
   const parsedBill = parseNumber(bill);
   const parsedTip = parseNumber(tip);
   const parsedPeople = parseNumber(people);
@@ -704,27 +779,60 @@ export function TipCalculator() {
     parsedBill == null || parsedTip == null || parsedBill < 0 || parsedTip < 0
       ? null
       : (parsedBill * parsedTip) / 100;
+  const peopleCount =
+    parsedPeople != null && parsedPeople >= 1 ? parsedPeople : 1;
   const each =
-    tipAmt == null || parsedBill == null || parsedPeople == null || parsedPeople < 1
+    tipAmt == null || parsedBill == null
       ? null
-      : (parsedBill + tipAmt) / parsedPeople;
+      : (parsedBill + tipAmt) / peopleCount;
 
   return (
     <div className="grid gap-8 md:grid-cols-2">
       <div className="grid gap-4">
-        <Field label="Bill">
-          <Input type="number" value={bill} placeholder="0" onChange={(e) => setBill(e.target.value)} />
+        <Field label="Bill amount">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={bill}
+            placeholder="50"
+            onChange={(e) => setBill(e.target.value)}
+          />
         </Field>
-        <Field label="Tip %">
-          <Input type="number" value={tip} placeholder="0" onChange={(e) => setTip(e.target.value)} />
+        <Field label="Tip percent">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={tip}
+            placeholder="15"
+            onChange={(e) => setTip(e.target.value)}
+          />
         </Field>
-        <Field label="People">
-          <Input type="number" value={people} placeholder="0" onChange={(e) => setPeople(e.target.value)} />
+        <Field label="Number of people">
+          <Input
+            type="number"
+            min="1"
+            step="1"
+            inputMode="numeric"
+            value={people}
+            placeholder="1"
+            onChange={(e) => setPeople(e.target.value)}
+          />
         </Field>
       </div>
       <Box>
-        <Result label="Tip" value={tipAmt == null ? "—" : `$${tipAmt.toFixed(2)}`} />
-        <Result label="Per person" value={each == null ? "—" : `$${each.toFixed(2)}`} steel />
+        <Result
+          label="Total tip"
+          value={tipAmt == null ? "—" : `$${tipAmt.toFixed(2)}`}
+        />
+        <Result
+          label="Each person pays"
+          value={each == null ? "—" : `$${each.toFixed(2)}`}
+          steel
+        />
       </Box>
     </div>
   );
@@ -735,22 +843,44 @@ export function DiscountCalculator() {
   const [off, setOff] = useState("");
   const p = parseNumber(price);
   const d = parseNumber(off);
-  const saved = p == null || d == null || p < 0 || d < 0 ? null : (p * d) / 100;
+  const saved =
+    p == null || d == null || p < 0 || d < 0 || d > 100 ? null : (p * d) / 100;
   const final = saved == null || p == null ? null : p - saved;
 
   return (
     <div className="grid gap-8 md:grid-cols-2">
       <div className="grid gap-4">
         <Field label="Original price">
-          <Input type="number" value={price} placeholder="0" onChange={(e) => setPrice(e.target.value)} />
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={price}
+            placeholder="80"
+            onChange={(e) => setPrice(e.target.value)}
+          />
         </Field>
-        <Field label="Discount %">
-          <Input type="number" value={off} placeholder="0" onChange={(e) => setOff(e.target.value)} />
+        <Field label="Discount percent">
+          <Input
+            type="number"
+            min="0"
+            max="100"
+            step="any"
+            inputMode="decimal"
+            value={off}
+            placeholder="20"
+            onChange={(e) => setOff(e.target.value)}
+          />
         </Field>
       </div>
       <Box>
-        <Result label="You save" value={saved == null ? "—" : saved.toFixed(2)} />
-        <Result label="Sale price" value={final == null ? "—" : final.toFixed(2)} steel />
+        <Result label="You save" value={saved == null ? "—" : money(saved)} />
+        <Result
+          label="Price after discount"
+          value={final == null ? "—" : money(final)}
+          steel
+        />
       </Box>
     </div>
   );
@@ -760,40 +890,67 @@ export function SipCalculator() {
   const [monthly, setMonthly] = useState("");
   const [rate, setRate] = useState("");
   const [years, setYears] = useState("");
-  const future = useMemo(() => {
+  const result = useMemo(() => {
     const pmt = parseNumber(monthly);
     const r = parseNumber(rate);
     const t = parseNumber(years);
-    if (pmt == null || r == null || t == null || pmt < 0 || t <= 0) return null;
-    const i = r / 100 / 12;
+    if (pmt == null || r == null || t == null || pmt < 0 || r < 0 || t <= 0) {
+      return null;
+    }
+    const i = (1 + r / 100) ** (1 / 12) - 1;
     const n = t * 12;
-    if (i === 0) return pmt * n;
-    const value = pmt * (((1 + i) ** n - 1) / i) * (1 + i);
-    return Number.isFinite(value) ? value : null;
+    const future =
+      i === 0 ? pmt * n : pmt * (((1 + i) ** n - 1) / i) * (1 + i);
+    if (!Number.isFinite(future)) return null;
+    return { future, invested: pmt * n };
   }, [monthly, rate, years]);
 
   return (
     <div className="grid gap-8 md:grid-cols-2">
       <div className="grid gap-4">
-        <Field label="Monthly amount">
-          <Input type="number" value={monthly} placeholder="0" onChange={(e) => setMonthly(e.target.value)} />
+        <Field label="Monthly investment">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={monthly}
+            placeholder="5000"
+            onChange={(e) => setMonthly(e.target.value)}
+          />
         </Field>
-        <Field label="Annual return %">
-          <Input type="number" value={rate} placeholder="0" onChange={(e) => setRate(e.target.value)} />
+        <Field label="Expected annual return percent">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={rate}
+            placeholder="12"
+            onChange={(e) => setRate(e.target.value)}
+          />
         </Field>
-        <Field label="Years">
-          <Input type="number" value={years} placeholder="0" onChange={(e) => setYears(e.target.value)} />
+        <Field label="Investment period (years)">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={years}
+            placeholder="10"
+            onChange={(e) => setYears(e.target.value)}
+          />
         </Field>
       </div>
       <Box>
-        <Result label="Maturity" value={future == null ? "—" : `$${future.toFixed(0)}`} steel />
         <Result
-          label="Invested"
-          value={
-            parseNumber(monthly) == null || parseNumber(years) == null
-              ? "—"
-              : `$${(Number(monthly) * Number(years) * 12).toFixed(0)}`
-          }
+          label="Estimated maturity"
+          value={result == null ? "—" : money(result.future)}
+          steel
+        />
+        <Result
+          label="Total invested"
+          value={result == null ? "—" : money(result.invested)}
         />
       </Box>
     </div>
@@ -808,26 +965,55 @@ export function SimpleInterestCalculator() {
   const r = parseNumber(rate);
   const t = parseNumber(years);
   const interest =
-    p == null || r == null || t == null || p < 0 || t < 0 ? null : (p * r * t) / 100;
+    p == null || r == null || t == null || p < 0 || r < 0 || t < 0
+      ? null
+      : (p * r * t) / 100;
 
   return (
     <div className="grid gap-8 md:grid-cols-2">
       <div className="grid gap-4">
-        <Field label="Principal">
-          <Input type="number" value={principal} placeholder="0" onChange={(e) => setPrincipal(e.target.value)} />
+        <Field label="Starting amount">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={principal}
+            placeholder="10000"
+            onChange={(e) => setPrincipal(e.target.value)}
+          />
         </Field>
-        <Field label="Rate % / year">
-          <Input type="number" value={rate} placeholder="0" onChange={(e) => setRate(e.target.value)} />
+        <Field label="Annual interest percent">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={rate}
+            placeholder="8"
+            onChange={(e) => setRate(e.target.value)}
+          />
         </Field>
-        <Field label="Years">
-          <Input type="number" value={years} placeholder="0" onChange={(e) => setYears(e.target.value)} />
+        <Field label="Time (years)">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={years}
+            placeholder="3"
+            onChange={(e) => setYears(e.target.value)}
+          />
         </Field>
       </div>
       <Box>
-        <Result label="Interest" value={interest == null ? "—" : interest.toFixed(2)} />
         <Result
-          label="Total"
-          value={interest == null || p == null ? "—" : (p + interest).toFixed(2)}
+          label="Interest earned"
+          value={interest == null ? "—" : money(interest)}
+        />
+        <Result
+          label="Total amount"
+          value={interest == null || p == null ? "—" : money(p + interest)}
           steel
         />
       </Box>

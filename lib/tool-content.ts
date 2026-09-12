@@ -115,7 +115,7 @@ const custom: Record<string, Partial<ToolContent>> = {
     articleTitle: "How live currency conversion works here",
     paragraphs: [
       "This converter is built for travelers and freelancers who need a quick mid-market figure. Rates refresh from a public FX feed about once a minute.",
-      "Pick amount, from, and to. USD, EUR, GBP, INR, and 160+ other codes are included.",
+      "Pick an amount, the currency you have, and the currency you want. The lists show full names, with common currencies at the top. USD, EUR, GBP, INR, and 160+ other codes are included.",
       "Mid-market rates can differ from what a bank or card charges. Check the Rate line for the raw multiplier.",
     ],
   },
@@ -370,7 +370,7 @@ const custom: Record<string, Partial<ToolContent>> = {
     keyword: "compound interest calculator",
     articleTitle: "See how compound interest grows a balance",
     paragraphs: [
-      "Enter principal, annual rate, time, and how often interest compounds. You get a future value from the standard compound interest formula.",
+      "Enter a starting amount, annual interest percent, time in years, and how often interest is added. The result uses A = P(1 + r/n)^(nt).",
       "Useful for savings accounts, deposits, and long-term planning. Fees and taxes are not included.",
       "For monthly investing, try the SIP calculator.",
     ],
@@ -379,7 +379,7 @@ const custom: Record<string, Partial<ToolContent>> = {
     keyword: "GST calculator",
     articleTitle: "Add or remove GST and VAT",
     paragraphs: [
-      "Enter an amount and a tax rate to add GST or peel it out of a gross price. You see tax and the net or gross total.",
+      "Choose whether to add GST to a price or take GST out of a price that already includes tax. Enter the amount and the tax percent. You see the tax and the other side of the price.",
       "Works the same way for VAT in many countries. Confirm the rate that applies to your invoice.",
       "For a simple percent of a number, the Percentage Calculator is quicker.",
     ],
@@ -388,7 +388,7 @@ const custom: Record<string, Partial<ToolContent>> = {
     keyword: "tip calculator",
     articleTitle: "Split a bill with tip",
     paragraphs: [
-      "Enter the bill, tip percent, and how many people are paying. You get the tip and each person’s share.",
+      "Enter the bill amount, tip percent, and how many people are paying. Total tip is the tip on the whole bill. Each person pays is the bill plus tip, split evenly.",
       "Handy at restaurants when you want a clean split.",
       "If you only need a percent of a number, use the Percentage Calculator.",
     ],
