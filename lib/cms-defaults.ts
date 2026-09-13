@@ -479,23 +479,25 @@ const pageSeo: Record<string, SeoEntry> = {
   ),
   "/about": seo(
     "/about",
-    "About",
-    "About SmartToolX | Free Browser Tools",
-    "SmartToolX is a free toolkit of calculators, converters, and file tools. Work stays in your browser. No account required.",
+    "About Us",
+    "About Us | SmartToolX",
+    "About SmartToolX. Free calculators, converters, and file tools that run in your browser. No account required.",
     {
-      keywords: "about SmartToolX, free calculator website, browser tools",
-      focusKeyword: "about SmartToolX",
+      keywords: "about us, about SmartToolX, free online tools, browser calculators",
+      focusKeyword: "about us",
+      h1: "About Us",
       schemaType: "AboutPage",
     },
   ),
   "/contact": seo(
     "/contact",
-    "Contact",
-    "Contact SmartToolX",
-    "Questions, corrections, or a tool you want added? Send a note to the SmartToolX team.",
+    "Contact Us",
+    "Contact Us | SmartToolX",
+    "Contact SmartToolX for questions, corrections, or to request a new calculator or converter.",
     {
-      keywords: "contact SmartToolX, calculator support, request a tool",
-      focusKeyword: "contact SmartToolX",
+      keywords: "contact us, contact SmartToolX, calculator support, request a tool",
+      focusKeyword: "contact us",
+      h1: "Contact Us",
       schemaType: "ContactPage",
     },
   ),
@@ -503,20 +505,22 @@ const pageSeo: Record<string, SeoEntry> = {
     "/privacy",
     "Privacy Policy",
     "Privacy Policy | SmartToolX",
-    "How SmartToolX handles your data. Most tools calculate locally in your browser and do not store the numbers you type.",
+    "Read the SmartToolX privacy policy. Learn what data we collect, how tools run in your browser, and how cookies may be used.",
     {
-      keywords: "privacy policy, data protection, SmartToolX privacy",
+      keywords: "privacy policy, SmartToolX privacy policy, data protection, cookies",
       focusKeyword: "privacy policy",
+      h1: "Privacy Policy",
     },
   ),
   "/terms": seo(
     "/terms",
     "Terms and Conditions",
     "Terms and Conditions | SmartToolX",
-    "Terms of use for SmartToolX calculators, converters, and file tools. Results are for information only.",
+    "Read the SmartToolX terms and conditions for free calculators, converters, and file tools. Results are for information only.",
     {
-      keywords: "terms and conditions, terms of use, SmartToolX",
+      keywords: "terms and conditions, terms of use, SmartToolX terms",
       focusKeyword: "terms and conditions",
+      h1: "Terms and Conditions",
     },
   ),
   "/social": seo(
@@ -623,38 +627,90 @@ export const DEFAULT_CMS: CmsData = {
     discord: "",
   },
   privacy: {
-    title: "Your inputs stay in your browser",
+    title: "Privacy Policy",
     description:
-      "SmartToolX tools calculate locally. We do not require an account and we do not store the numbers you type into a calculator.",
-    lastUpdated: "August 26, 2026",
-    content: `SmartToolX tools calculate locally in your browser. We do not require an account and we do not store the numbers you type into a calculator.
+      "How SmartToolX handles your data. Most tools run in your browser. We do not require an account to use the site.",
+    lastUpdated: "September 13, 2026",
+    content: `## Who we are
 
-Contact form submissions are used only to reply to you. QR codes are generated from the text you enter so the encoded content is visible in the request used to draw the image.
+SmartToolX (smarttoolx.com) is a free website of calculators, converters, text tools, and file tools. You can use the site without creating an account.
 
-This site may use basic analytics to understand which tools are used. Calculations are provided for informational use only.
+## Information we collect
 
-We may update this policy as the site grows. The date at the top of this page shows the latest revision.`,
+Most tools run in your browser. Numbers you type into a calculator, text you paste into a text tool, and files you convert stay on your device. We do not store those inputs on our servers.
+
+If you send a message through the Contact Us page, we use the name, email address, and message you provide only to reply to you. We do not sell this information.
+
+Some tools need a short network request to work. Examples include live currency rates and QR code image generation. Those requests send only what the tool needs to return a result.
+
+## Cookies and analytics
+
+We may use basic analytics cookies or similar tools to understand which pages are used and to keep the site working. These reports help us improve SmartToolX. They are not sold as a personal profile.
+
+## Advertising
+
+We may show ads on SmartToolX through Google AdSense or a similar partner. Advertising partners may use cookies and device identifiers to show ads, measure how ads perform, and limit how often you see the same ad. Google explains this in its Privacy Policy and Ad Settings.
+
+You can control cookies in your browser settings. Blocking cookies may affect some site features.
+
+## Files and generated content
+
+File converters process files in your browser. We do not keep a copy of those files on a server after you leave the page. You are responsible for the files you choose to convert.
+
+## Children
+
+SmartToolX is not directed at children under 13. We do not knowingly collect personal information from children.
+
+## How long we keep data
+
+Contact messages are kept only as long as needed to reply and handle the request. Browser-side calculations are not stored by us.
+
+## Your choices
+
+You can stop using the site at any time. You can clear cookies in your browser. To ask a question about this policy, use the Contact Us page.
+
+## Changes
+
+We may update this privacy policy as the site grows. The date at the top of this page shows the latest revision.`,
   },
   terms: {
     title: "Terms and Conditions",
     description:
       "By using SmartToolX you agree to these terms. Tools are free, run in your browser, and are for informational use only.",
-    lastUpdated: "August 26, 2026",
-    content: `By accessing or using SmartToolX you agree to these terms. If you do not agree, do not use the site.
+    lastUpdated: "September 13, 2026",
+    content: `## Agreement
 
-SmartToolX provides free calculators, converters, and generators. Results are for informational purposes only. They are not professional, medical, financial, or legal advice. Always verify important numbers independently.
+By accessing or using SmartToolX you agree to these terms. If you do not agree, do not use the site.
 
-You may use the tools for personal or commercial purposes. You may not scrape, overload, or attempt to disrupt the service, or present the site as your own.
+## The service
 
-All calculations run in your browser unless a tool clearly needs a network request (for example live currency rates or QR image generation). We do not guarantee uninterrupted availability or error-free results.
+SmartToolX provides free calculators, converters, text tools, and file tools at smarttoolx.com. Results are for informational purposes only. They are not professional, medical, financial, or legal advice. Always verify important numbers independently.
+
+## Using the tools
+
+You may use the tools for personal or commercial purposes. You must not scrape, overload, or attempt to disrupt the service, or present the site as your own.
+
+You are responsible for files and text you enter. Do not convert or process content you do not have the right to use.
+
+## How processing works
+
+Most calculations and file conversions run in your browser. A few tools need a network request, such as live currency rates or QR image generation. We do not guarantee uninterrupted availability or error-free results.
+
+## Intellectual property
 
 SmartToolX, the logo, and the site design are the property of SmartToolX. You may not copy the brand or design for a competing service.
 
+## Disclaimer
+
+The tools are provided as is. To the fullest extent allowed by law, SmartToolX is not liable for losses arising from use of the tools or inability to use the site.
+
+## Changes
+
 We may change tools, these terms, or the site at any time. Continued use after a change means you accept the updated terms.
 
-To the fullest extent allowed by law, SmartToolX is not liable for losses arising from use of the tools or inability to use the site.
+## Contact
 
-Questions about these terms can be sent through the Contact page.`,
+Questions about these terms can be sent through the Contact Us page.`,
   },
   seo: pageSeo,
 };
