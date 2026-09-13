@@ -46,7 +46,7 @@ const custom: Record<string, Partial<ToolContent>> = {
     keyword: "BMI calculator",
     articleTitle: "How to check BMI online",
     paragraphs: [
-      "A BMI calculator is one of the most searched health tools on Google. This page uses the WHO formula: weight in kilograms divided by height in metres squared.",
+      "Use this free BMI calculator online to check body mass index from height and weight. The page uses the WHO formula: weight in kilograms divided by height in metres squared.",
       "Adult categories: under 18.5 underweight, 18.5 to 24.9 normal, 25 to 29.9 overweight, 30 and above obese. BMI is a screening number, not a diagnosis. Athletes and older adults may need extra context from a clinician.",
       "No account needed. Choose height in centimeters, meters, feet and inches, or inches. Choose weight in kilograms, pounds, or stone. Mix units if that is how you know your numbers, then click Calculate BMI.",
     ],
@@ -73,7 +73,7 @@ const custom: Record<string, Partial<ToolContent>> = {
     keyword: "EMI calculator",
     articleTitle: "How loan EMI is calculated",
     paragraphs: [
-      "Equated monthly installment uses EMI = P × r × (1+r)^n / ((1+r)^n − 1), where r is the monthly rate and n is the number of months.",
+      "This free EMI calculator online shows the monthly loan payment. Equated monthly installment uses EMI = P × r × (1+r)^n / ((1+r)^n − 1), where r is the monthly rate and n is the number of months.",
       "Enter loan amount, annual interest, and tenure. You get the monthly EMI and total payable. Compare offers before you sign.",
       "This EMI calculator runs locally. It does not replace a bank quote, but it matches the standard reducing-balance formula used across home, car, and personal loans.",
     ],
@@ -82,7 +82,7 @@ const custom: Record<string, Partial<ToolContent>> = {
     keyword: "percentage calculator",
     articleTitle: "How to find a percentage of a number",
     paragraphs: [
-      "People search things like “what is 18 percent of 250” every day. This percentage calculator answers that, plus the increased total after adding a percent.",
+      "Use this free percentage calculator online to find what is X percent of Y, plus the increased total after adding a percent.",
       "Formula: (value × percent) / 100. Use it for discounts, tax, exam scores, and growth.",
       "Results update as you type. Combine with the discount calculator or GST calculator when you are shopping or invoicing.",
     ],
@@ -114,7 +114,7 @@ const custom: Record<string, Partial<ToolContent>> = {
     keyword: "currency converter",
     articleTitle: "How live currency conversion works here",
     paragraphs: [
-      "This converter is built for travelers and freelancers who need a quick mid-market figure. Rates refresh from a public FX feed about once a minute.",
+      "This free live currency converter is built for travelers and freelancers who need a mid-market figure. Rates refresh from a public FX feed about once a minute.",
       "Pick an amount, the currency you have, and the currency you want. The lists show full names, with common currencies at the top. USD, EUR, GBP, INR, and 160+ other codes are included.",
       "Mid-market rates can differ from what a bank or card charges. Check the Rate line for the raw multiplier.",
     ],
@@ -123,7 +123,7 @@ const custom: Record<string, Partial<ToolContent>> = {
     keyword: "word counter",
     articleTitle: "Count words, characters, and reading time",
     paragraphs: [
-      "A word counter helps with essays, captions, and SEO briefs. This one tallies words, characters, and estimated reading time at 200 words per minute.",
+      "This free word counter online counts words, characters, and reading time as you type. Built for essays, captions, and SEO briefs at 200 words per minute.",
       "Paste text above. Counts update as you type. No upload and no account.",
       "Use it with the case converter and slug generator when you publish.",
     ],
@@ -139,85 +139,102 @@ const custom: Record<string, Partial<ToolContent>> = {
   },
   "pdf-to-word": {
     keyword: "PDF to Word converter",
-    articleTitle: "Turn a PDF into an editable Word file",
+    articleTitle: "Free PDF to Word converter online",
     paragraphs: [
-      "Upload a PDF and get back an editable Word document. Text is extracted in your browser so the file is not sent to a server.",
-      "Drop a PDF above, click Convert to Word, then download the .docx file.",
+      "Use this free PDF to Word converter to turn a PDF into an editable Word file without uploading it to a server. Convert PDF to Word online free and download a DOCX.",
+      "Drop a PDF above, click Convert to Word, then download the .docx file. No signup.",
       "Scanned image-only PDFs may return little text. Use PDF to JPG if you need page images instead.",
     ],
     faqs: [
       {
+        q: "Is this PDF to Word converter free?",
+        a: "Yes. You can convert PDF to Word online free. There is no paywall.",
+      },
+      {
+        q: "Do I need to sign up?",
+        a: "No. Open the page, drop a PDF, and download the Word file.",
+      },
+      {
+        q: "Are my files uploaded?",
+        a: "No. Conversion runs in your browser. Files are not sent to a server.",
+      },
+      {
         q: "Will my formatting stay the same?",
         a: "Text is preserved. Complex layouts, tables, and images are simplified in the Word file.",
-      },
-      { q: "Is there a file size limit?", a: "Files up to 25MB are supported." },
-      {
-        q: "Are my files kept private?",
-        a: "Yes. Conversion runs in your browser. Files are not uploaded.",
       },
     ],
   },
   "word-to-pdf": {
     keyword: "Word to PDF converter",
-    articleTitle: "Turn a Word document into a PDF",
+    articleTitle: "Free Word to PDF converter online",
     paragraphs: [
-      "Turn a Word document into a PDF you can send or print. The conversion runs locally in your browser.",
-      "Drop a .docx file above and click Convert to PDF.",
+      "Convert Word to PDF online free. Drop a .docx file and download a PDF you can send or print. No account.",
+      "The conversion runs locally in your browser.",
       "Older .doc files are not supported. Save as .docx in Word first.",
+    ],
+    faqs: [
+      {
+        q: "Is Word to PDF free?",
+        a: "Yes. This Word to PDF converter is free and does not require signup.",
+      },
+      {
+        q: "Are my files uploaded?",
+        a: "No. The file stays in your browser.",
+      },
     ],
   },
   "pdf-to-jpg": {
     keyword: "PDF to JPG converter",
-    articleTitle: "Export PDF pages as JPG images",
+    articleTitle: "Free PDF to JPG converter online",
     paragraphs: [
-      "Export each PDF page as a JPG. Multi-page files download as a zip of images.",
-      "Drop a PDF above and click Convert to JPG.",
+      "Convert PDF to JPG online free. Export every page as a JPEG. Multi-page files download as a zip.",
+      "Drop a PDF above and click Convert to JPG. No signup.",
       "Pages render in your browser at 2× for a sharp download.",
     ],
   },
   "jpg-to-pdf": {
     keyword: "JPG to PDF converter",
-    articleTitle: "Combine images into one PDF",
+    articleTitle: "Free JPG to PDF converter online",
     paragraphs: [
-      "Combine one or more JPG or PNG images into a single PDF. Page order follows your upload order.",
+      "Convert JPG to PDF online free. Combine photos or PNG images into one PDF. Files stay on your device.",
       "Drop images above and click Convert to PDF.",
       "Each image becomes its own page at original size.",
     ],
   },
   "excel-to-pdf": {
     keyword: "Excel to PDF converter",
-    articleTitle: "Turn a spreadsheet into a PDF",
+    articleTitle: "Free Excel to PDF converter online",
     paragraphs: [
-      "Convert a spreadsheet into a PDF for sharing or printing. .xlsx and CSV files are supported.",
+      "Convert Excel to PDF online free. Turn an XLSX or CSV spreadsheet into a print-ready PDF in your browser.",
       "Drop a file above and click Convert to PDF.",
       "Cell values are laid out as readable text in the PDF.",
     ],
   },
   "ppt-to-pdf": {
     keyword: "PPT to PDF converter",
-    articleTitle: "Turn slides into a PDF",
+    articleTitle: "Free PPT to PDF converter online",
     paragraphs: [
-      "Convert a PowerPoint deck into a PDF. Upload a .ppt or .pptx file and download a shareable document.",
+      "Convert PPT to PDF online free. Upload a PowerPoint .ppt or .pptx file and download a shareable PDF. No signup.",
       "Drop your slides above and click Convert to PDF.",
       "Slide layouts are processed in your browser so the file stays on your device.",
     ],
   },
   "compress-pdf": {
-    keyword: "compress PDF",
-    articleTitle: "Make a PDF smaller without a server",
+    keyword: "compress PDF online",
+    articleTitle: "Compress PDF online free",
     paragraphs: [
-      "Rewrite a PDF with object streams to trim file size for email and uploads.",
+      "Compress PDF online free to reduce file size for email and uploads. The file is rewritten in your browser and is not uploaded.",
       "Drop a PDF above and click Compress File.",
       "How much it shrinks depends on how the original was saved. Text stays sharp.",
     ],
     faqs: [
       {
-        q: "Will the quality be affected?",
-        a: "Text stays fully sharp. The file is rewritten. Image-heavy PDFs may shrink more than text-only files.",
+        q: "Is compress PDF free?",
+        a: "Yes. You can compress PDF online free with no account.",
       },
       {
-        q: "How much smaller will my file be?",
-        a: "It varies. Already-optimized PDFs may barely change. Others often drop noticeably.",
+        q: "Will the quality be affected?",
+        a: "Text stays fully sharp. The file is rewritten. Image-heavy PDFs may shrink more than text-only files.",
       },
       {
         q: "Are my files kept private?",
@@ -227,20 +244,20 @@ const custom: Record<string, Partial<ToolContent>> = {
   },
   "merge-pdf": {
     keyword: "merge PDF",
-    articleTitle: "Combine several PDFs into one",
+    articleTitle: "Merge PDF online free",
     paragraphs: [
-      "Upload two or more PDFs and combine them into a single document in the order you add them.",
+      "Merge PDF files online free. Combine multiple PDFs into one document in the order you add them. No signup.",
       "Drop files above, remove any you do not need, then click Merge Files.",
       "Each file can be up to 25MB. You can merge up to 20 files at once.",
     ],
     faqs: [
       {
-        q: "Can I reorder the files before merging?",
-        a: "Remove and re-add files in the order you want. Pages keep each file’s original order.",
+        q: "Is merge PDF free?",
+        a: "Yes. You can combine PDF files online free.",
       },
       {
-        q: "Is there a limit on how many files I can merge?",
-        a: "You can merge up to 20 files at once.",
+        q: "Can I reorder the files before merging?",
+        a: "Remove and re-add files in the order you want. Pages keep each file’s original order.",
       },
       {
         q: "Are my files kept private?",
@@ -250,18 +267,18 @@ const custom: Record<string, Partial<ToolContent>> = {
   },
   "pdf-to-png": {
     keyword: "PDF to PNG converter",
-    articleTitle: "Export PDF pages as PNG images",
+    articleTitle: "Free PDF to PNG converter online",
     paragraphs: [
-      "Export each PDF page as a PNG. Multi-page files download as a zip.",
+      "Convert PDF to PNG online free. Export each page as a sharp PNG. Multi-page files download as a zip.",
       "Drop a PDF above and click Convert to PNG.",
       "PNG keeps sharp edges, which helps for slides and screenshots.",
     ],
   },
   "png-to-pdf": {
     keyword: "PNG to PDF converter",
-    articleTitle: "Turn PNG images into one PDF",
+    articleTitle: "Free PNG to PDF converter online",
     paragraphs: [
-      "Combine one or more PNG images into a single PDF. Pages follow your upload order.",
+      "Convert PNG to PDF online free. Combine one or more PNG images into a single PDF.",
       "Drop PNG files above and click Convert to PDF.",
       "Each image becomes its own page at original size.",
     ],
@@ -293,7 +310,7 @@ const custom: Record<string, Partial<ToolContent>> = {
     keyword: "age calculator",
     articleTitle: "Find exact age from a date of birth",
     paragraphs: [
-      "Enter a date of birth to see age in years, months, and days. The count uses your local calendar.",
+      "Use this free age calculator online to see exact age in years, months, and days from a date of birth.",
       "Useful for forms, school records, and quick checks. It does not store the date you type.",
       "If you need the gap between two other dates, use the Date Difference Calculator instead.",
     ],
@@ -379,7 +396,7 @@ const custom: Record<string, Partial<ToolContent>> = {
     keyword: "GST calculator",
     articleTitle: "Add or remove GST and VAT",
     paragraphs: [
-      "Choose whether to add GST to a price or take GST out of a price that already includes tax. Enter the amount and the tax percent. You see the tax and the other side of the price.",
+      "Use this free GST calculator online to add GST to a price or take GST out of a price that already includes tax. Enter the amount and the tax percent.",
       "Works the same way for VAT in many countries. Confirm the rate that applies to your invoice.",
       "For a simple percent of a number, the Percentage Calculator is quicker.",
     ],
@@ -406,7 +423,7 @@ const custom: Record<string, Partial<ToolContent>> = {
     keyword: "SIP calculator",
     articleTitle: "Estimate SIP future value",
     paragraphs: [
-      "Enter a monthly amount, expected annual return, and number of years. The result is a projected future value for a systematic investment plan.",
+      "This free SIP calculator online estimates mutual fund SIP maturity. Enter a monthly amount, expected annual return, and number of years.",
       "Markets vary. This is a formula, not a promise of returns.",
       "For a one-time deposit, the Compound Interest Calculator may fit better.",
     ],

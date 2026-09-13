@@ -51,67 +51,67 @@ const TOOL_SEO: Record<
   { title: string; description: string; keywords: string; focusKeyword: string }
 > = {
   "percentage-calculator": {
-    title: "Free Percentage Calculator Online | SmartToolX",
+    title: "Percentage Calculator Online Free | SmartToolX",
     description:
-      "Find what percent one number is of another, plus the increased total. Use it for discounts, marks, tips, and tax. Results update as you type.",
+      "Free percentage calculator online. Find what is X percent of Y, plus the increased total. Use it for discounts, marks, tips, and tax.",
     keywords:
-      "percentage calculator, what is x percent of y, percent increase calculator, discount percent, free percentage calculator",
+      "percentage calculator, percentage calculator online, what is x percent of y, free percentage calculator, percent increase calculator",
     focusKeyword: "percentage calculator",
   },
   "bmi-calculator": {
-    title: "Free BMI Calculator Online | SmartToolX",
+    title: "BMI Calculator Online Free | SmartToolX",
     description:
-      "Check your BMI with cm, meters, feet and inches, kg, lb, or stone. Mix units if you need to. See the WHO category in your browser.",
+      "Free BMI calculator online. Enter height and weight in cm, feet, kg, lb, or stone. See your body mass index and WHO category instantly.",
     keywords:
-      "BMI calculator, body mass index calculator, free BMI calculator online, BMI chart, BMI feet inches, BMI stone, kg to BMI",
+      "BMI calculator, free BMI calculator online, BMI calculator online, body mass index calculator, BMI chart",
     focusKeyword: "BMI calculator",
   },
   "loan-emi-calculator": {
-    title: "Free Loan EMI Calculator Online | SmartToolX",
+    title: "EMI Calculator Online Free | SmartToolX",
     description:
-      "Work out the monthly EMI, total interest, and amount payable for home, car, or personal loans. Enter amount, rate, and tenure.",
+      "Free loan EMI calculator online. See monthly EMI, total interest, and amount payable for home, car, or personal loans.",
     keywords:
-      "EMI calculator, loan EMI calculator, monthly loan payment, home loan EMI, personal loan calculator",
+      "EMI calculator, loan EMI calculator, EMI calculator online, home loan EMI calculator, monthly loan payment",
     focusKeyword: "EMI calculator",
   },
   "word-counter": {
-    title: "Free Word Counter Online | SmartToolX",
+    title: "Word Counter Online Free | SmartToolX",
     description:
-      "Count words, characters, and reading time as you type or paste. Built for essays, captions, and SEO drafts. Nothing is uploaded.",
+      "Free word counter online. Count words, characters, and reading time as you type. No upload and no account.",
     keywords:
-      "word counter, character counter, word count tool, reading time calculator, free word counter online",
+      "word counter, word counter online, word count tool, character counter, free word counter online",
     focusKeyword: "word counter",
   },
   "currency-converter": {
-    title: "Live Currency Converter | SmartToolX",
+    title: "Currency Converter Live Rates | SmartToolX",
     description:
-      "Convert 150+ currencies with live mid-market rates. USD, EUR, GBP, INR, and more. Rates refresh about once a minute.",
+      "Free live currency converter. Convert USD, EUR, GBP, INR, and 150+ currencies with mid-market rates that refresh about once a minute.",
     keywords:
-      "currency converter, live exchange rates, USD to INR, EUR to USD, free currency converter",
+      "currency converter, live currency converter, currency converter online, USD to INR, EUR to USD",
     focusKeyword: "currency converter",
   },
   "age-calculator": {
-    title: "Free Age Calculator Online | SmartToolX",
+    title: "Age Calculator Online Free | SmartToolX",
     description:
-      "Find exact age in years, months, and days from a date of birth. Useful for forms, records, and quick checks.",
+      "Free age calculator online. Find exact age in years, months, and days from a date of birth.",
     keywords:
-      "age calculator, exact age calculator, age in years months days, date of birth calculator",
+      "age calculator, age calculator online, exact age calculator, age in years months days, date of birth calculator",
     focusKeyword: "age calculator",
   },
   "qr-code-generator": {
-    title: "Free QR Code Generator Online | SmartToolX",
+    title: "QR Code Generator Free Online | SmartToolX",
     description:
-      "Turn a link or short text into a scannable QR code. Download the image and use it on print or screens.",
+      "Free QR code generator online. Turn a link or text into a scannable QR code and download the image. No signup.",
     keywords:
-      "QR code generator, free QR code, create QR code from URL, QR maker online",
+      "QR code generator, free QR code generator, QR code generator online, create QR code from URL, QR maker",
     focusKeyword: "QR code generator",
   },
   "unit-converter": {
-    title: "Free Unit Converter Online | SmartToolX",
+    title: "Unit Converter Online Free | SmartToolX",
     description:
-      "Convert length, weight, volume, temperature, area, speed, and more with standard SI factors. Pick a type and get the result instantly.",
+      "Free unit converter online. Convert km to miles, kg to lbs, cm to inches, temperature, and more instantly.",
     keywords:
-      "unit converter, km to miles, kg to lbs, cm to inches, free unit converter online",
+      "unit converter, unit converter online, km to miles, kg to lbs, free unit converter online",
     focusKeyword: "unit converter",
   },
   "calorie-calculator": {
@@ -171,11 +171,11 @@ const TOOL_SEO: Record<
     focusKeyword: "compound interest calculator",
   },
   "gst-calculator": {
-    title: "Free GST Calculator Online | SmartToolX",
+    title: "GST Calculator Online Free | SmartToolX",
     description:
-      "Add or remove GST or VAT from any amount. See the tax and the gross or net total in one step.",
+      "Free GST calculator online. Add or remove GST or VAT from any amount and see the tax plus the net or gross total.",
     keywords:
-      "GST calculator, VAT calculator, add GST, remove GST, tax inclusive calculator",
+      "GST calculator, GST calculator online, VAT calculator, add GST, remove GST",
     focusKeyword: "GST calculator",
   },
   "tip-calculator": {
@@ -195,11 +195,11 @@ const TOOL_SEO: Record<
     focusKeyword: "discount calculator",
   },
   "sip-calculator": {
-    title: "Free SIP Calculator Online | SmartToolX",
+    title: "SIP Calculator Online Free | SmartToolX",
     description:
-      "Estimate the future value of monthly SIP investments from amount, expected return, and years.",
+      "Free SIP calculator online. Estimate mutual fund SIP maturity from monthly amount, expected return, and years.",
     keywords:
-      "SIP calculator, systematic investment plan calculator, mutual fund SIP, monthly SIP returns",
+      "SIP calculator, SIP calculator online, systematic investment plan calculator, mutual fund SIP calculator",
     focusKeyword: "SIP calculator",
   },
   "simple-interest-calculator": {
@@ -315,83 +315,83 @@ const TOOL_SEO: Record<
     focusKeyword: "date difference calculator",
   },
   "pdf-to-word": {
-    title: "Free PDF to Word Converter Online | SmartToolX",
+    title: "PDF to Word Converter Free Online | SmartToolX",
     description:
-      "Convert a PDF into an editable Word document in your browser. Text is extracted on your device. Files are not uploaded.",
+      "Convert PDF to Word online free. No signup. Your file stays in the browser. Download an editable DOCX in seconds.",
     keywords:
-      "PDF to Word, PDF to DOCX, convert PDF to Word online free, PDF to Word converter",
+      "PDF to Word, PDF to Word converter, PDF to Word online free, convert PDF to Word, PDF to DOCX",
     focusKeyword: "PDF to Word converter",
   },
   "word-to-pdf": {
-    title: "Free Word to PDF Converter Online | SmartToolX",
+    title: "Word to PDF Converter Free Online | SmartToolX",
     description:
-      "Turn a .docx file into a PDF you can send or print. Conversion runs in your browser with no account.",
+      "Convert Word to PDF online free. Drop a DOCX file and download a PDF. No account. Conversion runs in your browser.",
     keywords:
-      "Word to PDF, DOCX to PDF, convert Word to PDF online free, Word to PDF converter",
+      "Word to PDF, Word to PDF converter, Word to PDF online free, DOCX to PDF, convert Word to PDF",
     focusKeyword: "Word to PDF converter",
   },
   "pdf-to-jpg": {
-    title: "Free PDF to JPG Converter Online | SmartToolX",
+    title: "PDF to JPG Converter Free Online | SmartToolX",
     description:
-      "Export each PDF page as a JPG. Multi-page files download as a zip. Conversion stays in your browser.",
+      "Convert PDF to JPG online free. Export every page as a JPEG. Multi-page files download as a zip. No upload to a server.",
     keywords:
-      "PDF to JPG, PDF to JPEG, convert PDF pages to images, PDF to JPG converter",
+      "PDF to JPG, PDF to JPG converter, PDF to JPEG online free, convert PDF to JPG, PDF to image",
     focusKeyword: "PDF to JPG converter",
   },
   "jpg-to-pdf": {
-    title: "Free JPG to PDF Converter Online | SmartToolX",
+    title: "JPG to PDF Converter Free Online | SmartToolX",
     description:
-      "Combine one or more JPG or PNG images into a single PDF. Page order follows your upload order.",
+      "Convert JPG to PDF online free. Combine photos or PNG images into one PDF. No signup. Files stay on your device.",
     keywords:
-      "JPG to PDF, images to PDF, convert photos to PDF, JPEG to PDF converter",
+      "JPG to PDF, JPG to PDF converter, convert image to PDF free, JPEG to PDF, images to PDF",
     focusKeyword: "JPG to PDF converter",
   },
   "excel-to-pdf": {
-    title: "Free Excel to PDF Converter Online | SmartToolX",
+    title: "Excel to PDF Converter Free Online | SmartToolX",
     description:
-      "Convert .xlsx or CSV spreadsheets into a print-ready PDF. Cell values are laid out as readable text.",
+      "Convert Excel to PDF online free. Turn XLSX or CSV into a print-ready PDF in your browser. No account needed.",
     keywords:
-      "Excel to PDF, XLSX to PDF, convert spreadsheet to PDF, Excel to PDF converter",
+      "Excel to PDF, Excel to PDF converter, XLSX to PDF online free, convert spreadsheet to PDF",
     focusKeyword: "Excel to PDF converter",
   },
   "ppt-to-pdf": {
-    title: "Free PPT to PDF Converter Online | SmartToolX",
+    title: "PPT to PDF Converter Free Online | SmartToolX",
     description:
-      "Convert PowerPoint decks (.ppt or .pptx) into a shareable PDF. Slides are processed in your browser.",
+      "Convert PPT to PDF online free. Upload a PowerPoint .ppt or .pptx file and download a shareable PDF. No signup.",
     keywords:
-      "PPT to PDF, PPTX to PDF, PowerPoint to PDF, convert slides to PDF",
+      "PPT to PDF, PPT to PDF converter, PowerPoint to PDF online free, PPTX to PDF, convert slides to PDF",
     focusKeyword: "PPT to PDF converter",
   },
   "compress-pdf": {
-    title: "Free Compress PDF Online | SmartToolX",
+    title: "Compress PDF Online Free | SmartToolX",
     description:
-      "Shrink a PDF for email and uploads. Compression runs in your browser so the file is not sent to a server.",
+      "Compress PDF online free. Reduce PDF file size for email and uploads. Runs in your browser. Files are not uploaded.",
     keywords:
-      "compress PDF, reduce PDF size, compress PDF online free, PDF compressor",
-    focusKeyword: "compress PDF",
+      "compress PDF, compress PDF online, compress PDF online free, reduce PDF size, PDF compressor",
+    focusKeyword: "compress PDF online",
   },
   "merge-pdf": {
-    title: "Free Merge PDF Online | SmartToolX",
+    title: "Merge PDF Online Free | SmartToolX",
     description:
-      "Combine multiple PDFs into one document. Add files in the order you want, then download a single PDF.",
+      "Merge PDF files online free. Combine multiple PDFs into one document in your browser. No signup and no upload.",
     keywords:
-      "merge PDF, combine PDF, join PDF files, merge PDF online free",
+      "merge PDF, merge PDF online, combine PDF online free, join PDF files, merge PDF free",
     focusKeyword: "merge PDF",
   },
   "pdf-to-png": {
-    title: "Free PDF to PNG Converter Online | SmartToolX",
+    title: "PDF to PNG Converter Free Online | SmartToolX",
     description:
-      "Export each PDF page as a PNG. Sharp edges stay useful for slides and screenshots. Multi-page files zip together.",
+      "Convert PDF to PNG online free. Export each page as a sharp PNG. Multi-page files download as a zip.",
     keywords:
-      "PDF to PNG, convert PDF to PNG, PDF page to image, PDF to PNG converter",
+      "PDF to PNG, PDF to PNG converter, PDF to PNG online free, convert PDF to PNG, PDF page to image",
     focusKeyword: "PDF to PNG converter",
   },
   "png-to-pdf": {
-    title: "Free PNG to PDF Converter Online | SmartToolX",
+    title: "PNG to PDF Converter Free Online | SmartToolX",
     description:
-      "Combine one or more PNG images into a single PDF. Each image becomes its own page at original size.",
+      "Convert PNG to PDF online free. Combine one or more PNG images into a single PDF. No account needed.",
     keywords:
-      "PNG to PDF, convert PNG to PDF, images to PDF, PNG to PDF converter",
+      "PNG to PDF, PNG to PDF converter, convert PNG to PDF free, images to PDF, PNG to PDF online",
     focusKeyword: "PNG to PDF converter",
   },
 };
@@ -400,11 +400,11 @@ const pageSeo: Record<string, SeoEntry> = {
   "/": seo(
     "/",
     "Home",
-    "Free Online Calculators and Converters | SmartToolX",
-    "Free calculators, converters, and file tools that run in your browser. BMI, EMI, currency, word count, PDF tools, and more. No account needed.",
+    "Free Online Calculators and PDF Converter | SmartToolX",
+    "Free online calculators and a free PDF converter in your browser. BMI, EMI, SIP, currency, word counter, PDF to Word, and more. No account needed.",
     {
       keywords:
-        "free online calculators, BMI calculator, EMI calculator, calorie calculator, GST calculator, unit converter, word counter, PDF converter, SmartToolX",
+        "free online calculator, free PDF converter, BMI calculator, EMI calculator, SIP calculator, PDF to Word online free, SmartToolX",
       h1: "Every number you need, solved in .04s",
       focusKeyword: "free online calculators",
       schemaType: "WebSite",
@@ -468,12 +468,13 @@ const pageSeo: Record<string, SeoEntry> = {
   "/file-converter": seo(
     "/file-converter",
     "File Converter",
-    "Free File Converter Tools | SmartToolX",
-    "Convert PDF, Word, Excel, PowerPoint, and images in your browser. Compress and merge PDFs without uploading files.",
+    "Free PDF Converter Online | SmartToolX",
+    "Free PDF converter online. PDF to Word, Word to PDF, compress PDF, merge PDF, JPG to PDF, and PPT to PDF. No signup. Files stay in your browser.",
     {
       keywords:
-        "PDF to Word, Word to PDF, PPT to PDF, Excel to PDF, compress PDF, merge PDF, file converter",
-      focusKeyword: "file converter",
+        "free PDF converter, PDF to Word online free, compress PDF online, merge PDF, Word to PDF, PPT to PDF, file converter",
+      focusKeyword: "free PDF converter",
+      h1: "Free PDF Converter Online",
     },
   ),
   "/about": seo(
