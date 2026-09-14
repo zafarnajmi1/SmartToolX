@@ -10,6 +10,7 @@ import {
 } from "@/lib/admin-auth";
 import { getCms, saveCms } from "@/lib/cms";
 import type { LegalPage, SeoEntry, SocialLinks } from "@/lib/cms-types";
+import { deleteContactMessage } from "@/lib/contact-messages";
 
 async function requireAdmin() {
   if (!(await isAdminAuthenticated())) {
@@ -74,6 +75,13 @@ export async function saveSiteAction(site: CmsSiteInput) {
   cms.site = { ...cms.site, ...site };
   await saveCms(cms);
   revalidatePath("/", "layout");
+}
+
+export async function deleteContactMessageAction(id: string) {
+  await requireAdmin();
+  await deleteContactMessage(id);
+  revalidatePath("/admin/messages");
+  revalidatePath("/admin");
 }
 
 type CmsSiteInput = {

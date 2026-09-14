@@ -33,6 +33,9 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# contact form inbox (written on the server)
+/data/contact-messages.json
+
 # vercel
 .vercel
 

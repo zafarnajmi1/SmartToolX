@@ -24,6 +24,11 @@ const cards = [
     title: "Terms and conditions",
     body: "Edit the public terms of use.",
   },
+  {
+    href: "/admin/messages",
+    title: "Messages",
+    body: "Read notes sent from the public Contact Us form.",
+  },
 ];
 
 export default async function AdminDashboardPage() {

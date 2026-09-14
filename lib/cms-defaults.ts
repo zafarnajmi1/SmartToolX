@@ -584,6 +584,17 @@ const pageSeo: Record<string, SeoEntry> = {
     "Edit the public terms and conditions.",
     { ...hidden, keywords: "SmartToolX terms admin", focusKeyword: "terms admin" },
   ),
+  "/admin/messages": seo(
+    "/admin/messages",
+    "Messages admin",
+    "Messages | SmartToolX Admin",
+    "Read contact form submissions.",
+    {
+      ...hidden,
+      keywords: "SmartToolX messages admin",
+      focusKeyword: "messages admin",
+    },
+  ),
 };
 
 for (const tool of tools) {

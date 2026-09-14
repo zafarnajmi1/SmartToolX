@@ -8,6 +8,7 @@ const links = [
   { href: "/admin/social", label: "Social media" },
   { href: "/admin/privacy", label: "Privacy policy" },
   { href: "/admin/terms", label: "Terms" },
+  { href: "/admin/messages", label: "Messages" },
 ];
 
 export function AdminShell({

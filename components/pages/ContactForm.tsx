@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { submitContactAction } from "@/app/contact/actions";
 import { Field, Input, Textarea } from "@/components/ui/Form";
 
 export function ContactForm() {
@@ -11,7 +12,11 @@ export function ContactForm() {
       className="border-line bg-surface max-w-[560px] rounded-[8px] border p-[26px]"
       onSubmit={(event) => {
         event.preventDefault();
-        setSent(true);
+        const form = event.currentTarget;
+        const data = new FormData(form);
+        void submitContactAction(data).then((result) => {
+          if (result.ok) setSent(true);
+        });
       }}
     >
       <div className="grid gap-4">
