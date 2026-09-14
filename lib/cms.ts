@@ -22,10 +22,18 @@ function mergeCms(stored: Partial<CmsData>): CmsData {
 export async function getCms(): Promise<CmsData> {
   try {
     const raw = await fs.readFile(FILE, "utf8");
-    return mergeCms(JSON.parse(raw) as Partial<CmsData>);
+    try {
+      return mergeCms(JSON.parse(raw) as Partial<CmsData>);
+    } catch {
+      return DEFAULT_CMS;
+    }
   } catch {
-    await fs.mkdir(path.dirname(FILE), { recursive: true });
-    await fs.writeFile(FILE, JSON.stringify(DEFAULT_CMS, null, 2));
+    try {
+      await fs.mkdir(path.dirname(FILE), { recursive: true });
+      await fs.writeFile(FILE, JSON.stringify(DEFAULT_CMS, null, 2));
+    } catch {
+      // Public pages should still render if data/ is missing or not writable.
+    }
     return DEFAULT_CMS;
   }
 }

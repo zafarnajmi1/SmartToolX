@@ -9,7 +9,7 @@ export function Logo() {
     >
       <Image
         src="/logo.png"
-        alt=""
+        alt="SmartToolX"
         width={32}
         height={32}
         className="size-8 shrink-0"
