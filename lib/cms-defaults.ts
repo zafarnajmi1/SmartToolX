@@ -405,7 +405,7 @@ const pageSeo: Record<string, SeoEntry> = {
     {
       keywords:
         "free online calculator, free PDF converter, BMI calculator, EMI calculator, SIP calculator, PDF to Word online free, SmartToolX",
-      h1: "Every number you need, solved in .04s",
+      h1: "Free online calculators and PDF converter",
       focusKeyword: "free online calculators",
       schemaType: "WebSite",
     },

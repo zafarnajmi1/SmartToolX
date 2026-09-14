@@ -10,9 +10,9 @@ export function Hero() {
         {toolCount}+ free tools · updated weekly
       </div>
       <h1 className="font-display max-w-[800px] text-[64px] leading-[1.08] font-semibold tracking-[-0.01em] max-[800px]:text-[42px]">
-        Every number you need,
+        Free online calculators
         <br />
-        solved <span className="text-amber font-mono font-medium">in .04s</span>
+        and <span className="text-amber font-mono font-medium">PDF converter</span>
       </h1>
       <p className="text-text-dim mt-[22px] max-w-[540px] text-[19px] leading-[1.6]">
         Free calculators, converters, and generators. Open a tool, enter your
