@@ -35,6 +35,10 @@ import {
   TimeCalculatorWidget,
   TipCalculator,
   WaterIntakeCalculator,
+  PeriodCalculator,
+  FdCalculator,
+  JsonFormatter,
+  TimeZoneConverter,
 } from "@/components/tools/ExtraWidgets";
 
 export function ToolWidget({ slug }: { slug: string }) {
@@ -67,6 +71,8 @@ export function ToolWidget({ slug }: { slug: string }) {
       return <OvulationCalculator />;
     case "water-intake-calculator":
       return <WaterIntakeCalculator />;
+    case "period-calculator":
+      return <PeriodCalculator />;
     case "compound-interest-calculator":
       return <CompoundInterestCalculator />;
     case "gst-calculator":
@@ -79,6 +85,8 @@ export function ToolWidget({ slug }: { slug: string }) {
       return <SipCalculator />;
     case "simple-interest-calculator":
       return <SimpleInterestCalculator />;
+    case "fd-calculator":
+      return <FdCalculator />;
     case "case-converter":
       return <CaseConverter />;
     case "password-generator":
@@ -91,6 +99,8 @@ export function ToolWidget({ slug }: { slug: string }) {
       return <Base64Encoder />;
     case "slug-generator":
       return <SlugGenerator />;
+    case "json-formatter":
+      return <JsonFormatter />;
     case "temperature-converter":
       return <TemperatureConverterWidget />;
     case "number-to-words":
@@ -105,6 +115,8 @@ export function ToolWidget({ slug }: { slug: string }) {
       return <TimeCalculatorWidget />;
     case "date-difference-calculator":
       return <DateDifferenceCalculator />;
+    case "time-zone-converter":
+      return <TimeZoneConverter />;
     case "pdf-to-word":
       return <FileConverter id="pdf-to-word" />;
     case "word-to-pdf":
@@ -125,6 +137,8 @@ export function ToolWidget({ slug }: { slug: string }) {
       return <FileConverter id="pdf-to-png" />;
     case "png-to-pdf":
       return <FileConverter id="png-to-pdf" />;
+    case "split-pdf":
+      return <FileConverter id="split-pdf" />;
     default:
       return null;
   }

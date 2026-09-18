@@ -1493,3 +1493,347 @@ export function DateDifferenceCalculator() {
     </div>
   );
 }
+
+export function PeriodCalculator() {
+  const [lmp, setLmp] = useState("");
+  const [cycle, setCycle] = useState("");
+  const result = useMemo(() => {
+    if (!lmp) return null;
+    const length = parseNumber(cycle);
+    if (length == null || length < 20 || length > 45) return null;
+    const start = new Date(`${lmp}T00:00:00`);
+    if (Number.isNaN(start.getTime())) return null;
+    const next = new Date(start);
+    next.setDate(start.getDate() + length);
+    const end = new Date(next);
+    end.setDate(next.getDate() + 4);
+    const following = new Date(next);
+    following.setDate(next.getDate() + length);
+    return {
+      next: localISODate(next),
+      end: localISODate(end),
+      following: localISODate(following),
+    };
+  }, [lmp, cycle]);
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Last period (first day)">
+          <Input
+            type="date"
+            value={lmp}
+            max={localISODate(new Date())}
+            onChange={(e) => setLmp(e.target.value)}
+          />
+        </Field>
+        <Field label="Cycle length (days)">
+          <Input
+            type="number"
+            value={cycle}
+            placeholder="0"
+            onChange={(e) => setCycle(e.target.value)}
+          />
+        </Field>
+      </div>
+      <Box>
+        <Result label="Next period" value={result?.next ?? "—"} />
+        <Result label="Expected end" value={result?.end ?? "—"} steel />
+        <Result label="Period after that" value={result?.following ?? "—"} />
+      </Box>
+    </div>
+  );
+}
+
+export function FdCalculator() {
+  const [principal, setPrincipal] = useState("");
+  const [rate, setRate] = useState("");
+  const [years, setYears] = useState("");
+  const result = useMemo(() => {
+    const p = parseNumber(principal);
+    const r = parseNumber(rate);
+    const t = parseNumber(years);
+    if (p == null || r == null || t == null || p < 0 || r < 0 || t <= 0) {
+      return null;
+    }
+    const n = 4;
+    const future = p * (1 + r / 100 / n) ** (n * t);
+    if (!Number.isFinite(future)) return null;
+    return { future, interest: future - p };
+  }, [principal, rate, years]);
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Deposit amount">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={principal}
+            placeholder="100000"
+            onChange={(e) => setPrincipal(e.target.value)}
+          />
+        </Field>
+        <Field label="Annual interest percent">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={rate}
+            placeholder="7"
+            onChange={(e) => setRate(e.target.value)}
+          />
+        </Field>
+        <Field label="Tenure (years)">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={years}
+            placeholder="5"
+            onChange={(e) => setYears(e.target.value)}
+          />
+        </Field>
+      </div>
+      <Box>
+        <Result
+          label="Maturity amount"
+          value={result == null ? "—" : money(result.future)}
+          steel
+        />
+        <Result
+          label="Interest earned"
+          value={result == null ? "—" : money(result.interest)}
+        />
+      </Box>
+    </div>
+  );
+}
+
+export function JsonFormatter() {
+  const [text, setText] = useState("");
+  const [mode, setMode] = useState("beautify");
+  const out = useMemo(() => {
+    if (!text.trim()) return "";
+    try {
+      const parsed = JSON.parse(text) as unknown;
+      return mode === "minify"
+        ? JSON.stringify(parsed)
+        : JSON.stringify(parsed, null, 2);
+    } catch {
+      return "Invalid JSON";
+    }
+  }, [text, mode]);
+
+  return (
+    <div className="grid gap-6">
+      <Field label="Mode">
+        <Select value={mode} onChange={(e) => setMode(e.target.value)}>
+          <option value="beautify">Beautify</option>
+          <option value="minify">Minify</option>
+        </Select>
+      </Field>
+      <Textarea
+        rows={5}
+        value={text}
+        placeholder="Paste JSON"
+        onChange={(e) => setText(e.target.value)}
+      />
+      <Box>
+        <div className="text-text whitespace-pre-wrap break-all font-mono text-[15px]">
+          {out || "—"}
+        </div>
+      </Box>
+    </div>
+  );
+}
+
+const TIME_ZONE_FALLBACK = [
+  "UTC",
+  "Africa/Cairo",
+  "Africa/Johannesburg",
+  "Africa/Lagos",
+  "America/Chicago",
+  "America/Denver",
+  "America/Los_Angeles",
+  "America/New_York",
+  "America/Sao_Paulo",
+  "America/Toronto",
+  "Asia/Dubai",
+  "Asia/Hong_Kong",
+  "Asia/Karachi",
+  "Asia/Kolkata",
+  "Asia/Seoul",
+  "Asia/Shanghai",
+  "Asia/Singapore",
+  "Asia/Tokyo",
+  "Australia/Sydney",
+  "Europe/Berlin",
+  "Europe/Istanbul",
+  "Europe/London",
+  "Europe/Paris",
+  "Pacific/Auckland",
+];
+
+function isValidTimeZone(timeZone: string) {
+  if (!timeZone.trim()) return false;
+  try {
+    new Intl.DateTimeFormat("en-US", { timeZone }).format();
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function allTimeZoneIds() {
+  let raw = TIME_ZONE_FALLBACK;
+  try {
+    const intl = Intl as typeof Intl & {
+      supportedValuesOf?: (key: "timeZone") => string[];
+    };
+    const zones = intl.supportedValuesOf?.("timeZone");
+    if (zones && zones.length > 0) {
+      raw = zones.includes("UTC") ? [...zones] : ["UTC", ...zones];
+    }
+  } catch {
+    raw = TIME_ZONE_FALLBACK;
+  }
+  const unique = Array.from(
+    new Set(raw.map((zone) => zone.trim()).filter(Boolean)),
+  );
+  for (const extra of ["UTC", "Asia/Karachi"]) {
+    if (!unique.includes(extra) && isValidTimeZone(extra)) {
+      unique.unshift(extra);
+    }
+  }
+  return unique.filter(isValidTimeZone);
+}
+
+const TIME_ZONES = allTimeZoneIds();
+const DEFAULT_FROM = TIME_ZONES.includes("UTC") ? "UTC" : (TIME_ZONES[0] ?? "UTC");
+const DEFAULT_TO = TIME_ZONES.includes("Asia/Karachi")
+  ? "Asia/Karachi"
+  : DEFAULT_FROM;
+
+function timeZoneLabel(id: string) {
+  return id.replaceAll("_", " ");
+}
+
+function parseDateInTimeZone(localValue: string, timeZone: string) {
+  if (!isValidTimeZone(timeZone)) return null;
+  const match = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/.exec(localValue);
+  if (!match) return null;
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+  const hour = Number(match[4]);
+  const minute = Number(match[5]);
+  const utcGuess = Date.UTC(year, month - 1, day, hour, minute, 0);
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(new Date(utcGuess));
+  const num = (type: string) =>
+    Number(parts.find((part) => part.type === type)?.value);
+  const asIf = Date.UTC(
+    num("year"),
+    num("month") - 1,
+    num("day"),
+    num("hour"),
+    num("minute"),
+  );
+  if (!Number.isFinite(asIf)) return null;
+  return new Date(utcGuess - (asIf - utcGuess));
+}
+
+function formatInTimeZone(date: Date, timeZone: string) {
+  if (!isValidTimeZone(timeZone)) return null;
+  return new Intl.DateTimeFormat("en-GB", {
+    timeZone,
+    year: "numeric",
+    month: "short",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).format(date);
+}
+
+export function TimeZoneConverter() {
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [from, setFrom] = useState(DEFAULT_FROM);
+  const [to, setTo] = useState(DEFAULT_TO);
+  const converted = useMemo(() => {
+    const clock = time.slice(0, 5);
+    if (!date || !clock || !isValidTimeZone(from) || !isValidTimeZone(to)) {
+      return null;
+    }
+    const parsed = parseDateInTimeZone(`${date}T${clock}`, from);
+    if (!parsed || Number.isNaN(parsed.getTime())) return null;
+    return formatInTimeZone(parsed, to);
+  }, [date, time, from, to]);
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Date">
+          <Input
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            className="tz-picker-icon"
+          />
+        </Field>
+        <Field label="Time">
+          <Input
+            type="time"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+            className="tz-picker-icon"
+          />
+        </Field>
+        <Field label="From time zone">
+          <Select
+            value={from}
+            onChange={(e) => {
+              if (isValidTimeZone(e.target.value)) setFrom(e.target.value);
+            }}
+          >
+            {TIME_ZONES.map((zone) => (
+              <option key={zone} value={zone}>
+                {timeZoneLabel(zone)}
+              </option>
+            ))}
+          </Select>
+        </Field>
+        <Field label="To time zone">
+          <Select
+            value={to}
+            onChange={(e) => {
+              if (isValidTimeZone(e.target.value)) setTo(e.target.value);
+            }}
+          >
+            {TIME_ZONES.map((zone) => (
+              <option key={`to-${zone}`} value={zone}>
+                {timeZoneLabel(zone)}
+              </option>
+            ))}
+          </Select>
+        </Field>
+      </div>
+      <Box>
+        <Result label="Converted time" value={converted ?? "—"} steel />
+      </Box>
+    </div>
+  );
+}

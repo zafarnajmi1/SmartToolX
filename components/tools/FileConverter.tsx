@@ -9,6 +9,7 @@ import {
   pdfToDocx,
   pdfToImages,
   pptToPdf,
+  splitPdf,
   wordToPdf,
   type ConvertedFile,
 } from "@/lib/file-convert";
@@ -23,7 +24,8 @@ type FileToolId =
   | "compress-pdf"
   | "merge-pdf"
   | "pdf-to-png"
-  | "png-to-pdf";
+  | "png-to-pdf"
+  | "split-pdf";
 
 type ToolConfig = {
   accept: string;
@@ -158,6 +160,18 @@ const configs: Record<FileToolId, ToolConfig> = {
     resultIcon: "PDF",
     downloadLabel: "Download PDF",
     convert: (files) => imagesToPdf(files, `${files[0].name.replace(/\.[^/.]+$/, "")}.pdf`),
+  },
+  "split-pdf": {
+    accept: ".pdf,application/pdf",
+    multiple: false,
+    minFiles: 1,
+    maxMb: 25,
+    dropIcon: "PDF",
+    dropTitle: "Drop your PDF here",
+    button: "Split File",
+    resultIcon: "PDF",
+    downloadLabel: "Download Split PDF",
+    convert: (files) => splitPdf(files[0]),
   },
 };
 

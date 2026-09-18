@@ -66,3 +66,19 @@ a {
 @utility animate-blink {
   animation: blink 1.6s infinite ease-in-out;
 }
+
+.tz-picker-icon {
+  color: #ffffff;
+}
+
+.tz-picker-icon::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 1;
+  filter: invert(1) brightness(2);
+}
+
+@supports not selector(::-webkit-calendar-picker-indicator) {
+  .tz-picker-icon {
+    color-scheme: dark;
+  }
+}

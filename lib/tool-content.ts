@@ -265,6 +265,29 @@ const custom: Record<string, Partial<ToolContent>> = {
       },
     ],
   },
+  "split-pdf": {
+    keyword: "split PDF",
+    articleTitle: "Split PDF online free",
+    paragraphs: [
+      "Split PDF online free. Each page is saved as its own PDF. Files with more than one page download as a zip.",
+      "Drop a PDF above and click Split File.",
+      "Each file can be up to 25MB. Conversion runs in your browser.",
+    ],
+    faqs: [
+      {
+        q: "Is split PDF free?",
+        a: "Yes. You can split PDF online free with no account.",
+      },
+      {
+        q: "What do I download?",
+        a: "A one-page PDF downloads as a single file. Multi-page PDFs download as a zip with one PDF per page.",
+      },
+      {
+        q: "Are my files kept private?",
+        a: "Yes. Splitting runs in your browser. Files are not uploaded.",
+      },
+    ],
+  },
   "pdf-to-png": {
     keyword: "PDF to PNG converter",
     articleTitle: "Free PDF to PNG converter online",
@@ -374,6 +397,29 @@ const custom: Record<string, Partial<ToolContent>> = {
       "Irregular cycles can make the window less reliable.",
     ],
   },
+  "period-calculator": {
+    keyword: "period calculator",
+    articleTitle: "Estimate your next period dates",
+    paragraphs: [
+      "Use this free period calculator online to estimate the next period from the first day of your last period and your cycle length.",
+      "The page adds your cycle length to that start date. The expected end assumes a 5-day period. This is a calendar estimate, not medical advice.",
+      "Irregular cycles can shift the real dates. For ovulation timing, use the Ovulation Calculator.",
+    ],
+    faqs: [
+      {
+        q: "How do I use this period calculator?",
+        a: "Enter the first day of your last period and your usual cycle length in days. The next period start, expected end, and the period after that appear on the right.",
+      },
+      {
+        q: "Is the period calculator free?",
+        a: "Yes. You can use this period calculator online free with no account.",
+      },
+      {
+        q: "Does this save my dates?",
+        a: "No. Dates stay in your browser.",
+      },
+    ],
+  },
   "water-intake-calculator": {
     keyword: "water intake calculator",
     articleTitle: "Get a daily water goal from body weight",
@@ -437,6 +483,29 @@ const custom: Record<string, Partial<ToolContent>> = {
       "For compounding, switch to the Compound Interest Calculator.",
     ],
   },
+  "fd-calculator": {
+    keyword: "FD calculator",
+    articleTitle: "Estimate fixed deposit maturity",
+    paragraphs: [
+      "This free FD calculator online estimates bank fixed deposit maturity. Enter the deposit amount, annual interest percent, and tenure in years.",
+      "Interest is compounded quarterly, which matches many bank FDs. Tax and premature withdrawal rules are not included.",
+      "For a monthly investment plan, use the SIP calculator.",
+    ],
+    faqs: [
+      {
+        q: "How is FD interest calculated here?",
+        a: "The page uses quarterly compounding: A = P(1 + r/4)^(4t). P is the deposit, r is the annual rate as a decimal, and t is years.",
+      },
+      {
+        q: "Is the FD calculator free?",
+        a: "Yes. You can use this FD calculator online free with no account.",
+      },
+      {
+        q: "Does this include tax on FD interest?",
+        a: "No. The result is the gross maturity amount before tax.",
+      },
+    ],
+  },
   "case-converter": {
     keyword: "case converter",
     articleTitle: "Change text to upper, lower, or title case",
@@ -491,6 +560,29 @@ const custom: Record<string, Partial<ToolContent>> = {
       "Edit the result if you want a shorter keyword-focused slug.",
     ],
   },
+  "json-formatter": {
+    keyword: "JSON formatter",
+    articleTitle: "Beautify or minify JSON online",
+    paragraphs: [
+      "Paste JSON and switch between beautify and minify. Formatting runs in your browser.",
+      "Invalid JSON shows an error until the text is valid.",
+      "Nothing is uploaded. Copy the result when it looks right.",
+    ],
+    faqs: [
+      {
+        q: "Is this JSON formatter free?",
+        a: "Yes. You can format JSON online free with no account.",
+      },
+      {
+        q: "Does my JSON leave the browser?",
+        a: "No. Beautify and minify run on your device.",
+      },
+      {
+        q: "What if my JSON is invalid?",
+        a: "The result shows Invalid JSON until the input can be parsed.",
+      },
+    ],
+  },
   "temperature-converter": {
     keyword: "temperature converter",
     articleTitle: "Convert Celsius, Fahrenheit, and Kelvin",
@@ -543,6 +635,29 @@ const custom: Record<string, Partial<ToolContent>> = {
       "Enter hours, minutes, and seconds to get a total duration, including a breakdown back into h, m, and s.",
       "Useful for logs, workouts, and video lengths.",
       "This adds clock time. It does not convert time zones.",
+    ],
+  },
+  "time-zone-converter": {
+    keyword: "time zone converter",
+    articleTitle: "Convert a time between time zones",
+    paragraphs: [
+      "Pick a date and time, then choose the from and to time zones. The converted clock time appears on the right.",
+      "Zones include UTC, Pakistan, India, UAE, UK, US, and more. DST is handled by the browser time zone data.",
+      "For adding hours and minutes, use the Time Calculator.",
+    ],
+    faqs: [
+      {
+        q: "Is this time zone converter free?",
+        a: "Yes. You can convert time zones online free with no account.",
+      },
+      {
+        q: "Does it handle daylight saving?",
+        a: "Yes. The converted time uses the zone rules in your browser, including daylight saving where it applies.",
+      },
+      {
+        q: "Which time zones are included?",
+        a: "Both dropdowns list every IANA time zone, including UTC and regions in Africa, the Americas, Asia, Europe, Australia, and the Pacific.",
+      },
     ],
   },
 };

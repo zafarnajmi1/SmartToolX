@@ -117,6 +117,13 @@ export const tools: Tool[] = [
     category: "health",
   },
   {
+    slug: "period-calculator",
+    name: "Period Calculator",
+    icon: "P",
+    description: "Next period dates from last period and cycle length.",
+    category: "health",
+  },
+  {
     slug: "compound-interest-calculator",
     name: "Compound Interest Calculator",
     icon: "CI",
@@ -159,6 +166,13 @@ export const tools: Tool[] = [
     category: "finance",
   },
   {
+    slug: "fd-calculator",
+    name: "FD Calculator",
+    icon: "FD",
+    description: "Fixed deposit maturity from amount, rate, and years.",
+    category: "finance",
+  },
+  {
     slug: "case-converter",
     name: "Case Converter",
     icon: "aA",
@@ -198,6 +212,13 @@ export const tools: Tool[] = [
     name: "Slug Generator",
     icon: "/-",
     description: "Turn a title into a URL-safe slug for blogs and pages.",
+    category: "text",
+  },
+  {
+    slug: "json-formatter",
+    name: "JSON Formatter",
+    icon: "{}",
+    description: "Beautify or minify JSON in your browser.",
     category: "text",
   },
   {
@@ -247,6 +268,13 @@ export const tools: Tool[] = [
     name: "Date Difference Calculator",
     icon: "2D",
     description: "Days, weeks, months, and years between two dates.",
+    category: "convert",
+  },
+  {
+    slug: "time-zone-converter",
+    name: "Time Zone Converter",
+    icon: "TZ",
+    description: "Convert a date and time between world time zones.",
     category: "convert",
   },
   {
@@ -319,6 +347,13 @@ export const tools: Tool[] = [
     description: "Convert PNG to PDF online free. One or more images.",
     category: "files",
   },
+  {
+    slug: "split-pdf",
+    name: "Split PDF",
+    icon: "SPL",
+    description: "Split PDF online free. Save each page as its own file.",
+    category: "files",
+  },
 ];
 
 export const featuredSlugs = [
@@ -343,6 +378,7 @@ export const fileConverterSlugs = [
   "merge-pdf",
   "pdf-to-png",
   "png-to-pdf",
+  "split-pdf",
 ] as const;
 
 export const toolCount = tools.length;
@@ -351,7 +387,7 @@ export const categoryPages = {
   calculators: {
     title: "Calculators",
     description:
-      "Health, finance, and everyday calculators that run in your browser.",
+      "Health, finance, and everyday calculators including period, BMI, EMI, and FD.",
     slugs: [
       ...tools
         .filter(
@@ -363,18 +399,18 @@ export const categoryPages = {
   },
   converters: {
     title: "Converters",
-    description: "Currency, units, and more. Convert without leaving the page.",
+    description: "Currency, units, time zones, and more. Convert without leaving the page.",
     slugs: tools.filter((tool) => tool.category === "convert").map((t) => t.slug),
   },
   "text-tools": {
     title: "Text Tools",
-    description: "Count, generate, and transform text in a click.",
+    description: "Count words, format JSON, generate, and transform text in a click.",
     slugs: tools.filter((tool) => tool.category === "text").map((t) => t.slug),
   },
   finance: {
     title: "Finance",
     description:
-      "Payments, percentages, and currency tools for money decisions.",
+      "EMI, FD, GST, SIP, percentages, and currency tools for money decisions.",
     slugs: [
       ...tools.filter((tool) => tool.category === "finance").map((t) => t.slug),
       "currency-converter",
@@ -383,7 +419,7 @@ export const categoryPages = {
   "file-converter": {
     title: "Free PDF Converter Online",
     description:
-      "Free PDF converter online. PDF to Word, compress PDF, merge PDF, and more. Files stay in your browser.",
+      "Free PDF converter online. PDF to Word, compress PDF, merge PDF, split PDF, and more. Files stay in your browser.",
     slugs: [...fileConverterSlugs],
   },
 } as const;

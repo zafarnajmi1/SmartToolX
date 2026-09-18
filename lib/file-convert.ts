@@ -485,6 +485,36 @@ export async function mergePdfs(files: File[]): Promise<ConvertedFile> {
   };
 }
 
+export async function splitPdf(file: File): Promise<ConvertedFile> {
+  const src = await PDFDocument.load(await file.arrayBuffer(), {
+    ignoreEncryption: true,
+  });
+  const indices = src.getPageIndices();
+  if (indices.length === 0) {
+    throw new Error("This PDF has no pages.");
+  }
+  if (indices.length === 1) {
+    const out = await PDFDocument.create();
+    const [page] = await out.copyPages(src, [0]);
+    out.addPage(page);
+    return {
+      blob: pdfBlob(await out.save()),
+      name: `${baseName(file)}-page-1.pdf`,
+    };
+  }
+  const zip = new JSZip();
+  for (const index of indices) {
+    const out = await PDFDocument.create();
+    const [page] = await out.copyPages(src, [index]);
+    out.addPage(page);
+    zip.file(`${baseName(file)}-page-${index + 1}.pdf`, await out.save());
+  }
+  return {
+    blob: await zip.generateAsync({ type: "blob" }),
+    name: `${baseName(file)}-pages.zip`,
+  };
+}
+
 function pdfPageImageScale(widthPt: number, heightPt: number, minScale = 7.5) {
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1;
   const wanted = Math.max(minScale, (96 / 72) * dpr * 3);

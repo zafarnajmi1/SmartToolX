@@ -162,6 +162,14 @@ const TOOL_SEO: Record<
       "water intake calculator, daily water intake, how much water should I drink, hydration calculator",
     focusKeyword: "water intake calculator",
   },
+  "period-calculator": {
+    title: "Period Calculator Online Free | SmartToolX",
+    description:
+      "Free period calculator online. Estimate next period dates from the first day of your last period and cycle length.",
+    keywords:
+      "period calculator, period calculator online, next period calculator, menstrual cycle calculator, period tracker calculator",
+    focusKeyword: "period calculator",
+  },
   "compound-interest-calculator": {
     title: "Free Compound Interest Calculator | SmartToolX",
     description:
@@ -210,6 +218,14 @@ const TOOL_SEO: Record<
       "simple interest calculator, simple interest formula, interest on loan calculator",
     focusKeyword: "simple interest calculator",
   },
+  "fd-calculator": {
+    title: "FD Calculator Online Free | SmartToolX",
+    description:
+      "Free FD calculator online. Estimate fixed deposit maturity and interest from amount, annual rate, and tenure in years.",
+    keywords:
+      "FD calculator, fixed deposit calculator, FD calculator online, FD maturity calculator, bank FD calculator",
+    focusKeyword: "FD calculator",
+  },
   "case-converter": {
     title: "Free Case Converter Online | SmartToolX",
     description:
@@ -257,6 +273,14 @@ const TOOL_SEO: Record<
     keywords:
       "slug generator, URL slug, permalink generator, SEO slug, title to slug",
     focusKeyword: "slug generator",
+  },
+  "json-formatter": {
+    title: "JSON Formatter Online Free | SmartToolX",
+    description:
+      "Free JSON formatter online. Beautify or minify JSON in your browser. No upload and no account.",
+    keywords:
+      "JSON formatter, JSON beautifier, JSON formatter online, minify JSON, format JSON",
+    focusKeyword: "JSON formatter",
   },
   "temperature-converter": {
     title: "Free Temperature Converter Online | SmartToolX",
@@ -313,6 +337,14 @@ const TOOL_SEO: Record<
     keywords:
       "date difference calculator, days between two dates, date duration calculator, how many days between dates",
     focusKeyword: "date difference calculator",
+  },
+  "time-zone-converter": {
+    title: "Time Zone Converter Online Free | SmartToolX",
+    description:
+      "Free time zone converter online. Convert a date and time between all IANA time zones, including UTC, Pakistan, India, US, and UK.",
+    keywords:
+      "time zone converter, timezone converter, time zone converter online, convert time zones, UTC converter",
+    focusKeyword: "time zone converter",
   },
   "pdf-to-word": {
     title: "PDF to Word Converter Free Online | SmartToolX",
@@ -394,6 +426,14 @@ const TOOL_SEO: Record<
       "PNG to PDF, PNG to PDF converter, convert PNG to PDF free, images to PDF, PNG to PDF online",
     focusKeyword: "PNG to PDF converter",
   },
+  "split-pdf": {
+    title: "Split PDF Online Free | SmartToolX",
+    description:
+      "Split PDF online free. Turn each page into its own PDF. Multi-page files download as a zip. No signup.",
+    keywords:
+      "split PDF, split PDF online, split PDF online free, extract PDF pages, split PDF pages",
+    focusKeyword: "split PDF",
+  },
 };
 
 const pageSeo: Record<string, SeoEntry> = {
@@ -401,10 +441,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/",
     "Home",
     "Free Online Calculators and PDF Converter | SmartToolX",
-    "Free online calculators and a free PDF converter in your browser. BMI, EMI, SIP, currency, word counter, PDF to Word, and more. No account needed.",
+    "Free online calculators and a free PDF converter in your browser. Period calculator, FD calculator, JSON formatter, time zone converter, Split PDF, BMI, EMI, and more. No account needed.",
     {
       keywords:
-        "free online calculator, free PDF converter, BMI calculator, EMI calculator, SIP calculator, PDF to Word online free, SmartToolX",
+        "free online calculator, free PDF converter, period calculator, FD calculator, JSON formatter, time zone converter, split PDF, BMI calculator, EMI calculator, SmartToolX",
       h1: "Free online calculators and PDF converter",
       focusKeyword: "free online calculators",
       schemaType: "WebSite",
@@ -425,10 +465,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/calculators",
     "Calculators",
     "Free Online Calculators | SmartToolX",
-    "Health and finance calculators for BMI, EMI, calories, GST, SIP, and more. Open a tool, enter numbers, and see the result.",
+    "Health and finance calculators for period dates, BMI, EMI, FD, GST, SIP, calories, and more. Open a tool, enter numbers, and see the result.",
     {
       keywords:
-        "online calculators, BMI calculator, EMI calculator, age calculator, percentage calculator, calorie calculator",
+        "online calculators, period calculator, BMI calculator, EMI calculator, FD calculator, GST calculator, SIP calculator, calorie calculator",
       focusKeyword: "online calculators",
     },
   ),
@@ -436,10 +476,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/converters",
     "Converters",
     "Free Online Converters | SmartToolX",
-    "Convert currency, units, temperature, colors, and more without leaving the page. Live rates for money, standard factors for the rest.",
+    "Convert currency, units, temperature, time zones, colors, and more without leaving the page. Live rates for money, standard factors for the rest.",
     {
       keywords:
-        "unit converter, currency converter, temperature converter, live exchange rates, binary converter",
+        "unit converter, currency converter, time zone converter, temperature converter, live exchange rates, binary converter",
       focusKeyword: "unit converter",
     },
   ),
@@ -447,10 +487,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/text-tools",
     "Text Tools",
     "Free Text Tools Online | SmartToolX",
-    "Count words, generate passwords and QR codes, change case, and build URL slugs. Paste text and copy the result.",
+    "Count words, format JSON, generate passwords and QR codes, change case, and build URL slugs. Paste text and copy the result.",
     {
       keywords:
-        "word counter, QR code generator, password generator, case converter, slug generator, text tools",
+        "JSON formatter, word counter, QR code generator, password generator, case converter, slug generator, text tools",
       focusKeyword: "text tools",
     },
   ),
@@ -458,10 +498,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/finance",
     "Finance",
     "Free Finance Calculators | SmartToolX",
-    "EMI, GST, SIP, compound interest, tips, discounts, and live currency conversion for everyday money decisions.",
+    "EMI, FD, GST, SIP, compound interest, tips, discounts, and live currency conversion for everyday money decisions.",
     {
       keywords:
-        "loan EMI calculator, GST calculator, SIP calculator, percentage calculator, currency converter, finance calculator",
+        "loan EMI calculator, FD calculator, GST calculator, SIP calculator, percentage calculator, currency converter, finance calculator",
       focusKeyword: "finance calculator",
     },
   ),
@@ -469,10 +509,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/file-converter",
     "File Converter",
     "Free PDF Converter Online | SmartToolX",
-    "Free PDF converter online. PDF to Word, Word to PDF, compress PDF, merge PDF, JPG to PDF, and PPT to PDF. No signup. Files stay in your browser.",
+    "Free PDF converter online. PDF to Word, Word to PDF, compress PDF, merge PDF, split PDF, JPG to PDF, and PPT to PDF. No signup. Files stay in your browser.",
     {
       keywords:
-        "free PDF converter, PDF to Word online free, compress PDF online, merge PDF, Word to PDF, PPT to PDF, file converter",
+        "free PDF converter, PDF to Word online free, compress PDF online, merge PDF, split PDF, Word to PDF, PPT to PDF, file converter",
       focusKeyword: "free PDF converter",
       h1: "Free PDF Converter Online",
     },
@@ -529,6 +569,8 @@ const pageSeo: Record<string, SeoEntry> = {
     "SmartToolX on Social Media",
     "Find SmartToolX on Facebook, X, Instagram, LinkedIn, YouTube, and more for new tools and updates.",
     {
+      ...hidden,
+      robotsFollow: true,
       keywords:
         "SmartToolX social media, Facebook, Twitter, Instagram, LinkedIn, YouTube",
       focusKeyword: "SmartToolX social media",
