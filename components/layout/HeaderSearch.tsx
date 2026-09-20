@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { categories, tools, type Tool } from "@/lib/tools";
 
 function categoryLabel(id: Tool["category"]) {
+  if (id === "color") return "Color";
   return categories.find((category) => category.id === id)?.label ?? id;
 }
 

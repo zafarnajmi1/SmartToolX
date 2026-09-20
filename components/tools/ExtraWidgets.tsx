@@ -1318,33 +1318,6 @@ export function BinaryConverter() {
   );
 }
 
-export function ColorConverter() {
-  const [hex, setHex] = useState("");
-  const rgb = useMemo(() => {
-    let clean = hex.replace("#", "").trim();
-    if (/^[0-9a-fA-F]{3}$/.test(clean)) {
-      clean = clean
-        .split("")
-        .map((ch) => ch + ch)
-        .join("");
-    }
-    if (!/^[0-9a-fA-F]{6}$/.test(clean)) return null;
-    const n = Number.parseInt(clean, 16);
-    return `rgb(${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255})`;
-  }, [hex]);
-
-  return (
-    <div className="grid gap-8 md:grid-cols-2">
-      <Field label="HEX">
-        <Input value={hex} placeholder="#E8A33D" onChange={(e) => setHex(e.target.value)} />
-      </Field>
-      <Box>
-        <Result label="RGB" value={rgb ?? "—"} steel />
-      </Box>
-    </div>
-  );
-}
-
 const ROMAN: [number, string][] = [
   [1000, "M"], [900, "CM"], [500, "D"], [400, "CD"], [100, "C"], [90, "XC"],
   [50, "L"], [40, "XL"], [10, "X"], [9, "IX"], [5, "V"], [4, "IV"], [1, "I"],

@@ -60,11 +60,11 @@ function FilesIcon(props: IconProps) {
   );
 }
 
-function AboutIcon(props: IconProps) {
+function ColorIcon(props: IconProps) {
   return (
     <svg {...iconProps(props)}>
-      <circle cx="8" cy="8" r="6" />
-      <path d="M8 7.2V11.5M8 5.2v.2" />
+      <circle cx="6" cy="7" r="3.5" />
+      <circle cx="10" cy="10" r="3.5" />
     </svg>
   );
 }
@@ -75,7 +75,7 @@ const icons: Record<NavIconName, ComponentType<IconProps>> = {
   text: TextIcon,
   finance: FinanceIcon,
   files: FilesIcon,
-  about: AboutIcon,
+  colors: ColorIcon,
 };
 
 export function NavIcon({

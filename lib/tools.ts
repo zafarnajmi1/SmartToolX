@@ -1,4 +1,4 @@
-export type ToolCategory = "health" | "finance" | "text" | "convert" | "files";
+export type ToolCategory = "health" | "finance" | "text" | "convert" | "files" | "color";
 
 export type Tool = {
   slug: string;
@@ -246,8 +246,9 @@ export const tools: Tool[] = [
     slug: "color-converter",
     name: "Color Converter",
     icon: "#",
-    description: "Convert HEX colors to RGB and back.",
-    category: "convert",
+    description:
+      "Free all-in-one color converter. Paste HEX, RGB, HSL, HSV, or CMYK and copy every other format.",
+    category: "color",
   },
   {
     slug: "roman-numeral-converter",
@@ -394,6 +395,202 @@ export const tools: Tool[] = [
       "Convert PNG to JPG online free. Download a JPEG in your browser. No account.",
     category: "files",
   },
+  {
+    slug: "color-picker",
+    name: "Color Picker",
+    icon: "HEX",
+    description:
+      "Free color picker online. Pick a color and copy HEX, RGB, HSL, HSV, and CMYK.",
+    category: "color",
+  },
+  {
+    slug: "hex-to-rgb",
+    name: "HEX to RGB",
+    icon: "RGB",
+    description: "Convert a HEX color code to RGB. Free in your browser.",
+    category: "color",
+  },
+  {
+    slug: "rgb-to-hex",
+    name: "RGB to HEX",
+    icon: "HEX",
+    description: "Convert RGB values to a HEX color code. Free in your browser.",
+    category: "color",
+  },
+  {
+    slug: "hex-to-hsl",
+    name: "HEX to HSL",
+    icon: "HSL",
+    description: "Convert a HEX color code to HSL. Free in your browser.",
+    category: "color",
+  },
+  {
+    slug: "hsl-to-hex",
+    name: "HSL to HEX",
+    icon: "HEX",
+    description: "Convert HSL values to a HEX color code. Free in your browser.",
+    category: "color",
+  },
+  {
+    slug: "rgb-to-hsl",
+    name: "RGB to HSL",
+    icon: "HSL",
+    description: "Convert RGB values to HSL. Free in your browser.",
+    category: "color",
+  },
+  {
+    slug: "color-palette-generator",
+    name: "Color Palette Generator",
+    icon: "PAL",
+    description:
+      "Free color palette generator. Build a matching palette from any HEX color.",
+    category: "color",
+  },
+  {
+    slug: "gradient-generator",
+    name: "Gradient Generator",
+    icon: "GRD",
+    description:
+      "Free gradient generator. Create a linear or radial CSS gradient from two colors.",
+    category: "color",
+  },
+  {
+    slug: "css-gradient-generator",
+    name: "CSS Gradient Generator",
+    icon: "CSS",
+    description:
+      "Generate ready-to-use CSS for linear, radial, or repeating gradients.",
+    category: "color",
+  },
+  {
+    slug: "color-shades-generator",
+    name: "Color Shades Generator",
+    icon: "SHA",
+    description: "Generate darker shades from any HEX color.",
+    category: "color",
+  },
+  {
+    slug: "color-tint-generator",
+    name: "Color Tint Generator",
+    icon: "TNT",
+    description: "Generate lighter tints from any HEX color.",
+    category: "color",
+  },
+  {
+    slug: "color-tone-generator",
+    name: "Color Tone Generator",
+    icon: "TON",
+    description: "Generate muted tones from any HEX color.",
+    category: "color",
+  },
+  {
+    slug: "complementary-color-generator",
+    name: "Complementary Colors Generator",
+    icon: "180",
+    description: "Find complementary colors for any HEX code. 180° opposite hue pair.",
+    category: "color",
+  },
+  {
+    slug: "analogous-color-generator",
+    name: "Analogous Colors Generator",
+    icon: "ANL",
+    description: "Generate an analogous color palette from a HEX color.",
+    category: "color",
+  },
+  {
+    slug: "triadic-color-generator",
+    name: "Triadic Colors Generator",
+    icon: "TRI",
+    description: "Generate a triadic color combination from a HEX color.",
+    category: "color",
+  },
+  {
+    slug: "split-complementary-generator",
+    name: "Split Complementary Colors",
+    icon: "SPL",
+    description: "Generate a split-complementary palette from a HEX color.",
+    category: "color",
+  },
+  {
+    slug: "monochromatic-palette-generator",
+    name: "Monochromatic Palette Generator",
+    icon: "MON",
+    description: "Create a monochromatic palette from a HEX color.",
+    category: "color",
+  },
+  {
+    slug: "random-color-generator",
+    name: "Random Color Generator",
+    icon: "RND",
+    description: "Free random color generator. Get a random HEX, RGB, and HSL color.",
+    category: "color",
+  },
+  {
+    slug: "color-contrast-checker",
+    name: "Color Contrast Checker",
+    icon: "AA",
+    description: "Check text and background contrast ratio for readable UI.",
+    category: "color",
+  },
+  {
+    slug: "wcag-contrast-checker",
+    name: "WCAG Contrast Checker",
+    icon: "AAA",
+    description:
+      "Test text and background colors against WCAG AA and AAA, including large text.",
+    category: "color",
+  },
+  {
+    slug: "color-blindness-simulator",
+    name: "Color Blindness Simulator",
+    icon: "CB",
+    description:
+      "Preview how a color looks with protanopia, deuteranopia, or tritanopia.",
+    category: "color",
+  },
+  {
+    slug: "image-color-palette-extractor",
+    name: "Extract Colors from Image",
+    icon: "IMG",
+    description: "Extract a color palette from an image. No upload. Copy HEX swatches.",
+    category: "color",
+  },
+  {
+    slug: "dominant-color-extractor",
+    name: "Dominant Color Extractor",
+    icon: "DOM",
+    description: "Find the dominant color in an uploaded image. Runs in your browser.",
+    category: "color",
+  },
+  {
+    slug: "color-name-finder",
+    name: "Color Name Finder",
+    icon: "NAM",
+    description: "Find the closest CSS color name for any HEX code.",
+    category: "color",
+  },
+  {
+    slug: "color-temperature-tool",
+    name: "Warm or Cool Color Checker",
+    icon: "K",
+    description: "Check if a HEX color is warm, cool, or neutral, plus an estimated Kelvin value.",
+    category: "color",
+  },
+  {
+    slug: "css-color-generator",
+    name: "CSS Color Code Generator",
+    icon: "VAR",
+    description: "Generate CSS color, background-color, and custom property declarations.",
+    category: "color",
+  },
+  {
+    slug: "tailwind-color-converter",
+    name: "HEX to Tailwind Converter",
+    icon: "TW",
+    description:
+      "Convert HEX to the nearest Tailwind CSS token and class, such as amber-500.",
+    category: "color",
+  },
 ];
 
 export const featuredSlugs = [
@@ -466,6 +663,41 @@ export const categoryPages = {
       "Free PDF converter online. PDF to Word, compress PDF, merge PDF, split PDF, PNG to JPG, and more. Files stay in your browser.",
     slugs: [...fileConverterSlugs],
   },
+  colors: {
+    title: "Free Color Tools Online",
+    description:
+      "Browse free color tools in your browser. Pickers, converters, palettes, gradients, and contrast checkers. No account.",
+    slugs: [
+      "color-picker",
+      "hex-to-rgb",
+      "rgb-to-hex",
+      "hex-to-hsl",
+      "hsl-to-hex",
+      "rgb-to-hsl",
+      "color-converter",
+      "color-palette-generator",
+      "gradient-generator",
+      "css-gradient-generator",
+      "color-shades-generator",
+      "color-tint-generator",
+      "color-tone-generator",
+      "complementary-color-generator",
+      "analogous-color-generator",
+      "triadic-color-generator",
+      "split-complementary-generator",
+      "monochromatic-palette-generator",
+      "random-color-generator",
+      "color-contrast-checker",
+      "wcag-contrast-checker",
+      "color-blindness-simulator",
+      "image-color-palette-extractor",
+      "dominant-color-extractor",
+      "color-name-finder",
+      "color-temperature-tool",
+      "css-color-generator",
+      "tailwind-color-converter",
+    ],
+  },
 } as const;
 
 export function getTool(slug: string) {
@@ -489,4 +721,155 @@ export function getFileConverterTools() {
 
 export function getFeaturedTools() {
   return getToolsBySlugs(featuredSlugs);
+}
+
+const relatedBySlug: Record<string, readonly string[]> = {
+  "color-picker": [
+    "css-color-generator",
+    "color-name-finder",
+    "color-palette-generator",
+    "random-color-generator",
+  ],
+  "hex-to-rgb": ["rgb-to-hex", "hex-to-hsl", "color-converter", "color-picker"],
+  "rgb-to-hex": ["hex-to-rgb", "rgb-to-hsl", "color-converter", "color-picker"],
+  "hex-to-hsl": ["hsl-to-hex", "hex-to-rgb", "color-converter", "color-shades-generator"],
+  "hsl-to-hex": ["hex-to-hsl", "rgb-to-hsl", "color-converter", "css-color-generator"],
+  "rgb-to-hsl": ["hex-to-hsl", "rgb-to-hex", "color-converter", "color-tint-generator"],
+  "color-converter": ["hex-to-rgb", "rgb-to-hex", "hex-to-hsl", "color-picker"],
+  "color-palette-generator": [
+    "complementary-color-generator",
+    "monochromatic-palette-generator",
+    "color-shades-generator",
+    "color-picker",
+  ],
+  "gradient-generator": [
+    "css-gradient-generator",
+    "color-palette-generator",
+    "color-picker",
+    "css-color-generator",
+  ],
+  "css-gradient-generator": [
+    "gradient-generator",
+    "css-color-generator",
+    "color-palette-generator",
+    "color-picker",
+  ],
+  "color-shades-generator": [
+    "color-tint-generator",
+    "color-tone-generator",
+    "monochromatic-palette-generator",
+    "hex-to-hsl",
+  ],
+  "color-tint-generator": [
+    "color-shades-generator",
+    "color-tone-generator",
+    "monochromatic-palette-generator",
+    "hex-to-hsl",
+  ],
+  "color-tone-generator": [
+    "color-shades-generator",
+    "color-tint-generator",
+    "monochromatic-palette-generator",
+    "color-palette-generator",
+  ],
+  "complementary-color-generator": [
+    "split-complementary-generator",
+    "analogous-color-generator",
+    "triadic-color-generator",
+    "color-palette-generator",
+  ],
+  "analogous-color-generator": [
+    "complementary-color-generator",
+    "triadic-color-generator",
+    "monochromatic-palette-generator",
+    "color-palette-generator",
+  ],
+  "triadic-color-generator": [
+    "complementary-color-generator",
+    "split-complementary-generator",
+    "analogous-color-generator",
+    "color-palette-generator",
+  ],
+  "split-complementary-generator": [
+    "complementary-color-generator",
+    "triadic-color-generator",
+    "analogous-color-generator",
+    "color-palette-generator",
+  ],
+  "monochromatic-palette-generator": [
+    "color-shades-generator",
+    "color-tint-generator",
+    "color-palette-generator",
+    "analogous-color-generator",
+  ],
+  "random-color-generator": [
+    "color-picker",
+    "color-palette-generator",
+    "color-name-finder",
+    "css-color-generator",
+  ],
+  "color-contrast-checker": [
+    "wcag-contrast-checker",
+    "color-blindness-simulator",
+    "color-picker",
+    "css-color-generator",
+  ],
+  "wcag-contrast-checker": [
+    "color-contrast-checker",
+    "color-blindness-simulator",
+    "color-picker",
+    "css-color-generator",
+  ],
+  "color-blindness-simulator": [
+    "color-contrast-checker",
+    "wcag-contrast-checker",
+    "color-palette-generator",
+    "color-picker",
+  ],
+  "image-color-palette-extractor": [
+    "dominant-color-extractor",
+    "color-palette-generator",
+    "color-name-finder",
+    "color-picker",
+  ],
+  "dominant-color-extractor": [
+    "image-color-palette-extractor",
+    "color-palette-generator",
+    "color-name-finder",
+    "color-picker",
+  ],
+  "color-name-finder": [
+    "tailwind-color-converter",
+    "color-picker",
+    "css-color-generator",
+    "hex-to-rgb",
+  ],
+  "color-temperature-tool": [
+    "color-picker",
+    "color-palette-generator",
+    "color-name-finder",
+    "css-color-generator",
+  ],
+  "css-color-generator": [
+    "color-picker",
+    "css-gradient-generator",
+    "tailwind-color-converter",
+    "color-converter",
+  ],
+  "tailwind-color-converter": [
+    "css-color-generator",
+    "color-name-finder",
+    "hex-to-rgb",
+    "color-picker",
+  ],
+};
+
+export function getRelatedTools(slug: string, limit = 4) {
+  const preferred = relatedBySlug[slug];
+  if (preferred) return getToolsBySlugs(preferred).slice(0, limit);
+  const tool = getTool(slug);
+  if (!tool) return [];
+  return tools
+    .filter((item) => item.category === tool.category && item.slug !== slug)
+    .slice(0, limit);
 }

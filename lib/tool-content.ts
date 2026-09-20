@@ -612,11 +612,25 @@ const custom: Record<string, Partial<ToolContent>> = {
   },
   "color-converter": {
     keyword: "color converter",
-    articleTitle: "Convert HEX colors to RGB",
+    articleTitle: "Convert HEX, RGB, HSL, HSV, and CMYK on one page",
     paragraphs: [
-      "Paste a HEX code to get RGB, or the other way around. Copy whichever format your CSS or design tool needs.",
-      "Accepts common 6-digit hex values.",
-      "This is a format converter, not a full palette tool.",
+      "Use this free color converter when you need every format at once. Paste HEX, RGB, HSL, HSV, or CMYK and copy the rest from a single result panel.",
+      "HEX accepts 3-digit or 6-digit codes. RGB is 0–255. HSL and HSV use hue 0–360 and percent 0–100. CMYK uses four percents.",
+      "One-way converters such as HEX to RGB or RGB to HEX are separate pages if you only need that pair. This page is the all-in-one converter.",
+    ],
+    faqs: [
+      {
+        q: "Which color formats can I convert?",
+        a: "HEX, RGB, HSL, HSV, and CMYK. Choose a from-format, paste a value, and copy the other four.",
+      },
+      {
+        q: "Is this color converter free?",
+        a: "Yes. Conversion runs in your browser with no account.",
+      },
+      {
+        q: "Does it upload my colors?",
+        a: "No. All conversion stays in your browser.",
+      },
     ],
   },
   "roman-numeral-converter": {
@@ -792,6 +806,539 @@ const custom: Record<string, Partial<ToolContent>> = {
       {
         q: "Will transparent PNG stay transparent?",
         a: "No. JPEG does not support transparency. Transparent pixels are filled with white.",
+      },
+    ],
+  },
+  "color-picker": {
+    keyword: "color picker",
+    articleTitle: "How this color picker works",
+    paragraphs: [
+      "Use this free color picker online to choose a color from a native color well or a HEX field. Both stay in sync. Copy HEX, RGB, HSL, HSV, and CMYK from the same pick.",
+      "Click the color well or type a hex code. Values update as you pick. No account and no upload.",
+      "Need a one-way converter such as HEX to RGB? Open that page. This picker is for choosing a color, not for format-only conversion.",
+    ],
+    faqs: [
+      {
+        q: "Is this color picker free?",
+        a: "Yes. This hex color picker is free and does not require signup.",
+      },
+      {
+        q: "Which formats do I get from the color picker?",
+        a: "HEX, RGB, HSL, HSV, and CMYK from the color you pick.",
+      },
+      {
+        q: "Does the color picker upload my colors?",
+        a: "No. Picking and conversion stay in your browser.",
+      },
+    ],
+  },
+  "color-palette-generator": {
+    keyword: "color palette generator",
+    articleTitle: "Build a matching color palette from HEX",
+    paragraphs: [
+      "Enter a base HEX color to generate a five-color matching palette: the seed, a nearby hue, a complement, a lighter tint, and a darker shade.",
+      "Use it for UI kits, landing pages, and brand boards. Copy any HEX value from the result row.",
+      "Harmony-only sets such as complementary or triadic colors have their own generators. This page builds a mixed marketing palette from one seed.",
+    ],
+    faqs: [
+      {
+        q: "How many colors does the palette generator return?",
+        a: "Five HEX colors derived from your seed: the original, a nearby hue, a complement, a lighter tint, and a darker shade.",
+      },
+      {
+        q: "Is the color palette generator free?",
+        a: "Yes. Palettes are generated in your browser with no account.",
+      },
+    ],
+  },
+  "gradient-generator": {
+    keyword: "gradient generator",
+    articleTitle: "Create a linear or radial gradient",
+    paragraphs: [
+      "This free gradient generator previews a linear or radial blend from two HEX colors. Copy the CSS function when the preview looks right.",
+      "Linear mode includes an angle in degrees. Radial mode uses a circle from the first color to the second.",
+      "If you need a full background declaration or a repeating-linear rule, use the CSS Gradient Generator. This page is for previewing the blend.",
+    ],
+    faqs: [
+      {
+        q: "What gradient types can I preview?",
+        a: "Linear gradients with an angle, and radial gradients between two HEX colors.",
+      },
+      {
+        q: "Is the gradient generator free?",
+        a: "Yes. Preview and copy the CSS function with no account.",
+      },
+    ],
+  },
+  "color-shades-generator": {
+    keyword: "color shades generator",
+    articleTitle: "Generate darker shades from HEX",
+    paragraphs: [
+      "Enter a HEX color to generate a five-step shade scale. Each step darkens the same hue in HSL so you can copy darker variants for hover states, borders, and print.",
+      "Tints (lighter) and tones (muted) are separate tools. This page only darkens the color.",
+      "All mixing runs in your browser.",
+    ],
+    faqs: [
+      {
+        q: "What is a color shade?",
+        a: "A shade is the same hue mixed toward black. This generator lowers lightness in five steps.",
+      },
+      {
+        q: "Is the color shades generator free?",
+        a: "Yes. Shade scales are generated in your browser.",
+      },
+    ],
+  },
+  "color-tint-generator": {
+    keyword: "color tint generator",
+    articleTitle: "Generate lighter tints from HEX",
+    paragraphs: [
+      "A tint mixes a color toward white. Paste a HEX code to get a five-step lighter scale you can use for backgrounds and highlights.",
+      "Shades darken. Tones desaturate. This page only lightens.",
+      "Conversion uses HSL lightness in your browser.",
+    ],
+    faqs: [
+      {
+        q: "What is a color tint?",
+        a: "A tint is the same hue mixed toward white. This generator raises lightness in five steps.",
+      },
+      {
+        q: "Is the color tint generator free?",
+        a: "Yes. Tint scales run in your browser with no account.",
+      },
+    ],
+  },
+  "color-tone-generator": {
+    keyword: "color tone generator",
+    articleTitle: "Generate muted tones from HEX",
+    paragraphs: [
+      "A tone pulls saturation toward gray while keeping hue. Paste a HEX color to copy a five-step muted scale.",
+      "Tints lighten and shades darken. Tones work well for secondary UI and print.",
+      "All mixing stays in your browser.",
+    ],
+    faqs: [
+      {
+        q: "What is a color tone?",
+        a: "A tone is the same hue with less saturation. This generator steps toward gray without changing hue.",
+      },
+      {
+        q: "Is the color tone generator free?",
+        a: "Yes. Tone scales are generated in your browser.",
+      },
+    ],
+  },
+  "complementary-color-generator": {
+    keyword: "complementary colors",
+    articleTitle: "Find complementary colors",
+    paragraphs: [
+      "Complementary colors sit 180° apart on the hue wheel. Paste a HEX code to see the seed and its opposite.",
+      "Use the pair for logos, call-to-action buttons, and high-contrast accents.",
+      "Analogous and triadic sets are separate pages. This one returns only the complement pair.",
+    ],
+    faqs: [
+      {
+        q: "What are complementary colors?",
+        a: "Two colors opposite each other on the hue wheel, 180° apart. Red’s complement is cyan-green, for example.",
+      },
+      {
+        q: "Is the complementary colors generator free?",
+        a: "Yes. The pair is calculated in your browser.",
+      },
+    ],
+  },
+  "analogous-color-generator": {
+    keyword: "analogous colors",
+    articleTitle: "Generate analogous colors",
+    paragraphs: [
+      "Analogous colors use neighboring hues, typically ±30°. Paste a HEX color to get a three-color analogous set.",
+      "These palettes feel calm and are common in nature-inspired branding.",
+      "Copy any HEX from the result row.",
+    ],
+    faqs: [
+      {
+        q: "What are analogous colors?",
+        a: "Colors next to each other on the hue wheel. This page uses your seed plus hues 30° on either side.",
+      },
+      {
+        q: "Is the analogous colors generator free?",
+        a: "Yes. The three HEX values are generated in your browser.",
+      },
+    ],
+  },
+  "triadic-color-generator": {
+    keyword: "triadic colors",
+    articleTitle: "Generate triadic colors",
+    paragraphs: [
+      "Triadic colors sit 120° apart on the hue wheel. Paste a HEX seed to get three evenly spaced hues.",
+      "Designers use triads when they need three distinct accents that still feel related.",
+      "The math is HSL hue rotation in your browser.",
+    ],
+    faqs: [
+      {
+        q: "What are triadic colors?",
+        a: "Three hues equally spaced on the color wheel, 120° apart. This page returns all three as HEX.",
+      },
+      {
+        q: "Is the triadic colors generator free?",
+        a: "Yes. Triads are calculated in your browser.",
+      },
+    ],
+  },
+  "split-complementary-generator": {
+    keyword: "split complementary colors",
+    articleTitle: "Generate split complementary colors",
+    paragraphs: [
+      "Split complementary colors use the seed plus the two hues beside its complement (about 150° and 210°).",
+      "You get contrast with less clash than a straight complement. Paste a HEX color and copy the three codes.",
+      "Runs locally. No account.",
+    ],
+    faqs: [
+      {
+        q: "What are split complementary colors?",
+        a: "Your base color plus the two neighbors of its complement. Contrast is high, but softer than a 180° pair.",
+      },
+      {
+        q: "Is the split complementary generator free?",
+        a: "Yes. The three HEX values are generated in your browser.",
+      },
+    ],
+  },
+  "monochromatic-palette-generator": {
+    keyword: "monochromatic palette",
+    articleTitle: "Create a monochromatic palette",
+    paragraphs: [
+      "A monochromatic palette keeps the same hue and varies lightness. Paste a HEX color to get a five-step scale.",
+      "Useful for charts, dark UI, and brand systems that should stay on one hue.",
+      "For mixed hues, use the Color Palette Generator.",
+    ],
+    faqs: [
+      {
+        q: "What is a monochromatic palette?",
+        a: "Several colors that share one hue and differ in lightness. This page returns five HEX steps.",
+      },
+      {
+        q: "Is the monochromatic palette generator free?",
+        a: "Yes. The scale is generated in your browser.",
+      },
+    ],
+  },
+  "hex-to-rgb": {
+    keyword: "HEX to RGB",
+    articleTitle: "Convert HEX to RGB",
+    paragraphs: [
+      "Paste a HEX color such as #E8A33D to get rgb(r, g, b). 3-digit HEX is expanded to 6 digits.",
+      "This page only converts HEX to RGB. Use RGB to HEX for the reverse, or the Color Converter for every format at once.",
+      "Conversion stays in your browser.",
+    ],
+    faqs: [
+      {
+        q: "How do I convert HEX to RGB?",
+        a: "Paste a hex code such as #E8A33D. The RGB line updates to rgb(232, 163, 61).",
+      },
+      {
+        q: "Does 3-digit HEX work?",
+        a: "Yes. #E83 becomes #EE8833 before conversion.",
+      },
+      {
+        q: "Is HEX to RGB conversion free?",
+        a: "Yes. It runs in your browser with no account.",
+      },
+    ],
+  },
+  "rgb-to-hex": {
+    keyword: "RGB to HEX",
+    articleTitle: "Convert RGB to HEX",
+    paragraphs: [
+      "Enter RGB as 232, 163, 61 or rgb(232, 163, 61) to get a six-digit HEX code.",
+      "Values are clamped to 0–255. For HEX to RGB, open that converter.",
+      "No upload and no account.",
+    ],
+    faqs: [
+      {
+        q: "How do I convert RGB to HEX?",
+        a: "Paste three channels such as 232, 163, 61 or rgb(232, 163, 61). The HEX line updates immediately.",
+      },
+      {
+        q: "Is RGB to HEX conversion free?",
+        a: "Yes. Conversion stays in your browser.",
+      },
+    ],
+  },
+  "hex-to-hsl": {
+    keyword: "HEX to HSL",
+    articleTitle: "Convert HEX to HSL",
+    paragraphs: [
+      "Paste a HEX color to read hue, saturation, and lightness. Hue is 0–360. Saturation and lightness are percents.",
+      "HSL is useful for shades and tints because you can change lightness without changing hue.",
+      "For HSL back to HEX, use HSL to HEX.",
+    ],
+    faqs: [
+      {
+        q: "How do I convert HEX to HSL?",
+        a: "Paste a hex code. The HSL line shows hue, saturation, and lightness.",
+      },
+      {
+        q: "Is HEX to HSL conversion free?",
+        a: "Yes. It runs in your browser with no account.",
+      },
+    ],
+  },
+  "hsl-to-hex": {
+    keyword: "HSL to HEX",
+    articleTitle: "Convert HSL to HEX",
+    paragraphs: [
+      "Enter HSL as hue, saturation, lightness — for example 38, 79, 57 — to get a HEX code.",
+      "You can also paste hsl(38, 79%, 57%). Hue wraps around 360.",
+      "For HEX to HSL, use that converter.",
+    ],
+    faqs: [
+      {
+        q: "How do I convert HSL to HEX?",
+        a: "Enter hue, saturation, and lightness, or paste an hsl() value. The HEX code updates as you type.",
+      },
+      {
+        q: "Is HSL to HEX conversion free?",
+        a: "Yes. Conversion stays in your browser.",
+      },
+    ],
+  },
+  "rgb-to-hsl": {
+    keyword: "RGB to HSL",
+    articleTitle: "Convert RGB to HSL",
+    paragraphs: [
+      "Enter RGB channels to get HSL. Useful when you already have rgb() from a design tool and need hue and lightness.",
+      "Paste 232, 163, 61 or rgb(232, 163, 61).",
+      "All math runs in your browser.",
+    ],
+    faqs: [
+      {
+        q: "How do I convert RGB to HSL?",
+        a: "Paste RGB channels. The HSL line shows hue, saturation, and lightness.",
+      },
+      {
+        q: "Is RGB to HSL conversion free?",
+        a: "Yes. It runs in your browser with no account.",
+      },
+    ],
+  },
+  "css-gradient-generator": {
+    keyword: "CSS gradient generator",
+    articleTitle: "Generate ready-to-use CSS gradients",
+    paragraphs: [
+      "Build a linear, radial, or repeating linear gradient and copy a CSS background rule you can paste into a stylesheet.",
+      "Linear and repeating modes include an angle in degrees. Radial mode uses a circle between two HEX colors.",
+      "The preview uses the same CSS string as the result. For a simpler preview without a full background rule, use the Gradient Generator.",
+    ],
+    faqs: [
+      {
+        q: "What CSS does this generator copy?",
+        a: "A background declaration such as background: linear-gradient(90deg, #14171C, #E8A33D);",
+      },
+      {
+        q: "Is the CSS gradient generator free?",
+        a: "Yes. Copy linear, radial, or repeating CSS with no account.",
+      },
+    ],
+  },
+  "wcag-contrast-checker": {
+    keyword: "WCAG contrast checker",
+    articleTitle: "Test WCAG AA and AAA contrast",
+    paragraphs: [
+      "Enter text and background HEX colors. This WCAG contrast checker reports AA and AAA for normal text, large text, and UI graphics using relative luminance.",
+      "Normal text needs 4.5:1 for AA and 7:1 for AAA. Large text can pass AA at 3:1. Non-text UI at 3:1.",
+      "For a simple contrast ratio without the full WCAG matrix, use the Color Contrast Checker.",
+    ],
+    faqs: [
+      {
+        q: "What contrast ratio do I need for WCAG AA?",
+        a: "4.5:1 for normal text. Large text can pass AA at 3:1. AAA for normal text is 7:1.",
+      },
+      {
+        q: "Does this checker follow WCAG 2?",
+        a: "Yes. It uses relative luminance from WCAG 2 and the AA / AAA thresholds for text and UI graphics.",
+      },
+      {
+        q: "Is this WCAG contrast checker free?",
+        a: "Yes. Contrast testing runs in your browser with no account.",
+      },
+    ],
+  },
+  "dominant-color-extractor": {
+    keyword: "dominant color from image",
+    articleTitle: "Find the dominant color in an image",
+    paragraphs: [
+      "Choose an image to find the most common color. Pixels are sampled in your browser. The file is not uploaded to a server.",
+      "The result is HEX, RGB, HSL, HSV, and CMYK for the dominant bucket.",
+      "For a full palette of several swatches, use Extract Colors from Image.",
+    ],
+    faqs: [
+      {
+        q: "How is the dominant color chosen?",
+        a: "Pixels are bucketed by similar RGB values. The most common bucket is the dominant color.",
+      },
+      {
+        q: "Are my images uploaded?",
+        a: "No. Dominant color extraction runs in your browser.",
+      },
+    ],
+  },
+  "color-temperature-tool": {
+    keyword: "warm or cool color",
+    articleTitle: "Check if a color is warm or cool",
+    paragraphs: [
+      "Paste a HEX color to see whether it reads warm, cool, or neutral, plus hue angle and an estimated Kelvin value.",
+      "Warm hues sit toward red and yellow. Cool hues sit toward green, cyan, and blue. Low saturation is treated as neutral.",
+      "This is a design check for UI palettes, not a photography white-balance meter. Kelvin is an sRGB approximation.",
+    ],
+    faqs: [
+      {
+        q: "How do I tell if a color is warm or cool?",
+        a: "Warm colors lean red, orange, or yellow. Cool colors lean green, cyan, or blue. Grayish colors are treated as neutral.",
+      },
+      {
+        q: "Is the Kelvin value exact?",
+        a: "No. It is estimated from sRGB chromaticity. Use it as a relative guide, not a spectrophotometer reading.",
+      },
+      {
+        q: "Is the warm or cool color checker free?",
+        a: "Yes. It runs in your browser with no account.",
+      },
+    ],
+  },
+  "css-color-generator": {
+    keyword: "CSS color code",
+    articleTitle: "Generate CSS color code",
+    paragraphs: [
+      "Pick a color or paste HEX to copy CSS you can drop into a stylesheet: a color declaration, background-color in RGB, and a custom property in HSL.",
+      "Use a one-way converter if you only need a value without CSS syntax.",
+      "Everything runs in your browser.",
+    ],
+    faqs: [
+      {
+        q: "What CSS does this generate?",
+        a: "color: #HEX; background-color: rgb(); and a --color custom property in hsl().",
+      },
+      {
+        q: "Is the CSS color code generator free?",
+        a: "Yes. Copy the declarations with no account.",
+      },
+    ],
+  },
+  "random-color-generator": {
+    keyword: "random color generator",
+    articleTitle: "Generate a random HEX color",
+    paragraphs: [
+      "Click Generate to pick a random color with the browser cryptographic RNG. You get HEX, RGB, HSL, HSV, and CMYK.",
+      "Useful for mood boards, placeholder UI, and sampling palettes. It is not a named-brand color library.",
+      "Lock a color you like by copying the HEX, then open the Color Picker to nudge it.",
+    ],
+    faqs: [
+      {
+        q: "How random are the colors?",
+        a: "Each click uses the browser cryptographic random number generator for three RGB channels.",
+      },
+      {
+        q: "Is the random color generator free?",
+        a: "Yes. Generate as many colors as you want with no account.",
+      },
+    ],
+  },
+  "color-contrast-checker": {
+    keyword: "color contrast checker",
+    articleTitle: "Check text and background contrast",
+    paragraphs: [
+      "Enter a text HEX and a background HEX. The page shows the contrast ratio and a simple pass or fail for readable normal text.",
+      "The sample line uses your two colors. Math uses relative luminance.",
+      "For the full WCAG AA / AAA matrix including large text and UI graphics, use the WCAG Contrast Checker.",
+    ],
+    faqs: [
+      {
+        q: "What is a good contrast ratio for text?",
+        a: "Aim for at least 4.5:1 between text and background for body copy. This page reports the ratio and a simple pass or fail.",
+      },
+      {
+        q: "Is the color contrast checker free?",
+        a: "Yes. Contrast math runs in your browser.",
+      },
+    ],
+  },
+  "color-blindness-simulator": {
+    keyword: "color blindness simulator",
+    articleTitle: "Preview protanopia, deuteranopia, and tritanopia",
+    paragraphs: [
+      "Paste a HEX color and choose a color-vision deficiency. The simulated RGB uses a standard matrix approximation for protanopia, deuteranopia, or tritanopia.",
+      "This is a planning aid for palettes and charts, not a clinical test. Check contrast as well with the Color Contrast Checker.",
+      "Simulation stays in your browser.",
+    ],
+    faqs: [
+      {
+        q: "Which types of color blindness can I simulate?",
+        a: "Protanopia, deuteranopia, and tritanopia. These are common red-green and blue-yellow approximations.",
+      },
+      {
+        q: "Is this a medical test?",
+        a: "No. It is a design preview using a standard color matrix, not a diagnosis.",
+      },
+      {
+        q: "Is the color blindness simulator free?",
+        a: "Yes. Simulation runs in your browser.",
+      },
+    ],
+  },
+  "image-color-palette-extractor": {
+    keyword: "extract colors from image",
+    articleTitle: "Extract colors from an image",
+    paragraphs: [
+      "Choose an image to extract a color palette. Pixels are sampled in your browser. The file is not uploaded to a server.",
+      "Use a HEX as a brand seed in the Color Palette Generator. For a single most-used color, open Dominant Color from Image.",
+      "Photos with lots of noise may return gray-heavy palettes. Crop to the subject for cleaner swatches.",
+    ],
+    faqs: [
+      {
+        q: "How do I extract colors from an image?",
+        a: "Choose an image file. The page samples pixels locally and lists the most common HEX swatches.",
+      },
+      {
+        q: "Are my images uploaded?",
+        a: "No. Palette extraction runs in your browser.",
+      },
+    ],
+  },
+  "color-name-finder": {
+    keyword: "hex to color name",
+    articleTitle: "Find the closest CSS color name",
+    paragraphs: [
+      "Paste a HEX code to see the nearest CSS color name from a common named-color list, plus the exact HEX of your input.",
+      "Names are approximate. Brand guides should still use the original HEX.",
+      "For Tailwind tokens instead of CSS names, use HEX to Tailwind.",
+    ],
+    faqs: [
+      {
+        q: "How do I find the name of a HEX color?",
+        a: "Paste the hex code. The closest CSS named color is shown, such as coral or steelblue.",
+      },
+      {
+        q: "Are the names official brand names?",
+        a: "No. They are approximate CSS color names. Keep the original HEX for brand work.",
+      },
+    ],
+  },
+  "tailwind-color-converter": {
+    keyword: "hex to tailwind",
+    articleTitle: "Convert HEX to a Tailwind color token",
+    paragraphs: [
+      "Paste a HEX color to find the nearest Tailwind CSS default palette token, such as amber-500, and a suggested class like bg-amber-500.",
+      "Matching uses Euclidean distance in RGB against Tailwind’s 50–950 steps. Custom theme colors are not included.",
+      "Copy the token into your config or class list. For raw HEX or RGB values, use a dedicated converter.",
+    ],
+    faqs: [
+      {
+        q: "How do I convert HEX to a Tailwind color?",
+        a: "Paste a hex code. The nearest default token such as slate-900 or amber-500 is shown with a suggested class.",
+      },
+      {
+        q: "Does it include custom Tailwind theme colors?",
+        a: "No. Matching uses the default Tailwind palette only.",
       },
     ],
   },

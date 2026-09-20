@@ -307,11 +307,11 @@ const TOOL_SEO: Record<
     focusKeyword: "binary converter",
   },
   "color-converter": {
-    title: "Free HEX to RGB Color Converter | SmartToolX",
+    title: "Color Converter Online Free | HEX RGB HSL HSV CMYK",
     description:
-      "Convert HEX colors to RGB and back. Paste a code and copy the matching format for CSS or design tools.",
+      "Free all-in-one color converter. Paste HEX, RGB, HSL, HSV, or CMYK and copy every other format on one page. No account. Runs in your browser.",
     keywords:
-      "HEX to RGB, RGB to HEX, color converter, hex color picker converter",
+      "color converter, hex rgb hsl converter, hsv converter, cmyk converter, all in one color converter",
     focusKeyword: "color converter",
   },
   "roman-numeral-converter": {
@@ -474,6 +474,210 @@ const TOOL_SEO: Record<
       "PNG to JPG, PNG to JPG converter, convert PNG to JPG, PNG to JPEG online free, PNG to JPG online, convert PNG to JPEG, PNG to JPG converter free",
     focusKeyword: "PNG to JPG converter",
   },
+  "color-picker": {
+    title: "Color Picker Online Free | HEX RGB HSL",
+    description:
+      "Free color picker online. Click a swatch or type a hex code and copy HEX, RGB, HSL, HSV, and CMYK. No signup. Runs in your browser.",
+    keywords:
+      "color picker, color picker online, hex color picker, html color picker, free color picker",
+    focusKeyword: "color picker",
+  },
+  "hex-to-rgb": {
+    title: "HEX to RGB Converter Online Free | SmartToolX",
+    description:
+      "Convert HEX to RGB online free. Paste a hex code such as #E8A33D and copy rgb() instantly. 3-digit HEX works. No account.",
+    keywords: "HEX to RGB, hex to rgb converter, convert hex to rgb, hex color to rgb",
+    focusKeyword: "HEX to RGB",
+  },
+  "rgb-to-hex": {
+    title: "RGB to HEX Converter Online Free | SmartToolX",
+    description:
+      "Convert RGB to HEX online free. Enter 232, 163, 61 or rgb() and copy a six-digit hex code. Values clamp to 0–255.",
+    keywords: "RGB to HEX, rgb to hex converter, convert rgb to hex, rgb color to hex",
+    focusKeyword: "RGB to HEX",
+  },
+  "hex-to-hsl": {
+    title: "HEX to HSL Converter Online Free | SmartToolX",
+    description:
+      "Convert HEX to HSL online free. Paste a hex color and copy hue, saturation, and lightness. Useful for shades and tints.",
+    keywords: "HEX to HSL, hex to hsl converter, convert hex to hsl, hex color to hsl",
+    focusKeyword: "HEX to HSL",
+  },
+  "hsl-to-hex": {
+    title: "HSL to HEX Converter Online Free | SmartToolX",
+    description:
+      "Convert HSL to HEX online free. Enter hue, saturation, and lightness — or paste hsl() — and copy a hex code.",
+    keywords: "HSL to HEX, hsl to hex converter, convert hsl to hex, hsl color to hex",
+    focusKeyword: "HSL to HEX",
+  },
+  "rgb-to-hsl": {
+    title: "RGB to HSL Converter Online Free | SmartToolX",
+    description:
+      "Convert RGB to HSL online free. Paste rgb values from a design tool and copy hue, saturation, and lightness.",
+    keywords: "RGB to HSL, rgb to hsl converter, convert rgb to hsl, rgb color to hsl",
+    focusKeyword: "RGB to HSL",
+  },
+  "color-palette-generator": {
+    title: "Color Palette Generator Online Free | SmartToolX",
+    description:
+      "Free color palette generator. Enter a HEX seed and get a five-color matching palette for UI, branding, and CSS.",
+    keywords:
+      "color palette generator, palette generator, matching color palette, color scheme generator",
+    focusKeyword: "color palette generator",
+  },
+  "gradient-generator": {
+    title: "Gradient Generator Online Free | Linear & Radial",
+    description:
+      "Free gradient generator. Preview a linear or radial blend from two HEX colors and copy the CSS function. No signup.",
+    keywords:
+      "gradient generator, linear gradient generator, radial gradient generator, color gradient maker",
+    focusKeyword: "gradient generator",
+  },
+  "css-gradient-generator": {
+    title: "CSS Gradient Generator Online Free | Copy CSS",
+    description:
+      "Free CSS gradient generator. Copy a ready-to-paste background rule for linear, radial, or repeating-linear gradients.",
+    keywords:
+      "CSS gradient generator, css linear gradient, repeating linear gradient, background gradient css",
+    focusKeyword: "CSS gradient generator",
+  },
+  "color-shades-generator": {
+    title: "Color Shades Generator Online Free | Darker HEX",
+    description:
+      "Generate darker shades from any HEX color. Copy a five-step shade scale for hover states, borders, and print. Free in your browser.",
+    keywords: "color shades generator, darker shades, hex shades, shade generator",
+    focusKeyword: "color shades generator",
+  },
+  "color-tint-generator": {
+    title: "Color Tint Generator Online Free | Lighter HEX",
+    description:
+      "Generate lighter tints from any HEX color. Mix toward white and copy a five-step tint scale for backgrounds and highlights.",
+    keywords: "color tint generator, lighter tints, hex tints, tint generator",
+    focusKeyword: "color tint generator",
+  },
+  "color-tone-generator": {
+    title: "Color Tone Generator Online Free | Muted HEX",
+    description:
+      "Generate muted tones from any HEX color. Lower saturation toward gray without changing hue. Copy a five-step tone scale.",
+    keywords: "color tone generator, muted tones, desaturated color, tone generator",
+    focusKeyword: "color tone generator",
+  },
+  "complementary-color-generator": {
+    title: "Complementary Colors Generator Free | SmartToolX",
+    description:
+      "Find complementary colors for any HEX code. See the 180° opposite hue instantly and copy both HEX values. Free, no account.",
+    keywords: "complementary colors, complementary color, opposite color, color wheel complement",
+    focusKeyword: "complementary colors",
+  },
+  "analogous-color-generator": {
+    title: "Analogous Colors Generator Free | SmartToolX",
+    description:
+      "Generate analogous colors from a HEX seed. Get neighboring hues at ±30° for a calm three-color palette you can copy.",
+    keywords: "analogous colors, analogous palette, neighboring hues, analogous color scheme",
+    focusKeyword: "analogous colors",
+  },
+  "triadic-color-generator": {
+    title: "Triadic Colors Generator Free | SmartToolX",
+    description:
+      "Generate triadic colors from one HEX seed. Three hues 120° apart for related accents you can copy as HEX codes.",
+    keywords: "triadic colors, triadic palette, triadic color scheme, 120 degree colors",
+    focusKeyword: "triadic colors",
+  },
+  "split-complementary-generator": {
+    title: "Split Complementary Colors Free | Generator",
+    description:
+      "Generate split complementary colors from a HEX seed. Get the two hues beside the complement for contrast with less clash.",
+    keywords:
+      "split complementary colors, split complementary palette, split complement colors",
+    focusKeyword: "split complementary colors",
+  },
+  "monochromatic-palette-generator": {
+    title: "Monochromatic Palette Generator Free | SmartToolX",
+    description:
+      "Create a monochromatic palette from a HEX color. Same hue, five lightness steps for charts, dark UI, and brand systems.",
+    keywords:
+      "monochromatic palette, monochromatic colors, single hue palette, mono color scheme",
+    focusKeyword: "monochromatic palette",
+  },
+  "random-color-generator": {
+    title: "Random Color Generator Online Free | SmartToolX",
+    description:
+      "Free random color generator. Click once for a random HEX, RGB, HSL, HSV, and CMYK color. Uses the browser cryptographic RNG.",
+    keywords:
+      "random color generator, random hex color, generate random color",
+    focusKeyword: "random color generator",
+  },
+  "color-contrast-checker": {
+    title: "Color Contrast Checker Online Free | Contrast Ratio",
+    description:
+      "Free color contrast checker. Enter text and background HEX to see the contrast ratio and a simple pass or fail for readable text.",
+    keywords:
+      "color contrast checker, contrast ratio calculator, text background contrast, readable contrast",
+    focusKeyword: "color contrast checker",
+  },
+  "wcag-contrast-checker": {
+    title: "WCAG Contrast Checker Online Free | AA & AAA",
+    description:
+      "Free WCAG contrast checker. Test normal text, large text, and UI graphics against WCAG 2 AA and AAA using relative luminance.",
+    keywords:
+      "WCAG contrast checker, WCAG AA contrast, WCAG AAA, accessibility contrast checker",
+    focusKeyword: "WCAG contrast checker",
+  },
+  "color-blindness-simulator": {
+    title: "Color Blindness Simulator Online Free | SmartToolX",
+    description:
+      "Preview a HEX color with protanopia, deuteranopia, or tritanopia. Free color-vision deficiency simulator in your browser.",
+    keywords:
+      "color blindness simulator, color vision deficiency, protanopia simulator, deuteranopia, tritanopia",
+    focusKeyword: "color blindness simulator",
+  },
+  "image-color-palette-extractor": {
+    title: "Extract Colors from Image Free | Palette Extractor",
+    description:
+      "Extract a color palette from an image in your browser. No upload to a server. Copy HEX swatches for UI and branding.",
+    keywords:
+      "extract colors from image, image color palette, palette from photo, image palette extractor",
+    focusKeyword: "extract colors from image",
+  },
+  "dominant-color-extractor": {
+    title: "Dominant Color from Image Free | SmartToolX",
+    description:
+      "Find the dominant color in an image. Sampling runs in your browser. Copy HEX, RGB, and HSL for the most used color.",
+    keywords:
+      "dominant color from image, dominant color extractor, most used color in photo",
+    focusKeyword: "dominant color from image",
+  },
+  "color-name-finder": {
+    title: "Color Name Finder Online Free | HEX to Color Name",
+    description:
+      "Find the closest CSS color name for any HEX code. Free hex to color name lookup in your browser. Names are approximate.",
+    keywords:
+      "hex to color name, color name finder, what color is this hex, css color name",
+    focusKeyword: "hex to color name",
+  },
+  "color-temperature-tool": {
+    title: "Warm or Cool Color Checker Free | SmartToolX",
+    description:
+      "Check if a HEX color is warm, cool, or neutral. See hue angle and an estimated Kelvin value. Free in your browser.",
+    keywords: "warm or cool color, warm cool color checker, is this color warm or cool",
+    focusKeyword: "warm or cool color",
+  },
+  "css-color-generator": {
+    title: "CSS Color Code Generator Online Free | SmartToolX",
+    description:
+      "Generate CSS color code from a HEX color. Copy color, background-color, and a custom property you can paste into a stylesheet.",
+    keywords:
+      "CSS color code, css color code generator, css background-color, css custom property color",
+    focusKeyword: "CSS color code",
+  },
+  "tailwind-color-converter": {
+    title: "HEX to Tailwind Color Converter Free | SmartToolX",
+    description:
+      "Convert HEX to the nearest Tailwind CSS color token and class, such as amber-500 or slate-900. Default palette only.",
+    keywords:
+      "hex to tailwind, Tailwind color converter, closest tailwind color, tailwind css color class",
+    focusKeyword: "hex to tailwind",
+  },
 };
 
 const pageSeo: Record<string, SeoEntry> = {
@@ -481,10 +685,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/",
     "Home",
     "Free Online Calculators and PDF Converter | SmartToolX",
-    "Free online calculators and a free PDF converter in your browser. Sleep calculator, mortgage calculator, GPA calculator, PNG to JPG, period calculator, BMI, EMI, and more. No account needed.",
+    "Free online calculators, color tools, and a free PDF converter in your browser. Color picker, palettes, sleep calculator, mortgage calculator, GPA calculator, PNG to JPG, BMI, EMI, and more. No account needed.",
     {
       keywords:
-        "sleep calculator, mortgage calculator, GPA calculator, random number generator, PNG to JPG, free online calculator, free PDF converter, BMI calculator, EMI calculator, SmartToolX",
+        "color tools, color picker, sleep calculator, mortgage calculator, GPA calculator, random number generator, PNG to JPG, free online calculator, SmartToolX",
       h1: "Free online calculators and PDF converter",
       focusKeyword: "free online calculators",
       schemaType: "WebSite",
@@ -494,10 +698,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/tools",
     "All Tools",
     "All Free Tools | SmartToolX",
-    "Browse every SmartToolX calculator, converter, text tool, and file converter. Sleep calculator, mortgage, GPA, random numbers, PNG to JPG, and more. Each one runs in your browser.",
+    "Browse every SmartToolX calculator, converter, text tool, file converter, and color tool. Color picker, palettes, sleep calculator, mortgage, GPA, PNG to JPG, and more. Each one runs in your browser.",
     {
       keywords:
-        "sleep calculator, mortgage calculator, GPA calculator, random number generator, PNG to JPG, all tools, free online tools, calculator list, PDF converter list, SmartToolX tools",
+        "color tools, color picker, sleep calculator, mortgage calculator, GPA calculator, random number generator, PNG to JPG, all tools, free online tools, SmartToolX tools",
       focusKeyword: "free online tools",
     },
   ),
@@ -516,7 +720,7 @@ const pageSeo: Record<string, SeoEntry> = {
     "/converters",
     "Converters",
     "Free Online Converters | SmartToolX",
-    "Convert currency, units, temperature, time zones, GPA, colors, and more without leaving the page. Live rates for money, standard factors for the rest.",
+    "Convert currency, units, temperature, time zones, GPA, and more without leaving the page. Live rates for money, standard factors for the rest.",
     {
       keywords:
         "GPA calculator, CGPA to percentage, unit converter, currency converter, time zone converter, temperature converter, live exchange rates, binary converter",
@@ -555,6 +759,18 @@ const pageSeo: Record<string, SeoEntry> = {
         "PNG to JPG, free PDF converter, PDF to Word online free, compress PDF online, merge PDF, split PDF, Word to PDF, PPT to PDF, file converter",
       focusKeyword: "free PDF converter",
       h1: "Free PDF Converter Online",
+    },
+  ),
+  "/colors": seo(
+    "/colors",
+    "Color Tools",
+    "Free Color Tools Online | SmartToolX",
+    "Free color tools online. Open a picker, converter, palette, gradient, or contrast checker in your browser. No account and no upload.",
+    {
+      keywords:
+        "color tools, free color tools, online color tools, color utilities, free color picker tools",
+      focusKeyword: "color tools",
+      h1: "Free Color Tools Online",
     },
   ),
   "/about": seo(

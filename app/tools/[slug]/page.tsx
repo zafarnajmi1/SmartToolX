@@ -6,7 +6,7 @@ import { ToolGuide } from "@/components/tools/ToolGuide";
 import { ToolWidget } from "@/components/tools/ToolWidget";
 import { RelatedTools, ToolWorkspace } from "@/components/tools/ToolWorkspace";
 import { seoMetadata } from "@/lib/seo";
-import { getTool, tools } from "@/lib/tools";
+import { getRelatedTools, getTool, tools } from "@/lib/tools";
 
 type ToolParams = { slug: string };
 
@@ -32,9 +32,7 @@ export default async function ToolPage({
   const tool = getTool(slug);
   if (!tool) notFound();
 
-  const related = tools
-    .filter((item) => item.category === tool.category && item.slug !== tool.slug)
-    .slice(0, 4);
+  const related = getRelatedTools(tool.slug);
 
   return (
     <>
