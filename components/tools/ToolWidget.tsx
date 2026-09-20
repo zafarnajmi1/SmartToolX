@@ -39,6 +39,10 @@ import {
   FdCalculator,
   JsonFormatter,
   TimeZoneConverter,
+  SleepCalculator,
+  MortgageCalculator,
+  RandomNumberGenerator,
+  GpaCalculator,
 } from "@/components/tools/ExtraWidgets";
 
 export function ToolWidget({ slug }: { slug: string }) {
@@ -139,6 +143,16 @@ export function ToolWidget({ slug }: { slug: string }) {
       return <FileConverter id="png-to-pdf" />;
     case "split-pdf":
       return <FileConverter id="split-pdf" />;
+    case "sleep-calculator":
+      return <SleepCalculator />;
+    case "mortgage-calculator":
+      return <MortgageCalculator />;
+    case "random-number-generator":
+      return <RandomNumberGenerator />;
+    case "gpa-calculator":
+      return <GpaCalculator />;
+    case "png-to-jpg":
+      return <FileConverter id="png-to-jpg" />;
     default:
       return null;
   }

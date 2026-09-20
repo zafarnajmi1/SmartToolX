@@ -19,7 +19,7 @@ export function AppShell({
   return (
     <>
       <Header />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1 pb-[68px] max-[800px]:pb-[58px]">{children}</main>
       <Footer social={social} />
     </>
   );

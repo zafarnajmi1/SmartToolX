@@ -8,6 +8,7 @@ import {
   mergePdfs,
   pdfToDocx,
   pdfToImages,
+  pngToJpg,
   pptToPdf,
   splitPdf,
   wordToPdf,
@@ -25,7 +26,8 @@ type FileToolId =
   | "merge-pdf"
   | "pdf-to-png"
   | "png-to-pdf"
-  | "split-pdf";
+  | "split-pdf"
+  | "png-to-jpg";
 
 type ToolConfig = {
   accept: string;
@@ -172,6 +174,18 @@ const configs: Record<FileToolId, ToolConfig> = {
     resultIcon: "PDF",
     downloadLabel: "Download Split PDF",
     convert: (files) => splitPdf(files[0]),
+  },
+  "png-to-jpg": {
+    accept: ".png,image/png",
+    multiple: true,
+    minFiles: 1,
+    maxMb: 25,
+    dropIcon: "PNG",
+    dropTitle: "Drop your PNG images here",
+    button: "Convert to JPG",
+    resultIcon: "JPG",
+    downloadLabel: "Download JPG",
+    convert: (files) => pngToJpg(files),
   },
 };
 

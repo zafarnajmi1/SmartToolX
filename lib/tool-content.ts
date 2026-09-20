@@ -660,6 +660,141 @@ const custom: Record<string, Partial<ToolContent>> = {
       },
     ],
   },
+  "sleep-calculator": {
+    keyword: "sleep calculator",
+    articleTitle: "How this sleep calculator finds bedtime and wake time",
+    paragraphs: [
+      "Use this free sleep calculator online to plan bedtime or wake-up time around 90-minute sleep cycles. Most people fall asleep in about 15 minutes, then move through light, deep, and REM sleep in each cycle.",
+      "Pick Find bedtime from wake time if you know when you must get up. Pick Find wake time from bedtime if you know when you can go to sleep. The page shows 6, 5, and 4 cycle options so you can choose about 9, 7.5, or 6 hours of sleep.",
+      "This sleep cycle calculator is a planning aid, not medical advice. Teens, shift workers, and people with sleep disorders may need a different schedule. Pair it with the age calculator only for general health tracking.",
+    ],
+    faqs: [
+      {
+        q: "How does this sleep calculator work?",
+        a: "It adds 15 minutes to fall asleep, then counts 90-minute sleep cycles. You get three suggested times for 6, 5, and 4 cycles.",
+      },
+      {
+        q: "Is this sleep calculator free?",
+        a: "Yes. This bedtime and wake time calculator is free. There is no account or paywall.",
+      },
+      {
+        q: "How many hours of sleep should I get?",
+        a: "Many adults feel better with 7 to 9 hours. That is usually 5 or 6 complete 90-minute cycles plus time to fall asleep.",
+      },
+      {
+        q: "Does the sleep calculator save my times?",
+        a: "No. Wake time and bedtime stay in your browser.",
+      },
+    ],
+  },
+  "mortgage-calculator": {
+    keyword: "mortgage calculator",
+    articleTitle: "How monthly mortgage payment is calculated",
+    paragraphs: [
+      "This free mortgage calculator online shows the monthly home loan payment from home price, down payment, annual interest, and loan term. The loan amount is price minus down payment. The payment uses the standard amortizing formula also used by a mortgage payment calculator at a bank.",
+      "You also see total payable and total interest over the full term. A 30-year mortgage keeps the monthly payment lower and the interest higher. A 15-year term does the opposite.",
+      "This house payment calculator does not include property tax, homeowners insurance, or PMI. Use it to compare offers, then confirm the figure with your lender. For India-style reducing-balance loans without a down-payment field, use the EMI calculator.",
+    ],
+    faqs: [
+      {
+        q: "How do I use this mortgage calculator?",
+        a: "Enter home price, down payment, annual interest percent, and loan term in years. Monthly payment, total payable, and total interest update on the right.",
+      },
+      {
+        q: "Is this mortgage calculator free?",
+        a: "Yes. The mortgage payment calculator is free and does not require an account.",
+      },
+      {
+        q: "Does it include taxes and insurance?",
+        a: "No. This page estimates principal and interest only. Add tax, insurance, and PMI from your lender quote.",
+      },
+      {
+        q: "What is the mortgage payment formula?",
+        a: "Monthly payment = P × r × (1+r)^n / ((1+r)^n − 1), where P is the loan after down payment, r is the monthly rate, and n is the number of months.",
+      },
+    ],
+  },
+  "random-number-generator": {
+    keyword: "random number generator",
+    articleTitle: "How this random number generator works",
+    paragraphs: [
+      "This free random number generator online picks integers between a minimum and a maximum, including popular ranges such as 1 to 100. Set how many numbers you need, then click Generate.",
+      "Numbers come from the browser’s cryptographic random source, not a predictable sequence. You can generate up to 100 values at once. Duplicates can appear because each draw is independent.",
+      "Use the number generator for giveaways, classroom picks, dice-style games, and sampling. It is not a lottery or gambling service. Pair it with the password generator when you need random characters instead of numbers.",
+    ],
+    faqs: [
+      {
+        q: "How do I generate a random number from 1 to 100?",
+        a: "Set minimum to 1, maximum to 100, how many to 1, then click Generate. This random number generator 1-100 run stays in your browser.",
+      },
+      {
+        q: "Is this random number generator free?",
+        a: "Yes. The RNG online tool is free. There is no signup.",
+      },
+      {
+        q: "Can I generate more than one number?",
+        a: "Yes. Set How many to any value from 1 to 100. Results appear as a comma-separated list.",
+      },
+      {
+        q: "Are the numbers truly random?",
+        a: "They use crypto.getRandomValues in your browser. That is strong enough for everyday picking. It is not a certified lottery draw.",
+      },
+    ],
+  },
+  "gpa-calculator": {
+    keyword: "GPA calculator",
+    articleTitle: "How to calculate GPA and convert CGPA to percentage",
+    paragraphs: [
+      "This free GPA calculator online covers the searches students actually type: GPA from credit hours, percentage to 4.0 GPA, CGPA to percentage, and percentage to CGPA. Grade point average is total grade points divided by total credit hours.",
+      "CGPA to percentage on a 10-point scale uses the common CBSE-style rule: percentage = CGPA × 9.5. On a 4-point scale, percentage = (CGPA / 4) × 100. Percentage to GPA (4.0) uses a linear map of percentage / 25, so 100% is 4.0 and 75% is 3.0.",
+      "Universities publish their own conversion tables. Use this college GPA calculator for a quick check, then follow your registrar’s chart for official transcripts. Related tools include the percentage calculator and number to words converter.",
+    ],
+    faqs: [
+      {
+        q: "How do I calculate GPA from credits?",
+        a: "Add your total grade points, add total credit hours, and divide points by credits. Example: 36 points and 12 credits is a 3.00 GPA.",
+      },
+      {
+        q: "How do I convert CGPA to percentage?",
+        a: "On a 10-point scale this GPA calculator uses percentage = CGPA × 9.5. On a 4-point scale it uses (CGPA / 4) × 100.",
+      },
+      {
+        q: "Is this GPA calculator free?",
+        a: "Yes. GPA calculator, CGPA calculator, and CGPA to percentage conversion are free with no account.",
+      },
+      {
+        q: "Is percentage to 4.0 GPA official?",
+        a: "No. The 4.0 conversion here is a simple linear estimate (percentage / 25). Your college may use letter-grade cutoffs instead.",
+      },
+    ],
+  },
+  "png-to-jpg": {
+    keyword: "PNG to JPG converter",
+    articleTitle: "Convert PNG to JPG online free",
+    paragraphs: [
+      "Use this free PNG to JPG converter to turn PNG images into JPEG without uploading them. Convert PNG to JPG online free and download a .jpg file, or several images as a zip.",
+      "Drop one or more PNG files above, click Convert to JPG, then download. Transparent PNG areas become white in the JPEG because JPG has no alpha channel.",
+      "Conversion runs in your browser. No signup. If you need a PDF instead, use PNG to PDF. If you need page images from a document, use PDF to JPG.",
+    ],
+    faqs: [
+      {
+        q: "Is this PNG to JPG converter free?",
+        a: "Yes. You can convert PNG to JPG online free. There is no paywall.",
+      },
+      {
+        q: "Do I need to sign up?",
+        a: "No. Open the page, drop a PNG, and download the JPG.",
+      },
+      {
+        q: "Are my images uploaded?",
+        a: "No. PNG to JPEG conversion runs in your browser. Files are not sent to a server.",
+      },
+      {
+        q: "Will transparent PNG stay transparent?",
+        a: "No. JPEG does not support transparency. Transparent pixels are filled with white.",
+      },
+    ],
+  },
 };
 
 export function getToolContent(slug: string): ToolContent | null {

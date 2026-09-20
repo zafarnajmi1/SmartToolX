@@ -434,6 +434,46 @@ const TOOL_SEO: Record<
       "split PDF, split PDF online, split PDF online free, extract PDF pages, split PDF pages",
     focusKeyword: "split PDF",
   },
+  "sleep-calculator": {
+    title: "Sleep Calculator Online Free | Bedtime & Wake Time",
+    description:
+      "Free sleep calculator online. Find the best bedtime or wake-up time from 90-minute sleep cycles. No account needed.",
+    keywords:
+      "sleep calculator, bedtime calculator, sleep cycle calculator, wake up calculator, when should I go to bed, sleep time calculator, sleep calculator online",
+    focusKeyword: "sleep calculator",
+  },
+  "mortgage-calculator": {
+    title: "Mortgage Calculator Online Free | Monthly Payment",
+    description:
+      "Free mortgage calculator online. See monthly payment, total interest, and amount payable from home price, down payment, rate, and term.",
+    keywords:
+      "mortgage calculator, mortgage payment calculator, home loan calculator, monthly mortgage payment, mortgage calculator with down payment, house payment calculator, mortgage calculator online",
+    focusKeyword: "mortgage calculator",
+  },
+  "random-number-generator": {
+    title: "Random Number Generator Online Free | 1 to 100",
+    description:
+      "Free random number generator online. Pick random numbers between any minimum and maximum, including 1 to 100. No signup.",
+    keywords:
+      "random number generator, random number generator 1-100, number generator, random number picker, RNG online, generate random numbers, random number generator online",
+    focusKeyword: "random number generator",
+  },
+  "gpa-calculator": {
+    title: "GPA Calculator Online Free | CGPA to Percentage",
+    description:
+      "Free GPA calculator online. Find GPA from credits, convert percentage to 4.0 GPA, and convert CGPA to percentage.",
+    keywords:
+      "GPA calculator, GPA calculator online, CGPA calculator, CGPA to percentage, college GPA calculator, GPA calculator 4.0, grade point average calculator, percentage to CGPA",
+    focusKeyword: "GPA calculator",
+  },
+  "png-to-jpg": {
+    title: "PNG to JPG Converter Free Online | SmartToolX",
+    description:
+      "Convert PNG to JPG online free. Turn PNG images into JPEG in your browser. No signup. Files are not uploaded.",
+    keywords:
+      "PNG to JPG, PNG to JPG converter, convert PNG to JPG, PNG to JPEG online free, PNG to JPG online, convert PNG to JPEG, PNG to JPG converter free",
+    focusKeyword: "PNG to JPG converter",
+  },
 };
 
 const pageSeo: Record<string, SeoEntry> = {
@@ -441,10 +481,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/",
     "Home",
     "Free Online Calculators and PDF Converter | SmartToolX",
-    "Free online calculators and a free PDF converter in your browser. Period calculator, FD calculator, JSON formatter, time zone converter, Split PDF, BMI, EMI, and more. No account needed.",
+    "Free online calculators and a free PDF converter in your browser. Sleep calculator, mortgage calculator, GPA calculator, PNG to JPG, period calculator, BMI, EMI, and more. No account needed.",
     {
       keywords:
-        "free online calculator, free PDF converter, period calculator, FD calculator, JSON formatter, time zone converter, split PDF, BMI calculator, EMI calculator, SmartToolX",
+        "sleep calculator, mortgage calculator, GPA calculator, random number generator, PNG to JPG, free online calculator, free PDF converter, BMI calculator, EMI calculator, SmartToolX",
       h1: "Free online calculators and PDF converter",
       focusKeyword: "free online calculators",
       schemaType: "WebSite",
@@ -454,10 +494,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/tools",
     "All Tools",
     "All Free Tools | SmartToolX",
-    "Browse every SmartToolX calculator, converter, text tool, and file converter. Each one runs in your browser.",
+    "Browse every SmartToolX calculator, converter, text tool, and file converter. Sleep calculator, mortgage, GPA, random numbers, PNG to JPG, and more. Each one runs in your browser.",
     {
       keywords:
-        "all tools, free online tools, calculator list, PDF converter list, SmartToolX tools",
+        "sleep calculator, mortgage calculator, GPA calculator, random number generator, PNG to JPG, all tools, free online tools, calculator list, PDF converter list, SmartToolX tools",
       focusKeyword: "free online tools",
     },
   ),
@@ -465,10 +505,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/calculators",
     "Calculators",
     "Free Online Calculators | SmartToolX",
-    "Health and finance calculators for period dates, BMI, EMI, FD, GST, SIP, calories, and more. Open a tool, enter numbers, and see the result.",
+    "Health and finance calculators for sleep, mortgage, period dates, BMI, EMI, GPA, FD, GST, SIP, calories, and more. Open a tool, enter numbers, and see the result.",
     {
       keywords:
-        "online calculators, period calculator, BMI calculator, EMI calculator, FD calculator, GST calculator, SIP calculator, calorie calculator",
+        "sleep calculator, mortgage calculator, GPA calculator, online calculators, period calculator, BMI calculator, EMI calculator, FD calculator, calorie calculator",
       focusKeyword: "online calculators",
     },
   ),
@@ -476,10 +516,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/converters",
     "Converters",
     "Free Online Converters | SmartToolX",
-    "Convert currency, units, temperature, time zones, colors, and more without leaving the page. Live rates for money, standard factors for the rest.",
+    "Convert currency, units, temperature, time zones, GPA, colors, and more without leaving the page. Live rates for money, standard factors for the rest.",
     {
       keywords:
-        "unit converter, currency converter, time zone converter, temperature converter, live exchange rates, binary converter",
+        "GPA calculator, CGPA to percentage, unit converter, currency converter, time zone converter, temperature converter, live exchange rates, binary converter",
       focusKeyword: "unit converter",
     },
   ),
@@ -487,10 +527,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/text-tools",
     "Text Tools",
     "Free Text Tools Online | SmartToolX",
-    "Count words, format JSON, generate passwords and QR codes, change case, and build URL slugs. Paste text and copy the result.",
+    "Count words, format JSON, generate random numbers, passwords, and QR codes, change case, and build URL slugs. Paste text and copy the result.",
     {
       keywords:
-        "JSON formatter, word counter, QR code generator, password generator, case converter, slug generator, text tools",
+        "random number generator, JSON formatter, word counter, QR code generator, password generator, case converter, slug generator, text tools",
       focusKeyword: "text tools",
     },
   ),
@@ -498,10 +538,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/finance",
     "Finance",
     "Free Finance Calculators | SmartToolX",
-    "EMI, FD, GST, SIP, compound interest, tips, discounts, and live currency conversion for everyday money decisions.",
+    "Mortgage, EMI, FD, GST, SIP, compound interest, tips, discounts, and live currency conversion for everyday money decisions.",
     {
       keywords:
-        "loan EMI calculator, FD calculator, GST calculator, SIP calculator, percentage calculator, currency converter, finance calculator",
+        "mortgage calculator, loan EMI calculator, FD calculator, GST calculator, SIP calculator, percentage calculator, currency converter, finance calculator",
       focusKeyword: "finance calculator",
     },
   ),
@@ -509,10 +549,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/file-converter",
     "File Converter",
     "Free PDF Converter Online | SmartToolX",
-    "Free PDF converter online. PDF to Word, Word to PDF, compress PDF, merge PDF, split PDF, JPG to PDF, and PPT to PDF. No signup. Files stay in your browser.",
+    "Free PDF converter online. PDF to Word, Word to PDF, compress PDF, merge PDF, split PDF, PNG to JPG, JPG to PDF, and PPT to PDF. No signup. Files stay in your browser.",
     {
       keywords:
-        "free PDF converter, PDF to Word online free, compress PDF online, merge PDF, split PDF, Word to PDF, PPT to PDF, file converter",
+        "PNG to JPG, free PDF converter, PDF to Word online free, compress PDF online, merge PDF, split PDF, Word to PDF, PPT to PDF, file converter",
       focusKeyword: "free PDF converter",
       h1: "Free PDF Converter Online",
     },

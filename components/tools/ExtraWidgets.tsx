@@ -1837,3 +1837,348 @@ export function TimeZoneConverter() {
     </div>
   );
 }
+
+function parseClock(value: string) {
+  const match = /^(\d{2}):(\d{2})$/.exec(value);
+  if (!match) return null;
+  const hour = Number(match[1]);
+  const minute = Number(match[2]);
+  if (hour > 23 || minute > 59) return null;
+  const date = new Date();
+  date.setHours(hour, minute, 0, 0);
+  return date;
+}
+
+function formatClock(date: Date) {
+  return new Intl.DateTimeFormat("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+  }).format(date);
+}
+
+const SLEEP_CYCLES = [
+  { cycles: 6, hours: "9 hrs" },
+  { cycles: 5, hours: "7.5 hrs" },
+  { cycles: 4, hours: "6 hrs" },
+] as const;
+
+export function SleepCalculator() {
+  const [mode, setMode] = useState("wake");
+  const [clock, setClock] = useState("");
+  const times = useMemo(() => {
+    const start = parseClock(clock);
+    if (!start) return null;
+    const fallAsleep = 15;
+    return SLEEP_CYCLES.map((item) => {
+      const minutes = fallAsleep + item.cycles * 90;
+      const next = new Date(start);
+      next.setMinutes(start.getMinutes() + (mode === "wake" ? -minutes : minutes));
+      return formatClock(next);
+    });
+  }, [mode, clock]);
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Find">
+          <Select value={mode} onChange={(e) => setMode(e.target.value)}>
+            <option value="wake">Bedtime from wake time</option>
+            <option value="bed">Wake time from bedtime</option>
+          </Select>
+        </Field>
+        <Field label={mode === "wake" ? "Wake-up time" : "Bedtime"}>
+          <Input
+            type="time"
+            value={clock}
+            onChange={(e) => setClock(e.target.value)}
+            className="tz-picker-icon"
+          />
+        </Field>
+      </div>
+      <Box>
+        {SLEEP_CYCLES.map((item, index) => (
+          <Result
+            key={item.cycles}
+            label={`${item.cycles} cycles (${item.hours})`}
+            value={times?.[index] ?? "—"}
+            steel={index % 2 === 1}
+          />
+        ))}
+      </Box>
+    </div>
+  );
+}
+
+export function MortgageCalculator() {
+  const [price, setPrice] = useState("");
+  const [down, setDown] = useState("");
+  const [rate, setRate] = useState("");
+  const [years, setYears] = useState("");
+  const result = useMemo(() => {
+    const home = parseNumber(price);
+    const deposit = parseNumber(down) ?? 0;
+    const annual = parseNumber(rate);
+    const tenure = parseNumber(years);
+    if (
+      home == null ||
+      annual == null ||
+      tenure == null ||
+      home <= 0 ||
+      deposit < 0 ||
+      deposit >= home ||
+      tenure <= 0 ||
+      annual < 0
+    ) {
+      return null;
+    }
+    const principal = home - deposit;
+    const monthlyRate = annual / 12 / 100;
+    const months = tenure * 12;
+    const payment =
+      monthlyRate === 0
+        ? principal / months
+        : (principal * monthlyRate * (1 + monthlyRate) ** months) /
+          ((1 + monthlyRate) ** months - 1);
+    if (!Number.isFinite(payment) || payment <= 0) return null;
+    const total = payment * months;
+    return { payment, total, interest: total - principal, principal };
+  }, [price, down, rate, years]);
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Home price">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={price}
+            placeholder="350000"
+            onChange={(e) => setPrice(e.target.value)}
+          />
+        </Field>
+        <Field label="Down payment">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={down}
+            placeholder="70000"
+            onChange={(e) => setDown(e.target.value)}
+          />
+        </Field>
+        <Field label="Annual interest percent">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={rate}
+            placeholder="6.5"
+            onChange={(e) => setRate(e.target.value)}
+          />
+        </Field>
+        <Field label="Loan term (years)">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={years}
+            placeholder="30"
+            onChange={(e) => setYears(e.target.value)}
+          />
+        </Field>
+      </div>
+      <Box>
+        <Result
+          label="Monthly payment"
+          value={result == null ? "—" : money(result.payment)}
+          hint="/mo"
+          steel
+        />
+        <Result
+          label="Total payable"
+          value={result == null ? "—" : money(result.total)}
+        />
+        <Result
+          label="Total interest"
+          value={result == null ? "—" : money(result.interest)}
+          steel
+        />
+      </Box>
+    </div>
+  );
+}
+
+function randomInt(min: number, max: number) {
+  const span = max - min + 1;
+  const bytes = new Uint32Array(1);
+  crypto.getRandomValues(bytes);
+  return min + (bytes[0] % span);
+}
+
+export function RandomNumberGenerator() {
+  const [min, setMin] = useState("");
+  const [max, setMax] = useState("");
+  const [count, setCount] = useState("");
+  const [numbers, setNumbers] = useState("");
+
+  function generate() {
+    const low = parseNumber(min);
+    const high = parseNumber(max);
+    const n = parseNumber(count);
+    if (low == null || high == null || n == null || n < 1) return;
+    const from = Math.min(Math.trunc(low), Math.trunc(high));
+    const to = Math.max(Math.trunc(low), Math.trunc(high));
+    const total = Math.min(100, Math.max(1, Math.trunc(n)));
+    const values = Array.from({ length: total }, () => randomInt(from, to));
+    setNumbers(values.join(", "));
+  }
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Minimum">
+          <Input
+            type="number"
+            value={min}
+            placeholder="1"
+            onChange={(e) => setMin(e.target.value)}
+          />
+        </Field>
+        <Field label="Maximum">
+          <Input
+            type="number"
+            value={max}
+            placeholder="100"
+            onChange={(e) => setMax(e.target.value)}
+          />
+        </Field>
+        <Field label="How many">
+          <Input
+            type="number"
+            min="1"
+            value={count}
+            placeholder="1"
+            onChange={(e) => setCount(e.target.value)}
+          />
+        </Field>
+        <button
+          type="button"
+          onClick={generate}
+          className="bg-amber font-display text-bg w-fit rounded-[3px] px-6 py-[13px] text-[16px] font-semibold"
+        >
+          Generate
+        </button>
+      </div>
+      <Box>
+        <Result label="Random number" value={numbers || "—"} steel />
+      </Box>
+    </div>
+  );
+}
+
+export function GpaCalculator() {
+  const [mode, setMode] = useState("credits");
+  const [primary, setPrimary] = useState("");
+  const [credits, setCredits] = useState("");
+  const [scale, setScale] = useState("10");
+  const result = useMemo(() => {
+    const a = parseNumber(primary);
+    if (a == null) return null;
+    if (mode === "credits") {
+      const hours = parseNumber(credits);
+      if (hours == null || hours <= 0 || a < 0) return null;
+      const gpa = a / hours;
+      return Number.isFinite(gpa) ? gpa.toFixed(2) : null;
+    }
+    if (mode === "percent-gpa") {
+      if (a < 0 || a > 100) return null;
+      return Math.min(4, a / 25).toFixed(2);
+    }
+    const max = scale === "4" ? 4 : 10;
+    if (mode === "cgpa-percent") {
+      if (a < 0 || a > max) return null;
+      const percent = max === 10 ? a * 9.5 : (a / 4) * 100;
+      return `${percent.toFixed(1)}%`;
+    }
+    if (a < 0 || a > 100) return null;
+    const cgpa = max === 10 ? a / 9.5 : (a / 100) * 4;
+    return cgpa.toFixed(2);
+  }, [mode, primary, credits, scale]);
+
+  const primaryLabel =
+    mode === "credits"
+      ? "Total grade points"
+      : mode === "cgpa-percent"
+        ? "CGPA"
+        : "Percentage";
+  const showScale = mode === "cgpa-percent" || mode === "percent-cgpa";
+  const resultLabel =
+    mode === "cgpa-percent"
+      ? "Percentage"
+      : mode === "credits"
+        ? "GPA"
+        : mode === "percent-gpa"
+          ? "GPA (4.0)"
+          : "CGPA";
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Mode">
+          <Select value={mode} onChange={(e) => setMode(e.target.value)}>
+            <option value="credits">GPA from credits</option>
+            <option value="percent-gpa">Percentage to GPA (4.0)</option>
+            <option value="cgpa-percent">CGPA to percentage</option>
+            <option value="percent-cgpa">Percentage to CGPA</option>
+          </Select>
+        </Field>
+        <Field label={primaryLabel}>
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={primary}
+            placeholder={
+              mode === "credits"
+                ? "36"
+                : mode === "cgpa-percent"
+                  ? "8.2"
+                  : "85"
+            }
+            onChange={(e) => setPrimary(e.target.value)}
+          />
+        </Field>
+        {mode === "credits" ? (
+          <Field label="Total credit hours">
+            <Input
+              type="number"
+              min="0"
+              step="any"
+              inputMode="decimal"
+              value={credits}
+              placeholder="12"
+              onChange={(e) => setCredits(e.target.value)}
+            />
+          </Field>
+        ) : null}
+        {showScale ? (
+          <Field label="CGPA scale">
+            <Select value={scale} onChange={(e) => setScale(e.target.value)}>
+              <option value="10">10-point</option>
+              <option value="4">4-point</option>
+            </Select>
+          </Field>
+        ) : null}
+      </div>
+      <Box>
+        <Result label={resultLabel} value={result ?? "—"} steel />
+      </Box>
+    </div>
+  );
+}

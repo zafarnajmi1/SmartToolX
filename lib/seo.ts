@@ -89,6 +89,7 @@ export function jsonLdFor(entry: SeoEntry, siteUrl: string) {
   if (entry.schemaType === "SoftwareApplication") {
     data.applicationCategory = "UtilitiesApplication";
     data.operatingSystem = "Any";
+    data.isAccessibleForFree = true;
     data.offers = { "@type": "Offer", price: "0", priceCurrency: "USD" };
   }
   return data;

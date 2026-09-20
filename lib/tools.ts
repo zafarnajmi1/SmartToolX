@@ -354,6 +354,46 @@ export const tools: Tool[] = [
     description: "Split PDF online free. Save each page as its own file.",
     category: "files",
   },
+  {
+    slug: "sleep-calculator",
+    name: "Sleep Calculator",
+    icon: "SLP",
+    description:
+      "Free sleep calculator online. Find bedtime or wake time from 90-minute sleep cycles.",
+    category: "health",
+  },
+  {
+    slug: "mortgage-calculator",
+    name: "Mortgage Calculator",
+    icon: "MTG",
+    description:
+      "Free mortgage calculator online. Monthly payment from home price, down payment, rate, and term.",
+    category: "finance",
+  },
+  {
+    slug: "random-number-generator",
+    name: "Random Number Generator",
+    icon: "RNG",
+    description:
+      "Free random number generator online. Pick random numbers between any min and max.",
+    category: "text",
+  },
+  {
+    slug: "gpa-calculator",
+    name: "GPA Calculator",
+    icon: "GPA",
+    description:
+      "Free GPA calculator online. GPA from credits, plus CGPA to percentage and back.",
+    category: "convert",
+  },
+  {
+    slug: "png-to-jpg",
+    name: "PNG to JPG Converter",
+    icon: "JPG",
+    description:
+      "Convert PNG to JPG online free. Download a JPEG in your browser. No account.",
+    category: "files",
+  },
 ];
 
 export const featuredSlugs = [
@@ -379,6 +419,7 @@ export const fileConverterSlugs = [
   "pdf-to-png",
   "png-to-pdf",
   "split-pdf",
+  "png-to-jpg",
 ] as const;
 
 export const toolCount = tools.length;
@@ -387,7 +428,7 @@ export const categoryPages = {
   calculators: {
     title: "Calculators",
     description:
-      "Health, finance, and everyday calculators including period, BMI, EMI, and FD.",
+      "Health, finance, and everyday calculators including sleep, mortgage, period, BMI, EMI, GPA, and FD.",
     slugs: [
       ...tools
         .filter(
@@ -395,22 +436,25 @@ export const categoryPages = {
         )
         .map((tool) => tool.slug),
       "date-difference-calculator",
+      "gpa-calculator",
     ],
   },
   converters: {
     title: "Converters",
-    description: "Currency, units, time zones, and more. Convert without leaving the page.",
+    description:
+      "Currency, units, time zones, GPA, and more. Convert without leaving the page.",
     slugs: tools.filter((tool) => tool.category === "convert").map((t) => t.slug),
   },
   "text-tools": {
     title: "Text Tools",
-    description: "Count words, format JSON, generate, and transform text in a click.",
+    description:
+      "Count words, format JSON, generate random numbers, and transform text in a click.",
     slugs: tools.filter((tool) => tool.category === "text").map((t) => t.slug),
   },
   finance: {
     title: "Finance",
     description:
-      "EMI, FD, GST, SIP, percentages, and currency tools for money decisions.",
+      "Mortgage, EMI, FD, GST, SIP, percentages, and currency tools for money decisions.",
     slugs: [
       ...tools.filter((tool) => tool.category === "finance").map((t) => t.slug),
       "currency-converter",
@@ -419,7 +463,7 @@ export const categoryPages = {
   "file-converter": {
     title: "Free PDF Converter Online",
     description:
-      "Free PDF converter online. PDF to Word, compress PDF, merge PDF, split PDF, and more. Files stay in your browser.",
+      "Free PDF converter online. PDF to Word, compress PDF, merge PDF, split PDF, PNG to JPG, and more. Files stay in your browser.",
     slugs: [...fileConverterSlugs],
   },
 } as const;
