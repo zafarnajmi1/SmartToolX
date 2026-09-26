@@ -11,6 +11,7 @@ import {
   pngToJpg,
   pptToPdf,
   splitPdf,
+  webpToJpg,
   wordToPdf,
   type ConvertedFile,
 } from "@/lib/file-convert";
@@ -27,7 +28,8 @@ type FileToolId =
   | "pdf-to-png"
   | "png-to-pdf"
   | "split-pdf"
-  | "png-to-jpg";
+  | "png-to-jpg"
+  | "webp-to-jpg";
 
 type ToolConfig = {
   accept: string;
@@ -186,6 +188,18 @@ const configs: Record<FileToolId, ToolConfig> = {
     resultIcon: "JPG",
     downloadLabel: "Download JPG",
     convert: (files) => pngToJpg(files),
+  },
+  "webp-to-jpg": {
+    accept: ".webp,image/webp",
+    multiple: true,
+    minFiles: 1,
+    maxMb: 25,
+    dropIcon: "WEBP",
+    dropTitle: "Drop your WebP images here",
+    button: "Convert to JPG",
+    resultIcon: "JPG",
+    downloadLabel: "Download JPG",
+    convert: (files) => webpToJpg(files),
   },
 };
 

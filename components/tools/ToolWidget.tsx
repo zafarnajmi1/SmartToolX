@@ -42,12 +42,17 @@ import {
   MortgageCalculator,
   RandomNumberGenerator,
   GpaCalculator,
+  IdealWeightCalculator,
+  CagrCalculator,
+  FindAndReplace,
+  UnixTimestampConverter,
 } from "@/components/tools/ExtraWidgets";
 import {
   AnalogousColorGenerator,
   ColorBlindnessSimulator,
   ColorContrastChecker,
   ColorConverter,
+  ColorMixer,
   ColorNameFinder,
   ColorPaletteGenerator,
   ColorPicker,
@@ -180,6 +185,16 @@ export function ToolWidget({ slug }: { slug: string }) {
       return <GpaCalculator />;
     case "png-to-jpg":
       return <FileConverter id="png-to-jpg" />;
+    case "webp-to-jpg":
+      return <FileConverter id="webp-to-jpg" />;
+    case "ideal-weight-calculator":
+      return <IdealWeightCalculator />;
+    case "cagr-calculator":
+      return <CagrCalculator />;
+    case "find-and-replace":
+      return <FindAndReplace />;
+    case "unix-timestamp-converter":
+      return <UnixTimestampConverter />;
     case "color-picker":
       return <ColorPicker />;
     case "hex-to-rgb":
@@ -236,6 +251,8 @@ export function ToolWidget({ slug }: { slug: string }) {
       return <CssColorGenerator />;
     case "tailwind-color-converter":
       return <TailwindColorConverter />;
+    case "color-mixer":
+      return <ColorMixer />;
     default:
       return null;
   }

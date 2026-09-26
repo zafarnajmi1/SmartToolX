@@ -27,6 +27,16 @@ export function rgbToHex({ r, g, b }: RGB) {
   return `#${hex.toUpperCase()}`;
 }
 
+/** Mix two sRGB colors in channel space. `amount` 0 = all A, 1 = all B. */
+export function mixRgb(a: RGB, b: RGB, amount: number): RGB {
+  const t = clamp(amount, 0, 1);
+  return {
+    r: clamp(Math.round(a.r * (1 - t) + b.r * t), 0, 255),
+    g: clamp(Math.round(a.g * (1 - t) + b.g * t), 0, 255),
+    b: clamp(Math.round(a.b * (1 - t) + b.b * t), 0, 255),
+  };
+}
+
 export function parseRgb(input: string): RGB | null {
   const match = input.trim().match(/^rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/i);
   if (match) {

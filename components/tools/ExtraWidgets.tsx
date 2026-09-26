@@ -2155,3 +2155,381 @@ export function GpaCalculator() {
     </div>
   );
 }
+
+function kgWithLb(kg: number) {
+  return `${kg.toFixed(1)} kg (${(kg / BMR_LB_KG).toFixed(1)} lb)`;
+}
+
+function idealFromInches(
+  inches: number,
+  male: boolean,
+  interceptM: number,
+  interceptF: number,
+  slopeM: number,
+  slopeF: number,
+) {
+  const over = inches - 60;
+  return male ? interceptM + slopeM * over : interceptF + slopeF * over;
+}
+
+export function IdealWeightCalculator() {
+  const [sex, setSex] = useState("male");
+  const [heightUnit, setHeightUnit] = useState<BmrHeightUnit>("cm");
+  const [heightPrimary, setHeightPrimary] = useState("");
+  const [heightExtra, setHeightExtra] = useState("");
+
+  function changeHeightUnit(next: BmrHeightUnit) {
+    const cm = bmrHeightToCm(heightUnit, heightPrimary, heightExtra);
+    if (cm != null) {
+      const converted = bmrCmToHeight(next, cm);
+      setHeightPrimary(converted.primary);
+      setHeightExtra(converted.extra);
+    } else {
+      setHeightExtra("");
+    }
+    setHeightUnit(next);
+  }
+
+  const result = useMemo(() => {
+    const cm = bmrHeightToCm(heightUnit, heightPrimary, heightExtra);
+    if (cm == null || cm < 50 || cm > 280) return null;
+    const inches = cm / (BMR_INCH_M * 100);
+    const meters = cm / 100;
+    const male = sex === "male";
+    const devine = idealFromInches(inches, male, 50, 45.5, 2.3, 2.3);
+    const robinson = idealFromInches(inches, male, 52, 49, 1.9, 1.7);
+    const hamwi = idealFromInches(inches, male, 48, 45.5, 2.7, 2.2);
+    const miller = idealFromInches(inches, male, 56.2, 53.1, 1.41, 1.36);
+    if (![devine, robinson, hamwi, miller].every((kg) => Number.isFinite(kg) && kg > 0)) {
+      return null;
+    }
+    return {
+      devine,
+      robinson,
+      hamwi,
+      miller,
+      low: 18.5 * meters * meters,
+      high: 24.9 * meters * meters,
+    };
+  }, [sex, heightUnit, heightPrimary, heightExtra]);
+
+  const heightUsesPair = heightUnit === "ftin";
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Sex">
+          <Select value={sex} onChange={(e) => setSex(e.target.value)}>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </Select>
+        </Field>
+        <Field label="Height unit">
+          <Select
+            value={heightUnit}
+            onChange={(e) => changeHeightUnit(e.target.value as BmrHeightUnit)}
+          >
+            <option value="cm">Centimeters (cm)</option>
+            <option value="m">Meters (m)</option>
+            <option value="ftin">Feet and inches</option>
+            <option value="in">Inches (in)</option>
+          </Select>
+        </Field>
+        {heightUsesPair ? (
+          <div className="grid grid-cols-2 gap-[10px]">
+            <Field label="Feet">
+              <Input
+                type="number"
+                min="0"
+                step="any"
+                inputMode="decimal"
+                placeholder="5"
+                value={heightPrimary}
+                onChange={(e) => setHeightPrimary(e.target.value)}
+              />
+            </Field>
+            <Field label="Inches">
+              <Input
+                type="number"
+                min="0"
+                step="any"
+                inputMode="decimal"
+                placeholder="10"
+                value={heightExtra}
+                onChange={(e) => setHeightExtra(e.target.value)}
+              />
+            </Field>
+          </div>
+        ) : (
+          <Field label="Height">
+            <Input
+              type="number"
+              min="0"
+              step="any"
+              inputMode="decimal"
+              placeholder={
+                heightUnit === "cm" ? "170" : heightUnit === "m" ? "1.70" : "67"
+              }
+              value={heightPrimary}
+              onChange={(e) => setHeightPrimary(e.target.value)}
+            />
+          </Field>
+        )}
+      </div>
+      <Box>
+        <Result
+          label="Ideal weight (Devine)"
+          value={result ? kgWithLb(result.devine) : "—"}
+          steel
+        />
+        <Result
+          label="Robinson"
+          value={result ? kgWithLb(result.robinson) : "—"}
+        />
+        <Result label="Hamwi" value={result ? kgWithLb(result.hamwi) : "—"} steel />
+        <Result label="Miller" value={result ? kgWithLb(result.miller) : "—"} />
+        <Result
+          label="Healthy BMI range (18.5–24.9)"
+          value={
+            result ? `${result.low.toFixed(1)}–${result.high.toFixed(1)} kg` : "—"
+          }
+          steel
+        />
+      </Box>
+    </div>
+  );
+}
+
+export function CagrCalculator() {
+  const [begin, setBegin] = useState("");
+  const [end, setEnd] = useState("");
+  const [years, setYears] = useState("");
+  const result = useMemo(() => {
+    const start = parseNumber(begin);
+    const finish = parseNumber(end);
+    const t = parseNumber(years);
+    if (start == null || finish == null || t == null || start <= 0 || finish < 0 || t <= 0) {
+      return null;
+    }
+    const cagr = (finish / start) ** (1 / t) - 1;
+    if (!Number.isFinite(cagr)) return null;
+    const growth = (finish / start - 1) * 100;
+    return { cagr: cagr * 100, growth };
+  }, [begin, end, years]);
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Beginning value">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            placeholder="10000"
+            value={begin}
+            onChange={(e) => setBegin(e.target.value)}
+          />
+        </Field>
+        <Field label="Ending value">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            placeholder="18000"
+            value={end}
+            onChange={(e) => setEnd(e.target.value)}
+          />
+        </Field>
+        <Field label="Number of years">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            placeholder="5"
+            value={years}
+            onChange={(e) => setYears(e.target.value)}
+          />
+        </Field>
+      </div>
+      <Box>
+        <Result
+          label="CAGR"
+          value={result == null ? "—" : `${result.cagr.toFixed(2)}%`}
+          steel
+        />
+        <Result
+          label="Total growth"
+          value={result == null ? "—" : `${result.growth.toFixed(2)}%`}
+        />
+      </Box>
+    </div>
+  );
+}
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+export function FindAndReplace() {
+  const [text, setText] = useState("");
+  const [find, setFind] = useState("");
+  const [replace, setReplace] = useState("");
+  const [matchCase, setMatchCase] = useState("no");
+  const result = useMemo(() => {
+    if (!find) return { out: text, count: 0 };
+    if (matchCase === "yes") {
+      if (!text.includes(find)) return { out: text, count: 0 };
+      const parts = text.split(find);
+      return { out: parts.join(replace), count: parts.length - 1 };
+    }
+    const re = new RegExp(escapeRegExp(find), "gi");
+    let count = 0;
+    const out = text.replace(re, () => {
+      count += 1;
+      return replace;
+    });
+    return { out, count };
+  }, [text, find, replace, matchCase]);
+
+  return (
+    <div className="grid gap-6">
+      <Field label="Text">
+        <Textarea
+          rows={6}
+          value={text}
+          placeholder="Paste text"
+          onChange={(e) => setText(e.target.value)}
+        />
+      </Field>
+      <div className="grid gap-4 md:grid-cols-2">
+        <Field label="Find">
+          <Input
+            value={find}
+            placeholder="word"
+            onChange={(e) => setFind(e.target.value)}
+          />
+        </Field>
+        <Field label="Replace with">
+          <Input
+            value={replace}
+            placeholder="new word"
+            onChange={(e) => setReplace(e.target.value)}
+          />
+        </Field>
+      </div>
+      <Field label="Match case">
+        <Select value={matchCase} onChange={(e) => setMatchCase(e.target.value)}>
+          <option value="no">No</option>
+          <option value="yes">Yes</option>
+        </Select>
+      </Field>
+      <Box>
+        <Result
+          label="Replacements"
+          value={find ? String(result.count) : "—"}
+          steel
+        />
+        <div className="text-text whitespace-pre-wrap break-words font-mono text-[15px]">
+          {result.out || "—"}
+        </div>
+      </Box>
+    </div>
+  );
+}
+
+function pad2(n: number) {
+  return String(n).padStart(2, "0");
+}
+
+function toLocalInput(date: Date) {
+  return `${date.getFullYear()}-${pad2(date.getMonth() + 1)}-${pad2(date.getDate())}T${pad2(date.getHours())}:${pad2(date.getMinutes())}`;
+}
+
+function parseUnixInput(raw: string) {
+  const n = Number(raw.trim());
+  if (!Number.isFinite(n)) return null;
+  const ms = Math.abs(n) >= 1e12 ? n : n * 1000;
+  const date = new Date(ms);
+  if (Number.isNaN(date.getTime())) return null;
+  return { date, seconds: Math.trunc(ms / 1000), millis: Math.trunc(ms) };
+}
+
+export function UnixTimestampConverter() {
+  const [unix, setUnix] = useState("");
+  const [local, setLocal] = useState("");
+
+  function onUnix(next: string) {
+    setUnix(next);
+    const parsed = parseUnixInput(next);
+    setLocal(parsed ? toLocalInput(parsed.date) : "");
+  }
+
+  function onLocal(next: string) {
+    setLocal(next);
+    if (!next) {
+      setUnix("");
+      return;
+    }
+    const date = new Date(next);
+    if (Number.isNaN(date.getTime())) return;
+    setUnix(String(Math.floor(date.getTime() / 1000)));
+  }
+
+  const parsed = useMemo(() => {
+    if (unix.trim()) return parseUnixInput(unix);
+    if (!local) return null;
+    const date = new Date(local);
+    if (Number.isNaN(date.getTime())) return null;
+    return {
+      date,
+      seconds: Math.floor(date.getTime() / 1000),
+      millis: date.getTime(),
+    };
+  }, [unix, local]);
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Unix timestamp">
+          <Input
+            inputMode="numeric"
+            placeholder="1735689600"
+            value={unix}
+            onChange={(e) => onUnix(e.target.value)}
+          />
+        </Field>
+        <Field label="Local date and time">
+          <Input
+            type="datetime-local"
+            value={local}
+            onChange={(e) => onLocal(e.target.value)}
+            className="tz-picker-icon"
+          />
+        </Field>
+      </div>
+      <Box>
+        <Result
+          label="Seconds"
+          value={parsed ? String(parsed.seconds) : "—"}
+          steel
+        />
+        <Result
+          label="Milliseconds"
+          value={parsed ? String(parsed.millis) : "—"}
+        />
+        <Result
+          label="UTC"
+          value={parsed ? parsed.date.toISOString() : "—"}
+          steel
+        />
+        <Result
+          label="Local"
+          value={parsed ? parsed.date.toString() : "—"}
+        />
+      </Box>
+    </div>
+  );
+}

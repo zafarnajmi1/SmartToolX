@@ -364,11 +364,27 @@ export const tools: Tool[] = [
     category: "health",
   },
   {
+    slug: "ideal-weight-calculator",
+    name: "Ideal Weight Calculator",
+    icon: "IBW",
+    description:
+      "Free ideal weight calculator online. Devine, Robinson, Hamwi, and Miller formulas plus a healthy BMI range.",
+    category: "health",
+  },
+  {
     slug: "mortgage-calculator",
     name: "Mortgage Calculator",
     icon: "MTG",
     description:
       "Free mortgage calculator online. Monthly payment from home price, down payment, rate, and term.",
+    category: "finance",
+  },
+  {
+    slug: "cagr-calculator",
+    name: "CAGR Calculator",
+    icon: "CGR",
+    description:
+      "Free CAGR calculator online. Compound annual growth rate from beginning value, ending value, and years.",
     category: "finance",
   },
   {
@@ -380,6 +396,14 @@ export const tools: Tool[] = [
     category: "text",
   },
   {
+    slug: "find-and-replace",
+    name: "Find and Replace",
+    icon: "FNR",
+    description:
+      "Free find and replace online. Replace every match in pasted text, with or without matching case.",
+    category: "text",
+  },
+  {
     slug: "gpa-calculator",
     name: "GPA Calculator",
     icon: "GPA",
@@ -388,11 +412,27 @@ export const tools: Tool[] = [
     category: "convert",
   },
   {
+    slug: "unix-timestamp-converter",
+    name: "Unix Timestamp Converter",
+    icon: "UNIX",
+    description:
+      "Free Unix timestamp converter online. Convert epoch seconds or milliseconds to UTC and local time.",
+    category: "convert",
+  },
+  {
     slug: "png-to-jpg",
     name: "PNG to JPG Converter",
     icon: "JPG",
     description:
       "Convert PNG to JPG online free. Download a JPEG in your browser. No account.",
+    category: "files",
+  },
+  {
+    slug: "webp-to-jpg",
+    name: "WebP to JPG Converter",
+    icon: "JPG",
+    description:
+      "Convert WebP to JPG online free. Download a JPEG in your browser. No account.",
     category: "files",
   },
   {
@@ -591,6 +631,14 @@ export const tools: Tool[] = [
       "Convert HEX to the nearest Tailwind CSS token and class, such as amber-500.",
     category: "color",
   },
+  {
+    slug: "color-mixer",
+    name: "Color Mixer",
+    icon: "MIX",
+    description:
+      "Free color mixer online. Blend two HEX colors by mix percent and copy the result HEX, RGB, and HSL.",
+    category: "color",
+  },
 ];
 
 export const featuredSlugs = [
@@ -617,6 +665,7 @@ export const fileConverterSlugs = [
   "png-to-pdf",
   "split-pdf",
   "png-to-jpg",
+  "webp-to-jpg",
 ] as const;
 
 export const toolCount = tools.length;
@@ -625,7 +674,7 @@ export const categoryPages = {
   calculators: {
     title: "Calculators",
     description:
-      "Health, finance, and everyday calculators including sleep, mortgage, period, BMI, EMI, GPA, and FD.",
+      "Health, finance, and everyday calculators including sleep, ideal weight, mortgage, CAGR, period, BMI, EMI, GPA, and FD.",
     slugs: [
       ...tools
         .filter(
@@ -639,19 +688,19 @@ export const categoryPages = {
   converters: {
     title: "Converters",
     description:
-      "Currency, units, time zones, GPA, and more. Convert without leaving the page.",
+      "Currency, units, time zones, Unix timestamps, GPA, and more. Convert without leaving the page.",
     slugs: tools.filter((tool) => tool.category === "convert").map((t) => t.slug),
   },
   "text-tools": {
     title: "Text Tools",
     description:
-      "Count words, format JSON, generate random numbers, and transform text in a click.",
+      "Count words, find and replace, format JSON, generate random numbers, and transform text in a click.",
     slugs: tools.filter((tool) => tool.category === "text").map((t) => t.slug),
   },
   finance: {
     title: "Finance",
     description:
-      "Mortgage, EMI, FD, GST, SIP, percentages, and currency tools for money decisions.",
+      "Mortgage, CAGR, EMI, FD, GST, SIP, percentages, and currency tools for money decisions.",
     slugs: [
       ...tools.filter((tool) => tool.category === "finance").map((t) => t.slug),
       "currency-converter",
@@ -660,13 +709,13 @@ export const categoryPages = {
   "file-converter": {
     title: "Free PDF Converter Online",
     description:
-      "Free PDF converter online. PDF to Word, compress PDF, merge PDF, split PDF, PNG to JPG, and more. Files stay in your browser.",
+      "Free PDF converter online. PDF to Word, compress PDF, merge PDF, split PDF, PNG to JPG, WebP to JPG, and more. Files stay in your browser.",
     slugs: [...fileConverterSlugs],
   },
   colors: {
     title: "Free Color Tools Online",
     description:
-      "Browse free color tools in your browser. Pickers, converters, palettes, gradients, and contrast checkers. No account.",
+      "Browse free color tools in your browser. Pickers, converters, mixers, palettes, gradients, and contrast checkers. No account.",
     slugs: [
       "color-picker",
       "hex-to-rgb",
@@ -696,6 +745,7 @@ export const categoryPages = {
       "color-temperature-tool",
       "css-color-generator",
       "tailwind-color-converter",
+      "color-mixer",
     ],
   },
 } as const;
@@ -860,6 +910,42 @@ const relatedBySlug: Record<string, readonly string[]> = {
     "css-color-generator",
     "color-name-finder",
     "hex-to-rgb",
+    "color-picker",
+  ],
+  "ideal-weight-calculator": [
+    "bmi-calculator",
+    "bmr-calculator",
+    "calorie-calculator",
+    "body-fat-calculator",
+  ],
+  "cagr-calculator": [
+    "compound-interest-calculator",
+    "sip-calculator",
+    "fd-calculator",
+    "simple-interest-calculator",
+  ],
+  "find-and-replace": [
+    "case-converter",
+    "word-counter",
+    "text-reverser",
+    "slug-generator",
+  ],
+  "unix-timestamp-converter": [
+    "time-zone-converter",
+    "date-difference-calculator",
+    "time-calculator",
+    "age-calculator",
+  ],
+  "webp-to-jpg": [
+    "png-to-jpg",
+    "jpg-to-pdf",
+    "png-to-pdf",
+    "pdf-to-jpg",
+  ],
+  "color-mixer": [
+    "color-palette-generator",
+    "complementary-color-generator",
+    "gradient-generator",
     "color-picker",
   ],
 };

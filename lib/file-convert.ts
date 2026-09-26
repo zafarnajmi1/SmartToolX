@@ -471,8 +471,13 @@ export async function imagesToPdf(files: File[], name: string): Promise<Converte
   return { blob: pdfBlob(await pdf.save()), name };
 }
 
-export async function pngToJpg(files: File[]): Promise<ConvertedFile> {
-  if (!files.length) throw new Error("Upload a PNG image.");
+async function rasterToJpg(
+  files: File[],
+  emptyError: string,
+  convertError: string,
+  zipName: string,
+): Promise<ConvertedFile> {
+  if (!files.length) throw new Error(emptyError);
   const outputs: { name: string; bytes: Uint8Array }[] = [];
   for (const file of files) {
     const bitmap = await createImageBitmap(file);
@@ -480,7 +485,7 @@ export async function pngToJpg(files: File[]): Promise<ConvertedFile> {
     canvas.width = bitmap.width;
     canvas.height = bitmap.height;
     const ctx = canvas.getContext("2d");
-    if (!ctx) throw new Error("Could not convert this PNG.");
+    if (!ctx) throw new Error(convertError);
     ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(bitmap, 0, 0);
@@ -498,8 +503,26 @@ export async function pngToJpg(files: File[]): Promise<ConvertedFile> {
   for (const item of outputs) zip.file(item.name, item.bytes);
   return {
     blob: await zip.generateAsync({ type: "blob" }),
-    name: "png-to-jpg.zip",
+    name: zipName,
   };
+}
+
+export async function pngToJpg(files: File[]): Promise<ConvertedFile> {
+  return rasterToJpg(
+    files,
+    "Upload a PNG image.",
+    "Could not convert this PNG.",
+    "png-to-jpg.zip",
+  );
+}
+
+export async function webpToJpg(files: File[]): Promise<ConvertedFile> {
+  return rasterToJpg(
+    files,
+    "Upload a WebP image.",
+    "Could not convert this WebP.",
+    "webp-to-jpg.zip",
+  );
 }
 
 export async function mergePdfs(files: File[]): Promise<ConvertedFile> {
