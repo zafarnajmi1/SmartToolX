@@ -51,632 +51,644 @@ const TOOL_SEO: Record<
   { title: string; description: string; keywords: string; focusKeyword: string }
 > = {
   "percentage-calculator": {
-    title: "Percentage Calculator Online Free | SmartToolX",
+    title: "Percentage Calculator Free | Calculate Percentage Online",
     description:
-      "Free percentage calculator online. Find what is X percent of Y, plus the increased total. Use it for discounts, marks, tips, and tax.",
+      "Calculate Percentage free. This percentage calculator free finds what is X percent of Y as you type. Percentage Calculator Online free — no software and no signup.",
     keywords:
-      "percentage calculator, percentage calculator online, what is x percent of y, free percentage calculator, percent increase calculator",
-    focusKeyword: "percentage calculator",
+      "percentage calculator free, calculate percentage free, percentage calculator online free, calculate percentage, percentage calculator",
+    focusKeyword: "percentage calculator free",
   },
   "bmi-calculator": {
-    title: "BMI Calculator Online Free | SmartToolX",
+    title: "BMI Calculator Free | Check BMI Online",
     description:
-      "Free BMI calculator online. Enter height and weight in cm, feet, kg, lb, or stone. See your body mass index and WHO category instantly.",
+      "Check BMI free. This bmi calculator free checks body mass index from height and weight. BMI Calculator Online free — no software and no signup.",
     keywords:
-      "BMI calculator, free BMI calculator online, BMI calculator online, body mass index calculator, BMI chart",
-    focusKeyword: "BMI calculator",
+      "bmi calculator free, check bmi free, bmi calculator online free, check bmi, bmi calculator",
+    focusKeyword: "bmi calculator free",
   },
   "loan-emi-calculator": {
-    title: "EMI Calculator Online Free | SmartToolX",
+    title: "EMI Calculator Free | Calculate Loan EMI Online",
     description:
-      "Free loan EMI calculator online. See monthly EMI, total interest, and amount payable for home, car, or personal loans.",
+      "Calculate Loan EMI free. This emi calculator free shows monthly EMI, total interest, and amount payable. Loan EMI Calculator free — no software and no signup.",
     keywords:
-      "EMI calculator, loan EMI calculator, EMI calculator online, home loan EMI calculator, monthly loan payment",
-    focusKeyword: "EMI calculator",
+      "emi calculator free, calculate loan emi free, loan emi calculator free, calculate loan emi, emi calculator",
+    focusKeyword: "emi calculator free",
   },
   "word-counter": {
-    title: "Word Counter Online Free | SmartToolX",
+    title: "Word Counter Free | Count Words Online",
     description:
-      "Free word counter online. Count words, characters, and reading time as you type. No upload and no account.",
+      "Count Words free. This word counter free counts words, characters, and reading time as you type. Word Counter Online free — no software and no signup.",
     keywords:
-      "word counter, word counter online, word count tool, character counter, free word counter online",
-    focusKeyword: "word counter",
+      "word counter free, count words free, word counter online free, count words, word counter",
+    focusKeyword: "word counter free",
   },
   "currency-converter": {
-    title: "Currency Converter Live Rates | SmartToolX",
+    title: "Currency Converter Free | Convert Currency Online",
     description:
-      "Free live currency converter. Convert USD, EUR, GBP, INR, and 150+ currencies with mid-market rates that refresh about once a minute.",
+      "Convert Currency free. This currency converter free converts USD, EUR, GBP, INR, and 150+ currencies. Live Currency Converter free — no software and no signup.",
     keywords:
-      "currency converter, live currency converter, currency converter online, USD to INR, EUR to USD",
-    focusKeyword: "currency converter",
+      "currency converter free, convert currency free, live currency converter free, convert currency, currency converter",
+    focusKeyword: "currency converter free",
   },
   "age-calculator": {
-    title: "Age Calculator Online Free | SmartToolX",
+    title: "Age Calculator Free | Calculate Age Online",
     description:
-      "Free age calculator online. Find exact age in years, months, and days from a date of birth.",
+      "Calculate Age free. This age calculator free finds exact age in years, months, and days. Age Calculator Online free — no software and no signup.",
     keywords:
-      "age calculator, age calculator online, exact age calculator, age in years months days, date of birth calculator",
-    focusKeyword: "age calculator",
+      "age calculator free, calculate age free, age calculator online free, calculate age, age calculator",
+    focusKeyword: "age calculator free",
   },
   "qr-code-generator": {
-    title: "QR Code Generator Free Online | SmartToolX",
+    title: "QR Code Generator Free | Create QR Code Online",
     description:
-      "Free QR code generator online. Turn a link or text into a scannable QR code and download the image. No signup.",
+      "Create QR Code free. This qr code generator free turns a link or text into a downloadable QR image. QR Code Generator Online free — no software and no signup.",
     keywords:
-      "QR code generator, free QR code generator, QR code generator online, create QR code from URL, QR maker",
-    focusKeyword: "QR code generator",
+      "qr code generator free, create qr code free, qr code generator online free, create qr code, qr code generator",
+    focusKeyword: "qr code generator free",
   },
   "unit-converter": {
-    title: "Unit Converter Online Free | SmartToolX",
+    title: "Unit Converter Free | Convert Units Online",
     description:
-      "Free unit converter online. Convert km to miles, kg to lbs, cm to inches, temperature, and more instantly.",
+      "Convert Units free. This unit converter free converts km to miles, kg to lbs, and more. Unit Converter Online free — no software and no signup.",
     keywords:
-      "unit converter, unit converter online, km to miles, kg to lbs, free unit converter online",
-    focusKeyword: "unit converter",
+      "unit converter free, convert units free, unit converter online free, convert units, unit converter",
+    focusKeyword: "unit converter free",
   },
   "calorie-calculator": {
-    title: "Free Calorie Calculator (TDEE) | SmartToolX",
+    title: "Calorie Calculator Free | Calculate Calories Online",
     description:
-      "Estimate daily calories to maintain weight from age, sex, height, weight, and activity. Use cm, feet, kg, lb, or stone. Mifflin-St Jeor TDEE in your browser.",
+      "Calculate Calories free. This calorie calculator free estimates daily calories from age, height, weight, and activity. Calorie Calculator Online free — no software and no signup.",
     keywords:
-      "calorie calculator, TDEE calculator, daily calorie needs, maintenance calories, Mifflin-St Jeor, calorie calculator feet inches",
-    focusKeyword: "calorie calculator",
+      "calorie calculator free, calculate calories free, calorie calculator online free, calculate calories, calorie calculator",
+    focusKeyword: "calorie calculator free",
   },
   "bmr-calculator": {
-    title: "Free BMR Calculator Online | SmartToolX",
+    title: "BMR Calculator Free | Calculate BMR Online",
     description:
-      "Find basal metabolic rate with the Mifflin-St Jeor formula. Use cm, meters, feet and inches, kg, lb, or stone. Age, sex, height, and weight stay in your browser.",
+      "Calculate BMR free. This bmr calculator free finds basal metabolic rate from age, sex, height, and weight. BMR Calculator Online free — no software and no signup.",
     keywords:
-      "BMR calculator, basal metabolic rate calculator, Mifflin-St Jeor, resting calories, BMR feet inches, BMR stone",
-    focusKeyword: "BMR calculator",
+      "bmr calculator free, calculate bmr free, bmr calculator online free, calculate bmr, bmr calculator",
+    focusKeyword: "bmr calculator free",
   },
   "body-fat-calculator": {
-    title: "Free Body Fat Calculator Online | SmartToolX",
+    title: "Body Fat Calculator Free | Calculate Body Fat Online",
     description:
-      "Estimate body fat percentage from BMI, age, and sex using the Deurenberg method. A quick screening number, not a lab test.",
+      "Calculate Body Fat free. This body fat calculator free estimates body fat percentage from BMI, age, and sex. Body Fat Percentage Calculator free — no software and no signup.",
     keywords:
-      "body fat calculator, body fat percentage calculator, Deurenberg, estimate body fat",
-    focusKeyword: "body fat calculator",
+      "body fat calculator free, calculate body fat free, body fat percentage calculator free, calculate body fat, body fat calculator",
+    focusKeyword: "body fat calculator free",
   },
   "pregnancy-due-date-calculator": {
-    title: "Free Due Date Calculator Online | SmartToolX",
+    title: "Due Date Calculator Free | Calculate Due Date Online",
     description:
-      "Estimate your due date from the first day of your last period using Naegele’s 280-day rule. Informational only, not medical advice.",
+      "Calculate Due Date free. This due date calculator free estimates due date from the first day of your last period. Pregnancy Due Date Calculator free — no software and no signup.",
     keywords:
-      "due date calculator, pregnancy due date, EDD calculator, last period due date",
-    focusKeyword: "due date calculator",
+      "due date calculator free, calculate due date free, pregnancy due date calculator free, calculate due date, due date calculator",
+    focusKeyword: "due date calculator free",
   },
   "ovulation-calculator": {
-    title: "Free Ovulation Calculator Online | SmartToolX",
+    title: "Ovulation Calculator Free | Calculate Ovulation Online",
     description:
-      "Estimate ovulation day and the fertile window from cycle length and the first day of your last period.",
+      "Calculate Ovulation free. This ovulation calculator free estimates ovulation day and the fertile window. Ovulation Calculator Online free — no software and no signup.",
     keywords:
-      "ovulation calculator, fertile window calculator, ovulation date, cycle tracker calculator",
-    focusKeyword: "ovulation calculator",
+      "ovulation calculator free, calculate ovulation free, ovulation calculator online free, calculate ovulation, ovulation calculator",
+    focusKeyword: "ovulation calculator free",
   },
   "water-intake-calculator": {
-    title: "Free Water Intake Calculator | SmartToolX",
+    title: "Water Intake Calculator Free | Calculate Water Intake Online",
     description:
-      "Get a daily water goal from body weight using a simple 35 ml per kg guide. Adjust for heat and activity on your own.",
+      "Calculate Water Intake free. This water intake calculator free gives a daily water goal from body weight. Water Intake Calculator Online free — no software and no signup.",
     keywords:
-      "water intake calculator, daily water intake, how much water should I drink, hydration calculator",
-    focusKeyword: "water intake calculator",
+      "water intake calculator free, calculate water intake free, water intake calculator online free, calculate water intake, water intake calculator",
+    focusKeyword: "water intake calculator free",
   },
   "period-calculator": {
-    title: "Period Calculator Online Free | SmartToolX",
+    title: "Period Calculator Free | Calculate Next Period Online",
     description:
-      "Free period calculator online. Estimate next period dates from the first day of your last period and cycle length.",
+      "Calculate Next Period free. This period calculator free estimates next period dates from last period and cycle length. Period Calculator Online free — no software and no signup.",
     keywords:
-      "period calculator, period calculator online, next period calculator, menstrual cycle calculator, period tracker calculator",
-    focusKeyword: "period calculator",
+      "period calculator free, calculate next period free, period calculator online free, calculate next period, period calculator",
+    focusKeyword: "period calculator free",
   },
   "compound-interest-calculator": {
-    title: "Free Compound Interest Calculator | SmartToolX",
+    title: "Compound Interest Calculator Free | Calculate Compound Interest Online",
     description:
-      "See how principal, rate, time, and compounding grow a balance. Useful for savings, deposits, and investment planning.",
+      "Calculate Compound Interest free. This compound interest calculator free shows future value from principal, rate, time, and compounding. Compound Interest Calculator Online free — no software and no signup.",
     keywords:
-      "compound interest calculator, compound interest formula, future value calculator, investment growth",
-    focusKeyword: "compound interest calculator",
+      "compound interest calculator free, calculate compound interest free, compound interest calculator online free, calculate compound interest, compound interest calculator",
+    focusKeyword: "compound interest calculator free",
   },
   "gst-calculator": {
-    title: "GST Calculator Online Free | SmartToolX",
+    title: "GST Calculator Free | Calculate GST Online",
     description:
-      "Free GST calculator online. Add or remove GST or VAT from any amount and see the tax plus the net or gross total.",
+      "Calculate GST free. This gst calculator free adds or removes GST or VAT from any amount. GST Calculator Online free — no software and no signup.",
     keywords:
-      "GST calculator, GST calculator online, VAT calculator, add GST, remove GST",
-    focusKeyword: "GST calculator",
+      "gst calculator free, calculate gst free, gst calculator online free, calculate gst, gst calculator",
+    focusKeyword: "gst calculator free",
   },
   "tip-calculator": {
-    title: "Free Tip Calculator Online | SmartToolX",
+    title: "Tip Calculator Free | Calculate Tip Online",
     description:
-      "Split a bill with tip. Enter the total, tip percent, and number of people to see what each person pays.",
+      "Calculate Tip free. This tip calculator free splits a bill with tip percent and number of people. Tip Calculator Online free — no software and no signup.",
     keywords:
-      "tip calculator, bill splitter, restaurant tip calculator, gratuity calculator",
-    focusKeyword: "tip calculator",
+      "tip calculator free, calculate tip free, tip calculator online free, calculate tip, tip calculator",
+    focusKeyword: "tip calculator free",
   },
   "discount-calculator": {
-    title: "Free Discount Calculator Online | SmartToolX",
+    title: "Discount Calculator Free | Calculate Discount Online",
     description:
-      "Find the sale price and how much you save from an original price and discount percent. Handy for shopping and invoices.",
+      "Calculate Discount free. This discount calculator free finds the sale price and amount saved. Discount Calculator Online free — no software and no signup.",
     keywords:
-      "discount calculator, sale price calculator, percent off calculator, how much do I save",
-    focusKeyword: "discount calculator",
+      "discount calculator free, calculate discount free, discount calculator online free, calculate discount, discount calculator",
+    focusKeyword: "discount calculator free",
   },
   "sip-calculator": {
-    title: "SIP Calculator Online Free | SmartToolX",
+    title: "SIP Calculator Free | Calculate SIP Online",
     description:
-      "Free SIP calculator online. Estimate mutual fund SIP maturity from monthly amount, expected return, and years.",
+      "Calculate SIP free. This sip calculator free estimates SIP maturity from monthly amount, return, and years. SIP Calculator Online free — no software and no signup.",
     keywords:
-      "SIP calculator, SIP calculator online, systematic investment plan calculator, mutual fund SIP calculator",
-    focusKeyword: "SIP calculator",
+      "sip calculator free, calculate sip free, sip calculator online free, calculate sip, sip calculator",
+    focusKeyword: "sip calculator free",
   },
   "simple-interest-calculator": {
-    title: "Free Simple Interest Calculator | SmartToolX",
+    title: "Simple Interest Calculator Free | Calculate Simple Interest Online",
     description:
-      "Calculate simple interest and the total payable from principal, annual rate, and time. Clear numbers for short-term loans.",
+      "Calculate Simple Interest free. This simple interest calculator free shows interest and total payable from principal, rate, and time. Simple Interest Calculator Online free — no software and no signup.",
     keywords:
-      "simple interest calculator, simple interest formula, interest on loan calculator",
-    focusKeyword: "simple interest calculator",
+      "simple interest calculator free, calculate simple interest free, simple interest calculator online free, calculate simple interest, simple interest calculator",
+    focusKeyword: "simple interest calculator free",
   },
   "fd-calculator": {
-    title: "FD Calculator Online Free | SmartToolX",
+    title: "FD Calculator Free | Calculate FD Online",
     description:
-      "Free FD calculator online. Estimate fixed deposit maturity and interest from amount, annual rate, and tenure in years.",
+      "Calculate FD free. This fd calculator free estimates fixed deposit maturity from amount, rate, and years. FD Calculator Online free — no software and no signup.",
     keywords:
-      "FD calculator, fixed deposit calculator, FD calculator online, FD maturity calculator, bank FD calculator",
-    focusKeyword: "FD calculator",
+      "fd calculator free, calculate fd free, fd calculator online free, calculate fd, fd calculator",
+    focusKeyword: "fd calculator free",
   },
   "case-converter": {
-    title: "Free Case Converter Online | SmartToolX",
+    title: "Case Converter Free | Convert Case Online",
     description:
-      "Switch text to UPPERCASE, lowercase, Title Case, or sentence case. Paste a draft and copy the result.",
+      "Convert Case free. This case converter free switches text to upper, lower, title, or sentence case. Uppercase Converter free — no software and no signup.",
     keywords:
-      "case converter, uppercase converter, title case converter, lowercase text, sentence case",
-    focusKeyword: "case converter",
+      "case converter free, convert case free, uppercase converter free, convert case, case converter",
+    focusKeyword: "case converter free",
   },
   "password-generator": {
-    title: "Free Password Generator Online | SmartToolX",
+    title: "Password Generator Free | Generate Password Online",
     description:
-      "Create a random password in your browser. Length and character options stay on your device. Nothing is stored.",
+      "Generate Password free. This password generator free creates a strong random password in your browser. Strong Password Generator free — no software and no signup.",
     keywords:
-      "password generator, random password, strong password generator, secure password online",
-    focusKeyword: "password generator",
+      "password generator free, generate password free, strong password generator free, generate password, password generator",
+    focusKeyword: "password generator free",
   },
   "lorem-ipsum-generator": {
-    title: "Free Lorem Ipsum Generator | SmartToolX",
+    title: "Lorem Ipsum Generator Free | Generate Lorem Ipsum Online",
     description:
-      "Generate placeholder paragraphs for layouts and drafts. Choose how much dummy text you need and copy it.",
+      "Generate Lorem Ipsum free. This lorem ipsum generator free generates placeholder paragraphs for layouts and drafts. Dummy Text Generator free — no software and no signup.",
     keywords:
-      "lorem ipsum generator, dummy text generator, placeholder text, lorem ipsum online",
-    focusKeyword: "lorem ipsum generator",
+      "lorem ipsum generator free, generate lorem ipsum free, dummy text generator free, generate lorem ipsum, lorem ipsum generator",
+    focusKeyword: "lorem ipsum generator free",
   },
   "text-reverser": {
-    title: "Free Reverse Text Tool Online | SmartToolX",
+    title: "Reverse Text Free | Reverse Letters Online",
     description:
-      "Reverse characters or words in any block of text. Useful for puzzles, checks, and quick edits.",
+      "Reverse Letters free. This reverse text free reverses characters or words in any block of text. Backwards Text free — no software and no signup.",
     keywords:
-      "reverse text, backwards text generator, reverse letters, reverse words online",
-    focusKeyword: "reverse text",
+      "reverse text free, reverse letters free, backwards text free, reverse letters, reverse text",
+    focusKeyword: "reverse text free",
   },
   "base64-encoder": {
-    title: "Free Base64 Encoder and Decoder | SmartToolX",
+    title: "Base64 Encoder Free | Encode Base64 Online",
     description:
-      "Encode or decode Base64 text in your browser. Handy for tokens, data URLs, and debugging.",
+      "Encode Base64 free. This base64 encoder free encodes or decodes text in your browser. Base64 Decoder free — no software and no signup.",
     keywords:
-      "Base64 encoder, Base64 decoder, encode Base64, decode Base64 online",
-    focusKeyword: "Base64 encoder",
+      "base64 encoder free, encode base64 free, base64 decoder free, encode base64, base64 encoder",
+    focusKeyword: "base64 encoder free",
   },
   "slug-generator": {
-    title: "Free URL Slug Generator Online | SmartToolX",
+    title: "Slug Generator Free | Generate Slug Online",
     description:
-      "Turn a title into a URL-safe slug for blogs and pages. Lowercase, hyphenated, and ready to paste.",
+      "Generate Slug free. This slug generator free turns a title into a hyphenated slug for blogs and pages. URL Slug Generator free — no software and no signup.",
     keywords:
-      "slug generator, URL slug, permalink generator, SEO slug, title to slug",
-    focusKeyword: "slug generator",
+      "slug generator free, generate slug free, url slug generator free, generate slug, slug generator",
+    focusKeyword: "slug generator free",
   },
   "json-formatter": {
-    title: "JSON Formatter Online Free | SmartToolX",
+    title: "JSON Formatter Free | Format JSON Online",
     description:
-      "Free JSON formatter online. Beautify or minify JSON in your browser. No upload and no account.",
+      "Format JSON free. This json formatter free beautifies or minifies JSON in your browser. JSON Beautifier free — no software and no signup.",
     keywords:
-      "JSON formatter, JSON beautifier, JSON formatter online, minify JSON, format JSON",
-    focusKeyword: "JSON formatter",
+      "json formatter free, format json free, json beautifier free, format json, json formatter",
+    focusKeyword: "json formatter free",
   },
   "temperature-converter": {
-    title: "Free Temperature Converter Online | SmartToolX",
+    title: "Temperature Converter Free | Convert Celsius to Fahrenheit Online",
     description:
-      "Convert Celsius, Fahrenheit, and Kelvin in one place. Built for cooking, weather, and science homework.",
+      "Convert Celsius to Fahrenheit free. This temperature converter free converts Celsius, Fahrenheit, and Kelvin instantly. Celsius to Fahrenheit free — no software and no signup.",
     keywords:
-      "temperature converter, Celsius to Fahrenheit, Fahrenheit to Celsius, Kelvin converter",
-    focusKeyword: "temperature converter",
+      "temperature converter free, convert celsius to fahrenheit free, celsius to fahrenheit free, convert celsius to fahrenheit, temperature converter",
+    focusKeyword: "temperature converter free",
   },
   "number-to-words": {
-    title: "Free Number to Words Converter | SmartToolX",
+    title: "Number to Words Converter Free | Convert Number to Words Online",
     description:
-      "Spell out any number in English words. Useful for cheques, invoices, and writing amounts in text.",
+      "Convert Number to Words free. This number to words converter free spells out any number in English for cheques, invoices, and forms. Number to Words free — no software and no signup.",
     keywords:
-      "number to words, numbers to words converter, amount in words, cheque amount in words",
-    focusKeyword: "number to words",
+      "number to words converter free, convert number to words free, number to words free, convert number to words, number to words converter",
+    focusKeyword: "number to words converter free",
   },
   "binary-converter": {
-    title: "Free Binary Converter Online | SmartToolX",
+    title: "Binary Converter Free | Convert Decimal to Binary Online",
     description:
-      "Convert between decimal, binary, and hexadecimal. Enter a value and see the other bases at once.",
+      "Convert Decimal to Binary free. This binary converter free converts between decimal, binary, and hexadecimal. Decimal to Binary free — no software and no signup.",
     keywords:
-      "binary converter, decimal to binary, hex converter, binary to decimal calculator",
-    focusKeyword: "binary converter",
+      "binary converter free, convert decimal to binary free, decimal to binary free, convert decimal to binary, binary converter",
+    focusKeyword: "binary converter free",
   },
   "color-converter": {
-    title: "Color Converter Online Free | HEX RGB HSL HSV CMYK",
+    title: "Color Converter Free | Convert HEX RGB HSL Online",
     description:
-      "Free all-in-one color converter. Paste HEX, RGB, HSL, HSV, or CMYK and copy every other format on one page. No account. Runs in your browser.",
+      "Convert HEX RGB HSL free. This color converter free converts HEX, RGB, HSL, HSV, and CMYK on one page. HEX RGB HSL Converter free — no software and no signup.",
     keywords:
-      "color converter, hex rgb hsl converter, hsv converter, cmyk converter, all in one color converter",
-    focusKeyword: "color converter",
+      "color converter free, convert hex rgb hsl free, hex rgb hsl converter free, convert hex rgb hsl, color converter",
+    focusKeyword: "color converter free",
   },
   "roman-numeral-converter": {
-    title: "Free Roman Numeral Converter | SmartToolX",
+    title: "Roman Numeral Converter Free | Convert Numbers to Roman Numerals Online",
     description:
-      "Convert numbers from 1 to 3999 into Roman numerals. Built for dates, outlines, and clock faces.",
+      "Convert Numbers to Roman Numerals free. This roman numeral converter free converts numbers from 1 to 3999 into Roman numerals and back. Numbers to Roman Numerals free — no software and no signup.",
     keywords:
-      "Roman numeral converter, numbers to Roman numerals, Roman numerals calculator",
-    focusKeyword: "Roman numeral converter",
+      "roman numeral converter free, convert numbers to roman numerals free, numbers to roman numerals free, convert numbers to roman numerals, roman numeral converter",
+    focusKeyword: "roman numeral converter free",
   },
   "time-calculator": {
-    title: "Free Time Calculator Online | SmartToolX",
+    title: "Time Calculator Free | Add Hours Minutes Online",
     description:
-      "Add hours, minutes, and seconds into a total time. Useful for logs, workouts, and video lengths.",
+      "Add Hours Minutes free. This time calculator free adds hours, minutes, and seconds into a total time. Time Calculator Online free — no software and no signup.",
     keywords:
-      "time calculator, add hours minutes seconds, duration calculator, time adder",
-    focusKeyword: "time calculator",
+      "time calculator free, add hours minutes free, time calculator online free, add hours minutes, time calculator",
+    focusKeyword: "time calculator free",
   },
   "date-difference-calculator": {
-    title: "Free Date Difference Calculator | SmartToolX",
+    title: "Date Difference Calculator Free | Calculate Days Between Dates Online",
     description:
-      "Find years, months, weeks, and total days between two dates. Use it for timelines, leave, and event planning.",
+      "Calculate Days Between Dates free. This date difference calculator free finds years, months, weeks, and days between two dates. Days Between Two Dates free — no software and no signup.",
     keywords:
-      "date difference calculator, days between two dates, date duration calculator, how many days between dates",
-    focusKeyword: "date difference calculator",
+      "date difference calculator free, calculate days between dates free, days between two dates free, calculate days between dates, date difference calculator",
+    focusKeyword: "date difference calculator free",
   },
   "time-zone-converter": {
-    title: "Time Zone Converter Online Free | SmartToolX",
+    title: "Time Zone Converter Free | Convert Time Zones Online",
     description:
-      "Free time zone converter online. Convert a date and time between all IANA time zones, including UTC, Pakistan, India, US, and UK.",
+      "Convert Time Zones free. This time zone converter free converts a date and time between world time zones. Timezone Converter free — no software and no signup.",
     keywords:
-      "time zone converter, timezone converter, time zone converter online, convert time zones, UTC converter",
-    focusKeyword: "time zone converter",
+      "time zone converter free, convert time zones free, timezone converter free, convert time zones, time zone converter",
+    focusKeyword: "time zone converter free",
   },
   "pdf-to-word": {
-    title: "PDF to Word Converter Free Online | SmartToolX",
+    title: "PDF to Word Converter Free | Convert PDF to Word Online",
     description:
-      "Convert PDF to Word online free. No signup. Your file stays in the browser. Download an editable DOCX in seconds.",
+      "Convert PDF to Word free. This pdf to word converter free turns a PDF into a DOCX you can download instantly. PDF to Word free — no software and no signup.",
     keywords:
-      "PDF to Word, PDF to Word converter, PDF to Word online free, convert PDF to Word, PDF to DOCX",
-    focusKeyword: "PDF to Word converter",
+      "pdf to word converter free, convert pdf to word free, pdf to word free, convert pdf to word, pdf to word converter",
+    focusKeyword: "pdf to word converter free",
   },
   "word-to-pdf": {
-    title: "Word to PDF Converter Free Online | SmartToolX",
+    title: "Word to PDF Converter Free | Convert Word to PDF Online",
     description:
-      "Convert Word to PDF online free. Drop a DOCX file and download a PDF. No account. Conversion runs in your browser.",
+      "Convert Word to PDF free. This word to pdf converter free turns a DOCX into a PDF you can download instantly. Word to PDF free — no software and no signup.",
     keywords:
-      "Word to PDF, Word to PDF converter, Word to PDF online free, DOCX to PDF, convert Word to PDF",
-    focusKeyword: "Word to PDF converter",
+      "word to pdf converter free, convert word to pdf free, word to pdf free, convert word to pdf, word to pdf converter",
+    focusKeyword: "word to pdf converter free",
   },
   "pdf-to-jpg": {
-    title: "PDF to JPG Converter Free Online | SmartToolX",
+    title: "PDF to JPG Converter Free | Convert PDF to JPG Online",
     description:
-      "Convert PDF to JPG online free. Export every page as a JPEG. Multi-page files download as a zip. No upload to a server.",
+      "Convert PDF to JPG free. This pdf to jpg converter free exports every PDF page as a JPEG you can download instantly. PDF to JPG free — no software and no signup.",
     keywords:
-      "PDF to JPG, PDF to JPG converter, PDF to JPEG online free, convert PDF to JPG, PDF to image",
-    focusKeyword: "PDF to JPG converter",
+      "pdf to jpg converter free, convert pdf to jpg free, pdf to jpg free, convert pdf to jpg, pdf to jpg converter",
+    focusKeyword: "pdf to jpg converter free",
   },
   "jpg-to-pdf": {
-    title: "JPG to PDF Converter Free Online | SmartToolX",
+    title: "JPG to PDF Converter Free | Convert JPG to PDF Online",
     description:
-      "Convert JPG to PDF online free. Combine photos or PNG images into one PDF. No signup. Files stay on your device.",
+      "Convert JPG to PDF free. This jpg to pdf converter free turns JPG images into a PDF you can download instantly. JPG to PDF free — no software and no signup.",
     keywords:
-      "JPG to PDF, JPG to PDF converter, convert image to PDF free, JPEG to PDF, images to PDF",
-    focusKeyword: "JPG to PDF converter",
+      "jpg to pdf converter free, convert jpg to pdf free, jpg to pdf free, convert jpg to pdf, jpg to pdf converter",
+    focusKeyword: "jpg to pdf converter free",
   },
   "excel-to-pdf": {
-    title: "Excel to PDF Converter Free Online | SmartToolX",
+    title: "Excel to PDF Converter Free | Convert Excel to PDF Online",
     description:
-      "Convert Excel to PDF online free. Turn XLSX or CSV into a print-ready PDF in your browser. No account needed.",
+      "Convert Excel to PDF free. This excel to pdf converter free turns XLSX or CSV into a PDF you can download instantly. Excel to PDF free — no software and no signup.",
     keywords:
-      "Excel to PDF, Excel to PDF converter, XLSX to PDF online free, convert spreadsheet to PDF",
-    focusKeyword: "Excel to PDF converter",
+      "excel to pdf converter free, convert excel to pdf free, excel to pdf free, convert excel to pdf, excel to pdf converter",
+    focusKeyword: "excel to pdf converter free",
   },
   "ppt-to-pdf": {
-    title: "PPT to PDF Converter Free Online | SmartToolX",
+    title: "PPT to PDF Converter Free | Convert PPT to PDF Online",
     description:
-      "Convert PPT to PDF online free. Upload a PowerPoint .ppt or .pptx file and download a shareable PDF. No signup.",
+      "Convert PPT to PDF free. This ppt to pdf converter free turns a PowerPoint file into a PDF you can download instantly. PPT to PDF free — no software and no signup.",
     keywords:
-      "PPT to PDF, PPT to PDF converter, PowerPoint to PDF online free, PPTX to PDF, convert slides to PDF",
-    focusKeyword: "PPT to PDF converter",
+      "ppt to pdf converter free, convert ppt to pdf free, ppt to pdf free, convert ppt to pdf, ppt to pdf converter",
+    focusKeyword: "ppt to pdf converter free",
   },
   "compress-pdf": {
-    title: "Compress PDF Online Free | SmartToolX",
+    title: "Compress PDF Free | Compress PDF Online Online",
     description:
-      "Compress PDF online free. Reduce PDF file size for email and uploads. Runs in your browser. Files are not uploaded.",
+      "Compress PDF Online free. This compress pdf free reduces PDF file size for email and uploads. PDF Compressor free — no software and no signup.",
     keywords:
-      "compress PDF, compress PDF online, compress PDF online free, reduce PDF size, PDF compressor",
-    focusKeyword: "compress PDF online",
+      "compress pdf free, compress pdf online free, pdf compressor free, compress pdf online, compress pdf",
+    focusKeyword: "compress pdf free",
   },
   "merge-pdf": {
-    title: "Merge PDF Online Free | SmartToolX",
+    title: "Merge PDF Free | Merge PDF Online Online",
     description:
-      "Merge PDF files online free. Combine multiple PDFs into one document in your browser. No signup and no upload.",
+      "Merge PDF Online free. This merge pdf free combines multiple PDFs into one document you can download instantly. Combine PDF free — no software and no signup.",
     keywords:
-      "merge PDF, merge PDF online, combine PDF online free, join PDF files, merge PDF free",
-    focusKeyword: "merge PDF",
+      "merge pdf free, merge pdf online free, combine pdf free, merge pdf online, merge pdf",
+    focusKeyword: "merge pdf free",
   },
   "pdf-to-png": {
-    title: "PDF to PNG Converter Free Online | SmartToolX",
+    title: "PDF to PNG Converter Free | Convert PDF to PNG Online",
     description:
-      "Convert PDF to PNG online free. Export each page as a sharp PNG. Multi-page files download as a zip.",
+      "Convert PDF to PNG free. This pdf to png converter free exports each PDF page as a PNG you can download instantly. PDF to PNG free — no software and no signup.",
     keywords:
-      "PDF to PNG, PDF to PNG converter, PDF to PNG online free, convert PDF to PNG, PDF page to image",
-    focusKeyword: "PDF to PNG converter",
+      "pdf to png converter free, convert pdf to png free, pdf to png free, convert pdf to png, pdf to png converter",
+    focusKeyword: "pdf to png converter free",
   },
   "png-to-pdf": {
-    title: "PNG to PDF Converter Free Online | SmartToolX",
+    title: "PNG to PDF Converter Free | Convert PNG to PDF Online",
     description:
-      "Convert PNG to PDF online free. Combine one or more PNG images into a single PDF. No account needed.",
+      "Convert PNG to PDF free. This png to pdf converter free turns PNG images into a PDF you can download instantly. PNG to PDF free — no software and no signup.",
     keywords:
-      "PNG to PDF, PNG to PDF converter, convert PNG to PDF free, images to PDF, PNG to PDF online",
-    focusKeyword: "PNG to PDF converter",
+      "png to pdf converter free, convert png to pdf free, png to pdf free, convert png to pdf, png to pdf converter",
+    focusKeyword: "png to pdf converter free",
   },
   "split-pdf": {
-    title: "Split PDF Online Free | SmartToolX",
+    title: "Split PDF Free | Split PDF Online Online",
     description:
-      "Split PDF online free. Turn each page into its own PDF. Multi-page files download as a zip. No signup.",
+      "Split PDF Online free. This split pdf free saves each page as its own PDF you can download instantly. Split PDF Pages free — no software and no signup.",
     keywords:
-      "split PDF, split PDF online, split PDF online free, extract PDF pages, split PDF pages",
-    focusKeyword: "split PDF",
+      "split pdf free, split pdf online free, split pdf pages free, split pdf online, split pdf",
+    focusKeyword: "split pdf free",
   },
   "sleep-calculator": {
-    title: "Sleep Calculator Online Free | Bedtime & Wake Time",
+    title: "Sleep Calculator Free | Calculate Bedtime Online",
     description:
-      "Free sleep calculator online. Find the best bedtime or wake-up time from 90-minute sleep cycles. No account needed.",
+      "Calculate Bedtime free. This sleep calculator free finds bedtime or wake-up time from 90-minute sleep cycles. Sleep Cycle Calculator free — no software and no signup.",
     keywords:
-      "sleep calculator, bedtime calculator, sleep cycle calculator, wake up calculator, when should I go to bed, sleep time calculator, sleep calculator online",
-    focusKeyword: "sleep calculator",
+      "sleep calculator free, calculate bedtime free, sleep cycle calculator free, calculate bedtime, sleep calculator",
+    focusKeyword: "sleep calculator free",
   },
   "mortgage-calculator": {
-    title: "Mortgage Calculator Online Free | Monthly Payment",
+    title: "Mortgage Calculator Free | Calculate Mortgage Online",
     description:
-      "Free mortgage calculator online. See monthly payment, total interest, and amount payable from home price, down payment, rate, and term.",
+      "Calculate Mortgage free. This mortgage calculator free shows monthly payment from home price, down payment, rate, and term. Mortgage Payment Calculator free — no software and no signup.",
     keywords:
-      "mortgage calculator, mortgage payment calculator, home loan calculator, monthly mortgage payment, mortgage calculator with down payment, house payment calculator, mortgage calculator online",
-    focusKeyword: "mortgage calculator",
+      "mortgage calculator free, calculate mortgage free, mortgage payment calculator free, calculate mortgage, mortgage calculator",
+    focusKeyword: "mortgage calculator free",
   },
   "random-number-generator": {
-    title: "Random Number Generator Online Free | 1 to 100",
+    title: "Random Number Generator Free | Generate Random Number Online",
     description:
-      "Free random number generator online. Pick random numbers between any minimum and maximum, including 1 to 100. No signup.",
+      "Generate Random Number free. This random number generator free picks random numbers between any min and max, including 1 to 100. Random Number Generator 1-100 free — no software and no signup.",
     keywords:
-      "random number generator, random number generator 1-100, number generator, random number picker, RNG online, generate random numbers, random number generator online",
-    focusKeyword: "random number generator",
+      "random number generator free, generate random number free, random number generator 1-100 free, generate random number, random number generator",
+    focusKeyword: "random number generator free",
   },
   "gpa-calculator": {
-    title: "GPA Calculator Online Free | CGPA to Percentage",
+    title: "GPA Calculator Free | Calculate GPA Online",
     description:
-      "Free GPA calculator online. Find GPA from credits, convert percentage to 4.0 GPA, and convert CGPA to percentage.",
+      "Calculate GPA free. This gpa calculator free finds GPA from credits and converts CGPA to percentage. CGPA to Percentage free — no software and no signup.",
     keywords:
-      "GPA calculator, GPA calculator online, CGPA calculator, CGPA to percentage, college GPA calculator, GPA calculator 4.0, grade point average calculator, percentage to CGPA",
-    focusKeyword: "GPA calculator",
+      "gpa calculator free, calculate gpa free, cgpa to percentage free, calculate gpa, gpa calculator",
+    focusKeyword: "gpa calculator free",
   },
   "png-to-jpg": {
-    title: "PNG to JPG Converter Free Online | SmartToolX",
+    title: "PNG to JPG Converter Free | Convert PNG to JPG Online",
     description:
-      "Convert PNG to JPG online free. Turn PNG images into JPEG in your browser. No signup. Files are not uploaded.",
+      "Convert PNG to JPG free. This png to jpg converter free turns a PNG into a JPEG you can download instantly. PNG to JPG free — no software and no signup.",
     keywords:
-      "PNG to JPG, PNG to JPG converter, convert PNG to JPG, PNG to JPEG online free, PNG to JPG online, convert PNG to JPEG, PNG to JPG converter free",
-    focusKeyword: "PNG to JPG converter",
+      "png to jpg converter free, convert png to jpg free, png to jpg free, convert png to jpg, png to jpg converter",
+    focusKeyword: "png to jpg converter free",
   },
   "color-picker": {
-    title: "Color Picker Online Free | HEX RGB HSL",
+    title: "Color Picker Free | Use Color Picker Online",
     description:
-      "Free color picker online. Click a swatch or type a hex code and copy HEX, RGB, HSL, HSV, and CMYK. No signup. Runs in your browser.",
+      "Use Color Picker free. This color picker free picks a color and copies HEX, RGB, HSL, HSV, and CMYK. HEX Color Picker free — no software and no signup.",
     keywords:
-      "color picker, color picker online, hex color picker, html color picker, free color picker",
-    focusKeyword: "color picker",
+      "color picker free, use color picker free, hex color picker free, use color picker, color picker",
+    focusKeyword: "color picker free",
   },
   "hex-to-rgb": {
-    title: "HEX to RGB Converter Online Free | SmartToolX",
+    title: "HEX to RGB Converter Free | Convert HEX to RGB Online",
     description:
-      "Convert HEX to RGB online free. Paste a hex code such as #E8A33D and copy rgb() instantly. 3-digit HEX works. No account.",
-    keywords: "HEX to RGB, hex to rgb converter, convert hex to rgb, hex color to rgb",
-    focusKeyword: "HEX to RGB",
+      "Convert HEX to RGB free. This hex to rgb converter free turns a hex code into rgb() you can copy instantly. HEX to RGB free — no software and no signup.",
+    keywords:
+      "hex to rgb converter free, convert hex to rgb free, hex to rgb free, convert hex to rgb, hex to rgb converter",
+    focusKeyword: "hex to rgb converter free",
   },
   "rgb-to-hex": {
-    title: "RGB to HEX Converter Online Free | SmartToolX",
+    title: "RGB to HEX Converter Free | Convert RGB to HEX Online",
     description:
-      "Convert RGB to HEX online free. Enter 232, 163, 61 or rgb() and copy a six-digit hex code. Values clamp to 0–255.",
-    keywords: "RGB to HEX, rgb to hex converter, convert rgb to hex, rgb color to hex",
-    focusKeyword: "RGB to HEX",
+      "Convert RGB to HEX free. This rgb to hex converter free turns RGB values into a six-digit hex code. RGB to HEX free — no software and no signup.",
+    keywords:
+      "rgb to hex converter free, convert rgb to hex free, rgb to hex free, convert rgb to hex, rgb to hex converter",
+    focusKeyword: "rgb to hex converter free",
   },
   "hex-to-hsl": {
-    title: "HEX to HSL Converter Online Free | SmartToolX",
+    title: "HEX to HSL Converter Free | Convert HEX to HSL Online",
     description:
-      "Convert HEX to HSL online free. Paste a hex color and copy hue, saturation, and lightness. Useful for shades and tints.",
-    keywords: "HEX to HSL, hex to hsl converter, convert hex to hsl, hex color to hsl",
-    focusKeyword: "HEX to HSL",
+      "Convert HEX to HSL free. This hex to hsl converter free turns a hex color into hue, saturation, and lightness. HEX to HSL free — no software and no signup.",
+    keywords:
+      "hex to hsl converter free, convert hex to hsl free, hex to hsl free, convert hex to hsl, hex to hsl converter",
+    focusKeyword: "hex to hsl converter free",
   },
   "hsl-to-hex": {
-    title: "HSL to HEX Converter Online Free | SmartToolX",
+    title: "HSL to HEX Converter Free | Convert HSL to HEX Online",
     description:
-      "Convert HSL to HEX online free. Enter hue, saturation, and lightness — or paste hsl() — and copy a hex code.",
-    keywords: "HSL to HEX, hsl to hex converter, convert hsl to hex, hsl color to hex",
-    focusKeyword: "HSL to HEX",
+      "Convert HSL to HEX free. This hsl to hex converter free turns hue, saturation, and lightness into a hex code. HSL to HEX free — no software and no signup.",
+    keywords:
+      "hsl to hex converter free, convert hsl to hex free, hsl to hex free, convert hsl to hex, hsl to hex converter",
+    focusKeyword: "hsl to hex converter free",
   },
   "rgb-to-hsl": {
-    title: "RGB to HSL Converter Online Free | SmartToolX",
+    title: "RGB to HSL Converter Free | Convert RGB to HSL Online",
     description:
-      "Convert RGB to HSL online free. Paste rgb values from a design tool and copy hue, saturation, and lightness.",
-    keywords: "RGB to HSL, rgb to hsl converter, convert rgb to hsl, rgb color to hsl",
-    focusKeyword: "RGB to HSL",
+      "Convert RGB to HSL free. This rgb to hsl converter free turns RGB values into hsl() you can copy instantly. RGB to HSL free — no software and no signup.",
+    keywords:
+      "rgb to hsl converter free, convert rgb to hsl free, rgb to hsl free, convert rgb to hsl, rgb to hsl converter",
+    focusKeyword: "rgb to hsl converter free",
   },
   "color-palette-generator": {
-    title: "Color Palette Generator Online Free | SmartToolX",
+    title: "Color Palette Generator Free | Generate Color Palette Online",
     description:
-      "Free color palette generator. Enter a HEX seed and get a five-color matching palette for UI, branding, and CSS.",
+      "Generate Color Palette free. This color palette generator free builds a matching palette from a HEX color. Color Scheme Generator free — no software and no signup.",
     keywords:
-      "color palette generator, palette generator, matching color palette, color scheme generator",
-    focusKeyword: "color palette generator",
+      "color palette generator free, generate color palette free, color scheme generator free, generate color palette, color palette generator",
+    focusKeyword: "color palette generator free",
   },
   "gradient-generator": {
-    title: "Gradient Generator Online Free | Linear & Radial",
+    title: "Gradient Generator Free | Generate Gradient Online",
     description:
-      "Free gradient generator. Preview a linear or radial blend from two HEX colors and copy the CSS function. No signup.",
+      "Generate Gradient free. This gradient generator free previews a linear or radial blend and copies the CSS. Linear Gradient Generator free — no software and no signup.",
     keywords:
-      "gradient generator, linear gradient generator, radial gradient generator, color gradient maker",
-    focusKeyword: "gradient generator",
+      "gradient generator free, generate gradient free, linear gradient generator free, generate gradient, gradient generator",
+    focusKeyword: "gradient generator free",
   },
   "css-gradient-generator": {
-    title: "CSS Gradient Generator Online Free | Copy CSS",
+    title: "CSS Gradient Generator Free | Generate CSS Gradient Online",
     description:
-      "Free CSS gradient generator. Copy a ready-to-paste background rule for linear, radial, or repeating-linear gradients.",
+      "Generate CSS Gradient free. This css gradient generator free copies a background rule for linear, radial, or repeating gradients. CSS Linear Gradient free — no software and no signup.",
     keywords:
-      "CSS gradient generator, css linear gradient, repeating linear gradient, background gradient css",
-    focusKeyword: "CSS gradient generator",
+      "css gradient generator free, generate css gradient free, css linear gradient free, generate css gradient, css gradient generator",
+    focusKeyword: "css gradient generator free",
   },
   "color-shades-generator": {
-    title: "Color Shades Generator Online Free | Darker HEX",
+    title: "Color Shades Generator Free | Generate Color Shades Online",
     description:
-      "Generate darker shades from any HEX color. Copy a five-step shade scale for hover states, borders, and print. Free in your browser.",
-    keywords: "color shades generator, darker shades, hex shades, shade generator",
-    focusKeyword: "color shades generator",
+      "Generate Color Shades free. This color shades generator free generates darker shades from any HEX color. Darker Shades free — no software and no signup.",
+    keywords:
+      "color shades generator free, generate color shades free, darker shades free, generate color shades, color shades generator",
+    focusKeyword: "color shades generator free",
   },
   "color-tint-generator": {
-    title: "Color Tint Generator Online Free | Lighter HEX",
+    title: "Color Tint Generator Free | Generate Color Tints Online",
     description:
-      "Generate lighter tints from any HEX color. Mix toward white and copy a five-step tint scale for backgrounds and highlights.",
-    keywords: "color tint generator, lighter tints, hex tints, tint generator",
-    focusKeyword: "color tint generator",
+      "Generate Color Tints free. This color tint generator free generates lighter tints from any HEX color. Lighter Tints free — no software and no signup.",
+    keywords:
+      "color tint generator free, generate color tints free, lighter tints free, generate color tints, color tint generator",
+    focusKeyword: "color tint generator free",
   },
   "color-tone-generator": {
-    title: "Color Tone Generator Online Free | Muted HEX",
+    title: "Color Tone Generator Free | Generate Color Tones Online",
     description:
-      "Generate muted tones from any HEX color. Lower saturation toward gray without changing hue. Copy a five-step tone scale.",
-    keywords: "color tone generator, muted tones, desaturated color, tone generator",
-    focusKeyword: "color tone generator",
+      "Generate Color Tones free. This color tone generator free generates muted tones from any HEX color. Muted Tones free — no software and no signup.",
+    keywords:
+      "color tone generator free, generate color tones free, muted tones free, generate color tones, color tone generator",
+    focusKeyword: "color tone generator free",
   },
   "complementary-color-generator": {
-    title: "Complementary Colors Generator Free | SmartToolX",
+    title: "Complementary Colors Free | Find Complementary Colors Online",
     description:
-      "Find complementary colors for any HEX code. See the 180° opposite hue instantly and copy both HEX values. Free, no account.",
-    keywords: "complementary colors, complementary color, opposite color, color wheel complement",
-    focusKeyword: "complementary colors",
+      "Find Complementary Colors free. This complementary colors free finds the 180° opposite HEX color instantly. Opposite Color free — no software and no signup.",
+    keywords:
+      "complementary colors free, find complementary colors free, opposite color free, find complementary colors, complementary colors",
+    focusKeyword: "complementary colors free",
   },
   "analogous-color-generator": {
-    title: "Analogous Colors Generator Free | SmartToolX",
+    title: "Analogous Colors Free | Generate Analogous Colors Online",
     description:
-      "Generate analogous colors from a HEX seed. Get neighboring hues at ±30° for a calm three-color palette you can copy.",
-    keywords: "analogous colors, analogous palette, neighboring hues, analogous color scheme",
-    focusKeyword: "analogous colors",
+      "Generate Analogous Colors free. This analogous colors free gets neighboring hues from a HEX seed. Analogous Palette free — no software and no signup.",
+    keywords:
+      "analogous colors free, generate analogous colors free, analogous palette free, generate analogous colors, analogous colors",
+    focusKeyword: "analogous colors free",
   },
   "triadic-color-generator": {
-    title: "Triadic Colors Generator Free | SmartToolX",
+    title: "Triadic Colors Free | Generate Triadic Colors Online",
     description:
-      "Generate triadic colors from one HEX seed. Three hues 120° apart for related accents you can copy as HEX codes.",
-    keywords: "triadic colors, triadic palette, triadic color scheme, 120 degree colors",
-    focusKeyword: "triadic colors",
+      "Generate Triadic Colors free. This triadic colors free gets three hues 120° apart from one HEX color. Triadic Palette free — no software and no signup.",
+    keywords:
+      "triadic colors free, generate triadic colors free, triadic palette free, generate triadic colors, triadic colors",
+    focusKeyword: "triadic colors free",
   },
   "split-complementary-generator": {
-    title: "Split Complementary Colors Free | Generator",
+    title: "Split Complementary Colors Free | Generate Split Complementary Colors Online",
     description:
-      "Generate split complementary colors from a HEX seed. Get the two hues beside the complement for contrast with less clash.",
+      "Generate Split Complementary Colors free. This split complementary colors free gets contrast with less clash from one HEX seed. Split Complementary Palette free — no software and no signup.",
     keywords:
-      "split complementary colors, split complementary palette, split complement colors",
-    focusKeyword: "split complementary colors",
+      "split complementary colors free, generate split complementary colors free, split complementary palette free, generate split complementary colors, split complementary colors",
+    focusKeyword: "split complementary colors free",
   },
   "monochromatic-palette-generator": {
-    title: "Monochromatic Palette Generator Free | SmartToolX",
+    title: "Monochromatic Palette Free | Generate Monochromatic Palette Online",
     description:
-      "Create a monochromatic palette from a HEX color. Same hue, five lightness steps for charts, dark UI, and brand systems.",
+      "Generate Monochromatic Palette free. This monochromatic palette free builds five lightness steps from one hue. Single Hue Palette free — no software and no signup.",
     keywords:
-      "monochromatic palette, monochromatic colors, single hue palette, mono color scheme",
-    focusKeyword: "monochromatic palette",
+      "monochromatic palette free, generate monochromatic palette free, single hue palette free, generate monochromatic palette, monochromatic palette",
+    focusKeyword: "monochromatic palette free",
   },
   "random-color-generator": {
-    title: "Random Color Generator Online Free | SmartToolX",
+    title: "Random Color Generator Free | Generate Random Color Online",
     description:
-      "Free random color generator. Click once for a random HEX, RGB, HSL, HSV, and CMYK color. Uses the browser cryptographic RNG.",
+      "Generate Random Color free. This random color generator free gives a random HEX, RGB, and HSL color instantly. Random HEX Color free — no software and no signup.",
     keywords:
-      "random color generator, random hex color, generate random color",
-    focusKeyword: "random color generator",
+      "random color generator free, generate random color free, random hex color free, generate random color, random color generator",
+    focusKeyword: "random color generator free",
   },
   "color-contrast-checker": {
-    title: "Color Contrast Checker Online Free | Contrast Ratio",
+    title: "Color Contrast Checker Free | Check Color Contrast Online",
     description:
-      "Free color contrast checker. Enter text and background HEX to see the contrast ratio and a simple pass or fail for readable text.",
+      "Check Color Contrast free. This color contrast checker free shows the contrast ratio for text and background HEX. Contrast Ratio Calculator free — no software and no signup.",
     keywords:
-      "color contrast checker, contrast ratio calculator, text background contrast, readable contrast",
-    focusKeyword: "color contrast checker",
+      "color contrast checker free, check color contrast free, contrast ratio calculator free, check color contrast, color contrast checker",
+    focusKeyword: "color contrast checker free",
   },
   "wcag-contrast-checker": {
-    title: "WCAG Contrast Checker Online Free | AA & AAA",
+    title: "WCAG Contrast Checker Free | Check WCAG Contrast Online",
     description:
-      "Free WCAG contrast checker. Test normal text, large text, and UI graphics against WCAG 2 AA and AAA using relative luminance.",
+      "Check WCAG Contrast free. This wcag contrast checker free tests normal text, large text, and UI graphics for AA and AAA. WCAG AA free — no software and no signup.",
     keywords:
-      "WCAG contrast checker, WCAG AA contrast, WCAG AAA, accessibility contrast checker",
-    focusKeyword: "WCAG contrast checker",
+      "wcag contrast checker free, check wcag contrast free, wcag aa free, check wcag contrast, wcag contrast checker",
+    focusKeyword: "wcag contrast checker free",
   },
   "color-blindness-simulator": {
-    title: "Color Blindness Simulator Online Free | SmartToolX",
+    title: "Color Blindness Simulator Free | Simulate Color Blindness Online",
     description:
-      "Preview a HEX color with protanopia, deuteranopia, or tritanopia. Free color-vision deficiency simulator in your browser.",
+      "Simulate Color Blindness free. This color blindness simulator free previews a HEX color with protanopia, deuteranopia, or tritanopia. Protanopia Simulator free — no software and no signup.",
     keywords:
-      "color blindness simulator, color vision deficiency, protanopia simulator, deuteranopia, tritanopia",
-    focusKeyword: "color blindness simulator",
+      "color blindness simulator free, simulate color blindness free, protanopia simulator free, simulate color blindness, color blindness simulator",
+    focusKeyword: "color blindness simulator free",
   },
   "image-color-palette-extractor": {
-    title: "Extract Colors from Image Free | Palette Extractor",
+    title: "Extract Colors from Image Free | Get Colors from Image Online",
     description:
-      "Extract a color palette from an image in your browser. No upload to a server. Copy HEX swatches for UI and branding.",
+      "Get Colors from Image free. This extract colors from image free builds a HEX palette from an image in your browser. Image Color Palette free — no software and no signup.",
     keywords:
-      "extract colors from image, image color palette, palette from photo, image palette extractor",
-    focusKeyword: "extract colors from image",
+      "extract colors from image free, get colors from image free, image color palette free, get colors from image, extract colors from image",
+    focusKeyword: "extract colors from image free",
   },
   "dominant-color-extractor": {
-    title: "Dominant Color from Image Free | SmartToolX",
+    title: "Dominant Color from Image Free | Find Dominant Color Online",
     description:
-      "Find the dominant color in an image. Sampling runs in your browser. Copy HEX, RGB, and HSL for the most used color.",
+      "Find Dominant Color free. This dominant color from image free finds the most used color and copies HEX, RGB, and HSL. Dominant Color Extractor free — no software and no signup.",
     keywords:
-      "dominant color from image, dominant color extractor, most used color in photo",
-    focusKeyword: "dominant color from image",
+      "dominant color from image free, find dominant color free, dominant color extractor free, find dominant color, dominant color from image",
+    focusKeyword: "dominant color from image free",
   },
   "color-name-finder": {
-    title: "Color Name Finder Online Free | HEX to Color Name",
+    title: "HEX to Color Name Free | Find Color Name Online",
     description:
-      "Find the closest CSS color name for any HEX code. Free hex to color name lookup in your browser. Names are approximate.",
+      "Find Color Name free. This hex to color name free finds the closest CSS color name for any HEX code. Color Name Finder free — no software and no signup.",
     keywords:
-      "hex to color name, color name finder, what color is this hex, css color name",
-    focusKeyword: "hex to color name",
+      "hex to color name free, find color name free, color name finder free, find color name, hex to color name",
+    focusKeyword: "hex to color name free",
   },
   "color-temperature-tool": {
-    title: "Warm or Cool Color Checker Free | SmartToolX",
+    title: "Warm or Cool Color Free | Check Warm or Cool Color Online",
     description:
-      "Check if a HEX color is warm, cool, or neutral. See hue angle and an estimated Kelvin value. Free in your browser.",
-    keywords: "warm or cool color, warm cool color checker, is this color warm or cool",
-    focusKeyword: "warm or cool color",
+      "Check Warm or Cool Color free. This warm or cool color free checks if a HEX color is warm, cool, or neutral. Warm Cool Color Checker free — no software and no signup.",
+    keywords:
+      "warm or cool color free, check warm or cool color free, warm cool color checker free, check warm or cool color, warm or cool color",
+    focusKeyword: "warm or cool color free",
   },
   "css-color-generator": {
-    title: "CSS Color Code Generator Online Free | SmartToolX",
+    title: "CSS Color Code Free | Generate CSS Color Online",
     description:
-      "Generate CSS color code from a HEX color. Copy color, background-color, and a custom property you can paste into a stylesheet.",
+      "Generate CSS Color free. This css color code free copies color, background-color, and a CSS variable from HEX. CSS Color Code Generator free — no software and no signup.",
     keywords:
-      "CSS color code, css color code generator, css background-color, css custom property color",
-    focusKeyword: "CSS color code",
+      "css color code free, generate css color free, css color code generator free, generate css color, css color code",
+    focusKeyword: "css color code free",
   },
   "tailwind-color-converter": {
-    title: "HEX to Tailwind Color Converter Free | SmartToolX",
+    title: "HEX to Tailwind Free | Convert HEX to Tailwind Online",
     description:
-      "Convert HEX to the nearest Tailwind CSS color token and class, such as amber-500 or slate-900. Default palette only.",
+      "Convert HEX to Tailwind free. This hex to tailwind free finds the nearest token and class such as amber-500. Tailwind Color Converter free — no software and no signup.",
     keywords:
-      "hex to tailwind, Tailwind color converter, closest tailwind color, tailwind css color class",
-    focusKeyword: "hex to tailwind",
+      "hex to tailwind free, convert hex to tailwind free, tailwind color converter free, convert hex to tailwind, hex to tailwind",
+    focusKeyword: "hex to tailwind free",
   },
 };
 
@@ -685,10 +697,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/",
     "Home",
     "Free Online Calculators and PDF Converter | SmartToolX",
-    "Free online calculators, color tools, and a free PDF converter in your browser. Color picker, palettes, sleep calculator, mortgage calculator, GPA calculator, PNG to JPG, BMI, EMI, and more. No account needed.",
+    "Free online calculators, color tools, and a free PDF converter in your browser. JPG to PDF, color picker, sleep calculator, mortgage calculator, GPA calculator, PNG to JPG, BMI, EMI, and more. No account needed.",
     {
       keywords:
-        "color tools, color picker, sleep calculator, mortgage calculator, GPA calculator, random number generator, PNG to JPG, free online calculator, SmartToolX",
+        "color tools, color picker, sleep calculator, mortgage calculator, GPA calculator, PNG to JPG, free PDF converter, free online calculator, SmartToolX",
       h1: "Free online calculators and PDF converter",
       focusKeyword: "free online calculators",
       schemaType: "WebSite",
@@ -698,10 +710,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/tools",
     "All Tools",
     "All Free Tools | SmartToolX",
-    "Browse every SmartToolX calculator, converter, text tool, file converter, and color tool. Color picker, palettes, sleep calculator, mortgage, GPA, PNG to JPG, and more. Each one runs in your browser.",
+    "Browse every SmartToolX calculator, converter, text tool, file converter, and color tool. JPG to PDF, number to words, color picker, sleep calculator, mortgage, GPA, PNG to JPG, and more. Each one runs in your browser.",
     {
       keywords:
-        "color tools, color picker, sleep calculator, mortgage calculator, GPA calculator, random number generator, PNG to JPG, all tools, free online tools, SmartToolX tools",
+        "free online tools, color picker, sleep calculator, mortgage calculator, GPA calculator, PNG to JPG, all tools, calculator list, SmartToolX tools",
       focusKeyword: "free online tools",
     },
   ),
@@ -720,10 +732,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/converters",
     "Converters",
     "Free Online Converters | SmartToolX",
-    "Convert currency, units, temperature, time zones, GPA, and more without leaving the page. Live rates for money, standard factors for the rest.",
+    "Convert currency, units, number to words, temperature, time zones, GPA, and more without leaving the page. Live rates for money, standard factors for the rest.",
     {
       keywords:
-        "GPA calculator, CGPA to percentage, unit converter, currency converter, time zone converter, temperature converter, live exchange rates, binary converter",
+        "number to words, GPA calculator, CGPA to percentage, unit converter, currency converter, time zone converter, temperature converter, live exchange rates, binary converter",
       focusKeyword: "unit converter",
     },
   ),
@@ -753,10 +765,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/file-converter",
     "File Converter",
     "Free PDF Converter Online | SmartToolX",
-    "Free PDF converter online. PDF to Word, Word to PDF, compress PDF, merge PDF, split PDF, PNG to JPG, JPG to PDF, and PPT to PDF. No signup. Files stay in your browser.",
+    "Free PDF converter online. JPG to PDF, PPT to PDF, PDF to Word, Word to PDF, compress PDF, merge PDF, split PDF, and PNG to JPG. No signup. Files stay in your browser.",
     {
       keywords:
-        "PNG to JPG, free PDF converter, PDF to Word online free, compress PDF online, merge PDF, split PDF, Word to PDF, PPT to PDF, file converter",
+        "free PDF converter, PDF to Word online free, compress PDF online, merge PDF, split PDF, Word to PDF, PNG to JPG, file converter",
       focusKeyword: "free PDF converter",
       h1: "Free PDF Converter Online",
     },
