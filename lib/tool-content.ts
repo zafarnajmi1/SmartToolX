@@ -2202,6 +2202,168 @@ const custom: Record<string, Partial<ToolContent>> = {
       },
     ],
   },
+  "ideal-weight-calculator": {
+    keyword: "ideal weight calculator free",
+    articleTitle: "How to calculate ideal weight free",
+    paragraphs: [
+      "Calculate Ideal Weight free with this ideal weight calculator. It uses the Devine formula first, then shows Robinson, Hamwi, and Miller plus a healthy BMI range (18.5–24.9).",
+      "How to calculate ideal weight: choose sex, enter height, and read the kilograms and pounds on the right. Devine is 50 + 2.3 kg per inch over 5 feet for men, and 45.5 + 2.3 kg per inch over 5 feet for women.",
+      "This ideal weight calculator free page is built for desktop and mobile. Ideal Body Weight Calculator free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I calculate ideal weight?",
+        a: "Choose sex and enter height above. The result updates as you type. The ideal weight calculator runs in your browser.",
+      },
+      {
+        q: "Which ideal weight formula does this use?",
+        a: "The main result is Devine. Robinson, Hamwi, and Miller are listed next to it. A healthy BMI range of 18.5–24.9 is also shown from height.",
+      },
+      {
+        q: "Is the ideal weight calculator free?",
+        a: "Yes. You can calculate ideal weight free with no signup and no software to install.",
+      },
+      {
+        q: "Can I calculate ideal weight on mobile?",
+        a: "Yes. This ideal body weight calculator free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "cagr-calculator": {
+    keyword: "cagr calculator free",
+    articleTitle: "How to calculate CAGR free",
+    paragraphs: [
+      "Calculate CAGR free with this cagr calculator. It finds compound annual growth rate from beginning value, ending value, and years.",
+      "How to calculate CAGR: enter beginning value, ending value, and number of years. Formula: (ending ÷ beginning) ^ (1 ÷ years) − 1.",
+      "This cagr calculator free page is built for desktop and mobile. Compound Annual Growth Rate Calculator free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I calculate CAGR?",
+        a: "Enter beginning value, ending value, and years above. The result updates as you type. The CAGR calculator runs in your browser.",
+      },
+      {
+        q: "What is the CAGR formula?",
+        a: "CAGR = (ending value ÷ beginning value) raised to (1 ÷ years), then minus 1. Multiply by 100 for a percent.",
+      },
+      {
+        q: "Is the cagr calculator free?",
+        a: "Yes. You can calculate cagr free with no signup and no software to install.",
+      },
+      {
+        q: "Can I calculate cagr on mobile?",
+        a: "Yes. This compound annual growth rate calculator free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "find-and-replace": {
+    keyword: "find and replace free",
+    articleTitle: "How to find and replace text free",
+    paragraphs: [
+      "Find and Replace Text free with this find and replace. It replaces every match in pasted text, with or without matching case.",
+      "How to find and replace text: paste text, enter the find string and the replacement, then copy the result. Matching is literal, not a regex.",
+      "This find and replace free page is built for desktop and mobile. Find Replace Text Online free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I find and replace text?",
+        a: "Paste text, enter Find and Replace with, then copy the updated text. The find and replace tool runs in your browser.",
+      },
+      {
+        q: "Does find and replace support regular expressions?",
+        a: "No. Matches are treated as plain text. Turn Match case on to keep capitalization, or leave it off for case-insensitive replacement.",
+      },
+      {
+        q: "Is the find and replace free?",
+        a: "Yes. You can find and replace text free with no signup and no software to install.",
+      },
+      {
+        q: "Can I find and replace text on mobile?",
+        a: "Yes. This find replace text online free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "unix-timestamp-converter": {
+    keyword: "unix timestamp converter free",
+    articleTitle: "How to convert a Unix timestamp free",
+    paragraphs: [
+      "Convert Unix Timestamp free with this unix timestamp converter. It turns epoch seconds or milliseconds into UTC and local time.",
+      "How to convert a Unix timestamp: paste a Unix value or pick a local date and time. Values with 13 or more digits are treated as milliseconds.",
+      "This unix timestamp converter free page is built for desktop and mobile. Epoch Converter free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I convert a Unix timestamp?",
+        a: "Paste a Unix timestamp or pick a local date and time above. Seconds, milliseconds, UTC, and local time update as you type.",
+      },
+      {
+        q: "Does it accept milliseconds?",
+        a: "Yes. A 13-digit value is treated as milliseconds. A 10-digit value is treated as seconds since 1 January 1970 UTC.",
+      },
+      {
+        q: "Is the unix timestamp converter free?",
+        a: "Yes. You can convert unix timestamp free with no signup and no software to install.",
+      },
+      {
+        q: "Can I convert unix timestamp on mobile?",
+        a: "Yes. This epoch converter free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "webp-to-jpg": {
+    keyword: "webp to jpg converter free",
+    articleTitle: "How to convert WebP to JPG free",
+    paragraphs: [
+      "Convert WebP to JPG free with this webp to jpg converter. It turns a WebP into a JPEG you can download instantly.",
+      "How to convert WebP to JPG: add a WebP above, click Convert to JPG, then download the JPEG.",
+      "This webp to jpg converter free page is built for desktop and mobile. WebP to JPG free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I convert WebP to JPG?",
+        a: "Add a WebP above, click Convert to JPG, and download the JPEG. The WebP to JPG converter runs in your browser.",
+      },
+      {
+        q: "Will transparent WebP stay transparent?",
+        a: "No. JPEG does not support transparency. Transparent pixels are filled with white.",
+      },
+      {
+        q: "Is the webp to jpg converter free?",
+        a: "Yes. You can convert webp to jpg free with no signup and no software to install.",
+      },
+      {
+        q: "Can I convert webp to jpg on mobile?",
+        a: "Yes. This webp to jpg free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "color-mixer": {
+    keyword: "color mixer free",
+    articleTitle: "How to mix colors free",
+    paragraphs: [
+      "Mix Colors free with this color mixer. It blends two HEX colors by mix percent and copies HEX, RGB, and HSL.",
+      "How to mix colors: enter Color A, Color B, and the mix percent of B. 0 keeps Color A. 100 keeps Color B. 50 is an even mix in RGB.",
+      "This color mixer free page is built for desktop and mobile. Color Blender Online free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I mix colors?",
+        a: "Enter two HEX colors and a mix percent of Color B. The mixed HEX, RGB, HSL, HSV, and CMYK update as you type.",
+      },
+      {
+        q: "How is the mixed color calculated?",
+        a: "Each red, green, and blue channel is blended: result = A × (1 − t) + B × t, where t is mix percent of B divided by 100.",
+      },
+      {
+        q: "Is the color mixer free?",
+        a: "Yes. You can mix colors free with no signup and no software to install.",
+      },
+      {
+        q: "Can I mix colors on mobile?",
+        a: "Yes. This color blender online free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
 };
 
 export function getToolContent(slug: string): ToolContent | null {

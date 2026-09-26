@@ -15,6 +15,7 @@ import {
   fromRgb,
   hslToRgb,
   hsvToRgb,
+  mixRgb,
   monochromatic,
   nearestColorName,
   nearestTailwind,
@@ -755,6 +756,46 @@ export function TailwindColorConverter() {
         <Result label="Class" value={result ? result.tw.className : "—"} />
         <Result label="Matched HEX" value={result?.tw.hex ?? "—"} steel />
       </Box>
+    </div>
+  );
+}
+
+export function ColorMixer() {
+  const [hexA, setHexA] = useState("#E8A33D");
+  const [hexB, setHexB] = useState("#3D7AE8");
+  const [percent, setPercent] = useState("50");
+  const mixed = useMemo(() => {
+    const a = parseHex(hexA);
+    const b = parseHex(hexB);
+    const amount = Number(percent);
+    if (!a || !b || !Number.isFinite(amount)) return null;
+    return fromRgb(mixRgb(a, b, amount / 100));
+  }, [hexA, hexB, percent]);
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <HexField label="Color A" value={hexA} onChange={setHexA} />
+        <HexField
+          label="Color B"
+          value={hexB}
+          onChange={setHexB}
+          placeholder="#3D7AE8"
+        />
+        <Field label="Mix percent of B">
+          <Input
+            type="number"
+            min="0"
+            max="100"
+            step="any"
+            inputMode="decimal"
+            placeholder="50"
+            value={percent}
+            onChange={(e) => setPercent(e.target.value)}
+          />
+        </Field>
+      </div>
+      <ColorResults color={mixed} />
     </div>
   );
 }

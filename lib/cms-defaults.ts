@@ -690,6 +690,54 @@ const TOOL_SEO: Record<
       "hex to tailwind free, convert hex to tailwind free, tailwind color converter free, convert hex to tailwind, hex to tailwind",
     focusKeyword: "hex to tailwind free",
   },
+  "ideal-weight-calculator": {
+    title: "Ideal Weight Calculator Free | Calculate Ideal Weight Online",
+    description:
+      "Calculate Ideal Weight free. This ideal weight calculator free uses Devine, Robinson, Hamwi, and Miller plus a healthy BMI range. Ideal Body Weight Calculator free — no software and no signup.",
+    keywords:
+      "ideal weight calculator free, calculate ideal weight free, ideal body weight calculator free, calculate ideal weight, ideal weight calculator",
+    focusKeyword: "ideal weight calculator free",
+  },
+  "cagr-calculator": {
+    title: "CAGR Calculator Free | Calculate CAGR Online",
+    description:
+      "Calculate CAGR free. This cagr calculator free finds compound annual growth rate from beginning value, ending value, and years. Compound Annual Growth Rate Calculator free — no software and no signup.",
+    keywords:
+      "cagr calculator free, calculate cagr free, compound annual growth rate calculator free, calculate cagr, cagr calculator",
+    focusKeyword: "cagr calculator free",
+  },
+  "find-and-replace": {
+    title: "Find and Replace Free | Find and Replace Text Online",
+    description:
+      "Find and Replace Text free. This find and replace free replaces every match in pasted text, with or without matching case. Find Replace Text Online free — no software and no signup.",
+    keywords:
+      "find and replace free, find and replace text free, find replace text online free, find and replace text, find and replace",
+    focusKeyword: "find and replace free",
+  },
+  "unix-timestamp-converter": {
+    title: "Unix Timestamp Converter Free | Convert Unix Timestamp Online",
+    description:
+      "Convert Unix Timestamp free. This unix timestamp converter free turns epoch seconds or milliseconds into UTC and local time. Epoch Converter free — no software and no signup.",
+    keywords:
+      "unix timestamp converter free, convert unix timestamp free, epoch converter free, convert unix timestamp, unix timestamp converter",
+    focusKeyword: "unix timestamp converter free",
+  },
+  "webp-to-jpg": {
+    title: "WebP to JPG Converter Free | Convert WebP to JPG Online",
+    description:
+      "Convert WebP to JPG free. This webp to jpg converter free turns a WebP into a JPEG you can download instantly. WebP to JPG free — no software and no signup.",
+    keywords:
+      "webp to jpg converter free, convert webp to jpg free, webp to jpg free, convert webp to jpg, webp to jpg converter",
+    focusKeyword: "webp to jpg converter free",
+  },
+  "color-mixer": {
+    title: "Color Mixer Free | Mix Colors Online",
+    description:
+      "Mix Colors free. This color mixer free blends two HEX colors by mix percent and copies HEX, RGB, and HSL. Color Blender Online free — no software and no signup.",
+    keywords:
+      "color mixer free, mix colors free, color blender online free, mix colors, color mixer",
+    focusKeyword: "color mixer free",
+  },
 };
 
 const pageSeo: Record<string, SeoEntry> = {
@@ -697,10 +745,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/",
     "Home",
     "Free Online Calculators and PDF Converter | SmartToolX",
-    "Free online calculators, color tools, and a free PDF converter in your browser. JPG to PDF, color picker, sleep calculator, mortgage calculator, GPA calculator, PNG to JPG, BMI, EMI, and more. No account needed.",
+    "Free online calculators, color tools, and a free PDF converter in your browser. JPG to PDF, color mixer, ideal weight, CAGR, Unix timestamp, WebP to JPG, color picker, sleep calculator, mortgage calculator, GPA calculator, PNG to JPG, BMI, EMI, and more. No account needed.",
     {
       keywords:
-        "color tools, color picker, sleep calculator, mortgage calculator, GPA calculator, PNG to JPG, free PDF converter, free online calculator, SmartToolX",
+        "color mixer, ideal weight calculator, CAGR calculator, unix timestamp converter, WebP to JPG, color tools, color picker, sleep calculator, mortgage calculator, GPA calculator, PNG to JPG, free PDF converter, free online calculator, SmartToolX",
       h1: "Free online calculators and PDF converter",
       focusKeyword: "free online calculators",
       schemaType: "WebSite",
@@ -710,10 +758,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/tools",
     "All Tools",
     "All Free Tools | SmartToolX",
-    "Browse every SmartToolX calculator, converter, text tool, file converter, and color tool. JPG to PDF, number to words, color picker, sleep calculator, mortgage, GPA, PNG to JPG, and more. Each one runs in your browser.",
+    "Browse every SmartToolX calculator, converter, text tool, file converter, and color tool. JPG to PDF, find and replace, color mixer, number to words, color picker, sleep calculator, mortgage, GPA, PNG to JPG, WebP to JPG, and more. Each one runs in your browser.",
     {
       keywords:
-        "free online tools, color picker, sleep calculator, mortgage calculator, GPA calculator, PNG to JPG, all tools, calculator list, SmartToolX tools",
+        "free online tools, find and replace, color mixer, color picker, sleep calculator, mortgage calculator, GPA calculator, PNG to JPG, WebP to JPG, all tools, calculator list, SmartToolX tools",
       focusKeyword: "free online tools",
     },
   ),
@@ -721,10 +769,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/calculators",
     "Calculators",
     "Free Online Calculators | SmartToolX",
-    "Health and finance calculators for sleep, mortgage, period dates, BMI, EMI, GPA, FD, GST, SIP, calories, and more. Open a tool, enter numbers, and see the result.",
+    "Health and finance calculators for sleep, ideal weight, mortgage, CAGR, period dates, BMI, EMI, GPA, FD, GST, SIP, calories, and more. Open a tool, enter numbers, and see the result.",
     {
       keywords:
-        "sleep calculator, mortgage calculator, GPA calculator, online calculators, period calculator, BMI calculator, EMI calculator, FD calculator, calorie calculator",
+        "ideal weight calculator, CAGR calculator, sleep calculator, mortgage calculator, GPA calculator, online calculators, period calculator, BMI calculator, EMI calculator, FD calculator, calorie calculator",
       focusKeyword: "online calculators",
     },
   ),
@@ -732,10 +780,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/converters",
     "Converters",
     "Free Online Converters | SmartToolX",
-    "Convert currency, units, number to words, temperature, time zones, GPA, and more without leaving the page. Live rates for money, standard factors for the rest.",
+    "Convert currency, units, number to words, temperature, time zones, Unix timestamps, GPA, and more without leaving the page. Live rates for money, standard factors for the rest.",
     {
       keywords:
-        "number to words, GPA calculator, CGPA to percentage, unit converter, currency converter, time zone converter, temperature converter, live exchange rates, binary converter",
+        "unix timestamp converter, number to words, GPA calculator, CGPA to percentage, unit converter, currency converter, time zone converter, temperature converter, live exchange rates, binary converter",
       focusKeyword: "unit converter",
     },
   ),
@@ -743,10 +791,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/text-tools",
     "Text Tools",
     "Free Text Tools Online | SmartToolX",
-    "Count words, format JSON, generate random numbers, passwords, and QR codes, change case, and build URL slugs. Paste text and copy the result.",
+    "Count words, find and replace, format JSON, generate random numbers, passwords, and QR codes, change case, and build URL slugs. Paste text and copy the result.",
     {
       keywords:
-        "random number generator, JSON formatter, word counter, QR code generator, password generator, case converter, slug generator, text tools",
+        "find and replace, random number generator, JSON formatter, word counter, QR code generator, password generator, case converter, slug generator, text tools",
       focusKeyword: "text tools",
     },
   ),
@@ -754,10 +802,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/finance",
     "Finance",
     "Free Finance Calculators | SmartToolX",
-    "Mortgage, EMI, FD, GST, SIP, compound interest, tips, discounts, and live currency conversion for everyday money decisions.",
+    "Mortgage, CAGR, EMI, FD, GST, SIP, compound interest, tips, discounts, and live currency conversion for everyday money decisions.",
     {
       keywords:
-        "mortgage calculator, loan EMI calculator, FD calculator, GST calculator, SIP calculator, percentage calculator, currency converter, finance calculator",
+        "CAGR calculator, mortgage calculator, loan EMI calculator, FD calculator, GST calculator, SIP calculator, percentage calculator, currency converter, finance calculator",
       focusKeyword: "finance calculator",
     },
   ),
@@ -765,10 +813,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/file-converter",
     "File Converter",
     "Free PDF Converter Online | SmartToolX",
-    "Free PDF converter online. JPG to PDF, PPT to PDF, PDF to Word, Word to PDF, compress PDF, merge PDF, split PDF, and PNG to JPG. No signup. Files stay in your browser.",
+    "Free PDF converter online. JPG to PDF, WebP to JPG, PPT to PDF, PDF to Word, Word to PDF, compress PDF, merge PDF, split PDF, and PNG to JPG. No signup. Files stay in your browser.",
     {
       keywords:
-        "free PDF converter, PDF to Word online free, compress PDF online, merge PDF, split PDF, Word to PDF, PNG to JPG, file converter",
+        "free PDF converter, WebP to JPG, PDF to Word online free, compress PDF online, merge PDF, split PDF, Word to PDF, PNG to JPG, file converter",
       focusKeyword: "free PDF converter",
       h1: "Free PDF Converter Online",
     },
@@ -777,10 +825,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/colors",
     "Color Tools",
     "Free Color Tools Online | SmartToolX",
-    "Free color tools online. Open a picker, converter, palette, gradient, or contrast checker in your browser. No account and no upload.",
+    "Free color tools online. Open a picker, mixer, converter, palette, gradient, or contrast checker in your browser. No account and no upload.",
     {
       keywords:
-        "color tools, free color tools, online color tools, color utilities, free color picker tools",
+        "color mixer, color tools, free color tools, online color tools, color utilities, free color picker tools",
       focusKeyword: "color tools",
       h1: "Free Color Tools Online",
     },
