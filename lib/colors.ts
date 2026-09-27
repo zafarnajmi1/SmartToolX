@@ -253,6 +253,11 @@ export function triadic(rgb: RGB) {
   return [0, 120, 240].map((deg) => fromRgb(hslToRgb(shiftHue(hsl, deg))));
 }
 
+export function tetradic(rgb: RGB) {
+  const hsl = rgbToHsl(rgb);
+  return [0, 90, 180, 270].map((deg) => fromRgb(hslToRgb(shiftHue(hsl, deg))));
+}
+
 export function splitComplementary(rgb: RGB) {
   const hsl = rgbToHsl(rgb);
   return [

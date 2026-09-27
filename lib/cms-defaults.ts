@@ -738,6 +738,54 @@ const TOOL_SEO: Record<
       "color mixer free, mix colors free, color blender online free, mix colors, color mixer",
     focusKeyword: "color mixer free",
   },
+  "protein-calculator": {
+    title: "Protein Calculator Free | Calculate Protein Online",
+    description:
+      "Calculate Protein free. This protein calculator free finds daily protein grams from body weight and goal. Protein Intake Calculator free — no software and no signup.",
+    keywords:
+      "protein calculator free, calculate protein free, protein intake calculator free, calculate protein, protein calculator",
+    focusKeyword: "protein calculator free",
+  },
+  "inflation-calculator": {
+    title: "Inflation Calculator Free | Calculate Inflation Online",
+    description:
+      "Calculate Inflation free. This inflation calculator free shows future cost and purchasing power from rate and years. Inflation Calculator Online free — no software and no signup.",
+    keywords:
+      "inflation calculator free, calculate inflation free, inflation calculator online free, calculate inflation, inflation calculator",
+    focusKeyword: "inflation calculator free",
+  },
+  "word-frequency-counter": {
+    title: "Word Frequency Counter Free | Count Word Frequency Online",
+    description:
+      "Count Word Frequency free. This word frequency counter free counts how often each word appears in pasted text. Word Frequency Counter Online free — no software and no signup.",
+    keywords:
+      "word frequency counter free, count word frequency free, word frequency counter online free, count word frequency, word frequency counter",
+    focusKeyword: "word frequency counter free",
+  },
+  "px-to-rem-converter": {
+    title: "PX to REM Converter Free | Convert PX to REM Online",
+    description:
+      "Convert PX to REM free. This px to rem converter free turns pixels into rem from a root font size. PX to REM free — no software and no signup.",
+    keywords:
+      "px to rem converter free, convert px to rem free, px to rem free, convert px to rem, px to rem converter",
+    focusKeyword: "px to rem converter free",
+  },
+  "jpg-to-png": {
+    title: "JPG to PNG Converter Free | Convert JPG to PNG Online",
+    description:
+      "Convert JPG to PNG free. This jpg to png converter free turns a JPEG into a PNG you can download instantly. JPG to PNG free — no software and no signup.",
+    keywords:
+      "jpg to png converter free, convert jpg to png free, jpg to png free, convert jpg to png, jpg to png converter",
+    focusKeyword: "jpg to png converter free",
+  },
+  "tetradic-color-generator": {
+    title: "Tetradic Color Generator Free | Generate Tetradic Colors Online",
+    description:
+      "Generate Tetradic Colors free. This tetradic color generator free builds a square palette of four hues 90° apart. Tetradic Color Scheme free — no software and no signup.",
+    keywords:
+      "tetradic color generator free, generate tetradic colors free, tetradic color scheme free, generate tetradic colors, tetradic color generator",
+    focusKeyword: "tetradic color generator free",
+  },
 };
 
 const pageSeo: Record<string, SeoEntry> = {
@@ -745,10 +793,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/",
     "Home",
     "Free Online Calculators and PDF Converter | SmartToolX",
-    "Free online calculators, color tools, and a free PDF converter in your browser. JPG to PDF, color mixer, ideal weight, CAGR, Unix timestamp, WebP to JPG, color picker, sleep calculator, mortgage calculator, GPA calculator, PNG to JPG, BMI, EMI, and more. No account needed.",
+    "Free online calculators, color tools, and a free PDF converter in your browser. JPG to PNG, protein calculator, inflation calculator, PX to REM, word frequency, tetradic colors, JPG to PDF, color mixer, and more. No account needed.",
     {
       keywords:
-        "color mixer, ideal weight calculator, CAGR calculator, unix timestamp converter, WebP to JPG, color tools, color picker, sleep calculator, mortgage calculator, GPA calculator, PNG to JPG, free PDF converter, free online calculator, SmartToolX",
+        "protein calculator, inflation calculator, word frequency counter, PX to REM, JPG to PNG, tetradic color generator, color mixer, free PDF converter, free online calculator, SmartToolX",
       h1: "Free online calculators and PDF converter",
       focusKeyword: "free online calculators",
       schemaType: "WebSite",
@@ -769,10 +817,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/calculators",
     "Calculators",
     "Free Online Calculators | SmartToolX",
-    "Health and finance calculators for sleep, ideal weight, mortgage, CAGR, period dates, BMI, EMI, GPA, FD, GST, SIP, calories, and more. Open a tool, enter numbers, and see the result.",
+    "Health and finance calculators for sleep, protein, ideal weight, mortgage, inflation, CAGR, period dates, BMI, EMI, GPA, FD, GST, SIP, calories, and more. Open a tool, enter numbers, and see the result.",
     {
       keywords:
-        "ideal weight calculator, CAGR calculator, sleep calculator, mortgage calculator, GPA calculator, online calculators, period calculator, BMI calculator, EMI calculator, FD calculator, calorie calculator",
+        "protein calculator, inflation calculator, ideal weight calculator, CAGR calculator, sleep calculator, mortgage calculator, GPA calculator, online calculators, period calculator, BMI calculator, EMI calculator",
       focusKeyword: "online calculators",
     },
   ),
@@ -780,10 +828,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/converters",
     "Converters",
     "Free Online Converters | SmartToolX",
-    "Convert currency, units, number to words, temperature, time zones, Unix timestamps, GPA, and more without leaving the page. Live rates for money, standard factors for the rest.",
+    "Convert currency, units, PX to REM, number to words, temperature, time zones, Unix timestamps, GPA, and more without leaving the page. Live rates for money, standard factors for the rest.",
     {
       keywords:
-        "unix timestamp converter, number to words, GPA calculator, CGPA to percentage, unit converter, currency converter, time zone converter, temperature converter, live exchange rates, binary converter",
+        "px to rem converter, unix timestamp converter, number to words, GPA calculator, CGPA to percentage, unit converter, currency converter, time zone converter, temperature converter, live exchange rates",
       focusKeyword: "unit converter",
     },
   ),
@@ -791,10 +839,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/text-tools",
     "Text Tools",
     "Free Text Tools Online | SmartToolX",
-    "Count words, find and replace, format JSON, generate random numbers, passwords, and QR codes, change case, and build URL slugs. Paste text and copy the result.",
+    "Count words, word frequency, find and replace, format JSON, generate random numbers, passwords, and QR codes, change case, and build URL slugs. Paste text and copy the result.",
     {
       keywords:
-        "find and replace, random number generator, JSON formatter, word counter, QR code generator, password generator, case converter, slug generator, text tools",
+        "word frequency counter, find and replace, random number generator, JSON formatter, word counter, QR code generator, password generator, case converter, slug generator, text tools",
       focusKeyword: "text tools",
     },
   ),
@@ -802,10 +850,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/finance",
     "Finance",
     "Free Finance Calculators | SmartToolX",
-    "Mortgage, CAGR, EMI, FD, GST, SIP, compound interest, tips, discounts, and live currency conversion for everyday money decisions.",
+    "Mortgage, inflation, CAGR, EMI, FD, GST, SIP, compound interest, tips, discounts, and live currency conversion for everyday money decisions.",
     {
       keywords:
-        "CAGR calculator, mortgage calculator, loan EMI calculator, FD calculator, GST calculator, SIP calculator, percentage calculator, currency converter, finance calculator",
+        "inflation calculator, CAGR calculator, mortgage calculator, loan EMI calculator, FD calculator, GST calculator, SIP calculator, percentage calculator, currency converter, finance calculator",
       focusKeyword: "finance calculator",
     },
   ),
@@ -813,10 +861,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/file-converter",
     "File Converter",
     "Free PDF Converter Online | SmartToolX",
-    "Free PDF converter online. JPG to PDF, WebP to JPG, PPT to PDF, PDF to Word, Word to PDF, compress PDF, merge PDF, split PDF, and PNG to JPG. No signup. Files stay in your browser.",
+    "Free PDF converter online. JPG to PDF, JPG to PNG, WebP to JPG, PPT to PDF, PDF to Word, Word to PDF, compress PDF, merge PDF, split PDF, and PNG to JPG. No signup. Files stay in your browser.",
     {
       keywords:
-        "free PDF converter, WebP to JPG, PDF to Word online free, compress PDF online, merge PDF, split PDF, Word to PDF, PNG to JPG, file converter",
+        "free PDF converter, JPG to PNG, WebP to JPG, PDF to Word online free, compress PDF online, merge PDF, split PDF, Word to PDF, PNG to JPG, file converter",
       focusKeyword: "free PDF converter",
       h1: "Free PDF Converter Online",
     },
@@ -825,10 +873,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/colors",
     "Color Tools",
     "Free Color Tools Online | SmartToolX",
-    "Free color tools online. Open a picker, mixer, converter, palette, gradient, or contrast checker in your browser. No account and no upload.",
+    "Free color tools online. Open a picker, mixer, tetradic palette, converter, gradient, or contrast checker in your browser. No account and no upload.",
     {
       keywords:
-        "color mixer, color tools, free color tools, online color tools, color utilities, free color picker tools",
+        "tetradic color generator, color mixer, color tools, free color tools, online color tools, color utilities, free color picker tools",
       focusKeyword: "color tools",
       h1: "Free Color Tools Online",
     },

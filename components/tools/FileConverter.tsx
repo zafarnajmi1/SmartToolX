@@ -12,6 +12,7 @@ import {
   pptToPdf,
   splitPdf,
   webpToJpg,
+  jpgToPng,
   wordToPdf,
   type ConvertedFile,
 } from "@/lib/file-convert";
@@ -29,7 +30,8 @@ type FileToolId =
   | "png-to-pdf"
   | "split-pdf"
   | "png-to-jpg"
-  | "webp-to-jpg";
+  | "webp-to-jpg"
+  | "jpg-to-png";
 
 type ToolConfig = {
   accept: string;
@@ -200,6 +202,18 @@ const configs: Record<FileToolId, ToolConfig> = {
     resultIcon: "JPG",
     downloadLabel: "Download JPG",
     convert: (files) => webpToJpg(files),
+  },
+  "jpg-to-png": {
+    accept: ".jpg,.jpeg,image/jpeg",
+    multiple: true,
+    minFiles: 1,
+    maxMb: 25,
+    dropIcon: "JPG",
+    dropTitle: "Drop your JPG images here",
+    button: "Convert to PNG",
+    resultIcon: "PNG",
+    downloadLabel: "Download PNG",
+    convert: (files) => jpgToPng(files),
   },
 };
 

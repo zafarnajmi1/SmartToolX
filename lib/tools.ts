@@ -15,6 +15,7 @@ export const categories = [
   { id: "text", label: "Text" },
   { id: "convert", label: "Convert" },
   { id: "files", label: "Files" },
+  { id: "color", label: "Colors" },
 ] as const;
 
 export const tools: Tool[] = [
@@ -639,6 +640,54 @@ export const tools: Tool[] = [
       "Free color mixer online. Blend two HEX colors by mix percent and copy the result HEX, RGB, and HSL.",
     category: "color",
   },
+  {
+    slug: "protein-calculator",
+    name: "Protein Calculator",
+    icon: "PRO",
+    description:
+      "Free protein calculator online. Daily protein grams from body weight and goal.",
+    category: "health",
+  },
+  {
+    slug: "inflation-calculator",
+    name: "Inflation Calculator",
+    icon: "INF",
+    description:
+      "Free inflation calculator online. Future cost and purchasing power from rate and years.",
+    category: "finance",
+  },
+  {
+    slug: "word-frequency-counter",
+    name: "Word Frequency Counter",
+    icon: "FREQ",
+    description:
+      "Free word frequency counter online. Count how often each word appears in pasted text.",
+    category: "text",
+  },
+  {
+    slug: "px-to-rem-converter",
+    name: "PX to REM Converter",
+    icon: "REM",
+    description:
+      "Free PX to REM converter online. Convert pixels to rem from a root font size.",
+    category: "convert",
+  },
+  {
+    slug: "jpg-to-png",
+    name: "JPG to PNG Converter",
+    icon: "PNG",
+    description:
+      "Convert JPG to PNG online free. Download a PNG in your browser. No account.",
+    category: "files",
+  },
+  {
+    slug: "tetradic-color-generator",
+    name: "Tetradic Color Generator",
+    icon: "TET",
+    description:
+      "Generate a tetradic (square) color palette from a HEX color. Four hues, 90° apart.",
+    category: "color",
+  },
 ];
 
 export const featuredSlugs = [
@@ -666,6 +715,7 @@ export const fileConverterSlugs = [
   "split-pdf",
   "png-to-jpg",
   "webp-to-jpg",
+  "jpg-to-png",
 ] as const;
 
 export const toolCount = tools.length;
@@ -674,7 +724,7 @@ export const categoryPages = {
   calculators: {
     title: "Calculators",
     description:
-      "Health, finance, and everyday calculators including sleep, ideal weight, mortgage, CAGR, period, BMI, EMI, GPA, and FD.",
+      "Health, finance, and everyday calculators including sleep, protein, ideal weight, mortgage, inflation, CAGR, period, BMI, EMI, GPA, and FD.",
     slugs: [
       ...tools
         .filter(
@@ -688,19 +738,19 @@ export const categoryPages = {
   converters: {
     title: "Converters",
     description:
-      "Currency, units, time zones, Unix timestamps, GPA, and more. Convert without leaving the page.",
+      "Currency, units, PX to REM, time zones, Unix timestamps, GPA, and more. Convert without leaving the page.",
     slugs: tools.filter((tool) => tool.category === "convert").map((t) => t.slug),
   },
   "text-tools": {
     title: "Text Tools",
     description:
-      "Count words, find and replace, format JSON, generate random numbers, and transform text in a click.",
+      "Count words, word frequency, find and replace, format JSON, generate random numbers, and transform text in a click.",
     slugs: tools.filter((tool) => tool.category === "text").map((t) => t.slug),
   },
   finance: {
     title: "Finance",
     description:
-      "Mortgage, CAGR, EMI, FD, GST, SIP, percentages, and currency tools for money decisions.",
+      "Mortgage, inflation, CAGR, EMI, FD, GST, SIP, percentages, and currency tools for money decisions.",
     slugs: [
       ...tools.filter((tool) => tool.category === "finance").map((t) => t.slug),
       "currency-converter",
@@ -709,7 +759,7 @@ export const categoryPages = {
   "file-converter": {
     title: "Free PDF Converter Online",
     description:
-      "Free PDF converter online. PDF to Word, compress PDF, merge PDF, split PDF, PNG to JPG, WebP to JPG, and more. Files stay in your browser.",
+      "Free PDF converter online. PDF to Word, compress PDF, merge PDF, split PDF, PNG to JPG, JPG to PNG, WebP to JPG, and more. Files stay in your browser.",
     slugs: [...fileConverterSlugs],
   },
   colors: {
@@ -746,6 +796,7 @@ export const categoryPages = {
       "css-color-generator",
       "tailwind-color-converter",
       "color-mixer",
+      "tetradic-color-generator",
     ],
   },
 } as const;
@@ -771,6 +822,19 @@ export function getFileConverterTools() {
 
 export function getFeaturedTools() {
   return getToolsBySlugs(featuredSlugs);
+}
+
+export const HOME_TAB_LIMIT = 8;
+
+export function getRecentHomeTools(
+  category: ToolCategory | "all",
+  limit = HOME_TAB_LIMIT,
+) {
+  const list =
+    category === "all"
+      ? tools
+      : tools.filter((tool) => tool.category === category);
+  return [...list].reverse().slice(0, limit);
 }
 
 const relatedBySlug: Record<string, readonly string[]> = {
@@ -947,6 +1011,42 @@ const relatedBySlug: Record<string, readonly string[]> = {
     "complementary-color-generator",
     "gradient-generator",
     "color-picker",
+  ],
+  "protein-calculator": [
+    "calorie-calculator",
+    "ideal-weight-calculator",
+    "bmr-calculator",
+    "bmi-calculator",
+  ],
+  "inflation-calculator": [
+    "cagr-calculator",
+    "compound-interest-calculator",
+    "sip-calculator",
+    "fd-calculator",
+  ],
+  "word-frequency-counter": [
+    "word-counter",
+    "find-and-replace",
+    "case-converter",
+    "text-reverser",
+  ],
+  "px-to-rem-converter": [
+    "unit-converter",
+    "css-color-generator",
+    "binary-converter",
+    "temperature-converter",
+  ],
+  "jpg-to-png": [
+    "png-to-jpg",
+    "webp-to-jpg",
+    "jpg-to-pdf",
+    "png-to-pdf",
+  ],
+  "tetradic-color-generator": [
+    "triadic-color-generator",
+    "complementary-color-generator",
+    "analogous-color-generator",
+    "color-palette-generator",
   ],
 };
 

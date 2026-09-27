@@ -46,6 +46,10 @@ import {
   CagrCalculator,
   FindAndReplace,
   UnixTimestampConverter,
+  ProteinCalculator,
+  InflationCalculator,
+  WordFrequencyCounter,
+  PxToRemConverter,
 } from "@/components/tools/ExtraWidgets";
 import {
   AnalogousColorGenerator,
@@ -75,6 +79,7 @@ import {
   RgbToHsl,
   SplitComplementaryGenerator,
   TailwindColorConverter,
+  TetradicColorGenerator,
   TriadicColorGenerator,
   WcagContrastChecker,
 } from "@/components/tools/ColorWidgets";
@@ -253,6 +258,18 @@ export function ToolWidget({ slug }: { slug: string }) {
       return <TailwindColorConverter />;
     case "color-mixer":
       return <ColorMixer />;
+    case "protein-calculator":
+      return <ProteinCalculator />;
+    case "inflation-calculator":
+      return <InflationCalculator />;
+    case "word-frequency-counter":
+      return <WordFrequencyCounter />;
+    case "px-to-rem-converter":
+      return <PxToRemConverter />;
+    case "jpg-to-png":
+      return <FileConverter id="jpg-to-png" />;
+    case "tetradic-color-generator":
+      return <TetradicColorGenerator />;
     default:
       return null;
   }

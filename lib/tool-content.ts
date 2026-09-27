@@ -2364,6 +2364,168 @@ const custom: Record<string, Partial<ToolContent>> = {
       },
     ],
   },
+  "protein-calculator": {
+    keyword: "protein calculator free",
+    articleTitle: "How to calculate protein free",
+    paragraphs: [
+      "Calculate Protein free with this protein calculator. It finds daily protein grams from body weight and goal.",
+      "How to calculate protein: enter weight, choose a goal, and read grams per day. Maintain uses 0.8 g per kg, fitness 1.2, muscle 1.6, and athlete 2.2.",
+      "This protein calculator free page is built for desktop and mobile. Protein Intake Calculator free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I calculate protein?",
+        a: "Enter your weight and choose a goal above. The result updates as you type. The protein calculator runs in your browser.",
+      },
+      {
+        q: "What protein formula does this use?",
+        a: "Daily protein in grams equals body weight in kilograms times a goal factor: 0.8, 1.2, 1.6, or 2.2 grams per kilogram.",
+      },
+      {
+        q: "Is the protein calculator free?",
+        a: "Yes. You can calculate protein free with no signup and no software to install.",
+      },
+      {
+        q: "Can I calculate protein on mobile?",
+        a: "Yes. This protein intake calculator free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "inflation-calculator": {
+    keyword: "inflation calculator free",
+    articleTitle: "How to calculate inflation free",
+    paragraphs: [
+      "Calculate Inflation free with this inflation calculator. It shows future cost and purchasing power from rate and years.",
+      "How to calculate inflation: enter amount today, annual inflation percent, and years. Future cost is amount × (1 + rate)^years. Purchasing power is amount ÷ (1 + rate)^years.",
+      "This inflation calculator free page is built for desktop and mobile. Inflation Calculator Online free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I calculate inflation?",
+        a: "Enter amount today, annual inflation, and years above. The result updates as you type. The inflation calculator runs in your browser.",
+      },
+      {
+        q: "What is the inflation formula?",
+        a: "Future cost = amount × (1 + inflation rate)^years. Purchasing power = amount ÷ (1 + inflation rate)^years.",
+      },
+      {
+        q: "Is the inflation calculator free?",
+        a: "Yes. You can calculate inflation free with no signup and no software to install.",
+      },
+      {
+        q: "Can I calculate inflation on mobile?",
+        a: "Yes. This inflation calculator online free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "word-frequency-counter": {
+    keyword: "word frequency counter free",
+    articleTitle: "How to count word frequency free",
+    paragraphs: [
+      "Count Word Frequency free with this word frequency counter. It counts how often each word appears in pasted text.",
+      "How to count word frequency: paste text above. Matching is case-insensitive. The page lists total words, unique words, and the most used words.",
+      "This word frequency counter free page is built for desktop and mobile. Word Frequency Counter Online free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I count word frequency?",
+        a: "Paste text above. Total words, unique words, and the most used words update as you type.",
+      },
+      {
+        q: "Is word frequency case-sensitive?",
+        a: "No. Hello and hello count as the same word. Punctuation is ignored.",
+      },
+      {
+        q: "Is the word frequency counter free?",
+        a: "Yes. You can count word frequency free with no signup and no software to install.",
+      },
+      {
+        q: "Can I count word frequency on mobile?",
+        a: "Yes. This word frequency counter online free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "px-to-rem-converter": {
+    keyword: "px to rem converter free",
+    articleTitle: "How to convert PX to REM free",
+    paragraphs: [
+      "Convert PX to REM free with this px to rem converter. It turns pixels into rem from a root font size.",
+      "How to convert PX to REM: enter a root font size (16 px is common), then type pixels or rem. rem = px ÷ root. px = rem × root.",
+      "This px to rem converter free page is built for desktop and mobile. PX to REM free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I convert PX to REM?",
+        a: "Enter the root font size, then pixels or rem. The other value updates as you type.",
+      },
+      {
+        q: "What root font size should I use?",
+        a: "Most browsers use 16 px as the default root. Change it if your CSS html font-size is different.",
+      },
+      {
+        q: "Is the px to rem converter free?",
+        a: "Yes. You can convert px to rem free with no signup and no software to install.",
+      },
+      {
+        q: "Can I convert px to rem on mobile?",
+        a: "Yes. This px to rem free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "jpg-to-png": {
+    keyword: "jpg to png converter free",
+    articleTitle: "How to convert JPG to PNG free",
+    paragraphs: [
+      "Convert JPG to PNG free with this jpg to png converter. It turns a JPEG into a PNG you can download instantly.",
+      "How to convert JPG to PNG: add a JPG above, click Convert to PNG, then download the PNG.",
+      "This jpg to png converter free page is built for desktop and mobile. JPG to PNG free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I convert JPG to PNG?",
+        a: "Add a JPG above, click Convert to PNG, and download the PNG. The JPG to PNG converter runs in your browser.",
+      },
+      {
+        q: "Does converting JPG to PNG add transparency?",
+        a: "No. JPEG has no alpha channel, so the PNG keeps the same opaque pixels.",
+      },
+      {
+        q: "Is the jpg to png converter free?",
+        a: "Yes. You can convert jpg to png free with no signup and no software to install.",
+      },
+      {
+        q: "Can I convert jpg to png on mobile?",
+        a: "Yes. This jpg to png free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "tetradic-color-generator": {
+    keyword: "tetradic color generator free",
+    articleTitle: "How to generate tetradic colors free",
+    paragraphs: [
+      "Generate Tetradic Colors free with this tetradic color generator. It builds a square palette of four hues 90° apart.",
+      "How to generate tetradic colors: paste a HEX color. Copy the four colors at 0°, 90°, 180°, and 270° hue.",
+      "This tetradic color generator free page is built for desktop and mobile. Tetradic Color Scheme free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I generate tetradic colors?",
+        a: "Paste a HEX color. Copy the four hues. The tetradic color generator runs in your browser.",
+      },
+      {
+        q: "What is a tetradic color scheme?",
+        a: "A square tetradic scheme uses four hues spaced 90° apart on the color wheel, including the complement.",
+      },
+      {
+        q: "Is the tetradic color generator free?",
+        a: "Yes. You can generate tetradic colors free with no signup and no software to install.",
+      },
+      {
+        q: "Can I generate tetradic colors on mobile?",
+        a: "Yes. This tetradic color scheme free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
 };
 
 export function getToolContent(slug: string): ToolContent | null {

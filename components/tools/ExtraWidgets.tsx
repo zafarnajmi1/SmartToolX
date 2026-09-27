@@ -2533,3 +2533,331 @@ export function UnixTimestampConverter() {
     </div>
   );
 }
+
+const PROTEIN_GOALS: Record<string, { label: string; gPerKg: number }> = {
+  maintain: { label: "Maintain (0.8 g/kg)", gPerKg: 0.8 },
+  fitness: { label: "General fitness (1.2 g/kg)", gPerKg: 1.2 },
+  muscle: { label: "Build muscle (1.6 g/kg)", gPerKg: 1.6 },
+  athlete: { label: "Athlete (2.2 g/kg)", gPerKg: 2.2 },
+};
+
+export function ProteinCalculator() {
+  const [weightUnit, setWeightUnit] = useState<BmrWeightUnit>("kg");
+  const [weightPrimary, setWeightPrimary] = useState("");
+  const [weightExtra, setWeightExtra] = useState("");
+  const [goal, setGoal] = useState("fitness");
+
+  function changeWeightUnit(next: BmrWeightUnit) {
+    const kg = bmrWeightToKg(weightUnit, weightPrimary, weightExtra);
+    if (kg != null) {
+      const converted = bmrKgToWeight(next, kg);
+      setWeightPrimary(converted.primary);
+      setWeightExtra(converted.extra);
+    } else {
+      setWeightExtra("");
+    }
+    setWeightUnit(next);
+  }
+
+  const result = useMemo(() => {
+    const kg = bmrWeightToKg(weightUnit, weightPrimary, weightExtra);
+    const factor = PROTEIN_GOALS[goal]?.gPerKg;
+    if (kg == null || kg <= 0 || factor == null) return null;
+    const grams = kg * factor;
+    return { grams, calories: grams * 4 };
+  }, [weightUnit, weightPrimary, weightExtra, goal]);
+
+  const weightUsesPair = weightUnit === "stlb";
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Weight unit">
+          <Select
+            value={weightUnit}
+            onChange={(e) => changeWeightUnit(e.target.value as BmrWeightUnit)}
+          >
+            <option value="kg">Kilograms (kg)</option>
+            <option value="lb">Pounds (lb)</option>
+            <option value="stlb">Stone and pounds</option>
+            <option value="st">Stone (st)</option>
+          </Select>
+        </Field>
+        {weightUsesPair ? (
+          <div className="grid grid-cols-2 gap-[10px]">
+            <Field label="Stone">
+              <Input
+                type="number"
+                min="0"
+                step="any"
+                inputMode="decimal"
+                placeholder="11"
+                value={weightPrimary}
+                onChange={(e) => setWeightPrimary(e.target.value)}
+              />
+            </Field>
+            <Field label="Pounds">
+              <Input
+                type="number"
+                min="0"
+                step="any"
+                inputMode="decimal"
+                placeholder="0"
+                value={weightExtra}
+                onChange={(e) => setWeightExtra(e.target.value)}
+              />
+            </Field>
+          </div>
+        ) : (
+          <Field label="Weight">
+            <Input
+              type="number"
+              min="0"
+              step="any"
+              inputMode="decimal"
+              placeholder={weightUnit === "kg" ? "70" : "154"}
+              value={weightPrimary}
+              onChange={(e) => setWeightPrimary(e.target.value)}
+            />
+          </Field>
+        )}
+        <Field label="Goal">
+          <Select value={goal} onChange={(e) => setGoal(e.target.value)}>
+            {Object.entries(PROTEIN_GOALS).map(([id, item]) => (
+              <option key={id} value={id}>
+                {item.label}
+              </option>
+            ))}
+          </Select>
+        </Field>
+      </div>
+      <Box>
+        <Result
+          label="Daily protein"
+          value={result ? `${result.grams.toFixed(0)} g` : "—"}
+          steel
+        />
+        <Result
+          label="From protein"
+          value={result ? `${result.calories.toFixed(0)} kcal` : "—"}
+        />
+      </Box>
+    </div>
+  );
+}
+
+export function InflationCalculator() {
+  const [amount, setAmount] = useState("");
+  const [rate, setRate] = useState("");
+  const [years, setYears] = useState("");
+  const result = useMemo(() => {
+    const pv = parseNumber(amount);
+    const r = parseNumber(rate);
+    const t = parseNumber(years);
+    if (pv == null || r == null || t == null || pv < 0 || t < 0) return null;
+    const factor = (1 + r / 100) ** t;
+    if (!Number.isFinite(factor) || factor <= 0) return null;
+    return { future: pv * factor, power: pv / factor };
+  }, [amount, rate, years]);
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Amount today">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            placeholder="10000"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+          />
+        </Field>
+        <Field label="Annual inflation (%)">
+          <Input
+            type="number"
+            step="any"
+            inputMode="decimal"
+            placeholder="3"
+            value={rate}
+            onChange={(e) => setRate(e.target.value)}
+          />
+        </Field>
+        <Field label="Number of years">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            placeholder="10"
+            value={years}
+            onChange={(e) => setYears(e.target.value)}
+          />
+        </Field>
+      </div>
+      <Box>
+        <Result
+          label="Future cost"
+          value={result ? money(result.future) : "—"}
+          steel
+        />
+        <Result
+          label="Purchasing power"
+          value={result ? money(result.power) : "—"}
+        />
+      </Box>
+    </div>
+  );
+}
+
+function wordTokens(text: string) {
+  return text.toLowerCase().match(/[a-z0-9]+(?:['’][a-z0-9]+)*/g) ?? [];
+}
+
+export function WordFrequencyCounter() {
+  const [text, setText] = useState("");
+  const result = useMemo(() => {
+    const tokens = wordTokens(text);
+    if (!tokens.length) return null;
+    const counts = new Map<string, number>();
+    for (const token of tokens) {
+      counts.set(token, (counts.get(token) ?? 0) + 1);
+    }
+    const ranked = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+    return {
+      total: tokens.length,
+      unique: ranked.length,
+      top: ranked.slice(0, 12),
+    };
+  }, [text]);
+
+  return (
+    <div className="grid gap-6">
+      <Field label="Text">
+        <Textarea
+          rows={6}
+          value={text}
+          placeholder="Paste text"
+          onChange={(e) => setText(e.target.value)}
+        />
+      </Field>
+      <Box>
+        <Result
+          label="Total words"
+          value={result ? String(result.total) : "—"}
+          steel
+        />
+        <Result
+          label="Unique words"
+          value={result ? String(result.unique) : "—"}
+        />
+        {result
+          ? result.top.map(([word, count], index) => (
+              <Result
+                key={word}
+                label={word}
+                value={String(count)}
+                steel={index % 2 === 0}
+              />
+            ))
+          : (
+              <Result label="Most used" value="—" steel />
+            )}
+      </Box>
+    </div>
+  );
+}
+
+export function PxToRemConverter() {
+  const [root, setRoot] = useState("16");
+  const [px, setPx] = useState("");
+  const [rem, setRem] = useState("");
+
+  function onRoot(next: string) {
+    setRoot(next);
+    const base = parseNumber(next);
+    const pixels = parseNumber(px);
+    if (base == null || base <= 0 || pixels == null) return;
+    setRem((pixels / base).toFixed(4).replace(/\.?0+$/, ""));
+  }
+
+  function onPx(next: string) {
+    setPx(next);
+    const base = parseNumber(root);
+    const pixels = parseNumber(next);
+    if (base == null || base <= 0 || pixels == null) {
+      setRem("");
+      return;
+    }
+    setRem((pixels / base).toFixed(4).replace(/\.?0+$/, ""));
+  }
+
+  function onRem(next: string) {
+    setRem(next);
+    const base = parseNumber(root);
+    const remValue = parseNumber(next);
+    if (base == null || base <= 0 || remValue == null) {
+      setPx("");
+      return;
+    }
+    setPx((remValue * base).toFixed(4).replace(/\.?0+$/, ""));
+  }
+
+  const base = parseNumber(root);
+  const pixels = parseNumber(px);
+  const remValue = parseNumber(rem);
+  const ready =
+    base != null &&
+    base > 0 &&
+    pixels != null &&
+    remValue != null &&
+    Number.isFinite(pixels) &&
+    Number.isFinite(remValue);
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Root font size (px)">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            placeholder="16"
+            value={root}
+            onChange={(e) => onRoot(e.target.value)}
+          />
+        </Field>
+        <Field label="Pixels (px)">
+          <Input
+            type="number"
+            step="any"
+            inputMode="decimal"
+            placeholder="24"
+            value={px}
+            onChange={(e) => onPx(e.target.value)}
+          />
+        </Field>
+        <Field label="Rem">
+          <Input
+            type="number"
+            step="any"
+            inputMode="decimal"
+            placeholder="1.5"
+            value={rem}
+            onChange={(e) => onRem(e.target.value)}
+          />
+        </Field>
+      </div>
+      <Box>
+        <Result
+          label="rem"
+          value={ready ? `${remValue}rem` : "—"}
+          steel
+        />
+        <Result label="px" value={ready ? `${pixels}px` : "—"} />
+      </Box>
+    </div>
+  );
+}

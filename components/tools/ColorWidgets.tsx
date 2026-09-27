@@ -28,6 +28,7 @@ import {
   shades,
   simulateBlindness,
   splitComplementary,
+  tetradic,
   tints,
   tones,
   triadic,
@@ -463,6 +464,10 @@ export function AnalogousColorGenerator() {
 
 export function TriadicColorGenerator() {
   return <HexPaletteTool compute={triadic} />;
+}
+
+export function TetradicColorGenerator() {
+  return <HexPaletteTool compute={tetradic} />;
 }
 
 export function SplitComplementaryGenerator() {
