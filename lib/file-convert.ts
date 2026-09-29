@@ -554,6 +554,230 @@ export async function jpgToPng(files: File[]): Promise<ConvertedFile> {
   };
 }
 
+const COMPRESS_MAX_EDGE = 4096;
+const COMPRESS_MAX_PIXELS = 16_000_000;
+
+async function bitmapFromFile(file: File): Promise<ImageBitmap> {
+  try {
+    return await createImageBitmap(file, { imageOrientation: "from-image" });
+  } catch {
+    return createImageBitmap(file);
+  }
+}
+
+async function imageFromFile(file: File): Promise<{
+  width: number;
+  height: number;
+  draw: (ctx: CanvasRenderingContext2D, width: number, height: number) => void;
+  release: () => void;
+}> {
+  try {
+    const bitmap = await bitmapFromFile(file);
+    if (!bitmap.width || !bitmap.height) {
+      bitmap.close();
+      throw new Error("empty");
+    }
+    return {
+      width: bitmap.width,
+      height: bitmap.height,
+      draw: (ctx, width, height) => ctx.drawImage(bitmap, 0, 0, width, height),
+      release: () => bitmap.close(),
+    };
+  } catch {
+    const url = URL.createObjectURL(file);
+    const img = await new Promise<HTMLImageElement>((resolve, reject) => {
+      const el = new Image();
+      el.onload = () => resolve(el);
+      el.onerror = () => {
+        URL.revokeObjectURL(url);
+        reject(new Error("Could not compress this image. Use JPG, PNG, or WebP."));
+      };
+      el.src = url;
+    });
+    const width = img.naturalWidth || img.width;
+    const height = img.naturalHeight || img.height;
+    if (!width || !height) {
+      URL.revokeObjectURL(url);
+      throw new Error("Could not compress this image. Use JPG, PNG, or WebP.");
+    }
+    return {
+      width,
+      height,
+      draw: (ctx, w, h) => ctx.drawImage(img, 0, 0, w, h),
+      release: () => URL.revokeObjectURL(url),
+    };
+  }
+}
+
+function compressFit(width: number, height: number) {
+  let scale = 1;
+  const edge = Math.max(width, height);
+  if (edge > COMPRESS_MAX_EDGE) scale = COMPRESS_MAX_EDGE / edge;
+  if (width * height * scale * scale > COMPRESS_MAX_PIXELS) {
+    scale = Math.sqrt(COMPRESS_MAX_PIXELS / (width * height));
+  }
+  return {
+    width: Math.max(1, Math.round(width * scale)),
+    height: Math.max(1, Math.round(height * scale)),
+  };
+}
+
+function bytesFromDataUrl(dataUrl: string, mime: string) {
+  if (!dataUrl.startsWith(`data:${mime}`)) {
+    throw new Error("Could not compress this image.");
+  }
+  const comma = dataUrl.indexOf(",");
+  const binary = atob(dataUrl.slice(comma + 1));
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return bytes;
+}
+
+function canvasToImageBytes(
+  canvas: HTMLCanvasElement,
+  mime: string,
+  quality: number,
+) {
+  return new Promise<Uint8Array>((resolve, reject) => {
+    const finish = (blob: Blob | null) => {
+      if (blob && blob.size >= 32) {
+        blob
+          .arrayBuffer()
+          .then((buffer) => resolve(new Uint8Array(buffer)))
+          .catch(() => reject(new Error("Could not compress this image.")));
+        return;
+      }
+      try {
+        resolve(bytesFromDataUrl(canvas.toDataURL(mime, quality), mime));
+      } catch {
+        reject(new Error("Could not compress this image."));
+      }
+    };
+    if (typeof canvas.toBlob === "function") {
+      canvas.toBlob(finish, mime, quality);
+      return;
+    }
+    finish(null);
+  });
+}
+
+function fileExtension(file: File, fallback: string) {
+  const match = file.name.match(/(\.[^.]+)$/);
+  return match ? match[1] : `.${fallback}`;
+}
+
+function isWebpMagic(bytes: Uint8Array) {
+  if (bytes.length < 12) return false;
+  const riff = String.fromCharCode(bytes[0], bytes[1], bytes[2], bytes[3]);
+  const webp = String.fromCharCode(bytes[8], bytes[9], bytes[10], bytes[11]);
+  return riff === "RIFF" && webp === "WEBP";
+}
+
+function compressTarget(file: File, head: Uint8Array) {
+  const name = file.name.toLowerCase();
+  const type = (file.type || "").toLowerCase();
+  if (
+    name.endsWith(".png") ||
+    type === "image/png" ||
+    magicKind(head) === "png"
+  ) {
+    return {
+      mime: "image/png",
+      ext: fileExtension(file, "png"),
+      lossy: false,
+      opaque: false,
+    };
+  }
+  if (name.endsWith(".webp") || type === "image/webp" || isWebpMagic(head)) {
+    return {
+      mime: "image/webp",
+      ext: fileExtension(file, "webp"),
+      lossy: true,
+      opaque: false,
+    };
+  }
+  return {
+    mime: "image/jpeg",
+    ext: fileExtension(file, name.endsWith(".jpeg") ? "jpeg" : "jpg"),
+    lossy: true,
+    opaque: true,
+  };
+}
+
+export async function compressImages(
+  files: File[],
+  quality = 0.72,
+): Promise<ConvertedFile> {
+  if (!files.length) throw new Error("Upload an image.");
+  const q = Number.isFinite(quality)
+    ? Math.min(0.92, Math.max(0.4, quality))
+    : 0.72;
+  const outputs: { name: string; bytes: Uint8Array; mime: string }[] = [];
+  for (const file of files) {
+    const original = new Uint8Array(await file.arrayBuffer());
+    const target = compressTarget(file, original);
+    const source = await imageFromFile(file);
+    try {
+      const fitted = compressFit(source.width, source.height);
+      let best: Uint8Array | null = null;
+      const qualities = target.lossy
+        ? Array.from(
+            new Set([q, Math.min(q, 0.55), 0.4].filter((value) => value >= 0.4)),
+          )
+        : [1];
+      const scales = [1, 0.85, 0.7, 0.55];
+      outer: for (const scale of scales) {
+        const width = Math.max(1, Math.round(fitted.width * scale));
+        const height = Math.max(1, Math.round(fitted.height * scale));
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) throw new Error("Could not compress this image.");
+        if (target.opaque) {
+          ctx.fillStyle = "#ffffff";
+          ctx.fillRect(0, 0, width, height);
+        }
+        source.draw(ctx, width, height);
+        for (const step of qualities) {
+          const bytes = await canvasToImageBytes(canvas, target.mime, step);
+          if (bytes.length < 32) continue;
+          if (!best || bytes.length < best.length) best = bytes;
+          if (bytes.length < file.size) break outer;
+        }
+      }
+      if (!best || best.length < 32) {
+        throw new Error("Could not compress this image.");
+      }
+      if (best.length >= original.length) {
+        outputs.push({ name: file.name, bytes: original, mime: target.mime });
+      } else {
+        outputs.push({
+          name: `${baseName(file)}${target.ext}`,
+          bytes: best,
+          mime: target.mime,
+        });
+      }
+    } finally {
+      source.release();
+    }
+  }
+  if (outputs.length === 1) {
+    return {
+      blob: new Blob([asArrayBuffer(outputs[0].bytes)], {
+        type: outputs[0].mime,
+      }),
+      name: outputs[0].name,
+    };
+  }
+  const zip = new JSZip();
+  for (const item of outputs) zip.file(item.name, item.bytes);
+  return {
+    blob: await zip.generateAsync({ type: "blob" }),
+    name: "compressed-images.zip",
+  };
+}
+
 export async function mergePdfs(files: File[]): Promise<ConvertedFile> {
   if (files.length < 2) throw new Error("Upload at least two PDF files to merge.");
   const out = await PDFDocument.create();

@@ -786,6 +786,54 @@ const TOOL_SEO: Record<
       "tetradic color generator free, generate tetradic colors free, tetradic color scheme free, generate tetradic colors, tetradic color generator",
     focusKeyword: "tetradic color generator free",
   },
+  "tdee-calculator": {
+    title: "TDEE Calculator Free | Calculate TDEE Online",
+    description:
+      "Calculate TDEE free. This tdee calculator free uses Mifflin-St Jeor BMR and your activity level. TDEE Calculator free — no software and no signup.",
+    keywords:
+      "tdee calculator free, calculate tdee free, tdee calc free, calculate tdee, tdee calculator",
+    focusKeyword: "tdee calculator free",
+  },
+  "roi-calculator": {
+    title: "ROI Calculator Free | Calculate ROI Online",
+    description:
+      "Calculate ROI free. This roi calculator free shows return on investment from cost and gain. ROI Calculator free — no software and no signup.",
+    keywords:
+      "roi calculator free, calculate roi free, return on investment free, calculate roi, roi calculator",
+    focusKeyword: "roi calculator free",
+  },
+  "remove-duplicate-lines": {
+    title: "Remove Duplicate Lines Free | Remove Duplicate Lines Online",
+    description:
+      "Remove Duplicate Lines free. This remove duplicate lines free tool keeps unique lines from pasted text. Duplicate Line Remover free — no software and no signup.",
+    keywords:
+      "remove duplicate lines free, remove duplicate lines online free, duplicate line remover free, remove duplicate lines, remove duplicate lines tool",
+    focusKeyword: "remove duplicate lines free",
+  },
+  "aspect-ratio-calculator": {
+    title: "Aspect Ratio Calculator Free | Calculate Aspect Ratio Online",
+    description:
+      "Calculate Aspect Ratio free. This aspect ratio calculator free simplifies width and height and scales to a new width. Aspect Ratio Calculator free — no software and no signup.",
+    keywords:
+      "aspect ratio calculator free, calculate aspect ratio free, aspect ratio free, calculate aspect ratio, aspect ratio calculator",
+    focusKeyword: "aspect ratio calculator free",
+  },
+  "image-compressor": {
+    title: "Image Compressor Free | Compress Image Online",
+    description:
+      "Compress Image free. This image compressor free shrinks JPG or PNG in your browser. Compress Image free — no software and no signup.",
+    keywords:
+      "image compressor free, compress image free, compress images free, compress image, image compressor",
+    focusKeyword: "image compressor free",
+  },
+  "hex-to-cmyk": {
+    title: "HEX to CMYK Converter Free | Convert HEX to CMYK Online",
+    description:
+      "Convert HEX to CMYK free. This hex to cmyk converter free turns a HEX code into CMYK percentages. HEX to CMYK free — no software and no signup.",
+    keywords:
+      "hex to cmyk converter free, convert hex to cmyk free, hex to cmyk free, convert hex to cmyk, hex to cmyk converter",
+    focusKeyword: "hex to cmyk converter free",
+  },
 };
 
 const pageSeo: Record<string, SeoEntry> = {
@@ -793,10 +841,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/",
     "Home",
     "Free Online Calculators and PDF Converter | SmartToolX",
-    "Free online calculators, color tools, and a free PDF converter in your browser. JPG to PNG, protein calculator, inflation calculator, PX to REM, word frequency, tetradic colors, JPG to PDF, color mixer, and more. No account needed.",
+    "Free online calculators, color tools, and a free PDF converter in your browser. TDEE calculator, image compressor, ROI calculator, HEX to CMYK, JPG to PNG, protein calculator, and more. No account needed.",
     {
       keywords:
-        "protein calculator, inflation calculator, word frequency counter, PX to REM, JPG to PNG, tetradic color generator, color mixer, free PDF converter, free online calculator, SmartToolX",
+        "tdee calculator, image compressor, roi calculator, hex to cmyk, aspect ratio calculator, remove duplicate lines, free PDF converter, free online calculator, SmartToolX",
       h1: "Free online calculators and PDF converter",
       focusKeyword: "free online calculators",
       schemaType: "WebSite",
@@ -806,10 +854,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/tools",
     "All Tools",
     "All Free Tools | SmartToolX",
-    "Browse every SmartToolX calculator, converter, text tool, file converter, and color tool. JPG to PDF, find and replace, color mixer, number to words, color picker, sleep calculator, mortgage, GPA, PNG to JPG, WebP to JPG, and more. Each one runs in your browser.",
+    "Browse every SmartToolX calculator, converter, text tool, file converter, and color tool. TDEE calculator, image compressor, ROI calculator, HEX to CMYK, aspect ratio, remove duplicate lines, JPG to PDF, and more. Each one runs in your browser.",
     {
       keywords:
-        "free online tools, find and replace, color mixer, color picker, sleep calculator, mortgage calculator, GPA calculator, PNG to JPG, WebP to JPG, all tools, calculator list, SmartToolX tools",
+        "tdee calculator, image compressor, roi calculator, hex to cmyk, aspect ratio calculator, remove duplicate lines, free online tools, JPG to PDF, all tools, SmartToolX tools",
       focusKeyword: "free online tools",
     },
   ),
@@ -817,10 +865,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/calculators",
     "Calculators",
     "Free Online Calculators | SmartToolX",
-    "Health and finance calculators for sleep, protein, ideal weight, mortgage, inflation, CAGR, period dates, BMI, EMI, GPA, FD, GST, SIP, calories, and more. Open a tool, enter numbers, and see the result.",
+    "Health and finance calculators for TDEE, calories, sleep, protein, ideal weight, mortgage, ROI, inflation, CAGR, period dates, BMI, EMI, GPA, FD, GST, SIP, and more. Open a tool, enter numbers, and see the result.",
     {
       keywords:
-        "protein calculator, inflation calculator, ideal weight calculator, CAGR calculator, sleep calculator, mortgage calculator, GPA calculator, online calculators, period calculator, BMI calculator, EMI calculator",
+        "tdee calculator, roi calculator, protein calculator, inflation calculator, BMI calculator, EMI calculator, sleep calculator, mortgage calculator, GPA calculator, online calculators, calorie calculator",
       focusKeyword: "online calculators",
     },
   ),
@@ -828,10 +876,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/converters",
     "Converters",
     "Free Online Converters | SmartToolX",
-    "Convert currency, units, PX to REM, number to words, temperature, time zones, Unix timestamps, GPA, and more without leaving the page. Live rates for money, standard factors for the rest.",
+    "Convert currency, units, PX to REM, aspect ratio, number to words, temperature, time zones, Unix timestamps, GPA, and more without leaving the page. Live rates for money, standard factors for the rest.",
     {
       keywords:
-        "px to rem converter, unix timestamp converter, number to words, GPA calculator, CGPA to percentage, unit converter, currency converter, time zone converter, temperature converter, live exchange rates",
+        "aspect ratio calculator, px to rem converter, unix timestamp converter, number to words, GPA calculator, unit converter, currency converter, time zone converter, temperature converter, live exchange rates",
       focusKeyword: "unit converter",
     },
   ),
@@ -839,10 +887,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/text-tools",
     "Text Tools",
     "Free Text Tools Online | SmartToolX",
-    "Count words, word frequency, find and replace, format JSON, generate random numbers, passwords, and QR codes, change case, and build URL slugs. Paste text and copy the result.",
+    "Count words, remove duplicate lines, word frequency, find and replace, format JSON, generate random numbers, passwords, and QR codes, change case, and build URL slugs. Paste text and copy the result.",
     {
       keywords:
-        "word frequency counter, find and replace, random number generator, JSON formatter, word counter, QR code generator, password generator, case converter, slug generator, text tools",
+        "remove duplicate lines, word frequency counter, find and replace, random number generator, JSON formatter, word counter, QR code generator, password generator, case converter, text tools",
       focusKeyword: "text tools",
     },
   ),
@@ -850,10 +898,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/finance",
     "Finance",
     "Free Finance Calculators | SmartToolX",
-    "Mortgage, inflation, CAGR, EMI, FD, GST, SIP, compound interest, tips, discounts, and live currency conversion for everyday money decisions.",
+    "Mortgage, ROI, inflation, CAGR, EMI, FD, GST, SIP, compound interest, tips, discounts, and live currency conversion for everyday money decisions.",
     {
       keywords:
-        "inflation calculator, CAGR calculator, mortgage calculator, loan EMI calculator, FD calculator, GST calculator, SIP calculator, percentage calculator, currency converter, finance calculator",
+        "roi calculator, inflation calculator, CAGR calculator, mortgage calculator, loan EMI calculator, FD calculator, GST calculator, SIP calculator, percentage calculator, finance calculator",
       focusKeyword: "finance calculator",
     },
   ),
@@ -861,10 +909,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/file-converter",
     "File Converter",
     "Free PDF Converter Online | SmartToolX",
-    "Free PDF converter online. JPG to PDF, JPG to PNG, WebP to JPG, PPT to PDF, PDF to Word, Word to PDF, compress PDF, merge PDF, split PDF, and PNG to JPG. No signup. Files stay in your browser.",
+    "Free PDF converter online. Image compressor, JPG to PDF, JPG to PNG, WebP to JPG, PPT to PDF, PDF to Word, Word to PDF, compress PDF, merge PDF, split PDF, and PNG to JPG. No signup. Files stay in your browser.",
     {
       keywords:
-        "free PDF converter, JPG to PNG, WebP to JPG, PDF to Word online free, compress PDF online, merge PDF, split PDF, Word to PDF, PNG to JPG, file converter",
+        "image compressor, free PDF converter, JPG to PNG, WebP to JPG, PDF to Word online free, compress PDF online, merge PDF, split PDF, Word to PDF, PNG to JPG",
       focusKeyword: "free PDF converter",
       h1: "Free PDF Converter Online",
     },
@@ -873,10 +921,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/colors",
     "Color Tools",
     "Free Color Tools Online | SmartToolX",
-    "Free color tools online. Open a picker, mixer, tetradic palette, converter, gradient, or contrast checker in your browser. No account and no upload.",
+    "Free color tools online. HEX to CMYK, picker, mixer, tetradic palette, converter, gradient, or contrast checker in your browser. No account and no upload.",
     {
       keywords:
-        "tetradic color generator, color mixer, color tools, free color tools, online color tools, color utilities, free color picker tools",
+        "hex to cmyk, tetradic color generator, color mixer, color tools, free color tools, online color tools, color converter, free color picker tools",
       focusKeyword: "color tools",
       h1: "Free Color Tools Online",
     },

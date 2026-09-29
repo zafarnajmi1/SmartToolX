@@ -2861,3 +2861,415 @@ export function PxToRemConverter() {
     </div>
   );
 }
+
+export function TdeeCalculator() {
+  const [age, setAge] = useState("");
+  const [heightUnit, setHeightUnit] = useState<BmrHeightUnit>("cm");
+  const [heightPrimary, setHeightPrimary] = useState("");
+  const [heightExtra, setHeightExtra] = useState("");
+  const [weightUnit, setWeightUnit] = useState<BmrWeightUnit>("kg");
+  const [weightPrimary, setWeightPrimary] = useState("");
+  const [weightExtra, setWeightExtra] = useState("");
+  const [sex, setSex] = useState("male");
+  const [activity, setActivity] = useState("1.55");
+
+  function changeHeightUnit(next: BmrHeightUnit) {
+    const cm = bmrHeightToCm(heightUnit, heightPrimary, heightExtra);
+    if (cm != null) {
+      const converted = bmrCmToHeight(next, cm);
+      setHeightPrimary(converted.primary);
+      setHeightExtra(converted.extra);
+    } else {
+      setHeightExtra("");
+    }
+    setHeightUnit(next);
+  }
+
+  function changeWeightUnit(next: BmrWeightUnit) {
+    const kg = bmrWeightToKg(weightUnit, weightPrimary, weightExtra);
+    if (kg != null) {
+      const converted = bmrKgToWeight(next, kg);
+      setWeightPrimary(converted.primary);
+      setWeightExtra(converted.extra);
+    } else {
+      setWeightExtra("");
+    }
+    setWeightUnit(next);
+  }
+
+  const result = useMemo(() => {
+    const a = parseNumber(age);
+    const h = bmrHeightToCm(heightUnit, heightPrimary, heightExtra);
+    const w = bmrWeightToKg(weightUnit, weightPrimary, weightExtra);
+    const factor = Number(activity);
+    if (a == null || h == null || w == null || a <= 0) return null;
+    const bmr = mifflin(w, h, a, sex === "male");
+    const tdee = bmr * factor;
+    return {
+      bmr: Math.round(bmr),
+      tdee: Math.round(tdee),
+      cut: Math.round(tdee - 500),
+      bulk: Math.round(tdee + 300),
+    };
+  }, [
+    age,
+    heightUnit,
+    heightPrimary,
+    heightExtra,
+    weightUnit,
+    weightPrimary,
+    weightExtra,
+    sex,
+    activity,
+  ]);
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Age (years)">
+          <Input
+            type="number"
+            min="1"
+            step="1"
+            inputMode="numeric"
+            value={age}
+            placeholder="30"
+            onChange={(e) => setAge(e.target.value)}
+          />
+        </Field>
+        <Field label="Height unit">
+          <Select
+            value={heightUnit}
+            onChange={(e) => changeHeightUnit(e.target.value as BmrHeightUnit)}
+          >
+            <option value="cm">Centimeters (cm)</option>
+            <option value="m">Meters (m)</option>
+            <option value="ftin">Feet and inches</option>
+            <option value="in">Inches (in)</option>
+          </Select>
+        </Field>
+        {heightUnit === "ftin" ? (
+          <div className="grid grid-cols-2 gap-3">
+            <Field label="Feet">
+              <Input
+                type="number"
+                min="0"
+                step="any"
+                inputMode="decimal"
+                value={heightPrimary}
+                placeholder="5"
+                onChange={(e) => setHeightPrimary(e.target.value)}
+              />
+            </Field>
+            <Field label="Inches">
+              <Input
+                type="number"
+                min="0"
+                step="any"
+                inputMode="decimal"
+                value={heightExtra}
+                placeholder="7"
+                onChange={(e) => setHeightExtra(e.target.value)}
+              />
+            </Field>
+          </div>
+        ) : (
+          <Field label="Height">
+            <Input
+              type="number"
+              min="0"
+              step="any"
+              inputMode="decimal"
+              value={heightPrimary}
+              placeholder={
+                heightUnit === "cm" ? "170" : heightUnit === "m" ? "1.7" : "67"
+              }
+              onChange={(e) => setHeightPrimary(e.target.value)}
+            />
+          </Field>
+        )}
+        <Field label="Weight unit">
+          <Select
+            value={weightUnit}
+            onChange={(e) => changeWeightUnit(e.target.value as BmrWeightUnit)}
+          >
+            <option value="kg">Kilograms (kg)</option>
+            <option value="lb">Pounds (lb)</option>
+            <option value="stlb">Stone and pounds</option>
+            <option value="st">Stone (st)</option>
+          </Select>
+        </Field>
+        {weightUnit === "stlb" ? (
+          <div className="grid grid-cols-2 gap-3">
+            <Field label="Stone">
+              <Input
+                type="number"
+                min="0"
+                step="any"
+                inputMode="decimal"
+                value={weightPrimary}
+                placeholder="10"
+                onChange={(e) => setWeightPrimary(e.target.value)}
+              />
+            </Field>
+            <Field label="Pounds">
+              <Input
+                type="number"
+                min="0"
+                step="any"
+                inputMode="decimal"
+                value={weightExtra}
+                placeholder="8"
+                onChange={(e) => setWeightExtra(e.target.value)}
+              />
+            </Field>
+          </div>
+        ) : (
+          <Field label="Weight">
+            <Input
+              type="number"
+              min="0"
+              step="any"
+              inputMode="decimal"
+              value={weightPrimary}
+              placeholder={
+                weightUnit === "kg" ? "65" : weightUnit === "lb" ? "143" : "10.2"
+              }
+              onChange={(e) => setWeightPrimary(e.target.value)}
+            />
+          </Field>
+        )}
+        <Field label="Sex">
+          <Select value={sex} onChange={(e) => setSex(e.target.value)}>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </Select>
+        </Field>
+        <Field label="Activity level">
+          <Select value={activity} onChange={(e) => setActivity(e.target.value)}>
+            <option value="1.2">Sedentary (desk work, little exercise)</option>
+            <option value="1.375">Light (exercise 1 to 3 days a week)</option>
+            <option value="1.55">Moderate (exercise 3 to 5 days a week)</option>
+            <option value="1.725">Active (exercise 6 to 7 days a week)</option>
+            <option value="1.9">Very active (hard training or physical job)</option>
+          </Select>
+        </Field>
+      </div>
+      <Box>
+        <Result
+          label="TDEE"
+          value={result ? `${result.tdee} kcal` : "—"}
+          steel
+        />
+        <Result label="BMR" value={result ? `${result.bmr} kcal` : "—"} />
+        <Result
+          label="To lose weight"
+          value={result ? `${result.cut} kcal` : "—"}
+          steel
+        />
+        <Result
+          label="To gain weight"
+          value={result ? `${result.bulk} kcal` : "—"}
+        />
+      </Box>
+    </div>
+  );
+}
+
+export function RoiCalculator() {
+  const [cost, setCost] = useState("");
+  const [gain, setGain] = useState("");
+  const result = useMemo(() => {
+    const c = parseNumber(cost);
+    const g = parseNumber(gain);
+    if (c == null || g == null || c <= 0) return null;
+    const net = g - c;
+    return { net, roi: (net / c) * 100 };
+  }, [cost, gain]);
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Cost of investment">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            placeholder="10000"
+            value={cost}
+            onChange={(e) => setCost(e.target.value)}
+          />
+        </Field>
+        <Field label="Final value / gain">
+          <Input
+            type="number"
+            step="any"
+            inputMode="decimal"
+            placeholder="12500"
+            value={gain}
+            onChange={(e) => setGain(e.target.value)}
+          />
+        </Field>
+      </div>
+      <Box>
+        <Result
+          label="ROI"
+          value={result ? `${result.roi.toFixed(2)}%` : "—"}
+          steel
+        />
+        <Result
+          label="Net profit"
+          value={result ? money(result.net) : "—"}
+        />
+      </Box>
+    </div>
+  );
+}
+
+export function RemoveDuplicateLines() {
+  const [text, setText] = useState("");
+  const [ignoreCase, setIgnoreCase] = useState("no");
+  const result = useMemo(() => {
+    if (text === "") return null;
+    const endedWithBreak = /\r\n$|\n$|\r$/.test(text);
+    const lines = text.split(/\r\n|\n|\r/);
+    if (endedWithBreak && lines[lines.length - 1] === "") lines.pop();
+    const seen = new Set<string>();
+    const unique: string[] = [];
+    for (const line of lines) {
+      const key = ignoreCase === "yes" ? line.toLowerCase() : line;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      unique.push(line);
+    }
+    return {
+      unique: unique.join("\n"),
+      kept: unique.length,
+      removed: lines.length - unique.length,
+    };
+  }, [text, ignoreCase]);
+
+  return (
+    <div className="grid gap-6">
+      <Field label="Text">
+        <Textarea
+          rows={8}
+          value={text}
+          placeholder="Paste lines"
+          onChange={(e) => setText(e.target.value)}
+        />
+      </Field>
+      <Field label="Ignore case">
+        <Select
+          value={ignoreCase}
+          onChange={(e) => setIgnoreCase(e.target.value)}
+        >
+          <option value="no">No</option>
+          <option value="yes">Yes</option>
+        </Select>
+      </Field>
+      <Box>
+        <Result
+          label="Unique lines"
+          value={result ? String(result.kept) : "—"}
+          steel
+        />
+        <Result
+          label="Duplicates removed"
+          value={result ? String(result.removed) : "—"}
+        />
+      </Box>
+      <Field label="Result">
+        <Textarea
+          rows={8}
+          readOnly
+          value={result?.unique ?? ""}
+          placeholder="Unique lines appear here"
+        />
+      </Field>
+    </div>
+  );
+}
+
+function gcd(a: number, b: number) {
+  let x = Math.round(Math.abs(a));
+  let y = Math.round(Math.abs(b));
+  while (y) {
+    const t = y;
+    y = x % y;
+    x = t;
+  }
+  return x || 1;
+}
+
+export function AspectRatioCalculator() {
+  const [width, setWidth] = useState("");
+  const [height, setHeight] = useState("");
+  const [target, setTarget] = useState("");
+  const result = useMemo(() => {
+    const w = parseNumber(width);
+    const h = parseNumber(height);
+    if (w == null || h == null || w <= 0 || h <= 0) return null;
+    const wi = Math.round(w);
+    const hi = Math.round(h);
+    const d = gcd(wi, hi);
+    const rw = wi / d;
+    const rh = hi / d;
+    const next = parseNumber(target);
+    const scaled =
+      next != null && next > 0 ? Math.round((next * h) / w) : null;
+    return { ratio: `${rw}:${rh}`, scaled };
+  }, [width, height, target]);
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Width">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            placeholder="1920"
+            value={width}
+            onChange={(e) => setWidth(e.target.value)}
+          />
+        </Field>
+        <Field label="Height">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            placeholder="1080"
+            value={height}
+            onChange={(e) => setHeight(e.target.value)}
+          />
+        </Field>
+        <Field label="New width (optional)">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            placeholder="1280"
+            value={target}
+            onChange={(e) => setTarget(e.target.value)}
+          />
+        </Field>
+      </div>
+      <Box>
+        <Result
+          label="Aspect ratio"
+          value={result ? result.ratio : "—"}
+          steel
+        />
+        <Result
+          label="Scaled height"
+          value={result?.scaled != null ? String(result.scaled) : "—"}
+        />
+      </Box>
+    </div>
+  );
+}

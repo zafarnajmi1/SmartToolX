@@ -50,6 +50,10 @@ import {
   InflationCalculator,
   WordFrequencyCounter,
   PxToRemConverter,
+  TdeeCalculator,
+  RoiCalculator,
+  RemoveDuplicateLines,
+  AspectRatioCalculator,
 } from "@/components/tools/ExtraWidgets";
 import {
   AnalogousColorGenerator,
@@ -71,6 +75,7 @@ import {
   GradientGenerator,
   HexToHsl,
   HexToRgb,
+  HexToCmyk,
   HslToHex,
   ImageColorPaletteExtractor,
   MonochromaticPaletteGenerator,
@@ -270,6 +275,18 @@ export function ToolWidget({ slug }: { slug: string }) {
       return <FileConverter id="jpg-to-png" />;
     case "tetradic-color-generator":
       return <TetradicColorGenerator />;
+    case "tdee-calculator":
+      return <TdeeCalculator />;
+    case "roi-calculator":
+      return <RoiCalculator />;
+    case "remove-duplicate-lines":
+      return <RemoveDuplicateLines />;
+    case "aspect-ratio-calculator":
+      return <AspectRatioCalculator />;
+    case "image-compressor":
+      return <FileConverter id="image-compressor" />;
+    case "hex-to-cmyk":
+      return <HexToCmyk />;
     default:
       return null;
   }

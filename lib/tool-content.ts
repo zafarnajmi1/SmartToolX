@@ -2526,6 +2526,168 @@ const custom: Record<string, Partial<ToolContent>> = {
       },
     ],
   },
+  "tdee-calculator": {
+    keyword: "tdee calculator free",
+    articleTitle: "How to calculate TDEE free",
+    paragraphs: [
+      "Calculate TDEE free with this tdee calculator. It uses the Mifflin-St Jeor BMR formula, then multiplies by your activity level.",
+      "How to calculate TDEE: enter age, height, weight, sex, and activity. TDEE is the calories you need to maintain weight. A 500 kcal cut is a common fat-loss starting point.",
+      "This tdee calculator free page is built for desktop and mobile. TDEE Calculator free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I calculate TDEE?",
+        a: "Enter age, height, weight, sex, and activity. The tdee calculator multiplies BMR by the activity factor in your browser.",
+      },
+      {
+        q: "What is the difference between BMR and TDEE?",
+        a: "BMR is calories at rest. TDEE is BMR times activity, so it is the daily total to maintain weight.",
+      },
+      {
+        q: "Is the TDEE calculator free?",
+        a: "Yes. You can calculate TDEE free with no signup and no software to install.",
+      },
+      {
+        q: "Can I calculate TDEE on mobile?",
+        a: "Yes. This tdee calculator free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "roi-calculator": {
+    keyword: "roi calculator free",
+    articleTitle: "How to calculate ROI free",
+    paragraphs: [
+      "Calculate ROI free with this roi calculator. Return on investment is (gain − cost) ÷ cost, shown as a percent.",
+      "How to calculate ROI: enter the cost of the investment and the final value. Net profit is gain minus cost.",
+      "This roi calculator free page is built for desktop and mobile. ROI Calculator free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I calculate ROI?",
+        a: "Enter cost and final value. The roi calculator uses (gain − cost) ÷ cost × 100 in your browser.",
+      },
+      {
+        q: "Can ROI be negative?",
+        a: "Yes. If the final value is below the cost, net profit and ROI are negative.",
+      },
+      {
+        q: "Is the ROI calculator free?",
+        a: "Yes. You can calculate ROI free with no signup and no software to install.",
+      },
+      {
+        q: "Can I calculate ROI on mobile?",
+        a: "Yes. This roi calculator free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "remove-duplicate-lines": {
+    keyword: "remove duplicate lines free",
+    articleTitle: "How to remove duplicate lines free",
+    paragraphs: [
+      "Remove Duplicate Lines free with this duplicate line remover. It keeps the first copy of each line and drops later repeats.",
+      "How to remove duplicate lines: paste text, choose whether to ignore case, and copy the unique lines.",
+      "This remove duplicate lines free page is built for desktop and mobile. Duplicate Line Remover free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I remove duplicate lines?",
+        a: "Paste your text. Unique lines stay in order. The remove duplicate lines tool runs in your browser.",
+      },
+      {
+        q: "Does it keep the original order?",
+        a: "Yes. The first time a line appears is kept. Later copies of the same line are removed.",
+      },
+      {
+        q: "Is remove duplicate lines free?",
+        a: "Yes. You can remove duplicate lines free with no signup and no software to install.",
+      },
+      {
+        q: "Can I remove duplicate lines on mobile?",
+        a: "Yes. This duplicate line remover free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "aspect-ratio-calculator": {
+    keyword: "aspect ratio calculator free",
+    articleTitle: "How to calculate aspect ratio free",
+    paragraphs: [
+      "Calculate Aspect Ratio free with this aspect ratio calculator. It simplifies width and height with the greatest common divisor.",
+      "How to calculate aspect ratio: enter width and height. Optional new width returns the matching height at the same ratio.",
+      "This aspect ratio calculator free page is built for desktop and mobile. Aspect Ratio Calculator free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I calculate aspect ratio?",
+        a: "Enter width and height. The aspect ratio calculator simplifies them, for example 1920×1080 becomes 16:9.",
+      },
+      {
+        q: "How do I scale to a new width?",
+        a: "Enter the new width. Scaled height is new width × ratio height ÷ ratio width.",
+      },
+      {
+        q: "Is the aspect ratio calculator free?",
+        a: "Yes. You can calculate aspect ratio free with no signup and no software to install.",
+      },
+      {
+        q: "Can I calculate aspect ratio on mobile?",
+        a: "Yes. This aspect ratio calculator free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "image-compressor": {
+    keyword: "image compressor free",
+    articleTitle: "How to compress an image free",
+    paragraphs: [
+      "Compress Image free with this image compressor. It shrinks JPG, PNG, or WebP in your browser using JPEG quality.",
+      "How to compress an image: drop a file, pick quality, and download the smaller JPG. Files never leave this device.",
+      "This image compressor free page is built for desktop and mobile. Compress Image free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I compress an image?",
+        a: "Drop a JPG, PNG, or WebP. Choose quality and download the compressed JPG. The image compressor runs in your browser.",
+      },
+      {
+        q: "Does compressing reduce quality?",
+        a: "Yes, JPEG compression trades some quality for a smaller file. Balanced 72% is a typical starting point.",
+      },
+      {
+        q: "Is the image compressor free?",
+        a: "Yes. You can compress an image free with no signup and no software to install.",
+      },
+      {
+        q: "Can I compress an image on mobile?",
+        a: "Yes. This compress image free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "hex-to-cmyk": {
+    keyword: "hex to cmyk converter free",
+    articleTitle: "How to convert HEX to CMYK free",
+    paragraphs: [
+      "Convert HEX to CMYK free with this hex to cmyk converter. It turns a HEX code into cyan, magenta, yellow, and key percentages.",
+      "How to convert HEX to CMYK: paste a HEX color such as #E8A33D. Copy the CMYK values for print work.",
+      "This hex to cmyk converter free page is built for desktop and mobile. HEX to CMYK free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I convert HEX to CMYK?",
+        a: "Paste a HEX color. The hex to cmyk converter shows CMYK percentages in your browser.",
+      },
+      {
+        q: "Is HEX to CMYK exact for print?",
+        a: "Screen RGB to CMYK is an estimate. Press shops still proof colors on their own ICC profiles.",
+      },
+      {
+        q: "Is the HEX to CMYK converter free?",
+        a: "Yes. You can convert HEX to CMYK free with no signup and no software to install.",
+      },
+      {
+        q: "Can I convert HEX to CMYK on mobile?",
+        a: "Yes. This hex to cmyk free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
 };
 
 export function getToolContent(slug: string): ToolContent | null {

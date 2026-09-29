@@ -688,6 +688,53 @@ export const tools: Tool[] = [
       "Generate a tetradic (square) color palette from a HEX color. Four hues, 90° apart.",
     category: "color",
   },
+  {
+    slug: "tdee-calculator",
+    name: "TDEE Calculator",
+    icon: "TDEE",
+    description:
+      "Free TDEE calculator online. Total daily energy expenditure from BMR and activity level.",
+    category: "health",
+  },
+  {
+    slug: "roi-calculator",
+    name: "ROI Calculator",
+    icon: "ROI",
+    description:
+      "Free ROI calculator online. Return on investment from cost and gain.",
+    category: "finance",
+  },
+  {
+    slug: "remove-duplicate-lines",
+    name: "Remove Duplicate Lines",
+    icon: "DUP",
+    description:
+      "Free remove duplicate lines online. Keep unique lines from pasted text.",
+    category: "text",
+  },
+  {
+    slug: "aspect-ratio-calculator",
+    name: "Aspect Ratio Calculator",
+    icon: "AR",
+    description:
+      "Free aspect ratio calculator online. Simplify width and height, plus scale to a new width.",
+    category: "convert",
+  },
+  {
+    slug: "image-compressor",
+    name: "Image Compressor",
+    icon: "IMG",
+    description:
+      "Compress image online free. Shrink JPG or PNG in your browser. No account.",
+    category: "files",
+  },
+  {
+    slug: "hex-to-cmyk",
+    name: "HEX to CMYK",
+    icon: "CMYK",
+    description: "Convert a HEX color code to CMYK. Free in your browser.",
+    category: "color",
+  },
 ];
 
 export const featuredSlugs = [
@@ -716,6 +763,7 @@ export const fileConverterSlugs = [
   "png-to-jpg",
   "webp-to-jpg",
   "jpg-to-png",
+  "image-compressor",
 ] as const;
 
 export const toolCount = tools.length;
@@ -724,7 +772,7 @@ export const categoryPages = {
   calculators: {
     title: "Calculators",
     description:
-      "Health, finance, and everyday calculators including sleep, protein, ideal weight, mortgage, inflation, CAGR, period, BMI, EMI, GPA, and FD.",
+      "Health, finance, and everyday calculators including TDEE, sleep, protein, ideal weight, mortgage, ROI, inflation, CAGR, period, BMI, EMI, GPA, and FD.",
     slugs: [
       ...tools
         .filter(
@@ -738,19 +786,19 @@ export const categoryPages = {
   converters: {
     title: "Converters",
     description:
-      "Currency, units, PX to REM, time zones, Unix timestamps, GPA, and more. Convert without leaving the page.",
+      "Currency, units, PX to REM, aspect ratio, time zones, Unix timestamps, GPA, and more. Convert without leaving the page.",
     slugs: tools.filter((tool) => tool.category === "convert").map((t) => t.slug),
   },
   "text-tools": {
     title: "Text Tools",
     description:
-      "Count words, word frequency, find and replace, format JSON, generate random numbers, and transform text in a click.",
+      "Count words, word frequency, remove duplicate lines, find and replace, format JSON, generate random numbers, and transform text in a click.",
     slugs: tools.filter((tool) => tool.category === "text").map((t) => t.slug),
   },
   finance: {
     title: "Finance",
     description:
-      "Mortgage, inflation, CAGR, EMI, FD, GST, SIP, percentages, and currency tools for money decisions.",
+      "Mortgage, ROI, inflation, CAGR, EMI, FD, GST, SIP, percentages, and currency tools for money decisions.",
     slugs: [
       ...tools.filter((tool) => tool.category === "finance").map((t) => t.slug),
       "currency-converter",
@@ -759,7 +807,7 @@ export const categoryPages = {
   "file-converter": {
     title: "Free PDF Converter Online",
     description:
-      "Free PDF converter online. PDF to Word, compress PDF, merge PDF, split PDF, PNG to JPG, JPG to PNG, WebP to JPG, and more. Files stay in your browser.",
+      "Free PDF converter online. Compress image, PDF to Word, compress PDF, merge PDF, split PDF, PNG to JPG, JPG to PNG, WebP to JPG, and more. Files stay in your browser.",
     slugs: [...fileConverterSlugs],
   },
   colors: {
@@ -797,6 +845,7 @@ export const categoryPages = {
       "tailwind-color-converter",
       "color-mixer",
       "tetradic-color-generator",
+      "hex-to-cmyk",
     ],
   },
 } as const;
@@ -1047,6 +1096,42 @@ const relatedBySlug: Record<string, readonly string[]> = {
     "complementary-color-generator",
     "analogous-color-generator",
     "color-palette-generator",
+  ],
+  "tdee-calculator": [
+    "calorie-calculator",
+    "bmr-calculator",
+    "protein-calculator",
+    "bmi-calculator",
+  ],
+  "roi-calculator": [
+    "cagr-calculator",
+    "inflation-calculator",
+    "compound-interest-calculator",
+    "sip-calculator",
+  ],
+  "remove-duplicate-lines": [
+    "find-and-replace",
+    "word-frequency-counter",
+    "case-converter",
+    "word-counter",
+  ],
+  "aspect-ratio-calculator": [
+    "unit-converter",
+    "px-to-rem-converter",
+    "image-compressor",
+    "jpg-to-png",
+  ],
+  "image-compressor": [
+    "compress-pdf",
+    "jpg-to-png",
+    "png-to-jpg",
+    "webp-to-jpg",
+  ],
+  "hex-to-cmyk": [
+    "hex-to-rgb",
+    "color-converter",
+    "color-picker",
+    "rgb-to-hex",
   ],
 };
 

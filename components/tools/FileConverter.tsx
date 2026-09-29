@@ -14,8 +14,10 @@ import {
   webpToJpg,
   jpgToPng,
   wordToPdf,
+  compressImages,
   type ConvertedFile,
 } from "@/lib/file-convert";
+import { Field, Select } from "@/components/ui/Form";
 
 type FileToolId =
   | "pdf-to-word"
@@ -31,7 +33,8 @@ type FileToolId =
   | "split-pdf"
   | "png-to-jpg"
   | "webp-to-jpg"
-  | "jpg-to-png";
+  | "jpg-to-png"
+  | "image-compressor";
 
 type ToolConfig = {
   accept: string;
@@ -215,6 +218,18 @@ const configs: Record<FileToolId, ToolConfig> = {
     downloadLabel: "Download PNG",
     convert: (files) => jpgToPng(files),
   },
+  "image-compressor": {
+    accept: ".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp",
+    multiple: true,
+    minFiles: 1,
+    maxMb: 25,
+    dropIcon: "IMG",
+    dropTitle: "Drop your images here",
+    button: "Compress images",
+    resultIcon: "IMG",
+    downloadLabel: "Download",
+    convert: (files) => compressImages(files),
+  },
 };
 
 function formatSize(bytes: number) {
@@ -231,6 +246,7 @@ export function FileConverter({ id }: { id: FileToolId }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [result, setResult] = useState<ConvertedFile | null>(null);
+  const [quality, setQuality] = useState("0.72");
 
   const maxBytes = config.maxMb * 1024 * 1024;
   const ready = files.length >= config.minFiles && !busy;
@@ -270,7 +286,10 @@ export function FileConverter({ id }: { id: FileToolId }) {
       setProgress((value) => (value == null || value >= 90 ? value : value + 6));
     }, 220);
     try {
-      const output = await config.convert(files);
+      const output =
+        id === "image-compressor"
+          ? await compressImages(files, Number(quality))
+          : await config.convert(files);
       setProgress(100);
       setResult(output);
     } catch (caught) {
@@ -339,6 +358,21 @@ export function FileConverter({ id }: { id: FileToolId }) {
         }}
       />
 
+      {id === "image-compressor" ? (
+        <div className="mt-5">
+          <Field label="Quality">
+            <Select
+              value={quality}
+              onChange={(e) => setQuality(e.target.value)}
+            >
+              <option value="0.5">Smaller file (50%)</option>
+              <option value="0.72">Balanced (72%)</option>
+              <option value="0.85">Higher quality (85%)</option>
+            </Select>
+          </Field>
+        </div>
+      ) : null}
+
       {files.map((file, index) => (
         <div
           key={`${file.name}-${index}`}
@@ -403,7 +437,9 @@ export function FileConverter({ id }: { id: FileToolId }) {
         <div className="mt-5 flex flex-wrap items-center justify-between gap-[14px] rounded-[6px] border border-[rgba(123,198,126,0.3)] bg-[rgba(123,198,126,0.07)] px-[18px] py-4">
           <div className="flex items-center gap-3">
             <div className="flex size-[34px] items-center justify-center rounded-[5px] bg-[rgba(123,198,126,0.15)] font-mono text-[11px] text-[#7BC67E]">
-              {config.resultIcon}
+              {id === "image-compressor" && result
+                ? (result.name.split(".").pop() ?? "IMG").toUpperCase().slice(0, 4)
+                : config.resultIcon}
             </div>
             <div>
               <div className="font-display text-[14px] font-semibold">{result.name}</div>
@@ -415,7 +451,11 @@ export function FileConverter({ id }: { id: FileToolId }) {
             onClick={download}
             className="cursor-pointer rounded-[4px] bg-[#7BC67E] px-4 py-[9px] font-mono text-[12.5px] text-[#14171C]"
           >
-            {result.name.endsWith(".zip") ? "Download ZIP" : config.downloadLabel}
+            {result.name.endsWith(".zip")
+              ? "Download ZIP"
+              : id === "image-compressor"
+                ? `Download ${(result.name.split(".").pop() ?? "file").toUpperCase()}`
+                : config.downloadLabel}
           </button>
         </div>
       ) : null}

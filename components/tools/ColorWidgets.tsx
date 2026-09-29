@@ -184,6 +184,32 @@ export function HexToRgb() {
   );
 }
 
+export function HexToCmyk() {
+  const [hex, setHex] = useState("");
+  const color = useMemo(() => {
+    const trimmed = hex.trim();
+    const raw = trimmed.replace(/^#/, "");
+    const six = /^[0-9a-f]{8}$/i.test(raw) ? raw.slice(0, 6) : trimmed;
+    const parsed = parseHex(six) ?? parseColor(trimmed)?.rgb ?? null;
+    return parsed ? fromRgb(parsed) : null;
+  }, [hex]);
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <HexField value={hex} onChange={setHex} />
+      <Box>
+        <div className="flex items-center gap-3">
+          <Swatch hex={color?.hex ?? "#14171C"} />
+          <Result
+            label="CMYK"
+            value={color ? formatCmyk(color.cmyk) : "—"}
+            steel
+          />
+        </div>
+      </Box>
+    </div>
+  );
+}
+
 export function RgbToHex() {
   const [value, setValue] = useState("");
   const color = useMemo(() => {
