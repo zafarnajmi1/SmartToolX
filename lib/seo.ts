@@ -86,6 +86,16 @@ export function jsonLdFor(entry: SeoEntry, siteUrl: string) {
     image: entry.ogImage,
     keywords: entry.keywords,
   };
+  if (entry.schemaType === "WebSite") {
+    data.potentialAction = {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${siteUrl}/tools?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    };
+  }
   if (entry.schemaType === "SoftwareApplication") {
     data.applicationCategory = "UtilitiesApplication";
     data.operatingSystem = "Any";

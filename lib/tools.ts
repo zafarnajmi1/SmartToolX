@@ -738,14 +738,14 @@ export const tools: Tool[] = [
 ];
 
 export const featuredSlugs = [
-  "percentage-calculator",
+  "jpg-to-pdf",
   "bmi-calculator",
-  "loan-emi-calculator",
+  "tdee-calculator",
+  "image-compressor",
   "word-counter",
-  "currency-converter",
-  "age-calculator",
-  "qr-code-generator",
-  "unit-converter",
+  "loan-emi-calculator",
+  "hex-to-cmyk",
+  "roi-calculator",
 ] as const;
 
 export const fileConverterSlugs = [
@@ -873,17 +873,50 @@ export function getFeaturedTools() {
   return getToolsBySlugs(featuredSlugs);
 }
 
+export const hubByCategory: Record<
+  ToolCategory,
+  { href: string; label: string }
+> = {
+  health: { href: "/calculators", label: "Calculators" },
+  finance: { href: "/finance", label: "Finance" },
+  text: { href: "/text-tools", label: "Text Tools" },
+  convert: { href: "/converters", label: "Converters" },
+  files: { href: "/file-converter", label: "File Converter" },
+  color: { href: "/colors", label: "Colors" },
+};
+
 export const HOME_TAB_LIMIT = 8;
 
 export function getRecentHomeTools(
   category: ToolCategory | "all",
   limit = HOME_TAB_LIMIT,
 ) {
-  const list =
-    category === "all"
-      ? tools
-      : tools.filter((tool) => tool.category === category);
+  if (category === "all") return getFeaturedTools().slice(0, limit);
+  const list = tools.filter((tool) => tool.category === category);
   return [...list].reverse().slice(0, limit);
+}
+
+export function searchTools(query: string, limit = 24) {
+  const q = query.trim().toLowerCase();
+  if (!q) return [];
+  return tools
+    .map((tool) => {
+      const name = tool.name.toLowerCase();
+      const slug = tool.slug.replace(/-/g, " ");
+      const desc = tool.description.toLowerCase();
+      const hub = hubByCategory[tool.category].label.toLowerCase();
+      let score = 0;
+      if (name === q || slug === q) score = 100;
+      else if (name.startsWith(q) || slug.startsWith(q)) score = 90;
+      else if (name.includes(q) || slug.includes(q)) score = 70;
+      else if (hub.startsWith(q) || hub.includes(q)) score = 40;
+      else if (desc.includes(q)) score = 20;
+      return { tool, score };
+    })
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score || a.tool.name.localeCompare(b.tool.name))
+    .slice(0, limit)
+    .map((item) => item.tool);
 }
 
 const relatedBySlug: Record<string, readonly string[]> = {
@@ -1135,12 +1168,17 @@ const relatedBySlug: Record<string, readonly string[]> = {
   ],
 };
 
-export function getRelatedTools(slug: string, limit = 4) {
-  const preferred = relatedBySlug[slug];
-  if (preferred) return getToolsBySlugs(preferred).slice(0, limit);
+export function getRelatedTools(slug: string, limit = 6) {
   const tool = getTool(slug);
   if (!tool) return [];
-  return tools
-    .filter((item) => item.category === tool.category && item.slug !== slug)
-    .slice(0, limit);
+  const preferred = relatedBySlug[slug] ?? [];
+  const extra = tools
+    .filter(
+      (item) =>
+        item.category === tool.category &&
+        item.slug !== slug &&
+        !preferred.includes(item.slug),
+    )
+    .map((item) => item.slug);
+  return getToolsBySlugs([...preferred, ...extra]).slice(0, limit);
 }

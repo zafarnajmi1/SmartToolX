@@ -1,8 +1,10 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { ReadoutPanel } from "@/components/home/ReadoutPanel";
-import { toolCount } from "@/lib/tools";
+import { getFeaturedTools, toolCount } from "@/lib/tools";
 
 export function Hero() {
+  const popular = getFeaturedTools();
   return (
     <section className="relative mx-auto max-w-[1100px] px-12 pt-[90px] pb-[70px] max-[800px]:px-5">
       <div className="text-amber mb-[22px] flex items-center gap-[10px] font-mono text-[13px] tracking-[0.12em] uppercase">
@@ -23,6 +25,17 @@ export function Hero() {
         <Button href="/tools/bmi-calculator" variant="secondary">
           Try BMI Calculator
         </Button>
+      </div>
+      <div className="text-text-dim mt-5 flex max-w-[640px] flex-wrap gap-x-4 gap-y-2 text-[14px]">
+        {popular.map((tool) => (
+          <Link
+            key={tool.slug}
+            href={`/tools/${tool.slug}`}
+            className="hover:text-text underline-offset-2 hover:underline"
+          >
+            {tool.name}
+          </Link>
+        ))}
       </div>
       <ReadoutPanel />
     </section>

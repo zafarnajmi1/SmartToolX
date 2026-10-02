@@ -3,34 +3,11 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { categories, tools, type Tool } from "@/lib/tools";
+import { categories, searchTools, type Tool } from "@/lib/tools";
 
 function categoryLabel(id: Tool["category"]) {
   if (id === "color") return "Color";
   return categories.find((category) => category.id === id)?.label ?? id;
-}
-
-function matchTools(query: string) {
-  const q = query.trim().toLowerCase();
-  if (!q) return [];
-  return tools
-    .map((tool) => {
-      const name = tool.name.toLowerCase();
-      const slug = tool.slug.replace(/-/g, " ");
-      const desc = tool.description.toLowerCase();
-      const cat = categoryLabel(tool.category).toLowerCase();
-      let score = 0;
-      if (name === q || slug === q) score = 100;
-      else if (name.startsWith(q) || slug.startsWith(q)) score = 90;
-      else if (name.includes(q) || slug.includes(q)) score = 70;
-      else if (cat.startsWith(q) || cat.includes(q)) score = 40;
-      else if (desc.includes(q)) score = 20;
-      return { tool, score };
-    })
-    .filter((item) => item.score > 0)
-    .sort((a, b) => b.score - a.score || a.tool.name.localeCompare(b.tool.name))
-    .slice(0, 8)
-    .map((item) => item.tool);
 }
 
 export function HeaderSearch({
@@ -46,7 +23,7 @@ export function HeaderSearch({
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
-  const results = useMemo(() => matchTools(query), [query]);
+  const results = useMemo(() => searchTools(query, 8), [query]);
   const showList = open && query.trim().length > 0;
 
   useEffect(() => {
@@ -111,6 +88,21 @@ export function HeaderSearch({
               setOpen(false);
               return;
             }
+            if (event.key === "Enter") {
+              event.preventDefault();
+              const tool = results[active] ?? results[0];
+              if (tool) {
+                go(tool);
+                return;
+              }
+              const next = query.trim();
+              if (!next) return;
+              setQuery("");
+              setOpen(false);
+              onSelect?.();
+              router.push(`/tools?q=${encodeURIComponent(next)}`);
+              return;
+            }
             if (!showList || results.length === 0) return;
             if (event.key === "ArrowDown") {
               event.preventDefault();
@@ -118,10 +110,6 @@ export function HeaderSearch({
             } else if (event.key === "ArrowUp") {
               event.preventDefault();
               setActive((value) => (value - 1 + results.length) % results.length);
-            } else if (event.key === "Enter") {
-              event.preventDefault();
-              const tool = results[active] ?? results[0];
-              if (tool) go(tool);
             }
           }}
         />

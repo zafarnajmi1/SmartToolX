@@ -840,8 +840,8 @@ const pageSeo: Record<string, SeoEntry> = {
   "/": seo(
     "/",
     "Home",
-    "Free Online Calculators and PDF Converter | SmartToolX",
-    "Free online calculators, color tools, and a free PDF converter in your browser. TDEE calculator, image compressor, ROI calculator, HEX to CMYK, JPG to PNG, protein calculator, and more. No account needed.",
+    "Free BMI, TDEE, PDF, and Image Tools Online | SmartToolX",
+    "Free BMI calculator, TDEE calculator, JPG to PDF, and image compressor in your browser. Color tools, ROI, word counter, and more. No account needed.",
     {
       keywords:
         "tdee calculator, image compressor, roi calculator, hex to cmyk, aspect ratio calculator, remove duplicate lines, free PDF converter, free online calculator, SmartToolX",

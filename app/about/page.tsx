@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { TrustStrip } from "@/components/home/TrustStrip";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { seoMetadata } from "@/lib/seo";
@@ -13,6 +14,9 @@ export default function AboutPage() {
     <>
       <PageJsonLd path="/about" />
       <section className="mx-auto max-w-[1100px] px-12 pt-[70px] max-[800px]:px-5">
+        <Breadcrumbs
+          items={[{ href: "/", label: "Home" }, { label: "About Us" }]}
+        />
         <PageHeader
           eyebrow="About Us"
           title="About Us"
@@ -31,20 +35,56 @@ export default function AboutPage() {
             What you can do here
           </h2>
           <p>
-            Use health and everyday calculators such as BMI, BMR, and calorie
-            needs. Convert units and currencies. Count words. Estimate EMI, SIP,
-            GST, and other finance figures. Convert, compress, and merge common
-            file types such as PDF, Word, JPG, and PowerPoint.
+            Use health and everyday calculators such as the{" "}
+            <Link href="/tools/bmi-calculator" className="text-text underline">
+              BMI calculator
+            </Link>
+            ,{" "}
+            <Link href="/tools/tdee-calculator" className="text-text underline">
+              TDEE calculator
+            </Link>
+            , and calorie needs. Convert units and currencies. Count words or{" "}
+            <Link
+              href="/tools/remove-duplicate-lines"
+              className="text-text underline"
+            >
+              remove duplicate lines
+            </Link>
+            . Estimate EMI, SIP, GST, and{" "}
+            <Link href="/tools/roi-calculator" className="text-text underline">
+              ROI
+            </Link>
+            . Convert, compress, and merge files with{" "}
+            <Link href="/tools/jpg-to-pdf" className="text-text underline">
+              JPG to PDF
+            </Link>{" "}
+            and the{" "}
+            <Link
+              href="/tools/image-compressor"
+              className="text-text underline"
+            >
+              image compressor
+            </Link>
+            . Browse{" "}
+            <Link href="/colors" className="text-text underline">
+              color tools
+            </Link>{" "}
+            such as{" "}
+            <Link href="/tools/hex-to-cmyk" className="text-text underline">
+              HEX to CMYK
+            </Link>
+            .
           </p>
           <h2 className="font-display text-text pt-2 text-[20px] font-semibold">
             How the tools work
           </h2>
           <p>
             Most tools run locally in your browser. That keeps results instant
-            and keeps your inputs on your device. A few tools need a short
-            network request, such as live currency rates. File converters
-            process files in your browser and do not ask you to create an
-            account.
+            and keeps your inputs on your device. Calculators use standard
+            published formulas such as Mifflin-St Jeor for TDEE and BMR. A few
+            tools need a short network request, such as live currency rates.
+            File converters process files in your browser and do not ask you to
+            create an account.
           </p>
           <h2 className="font-display text-text pt-2 text-[20px] font-semibold">
             Accuracy and advice
