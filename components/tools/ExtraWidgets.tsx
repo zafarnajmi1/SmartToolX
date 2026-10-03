@@ -3273,3 +3273,306 @@ export function AspectRatioCalculator() {
     </div>
   );
 }
+
+const MACRO_SPLITS: Record<
+  string,
+  { label: string; protein: number; carbs: number; fat: number }
+> = {
+  balanced: { label: "Balanced (30 / 40 / 30)", protein: 30, carbs: 40, fat: 30 },
+  highprotein: {
+    label: "High protein (40 / 30 / 30)",
+    protein: 40,
+    carbs: 30,
+    fat: 30,
+  },
+  lowcarb: { label: "Low carb (40 / 20 / 40)", protein: 40, carbs: 20, fat: 40 },
+  keto: { label: "Keto (25 / 5 / 70)", protein: 25, carbs: 5, fat: 70 },
+};
+
+export function MacroCalculator() {
+  const [calories, setCalories] = useState("");
+  const [split, setSplit] = useState("balanced");
+  const result = useMemo(() => {
+    const kcal = parseNumber(calories);
+    const plan = MACRO_SPLITS[split];
+    if (kcal == null || kcal <= 0 || !plan) return null;
+    const proteinKcal = (kcal * plan.protein) / 100;
+    const carbsKcal = (kcal * plan.carbs) / 100;
+    const fatKcal = (kcal * plan.fat) / 100;
+    return {
+      proteinG: proteinKcal / 4,
+      carbsG: carbsKcal / 4,
+      fatG: fatKcal / 9,
+      proteinKcal,
+      carbsKcal,
+      fatKcal,
+    };
+  }, [calories, split]);
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Daily calories">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            placeholder="2000"
+            value={calories}
+            onChange={(e) => setCalories(e.target.value)}
+          />
+        </Field>
+        <Field label="Diet style">
+          <Select value={split} onChange={(e) => setSplit(e.target.value)}>
+            {Object.entries(MACRO_SPLITS).map(([id, item]) => (
+              <option key={id} value={id}>
+                {item.label}
+              </option>
+            ))}
+          </Select>
+        </Field>
+      </div>
+      <Box>
+        <Result
+          label="Protein"
+          value={
+            result
+              ? `${result.proteinG.toFixed(1).replace(/\.0$/, "")} g (${Math.round(result.proteinKcal)} kcal)`
+              : "—"
+          }
+          steel
+        />
+        <Result
+          label="Carbs"
+          value={
+            result
+              ? `${result.carbsG.toFixed(1).replace(/\.0$/, "")} g (${Math.round(result.carbsKcal)} kcal)`
+              : "—"
+          }
+        />
+        <Result
+          label="Fat"
+          value={
+            result
+              ? `${result.fatG.toFixed(1).replace(/\.0$/, "")} g (${Math.round(result.fatKcal)} kcal)`
+              : "—"
+          }
+          steel
+        />
+      </Box>
+    </div>
+  );
+}
+
+export function HourlyToSalaryCalculator() {
+  const [mode, setMode] = useState("hourly");
+  const [hourly, setHourly] = useState("");
+  const [salary, setSalary] = useState("");
+  const [hours, setHours] = useState("40");
+
+  const result = useMemo(() => {
+    const hoursWeek = parseNumber(hours);
+    if (hoursWeek == null || hoursWeek <= 0 || hoursWeek > 168) return null;
+    const yearHours = hoursWeek * 52;
+    if (mode === "hourly") {
+      const rate = parseNumber(hourly);
+      if (rate == null || rate < 0) return null;
+      const annual = rate * yearHours;
+      return {
+        hourly: rate,
+        weekly: rate * hoursWeek,
+        monthly: annual / 12,
+        annual,
+      };
+    }
+    const annual = parseNumber(salary);
+    if (annual == null || annual < 0) return null;
+    const rate = annual / yearHours;
+    return {
+      hourly: rate,
+      weekly: rate * hoursWeek,
+      monthly: annual / 12,
+      annual,
+    };
+  }, [mode, hourly, salary, hours]);
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Convert">
+          <Select value={mode} onChange={(e) => setMode(e.target.value)}>
+            <option value="hourly">Hourly to salary</option>
+            <option value="salary">Salary to hourly</option>
+          </Select>
+        </Field>
+        {mode === "hourly" ? (
+          <Field label="Hourly wage">
+            <Input
+              type="number"
+              min="0"
+              step="any"
+              inputMode="decimal"
+              placeholder="25"
+              value={hourly}
+              onChange={(e) => setHourly(e.target.value)}
+            />
+          </Field>
+        ) : (
+          <Field label="Annual salary">
+            <Input
+              type="number"
+              min="0"
+              step="any"
+              inputMode="decimal"
+              placeholder="52000"
+              value={salary}
+              onChange={(e) => setSalary(e.target.value)}
+            />
+          </Field>
+        )}
+        <Field label="Hours per week">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            placeholder="40"
+            value={hours}
+            onChange={(e) => setHours(e.target.value)}
+          />
+        </Field>
+      </div>
+      <Box>
+        <Result
+          label="Hourly"
+          value={result ? money(result.hourly) : "—"}
+          steel
+        />
+        <Result
+          label="Weekly"
+          value={result ? money(result.weekly) : "—"}
+        />
+        <Result
+          label="Monthly"
+          value={result ? money(result.monthly) : "—"}
+          steel
+        />
+        <Result
+          label="Annual"
+          value={result ? money(result.annual) : "—"}
+        />
+      </Box>
+    </div>
+  );
+}
+
+export function UrlEncoder() {
+  const [text, setText] = useState("");
+  const [mode, setMode] = useState("encode");
+  const out = useMemo(() => {
+    if (!text) return "";
+    try {
+      return mode === "encode"
+        ? encodeURIComponent(text)
+        : decodeURIComponent(text);
+    } catch {
+      return "Invalid URL encoding";
+    }
+  }, [text, mode]);
+
+  return (
+    <div className="grid gap-6">
+      <Field label="Mode">
+        <Select value={mode} onChange={(e) => setMode(e.target.value)}>
+          <option value="encode">Encode</option>
+          <option value="decode">Decode</option>
+        </Select>
+      </Field>
+      <Textarea
+        rows={5}
+        value={text}
+        placeholder="https://example.com/?q=hello world"
+        onChange={(e) => setText(e.target.value)}
+      />
+      <Box>
+        <div className="text-text break-all font-mono text-[15px]">
+          {out || "—"}
+        </div>
+      </Box>
+    </div>
+  );
+}
+
+const KG_TO_LB = 1 / 0.45359237;
+
+export function KgToLbsConverter() {
+  const [kg, setKg] = useState("");
+  const [lbs, setLbs] = useState("");
+
+  function onKg(next: string) {
+    setKg(next);
+    const value = parseNumber(next);
+    if (value == null) {
+      setLbs("");
+      return;
+    }
+    setLbs((value * KG_TO_LB).toFixed(4).replace(/\.?0+$/, ""));
+  }
+
+  function onLbs(next: string) {
+    setLbs(next);
+    const value = parseNumber(next);
+    if (value == null) {
+      setKg("");
+      return;
+    }
+    setKg((value * 0.45359237).toFixed(4).replace(/\.?0+$/, ""));
+  }
+
+  const kgValue = parseNumber(kg);
+  const lbValue = parseNumber(lbs);
+  const ready =
+    kgValue != null &&
+    lbValue != null &&
+    Number.isFinite(kgValue) &&
+    Number.isFinite(lbValue);
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Kilograms (kg)">
+          <Input
+            type="number"
+            step="any"
+            inputMode="decimal"
+            placeholder="70"
+            value={kg}
+            onChange={(e) => onKg(e.target.value)}
+          />
+        </Field>
+        <Field label="Pounds (lbs)">
+          <Input
+            type="number"
+            step="any"
+            inputMode="decimal"
+            placeholder="154.324"
+            onChange={(e) => onLbs(e.target.value)}
+            value={lbs}
+          />
+        </Field>
+      </div>
+      <Box>
+        <Result
+          label="Kilograms"
+          value={ready ? `${kgValue.toFixed(4).replace(/\.?0+$/, "")} kg` : "—"}
+          steel
+        />
+        <Result
+          label="Pounds"
+          value={ready ? `${lbValue.toFixed(4).replace(/\.?0+$/, "")} lb` : "—"}
+        />
+      </Box>
+    </div>
+  );
+}

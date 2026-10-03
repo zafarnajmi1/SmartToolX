@@ -554,6 +554,35 @@ export async function jpgToPng(files: File[]): Promise<ConvertedFile> {
   };
 }
 
+export async function webpToPng(files: File[]): Promise<ConvertedFile> {
+  if (!files.length) throw new Error("Upload a WebP image.");
+  const outputs: { name: string; bytes: Uint8Array }[] = [];
+  for (const file of files) {
+    const bitmap = await createImageBitmap(file);
+    const canvas = document.createElement("canvas");
+    canvas.width = bitmap.width;
+    canvas.height = bitmap.height;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) throw new Error("Could not convert this WebP.");
+    ctx.drawImage(bitmap, 0, 0);
+    bitmap.close();
+    const bytes = await canvasToBytes(canvas, "image/png");
+    outputs.push({ name: `${baseName(file)}.png`, bytes });
+  }
+  if (outputs.length === 1) {
+    return {
+      blob: new Blob([asArrayBuffer(outputs[0].bytes)], { type: "image/png" }),
+      name: outputs[0].name,
+    };
+  }
+  const zip = new JSZip();
+  for (const item of outputs) zip.file(item.name, item.bytes);
+  return {
+    blob: await zip.generateAsync({ type: "blob" }),
+    name: "webp-to-png.zip",
+  };
+}
+
 const COMPRESS_MAX_EDGE = 4096;
 const COMPRESS_MAX_PIXELS = 16_000_000;
 

@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { ReadoutPanel } from "@/components/home/ReadoutPanel";
-import { getFeaturedTools, toolCount } from "@/lib/tools";
+import { getRecentHomeTools, toolCount } from "@/lib/tools";
 
 export function Hero() {
-  const popular = getFeaturedTools();
+  const popular = getRecentHomeTools("all");
   return (
     <section className="relative mx-auto max-w-[1100px] px-12 pt-[90px] pb-[70px] max-[800px]:px-5">
       <div className="text-amber mb-[22px] flex items-center gap-[10px] font-mono text-[13px] tracking-[0.12em] uppercase">

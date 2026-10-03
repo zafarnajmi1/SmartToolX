@@ -834,6 +834,54 @@ const TOOL_SEO: Record<
       "hex to cmyk converter free, convert hex to cmyk free, hex to cmyk free, convert hex to cmyk, hex to cmyk converter",
     focusKeyword: "hex to cmyk converter free",
   },
+  "macro-calculator": {
+    title: "Macro Calculator Free | Calculate Macros Online",
+    description:
+      "Calculate macros free. This macro calculator free splits calories into protein, carbs, and fat grams. Macro Calculator free — no software and no signup.",
+    keywords:
+      "macro calculator free, calculate macros free, macros calculator free, calculate macros, macro calculator",
+    focusKeyword: "macro calculator free",
+  },
+  "hourly-to-salary-calculator": {
+    title: "Hourly to Salary Calculator Free | Convert Hourly to Salary Online",
+    description:
+      "Convert hourly to salary free. This hourly to salary calculator free turns an hourly wage into annual, monthly, and weekly pay. Salary to hourly free — no software and no signup.",
+    keywords:
+      "hourly to salary calculator free, convert hourly to salary free, salary to hourly free, hourly to annual, hourly to salary calculator",
+    focusKeyword: "hourly to salary calculator free",
+  },
+  "url-encoder": {
+    title: "URL Encoder Free | Encode URL Online",
+    description:
+      "Encode URL free. This url encoder free percent-encodes or decodes a link in your browser. URL Decoder free — no software and no signup.",
+    keywords:
+      "url encoder free, encode url free, url decoder free, encode url, url encoder",
+    focusKeyword: "url encoder free",
+  },
+  "kg-to-lbs": {
+    title: "KG to LBS Converter Free | Convert KG to LBS Online",
+    description:
+      "Convert KG to LBS free. This kg to lbs converter free turns kilograms into pounds, or pounds back to kilograms. KG to Pounds free — no software and no signup.",
+    keywords:
+      "kg to lbs converter free, convert kg to lbs free, kg to pounds free, convert kg to lbs, kg to lbs",
+    focusKeyword: "kg to lbs converter free",
+  },
+  "webp-to-png": {
+    title: "WebP to PNG Converter Free | Convert WebP to PNG Online",
+    description:
+      "Convert WebP to PNG free. This webp to png converter free turns a WebP image into a PNG you can download instantly. WebP to PNG free — no software and no signup.",
+    keywords:
+      "webp to png converter free, convert webp to png free, webp to png free, convert webp to png, webp to png converter",
+    focusKeyword: "webp to png converter free",
+  },
+  "cmyk-to-hex": {
+    title: "CMYK to HEX Converter Free | Convert CMYK to HEX Online",
+    description:
+      "Convert CMYK to HEX free. This cmyk to hex converter free turns CMYK percentages into a HEX color code. CMYK to HEX free — no software and no signup.",
+    keywords:
+      "cmyk to hex converter free, convert cmyk to hex free, cmyk to hex free, convert cmyk to hex, cmyk to hex converter",
+    focusKeyword: "cmyk to hex converter free",
+  },
 };
 
 const pageSeo: Record<string, SeoEntry> = {
@@ -841,10 +889,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/",
     "Home",
     "Free BMI, TDEE, PDF, and Image Tools Online | SmartToolX",
-    "Free BMI calculator, TDEE calculator, JPG to PDF, and image compressor in your browser. Color tools, ROI, word counter, and more. No account needed.",
+    "Free BMI, TDEE, and macro calculator. Convert KG to LBS, WebP to PNG, and JPG to PDF in your browser. Instant results. No signup.",
     {
       keywords:
-        "tdee calculator, image compressor, roi calculator, hex to cmyk, aspect ratio calculator, remove duplicate lines, free PDF converter, free online calculator, SmartToolX",
+        "macro calculator, kg to lbs, webp to png, hourly to salary, url encoder, cmyk to hex, tdee calculator, image compressor, free PDF converter, SmartToolX",
       h1: "Free online calculators and PDF converter",
       focusKeyword: "free online calculators",
       schemaType: "WebSite",
@@ -854,10 +902,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/tools",
     "All Tools",
     "All Free Tools | SmartToolX",
-    "Browse every SmartToolX calculator, converter, text tool, file converter, and color tool. TDEE calculator, image compressor, ROI calculator, HEX to CMYK, aspect ratio, remove duplicate lines, JPG to PDF, and more. Each one runs in your browser.",
+    "Browse every SmartToolX calculator, converter, text tool, file converter, and color tool. Macro calculator, KG to LBS, WebP to PNG, hourly to salary, URL encoder, CMYK to HEX, TDEE, JPG to PDF, and more. Each one runs in your browser.",
     {
       keywords:
-        "tdee calculator, image compressor, roi calculator, hex to cmyk, aspect ratio calculator, remove duplicate lines, free online tools, JPG to PDF, all tools, SmartToolX tools",
+        "macro calculator, kg to lbs, webp to png, hourly to salary calculator, url encoder, cmyk to hex, tdee calculator, free online tools, JPG to PDF, SmartToolX tools",
       focusKeyword: "free online tools",
     },
   ),
@@ -865,10 +913,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/calculators",
     "Calculators",
     "Free Online Calculators | SmartToolX",
-    "Health and finance calculators for TDEE, calories, sleep, protein, ideal weight, mortgage, ROI, inflation, CAGR, period dates, BMI, EMI, GPA, FD, GST, SIP, and more. Open a tool, enter numbers, and see the result.",
+    "Health and finance calculators for macros, TDEE, hourly to salary, calories, sleep, protein, ideal weight, mortgage, ROI, inflation, CAGR, period dates, BMI, EMI, GPA, FD, GST, SIP, and more. Open a tool, enter numbers, and see the result.",
     {
       keywords:
-        "tdee calculator, roi calculator, protein calculator, inflation calculator, BMI calculator, EMI calculator, sleep calculator, mortgage calculator, GPA calculator, online calculators, calorie calculator",
+        "macro calculator, hourly to salary calculator, tdee calculator, roi calculator, protein calculator, BMI calculator, EMI calculator, sleep calculator, mortgage calculator, online calculators, calorie calculator",
       focusKeyword: "online calculators",
     },
   ),
@@ -876,10 +924,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/converters",
     "Converters",
     "Free Online Converters | SmartToolX",
-    "Convert currency, units, PX to REM, aspect ratio, number to words, temperature, time zones, Unix timestamps, GPA, and more without leaving the page. Live rates for money, standard factors for the rest.",
+    "Convert KG to LBS, currency, units, PX to REM, aspect ratio, number to words, temperature, time zones, Unix timestamps, GPA, and more without leaving the page. Live rates for money, standard factors for the rest.",
     {
       keywords:
-        "aspect ratio calculator, px to rem converter, unix timestamp converter, number to words, GPA calculator, unit converter, currency converter, time zone converter, temperature converter, live exchange rates",
+        "kg to lbs, aspect ratio calculator, px to rem converter, unix timestamp converter, number to words, GPA calculator, unit converter, currency converter, time zone converter, temperature converter",
       focusKeyword: "unit converter",
     },
   ),
@@ -887,10 +935,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/text-tools",
     "Text Tools",
     "Free Text Tools Online | SmartToolX",
-    "Count words, remove duplicate lines, word frequency, find and replace, format JSON, generate random numbers, passwords, and QR codes, change case, and build URL slugs. Paste text and copy the result.",
+    "Encode a URL, count words, remove duplicate lines, word frequency, find and replace, format JSON, generate random numbers, passwords, and QR codes, change case, and build URL slugs. Paste text and copy the result.",
     {
       keywords:
-        "remove duplicate lines, word frequency counter, find and replace, random number generator, JSON formatter, word counter, QR code generator, password generator, case converter, text tools",
+        "url encoder, url decoder, remove duplicate lines, word frequency counter, find and replace, JSON formatter, word counter, QR code generator, password generator, text tools",
       focusKeyword: "text tools",
     },
   ),
@@ -898,10 +946,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/finance",
     "Finance",
     "Free Finance Calculators | SmartToolX",
-    "Mortgage, ROI, inflation, CAGR, EMI, FD, GST, SIP, compound interest, tips, discounts, and live currency conversion for everyday money decisions.",
+    "Hourly to salary, mortgage, ROI, inflation, CAGR, EMI, FD, GST, SIP, compound interest, tips, discounts, and live currency conversion for everyday money decisions.",
     {
       keywords:
-        "roi calculator, inflation calculator, CAGR calculator, mortgage calculator, loan EMI calculator, FD calculator, GST calculator, SIP calculator, percentage calculator, finance calculator",
+        "hourly to salary calculator, roi calculator, inflation calculator, CAGR calculator, mortgage calculator, loan EMI calculator, FD calculator, GST calculator, SIP calculator, finance calculator",
       focusKeyword: "finance calculator",
     },
   ),
@@ -909,10 +957,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/file-converter",
     "File Converter",
     "Free PDF Converter Online | SmartToolX",
-    "Free PDF converter online. Image compressor, JPG to PDF, JPG to PNG, WebP to JPG, PPT to PDF, PDF to Word, Word to PDF, compress PDF, merge PDF, split PDF, and PNG to JPG. No signup. Files stay in your browser.",
+    "Free PDF converter online. WebP to PNG, image compressor, JPG to PDF, JPG to PNG, WebP to JPG, PPT to PDF, PDF to Word, Word to PDF, compress PDF, merge PDF, split PDF, and PNG to JPG. No signup. Files stay in your browser.",
     {
       keywords:
-        "image compressor, free PDF converter, JPG to PNG, WebP to JPG, PDF to Word online free, compress PDF online, merge PDF, split PDF, Word to PDF, PNG to JPG",
+        "webp to png, image compressor, free PDF converter, JPG to PNG, WebP to JPG, PDF to Word online free, compress PDF online, merge PDF, split PDF, Word to PDF, PNG to JPG",
       focusKeyword: "free PDF converter",
       h1: "Free PDF Converter Online",
     },
@@ -921,10 +969,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/colors",
     "Color Tools",
     "Free Color Tools Online | SmartToolX",
-    "Free color tools online. HEX to CMYK, picker, mixer, tetradic palette, converter, gradient, or contrast checker in your browser. No account and no upload.",
+    "Free color tools online. CMYK to HEX, HEX to CMYK, picker, mixer, tetradic palette, converter, gradient, or contrast checker in your browser. No account and no upload.",
     {
       keywords:
-        "hex to cmyk, tetradic color generator, color mixer, color tools, free color tools, online color tools, color converter, free color picker tools",
+        "cmyk to hex, hex to cmyk, tetradic color generator, color mixer, color tools, free color tools, online color tools, color converter, free color picker tools",
       focusKeyword: "color tools",
       h1: "Free Color Tools Online",
     },

@@ -2688,6 +2688,168 @@ const custom: Record<string, Partial<ToolContent>> = {
       },
     ],
   },
+  "macro-calculator": {
+    keyword: "macro calculator free",
+    articleTitle: "How to calculate macros free",
+    paragraphs: [
+      "Calculate macros free with this macro calculator. Protein and carbs are 4 kcal per gram. Fat is 9 kcal per gram. Pick a diet split, then the grams follow from your calories.",
+      "How to calculate macros: enter daily calories and a diet style. A 2,000 kcal balanced split is 150 g protein, 200 g carbs, and 67 g fat.",
+      "This macro calculator free page is built for desktop and mobile. Macro Calculator free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I calculate macros?",
+        a: "Enter calories and a diet style. The macro calculator splits calories into protein, carbs, and fat grams in your browser.",
+      },
+      {
+        q: "What is a balanced macro split?",
+        a: "A common balanced split is 30% protein, 40% carbs, and 30% fat. High protein, low carb, and keto splits are also listed.",
+      },
+      {
+        q: "Is the macro calculator free?",
+        a: "Yes. You can calculate macros free with no signup and no software to install.",
+      },
+      {
+        q: "Can I calculate macros on mobile?",
+        a: "Yes. This macro calculator free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "hourly-to-salary-calculator": {
+    keyword: "hourly to salary calculator free",
+    articleTitle: "How to convert hourly to salary free",
+    paragraphs: [
+      "Convert hourly to salary free with this hourly to salary calculator. Annual pay is hourly wage × hours per week × 52 weeks.",
+      "How to convert hourly to salary: enter the hourly rate and hours per week. Switch to salary to hourly to go the other way. Monthly is annual divided by 12.",
+      "This hourly to salary calculator free page is built for desktop and mobile. Hourly to Salary Calculator free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I convert hourly to salary?",
+        a: "Enter hourly wage and hours per week. Annual salary is hourly × hours per week × 52.",
+      },
+      {
+        q: "How many hours is a full-time year?",
+        a: "A common full-time year is 40 hours × 52 weeks = 2,080 hours. Change hours per week if you work a different schedule.",
+      },
+      {
+        q: "Is the hourly to salary calculator free?",
+        a: "Yes. You can convert hourly to salary free with no signup and no software to install.",
+      },
+      {
+        q: "Can I convert hourly to salary on mobile?",
+        a: "Yes. This hourly to salary calculator free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "url-encoder": {
+    keyword: "url encoder free",
+    articleTitle: "How to encode a URL free",
+    paragraphs: [
+      "Encode URL free with this url encoder. It uses percent-encoding (encodeURIComponent) so spaces become %20 and query values stay valid.",
+      "How to encode a URL: paste text or a link, choose Encode or Decode, and copy the result.",
+      "This url encoder free page is built for desktop and mobile. URL Encoder free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I encode a URL?",
+        a: "Paste the URL or text. Choose Encode. The url encoder percent-encodes it in your browser.",
+      },
+      {
+        q: "What is the difference between encode and decode?",
+        a: "Encode turns characters like spaces into %20. Decode turns percent codes back into readable text.",
+      },
+      {
+        q: "Is the URL encoder free?",
+        a: "Yes. You can encode a URL free with no signup and no software to install.",
+      },
+      {
+        q: "Can I encode a URL on mobile?",
+        a: "Yes. This url encoder free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "kg-to-lbs": {
+    keyword: "kg to lbs converter free",
+    articleTitle: "How to convert KG to LBS free",
+    paragraphs: [
+      "Convert KG to LBS free with this kg to lbs converter. One kilogram is 2.2046226218 pounds (international avoirdupois pound, 0.45359237 kg).",
+      "How to convert KG to LBS: enter kilograms to see pounds, or enter pounds to see kilograms.",
+      "This kg to lbs converter free page is built for desktop and mobile. KG to LBS free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I convert kg to lbs?",
+        a: "Enter kilograms. Pounds = kilograms × 2.2046226218. The kg to lbs converter runs in your browser.",
+      },
+      {
+        q: "How do I convert pounds to kilograms?",
+        a: "Enter pounds. Kilograms = pounds × 0.45359237.",
+      },
+      {
+        q: "Is the KG to LBS converter free?",
+        a: "Yes. You can convert KG to LBS free with no signup and no software to install.",
+      },
+      {
+        q: "Can I convert KG to LBS on mobile?",
+        a: "Yes. This kg to lbs free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "webp-to-png": {
+    keyword: "webp to png converter free",
+    articleTitle: "How to convert WebP to PNG free",
+    paragraphs: [
+      "Convert WebP to PNG free with this webp to png converter. The image is decoded in your browser and saved as a PNG you can download.",
+      "How to convert WebP to PNG: drop a WebP file, convert, and download the PNG. Several files download as a zip.",
+      "This webp to png converter free page is built for desktop and mobile. WebP to PNG free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I convert WebP to PNG?",
+        a: "Drop a WebP image and convert. The webp to png converter builds a PNG in your browser.",
+      },
+      {
+        q: "Does the file leave my device?",
+        a: "No. Conversion runs locally. The image is not uploaded to a server.",
+      },
+      {
+        q: "Is the WebP to PNG converter free?",
+        a: "Yes. You can convert WebP to PNG free with no signup and no software to install.",
+      },
+      {
+        q: "Can I convert WebP to PNG on mobile?",
+        a: "Yes. This webp to png free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "cmyk-to-hex": {
+    keyword: "cmyk to hex converter free",
+    articleTitle: "How to convert CMYK to HEX free",
+    paragraphs: [
+      "Convert CMYK to HEX free with this cmyk to hex converter. It maps cyan, magenta, yellow, and key to sRGB, then to a HEX code.",
+      "How to convert CMYK to HEX: enter four percentages such as 0, 30, 74, 9. Copy the HEX for web and CSS work.",
+      "This cmyk to hex converter free page is built for desktop and mobile. CMYK to HEX free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I convert CMYK to HEX?",
+        a: "Enter C, M, Y, and K percentages. The cmyk to hex converter shows a HEX code in your browser.",
+      },
+      {
+        q: "Is CMYK to HEX exact for print?",
+        a: "Screen HEX from CMYK is an estimate. Press shops still proof colors on their own ICC profiles.",
+      },
+      {
+        q: "Is the CMYK to HEX converter free?",
+        a: "Yes. You can convert CMYK to HEX free with no signup and no software to install.",
+      },
+      {
+        q: "Can I convert CMYK to HEX on mobile?",
+        a: "Yes. This cmyk to hex free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
 };
 
 export function getToolContent(slug: string): ToolContent | null {

@@ -54,6 +54,10 @@ import {
   RoiCalculator,
   RemoveDuplicateLines,
   AspectRatioCalculator,
+  MacroCalculator,
+  HourlyToSalaryCalculator,
+  UrlEncoder,
+  KgToLbsConverter,
 } from "@/components/tools/ExtraWidgets";
 import {
   AnalogousColorGenerator,
@@ -76,6 +80,7 @@ import {
   HexToHsl,
   HexToRgb,
   HexToCmyk,
+  CmykToHex,
   HslToHex,
   ImageColorPaletteExtractor,
   MonochromaticPaletteGenerator,
@@ -287,6 +292,18 @@ export function ToolWidget({ slug }: { slug: string }) {
       return <FileConverter id="image-compressor" />;
     case "hex-to-cmyk":
       return <HexToCmyk />;
+    case "macro-calculator":
+      return <MacroCalculator />;
+    case "hourly-to-salary-calculator":
+      return <HourlyToSalaryCalculator />;
+    case "url-encoder":
+      return <UrlEncoder />;
+    case "kg-to-lbs":
+      return <KgToLbsConverter />;
+    case "webp-to-png":
+      return <FileConverter id="webp-to-png" />;
+    case "cmyk-to-hex":
+      return <CmykToHex />;
     default:
       return null;
   }

@@ -23,6 +23,7 @@ import {
   parseHex,
   parseHsl,
   parseRgb,
+  parseCmyk,
   paletteFromSeed,
   randomRgb,
   shades,
@@ -204,6 +205,31 @@ export function HexToCmyk() {
             value={color ? formatCmyk(color.cmyk) : "—"}
             steel
           />
+        </div>
+      </Box>
+    </div>
+  );
+}
+
+export function CmykToHex() {
+  const [value, setValue] = useState("");
+  const color = useMemo(() => {
+    const parsed = parseCmyk(value);
+    return parsed ? fromRgb(cmykToRgb(parsed)) : null;
+  }, [value]);
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <Field label="CMYK">
+        <Input
+          value={value}
+          placeholder="0, 30, 74, 9"
+          onChange={(e) => setValue(e.target.value)}
+        />
+      </Field>
+      <Box>
+        <div className="flex items-center gap-3">
+          <Swatch hex={color?.hex ?? "#14171C"} />
+          <Result label="HEX" value={color?.hex ?? "—"} steel />
         </div>
       </Box>
     </div>

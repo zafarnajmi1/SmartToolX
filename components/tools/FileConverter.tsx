@@ -13,6 +13,7 @@ import {
   splitPdf,
   webpToJpg,
   jpgToPng,
+  webpToPng,
   wordToPdf,
   compressImages,
   type ConvertedFile,
@@ -34,6 +35,7 @@ type FileToolId =
   | "png-to-jpg"
   | "webp-to-jpg"
   | "jpg-to-png"
+  | "webp-to-png"
   | "image-compressor";
 
 type ToolConfig = {
@@ -217,6 +219,18 @@ const configs: Record<FileToolId, ToolConfig> = {
     resultIcon: "PNG",
     downloadLabel: "Download PNG",
     convert: (files) => jpgToPng(files),
+  },
+  "webp-to-png": {
+    accept: ".webp,image/webp",
+    multiple: true,
+    minFiles: 1,
+    maxMb: 25,
+    dropIcon: "WEBP",
+    dropTitle: "Drop your WebP images here",
+    button: "Convert to PNG",
+    resultIcon: "PNG",
+    downloadLabel: "Download PNG",
+    convert: (files) => webpToPng(files),
   },
   "image-compressor": {
     accept: ".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp",

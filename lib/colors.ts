@@ -72,6 +72,32 @@ export function parseHsl(input: string): HSL | null {
   return { h: parts[0], s: parts[1], l: parts[2] };
 }
 
+export function parseCmyk(input: string): CMYK | null {
+  const match = input
+    .trim()
+    .match(
+      /^cmyk\(\s*(-?[\d.]+)%?\s*,\s*(-?[\d.]+)%?\s*,\s*(-?[\d.]+)%?\s*,\s*(-?[\d.]+)%?/i,
+    );
+  if (match) {
+    return {
+      c: clamp(Number(match[1]), 0, 100),
+      m: clamp(Number(match[2]), 0, 100),
+      y: clamp(Number(match[3]), 0, 100),
+      k: clamp(Number(match[4]), 0, 100),
+    };
+  }
+  const parts = input.split(/[,\s]+/).filter(Boolean);
+  if (parts.length !== 4) return null;
+  const nums = parts.map((part) => Number(part.replace("%", "")));
+  if (nums.some((n) => !Number.isFinite(n))) return null;
+  return {
+    c: clamp(nums[0], 0, 100),
+    m: clamp(nums[1], 0, 100),
+    y: clamp(nums[2], 0, 100),
+    k: clamp(nums[3], 0, 100),
+  };
+}
+
 export function rgbToHsl({ r, g, b }: RGB): HSL {
   const rn = r / 255;
   const gn = g / 255;
@@ -228,6 +254,8 @@ export function parseColor(input: string): ColorSet | null {
   if (rgb) return fromRgb(rgb);
   const hsl = parseHsl(input);
   if (hsl) return fromRgb(hslToRgb(hsl));
+  const cmyk = parseCmyk(input);
+  if (cmyk) return fromRgb(cmykToRgb(cmyk));
   return null;
 }
 

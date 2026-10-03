@@ -17,7 +17,7 @@ export function MostUsedTools() {
             Most used tools
           </div>
           <div className="text-text-dim mt-2 max-w-[420px] text-[16px]">
-            The tools people search for most, plus the newest in each category.
+            Recently added tools. Switch a tab to see the newest in that category.
           </div>
         </div>
         <CategoryPills active={active} onChange={setActive} />
