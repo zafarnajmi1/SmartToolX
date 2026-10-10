@@ -58,6 +58,11 @@ import {
   HourlyToSalaryCalculator,
   UrlEncoder,
   KgToLbsConverter,
+  TargetHeartRateCalculator,
+  SalesTaxCalculator,
+  HashGenerator,
+  CmToInchesConverter,
+  ImageResizer,
 } from "@/components/tools/ExtraWidgets";
 import {
   AnalogousColorGenerator,
@@ -81,6 +86,7 @@ import {
   HexToRgb,
   HexToCmyk,
   CmykToHex,
+  RgbToCmyk,
   HslToHex,
   ImageColorPaletteExtractor,
   MonochromaticPaletteGenerator,
@@ -304,6 +310,18 @@ export function ToolWidget({ slug }: { slug: string }) {
       return <FileConverter id="webp-to-png" />;
     case "cmyk-to-hex":
       return <CmykToHex />;
+    case "target-heart-rate-calculator":
+      return <TargetHeartRateCalculator />;
+    case "sales-tax-calculator":
+      return <SalesTaxCalculator />;
+    case "hash-generator":
+      return <HashGenerator />;
+    case "cm-to-inches":
+      return <CmToInchesConverter />;
+    case "image-resizer":
+      return <ImageResizer />;
+    case "rgb-to-cmyk":
+      return <RgbToCmyk />;
     default:
       return null;
   }

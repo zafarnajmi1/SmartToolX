@@ -2850,6 +2850,168 @@ const custom: Record<string, Partial<ToolContent>> = {
       },
     ],
   },
+  "target-heart-rate-calculator": {
+    keyword: "target heart rate calculator free",
+    articleTitle: "How to calculate target heart rate free",
+    paragraphs: [
+      "Calculate Target Heart Rate free with this target heart rate calculator. Maximum heart rate is 220 minus age (the Fox formula). Zones are percentages of that max, or Karvonen if you enter a resting heart rate.",
+      "How to calculate target heart rate: enter age. Optional resting heart rate uses (max − rest) × intensity + rest. Moderate exercise is often 50–70% of max.",
+      "This target heart rate calculator free page is built for desktop and mobile. Heart Rate Zone Calculator free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I calculate target heart rate?",
+        a: "Enter age. Max heart rate is 220 minus age. Zone beats per minute are percentages of that max, in your browser.",
+      },
+      {
+        q: "What is a healthy target heart rate zone?",
+        a: "Many adults train in the 50–70% (moderate) or 70–85% (vigorous) zone. This is a screening number, not medical advice.",
+      },
+      {
+        q: "Is the target heart rate calculator free?",
+        a: "Yes. You can calculate target heart rate free with no signup and no software to install.",
+      },
+      {
+        q: "Can I calculate target heart rate on mobile?",
+        a: "Yes. This target heart rate calculator free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "sales-tax-calculator": {
+    keyword: "sales tax calculator free",
+    articleTitle: "How to calculate sales tax free",
+    paragraphs: [
+      "Calculate Sales Tax free with this sales tax calculator. Add tax with price × rate. Remove tax with price ÷ (1 + rate).",
+      "How to calculate sales tax: enter the amount and the local percent. Switch to take tax out if the price already includes sales tax.",
+      "This sales tax calculator free page is built for desktop and mobile. Sales Tax Calculator free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I calculate sales tax?",
+        a: "Enter the price and the tax percent. Add tax multiplies. Remove tax divides by 1 plus the rate.",
+      },
+      {
+        q: "How do I take sales tax out of a total?",
+        a: "Choose take sales tax out. Pre-tax amount is total ÷ (1 + rate). Tax is total minus that amount.",
+      },
+      {
+        q: "Is the sales tax calculator free?",
+        a: "Yes. You can calculate sales tax free with no signup and no software to install.",
+      },
+      {
+        q: "Can I calculate sales tax on mobile?",
+        a: "Yes. This sales tax calculator free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "hash-generator": {
+    keyword: "md5 hash generator free",
+    articleTitle: "How to generate an MD5 hash free",
+    paragraphs: [
+      "Generate MD5 Hash free with this md5 hash generator. It also builds a SHA-256 checksum from the same text. Hashing runs in your browser.",
+      "How to generate an MD5 hash: paste text. MD5 is 32 hex characters. SHA-256 is 64 hex characters. Do not use MD5 to store passwords.",
+      "This md5 hash generator free page is built for desktop and mobile. SHA256 Generator free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I generate an MD5 hash?",
+        a: "Paste text. The md5 hash generator shows a 32-character hex digest in your browser.",
+      },
+      {
+        q: "What is the difference between MD5 and SHA-256?",
+        a: "Both are checksums. SHA-256 is stronger. MD5 is still used to check file copies, not for password storage.",
+      },
+      {
+        q: "Is the MD5 hash generator free?",
+        a: "Yes. You can generate an MD5 hash free with no signup and no software to install.",
+      },
+      {
+        q: "Can I generate a hash on mobile?",
+        a: "Yes. This md5 hash generator free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "cm-to-inches": {
+    keyword: "cm to inches converter free",
+    articleTitle: "How to convert CM to inches free",
+    paragraphs: [
+      "Convert CM to Inches free with this cm to inches converter. One inch is exactly 2.54 centimeters (international inch).",
+      "How to convert CM to inches: enter centimeters to see inches, or enter inches to see centimeters. Inches = cm ÷ 2.54.",
+      "This cm to inches converter free page is built for desktop and mobile. CM to Inches free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I convert cm to inches?",
+        a: "Enter centimeters. Inches = centimeters ÷ 2.54. The cm to inches converter runs in your browser.",
+      },
+      {
+        q: "How do I convert inches to cm?",
+        a: "Enter inches. Centimeters = inches × 2.54.",
+      },
+      {
+        q: "Is the CM to inches converter free?",
+        a: "Yes. You can convert CM to inches free with no signup and no software to install.",
+      },
+      {
+        q: "Can I convert CM to inches on mobile?",
+        a: "Yes. This cm to inches free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "image-resizer": {
+    keyword: "image resizer free",
+    articleTitle: "How to resize an image free",
+    paragraphs: [
+      "Resize Image free with this image resizer. Choose a new width and height in pixels. The file stays in your browser.",
+      "How to resize an image: pick a JPG, PNG, or WebP, set pixels, and download. Keep original ratio unless you need a free size.",
+      "This image resizer free page is built for desktop and mobile. Resize Image Online free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I resize an image?",
+        a: "Choose a file, enter width and height, then download. The image resizer runs in your browser.",
+      },
+      {
+        q: "Does the image leave my device?",
+        a: "No. Resize runs locally. The image is not uploaded to a server.",
+      },
+      {
+        q: "Is the image resizer free?",
+        a: "Yes. You can resize an image free with no signup and no software to install.",
+      },
+      {
+        q: "Can I resize an image on mobile?",
+        a: "Yes. This resize image online free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "rgb-to-cmyk": {
+    keyword: "rgb to cmyk converter free",
+    articleTitle: "How to convert RGB to CMYK free",
+    paragraphs: [
+      "Convert RGB to CMYK free with this rgb to cmyk converter. It maps red, green, and blue to cyan, magenta, yellow, and key percentages.",
+      "How to convert RGB to CMYK: enter three values such as 232, 163, 61. Copy the CMYK values for print work.",
+      "This rgb to cmyk converter free page is built for desktop and mobile. RGB to CMYK free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I convert RGB to CMYK?",
+        a: "Enter R, G, and B. The rgb to cmyk converter shows CMYK percentages in your browser.",
+      },
+      {
+        q: "Is RGB to CMYK exact for print?",
+        a: "Screen RGB to CMYK is an estimate. Press shops still proof colors on their own ICC profiles.",
+      },
+      {
+        q: "Is the RGB to CMYK converter free?",
+        a: "Yes. You can convert RGB to CMYK free with no signup and no software to install.",
+      },
+      {
+        q: "Can I convert RGB to CMYK on mobile?",
+        a: "Yes. This rgb to cmyk free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
 };
 
 export function getToolContent(slug: string): ToolContent | null {

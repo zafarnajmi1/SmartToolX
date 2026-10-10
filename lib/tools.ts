@@ -777,6 +777,48 @@ export const tools: Tool[] = [
     description: "Convert CMYK percentages to a HEX color code. Free in your browser.",
     category: "color",
   },
+  {
+    slug: "target-heart-rate-calculator",
+    name: "Target Heart Rate Calculator",
+    icon: "HR",
+    description: "Target heart rate zones from age using 220 minus age. Free in your browser.",
+    category: "health",
+  },
+  {
+    slug: "sales-tax-calculator",
+    name: "Sales Tax Calculator",
+    icon: "TAX",
+    description: "Add or remove sales tax from a price. Free sales tax calculator online.",
+    category: "finance",
+  },
+  {
+    slug: "hash-generator",
+    name: "Hash Generator",
+    icon: "MD5",
+    description: "MD5 and SHA-256 hash generator. Checksums in your browser. No upload.",
+    category: "text",
+  },
+  {
+    slug: "cm-to-inches",
+    name: "CM to Inches Converter",
+    icon: "cm",
+    description: "Convert centimeters to inches, or inches back to centimeters.",
+    category: "convert",
+  },
+  {
+    slug: "image-resizer",
+    name: "Image Resizer",
+    icon: "PX",
+    description: "Resize image online free. Change width and height in your browser.",
+    category: "files",
+  },
+  {
+    slug: "rgb-to-cmyk",
+    name: "RGB to CMYK",
+    icon: "CMYK",
+    description: "Convert RGB color values to CMYK percentages. Free in your browser.",
+    category: "color",
+  },
 ];
 
 export const featuredSlugs = [
@@ -807,6 +849,7 @@ export const fileConverterSlugs = [
   "jpg-to-png",
   "image-compressor",
   "webp-to-png",
+  "image-resizer",
 ] as const;
 
 export const toolCount = tools.length;
@@ -815,7 +858,7 @@ export const categoryPages = {
   calculators: {
     title: "Calculators",
     description:
-      "Health, finance, and everyday calculators including macros, TDEE, hourly to salary, sleep, protein, ideal weight, mortgage, ROI, inflation, CAGR, period, BMI, EMI, GPA, and FD.",
+      "Health, finance, and everyday calculators including target heart rate, sales tax, macros, TDEE, hourly to salary, sleep, protein, ideal weight, mortgage, ROI, inflation, CAGR, period, BMI, EMI, GPA, and FD.",
     slugs: [
       ...tools
         .filter(
@@ -829,19 +872,19 @@ export const categoryPages = {
   converters: {
     title: "Converters",
     description:
-      "KG to LBS, currency, units, PX to REM, aspect ratio, time zones, Unix timestamps, GPA, and more. Convert without leaving the page.",
+      "CM to inches, KG to LBS, currency, units, PX to REM, aspect ratio, time zones, Unix timestamps, GPA, and more. Convert without leaving the page.",
     slugs: tools.filter((tool) => tool.category === "convert").map((t) => t.slug),
   },
   "text-tools": {
     title: "Text Tools",
     description:
-      "Encode URLs, count words, word frequency, remove duplicate lines, find and replace, format JSON, generate random numbers, and transform text in a click.",
+      "MD5 and SHA-256 hash generator, encode URLs, count words, word frequency, remove duplicate lines, find and replace, format JSON, generate random numbers, and transform text in a click.",
     slugs: tools.filter((tool) => tool.category === "text").map((t) => t.slug),
   },
   finance: {
     title: "Finance",
     description:
-      "Hourly to salary, mortgage, ROI, inflation, CAGR, EMI, FD, GST, SIP, percentages, and currency tools for money decisions.",
+      "Sales tax, hourly to salary, mortgage, ROI, inflation, CAGR, EMI, FD, GST, SIP, percentages, and currency tools for money decisions.",
     slugs: [
       ...tools.filter((tool) => tool.category === "finance").map((t) => t.slug),
       "currency-converter",
@@ -850,13 +893,13 @@ export const categoryPages = {
   "file-converter": {
     title: "Free PDF Converter Online",
     description:
-      "Free PDF converter online. WebP to PNG, compress image, PDF to Word, compress PDF, merge PDF, split PDF, PNG to JPG, JPG to PNG, WebP to JPG, and more. Files stay in your browser.",
+      "Free PDF converter online. Image resizer, WebP to PNG, compress image, PDF to Word, compress PDF, merge PDF, split PDF, PNG to JPG, JPG to PNG, WebP to JPG, and more. Files stay in your browser.",
     slugs: [...fileConverterSlugs],
   },
   colors: {
     title: "Free Color Tools Online",
     description:
-      "Browse free color tools in your browser. CMYK to HEX, HEX to CMYK, pickers, converters, mixers, palettes, gradients, and contrast checkers. No account.",
+      "Browse free color tools in your browser. RGB to CMYK, CMYK to HEX, HEX to CMYK, pickers, converters, mixers, palettes, gradients, and contrast checkers. No account.",
     slugs: [
       "color-picker",
       "hex-to-rgb",
@@ -890,6 +933,7 @@ export const categoryPages = {
       "tetradic-color-generator",
       "hex-to-cmyk",
       "cmyk-to-hex",
+      "rgb-to-cmyk",
     ],
   },
 } as const;
@@ -1177,6 +1221,7 @@ const relatedBySlug: Record<string, readonly string[]> = {
     "color-palette-generator",
   ],
   "tdee-calculator": [
+    "target-heart-rate-calculator",
     "macro-calculator",
     "calorie-calculator",
     "bmr-calculator",
@@ -1205,6 +1250,7 @@ const relatedBySlug: Record<string, readonly string[]> = {
     "jpg-to-png",
   ],
   "image-compressor": [
+    "image-resizer",
     "webp-to-png",
     "compress-pdf",
     "jpg-to-png",
@@ -1225,18 +1271,21 @@ const relatedBySlug: Record<string, readonly string[]> = {
     "bmr-calculator",
   ],
   "hourly-to-salary-calculator": [
+    "sales-tax-calculator",
     "roi-calculator",
     "loan-emi-calculator",
     "percentage-calculator",
     "inflation-calculator",
   ],
   "url-encoder": [
+    "hash-generator",
     "base64-encoder",
     "slug-generator",
     "find-and-replace",
     "json-formatter",
   ],
   "kg-to-lbs": [
+    "cm-to-inches",
     "unit-converter",
     "aspect-ratio-calculator",
     "px-to-rem-converter",
@@ -1249,10 +1298,47 @@ const relatedBySlug: Record<string, readonly string[]> = {
     "image-compressor",
   ],
   "cmyk-to-hex": [
+    "rgb-to-cmyk",
     "hex-to-cmyk",
     "hex-to-rgb",
     "color-converter",
     "color-picker",
+  ],
+  "target-heart-rate-calculator": [
+    "tdee-calculator",
+    "calorie-calculator",
+    "bmi-calculator",
+    "macro-calculator",
+  ],
+  "sales-tax-calculator": [
+    "gst-calculator",
+    "percentage-calculator",
+    "discount-calculator",
+    "tip-calculator",
+  ],
+  "hash-generator": [
+    "url-encoder",
+    "base64-encoder",
+    "json-formatter",
+    "password-generator",
+  ],
+  "cm-to-inches": [
+    "kg-to-lbs",
+    "unit-converter",
+    "aspect-ratio-calculator",
+    "px-to-rem-converter",
+  ],
+  "image-resizer": [
+    "image-compressor",
+    "aspect-ratio-calculator",
+    "jpg-to-png",
+    "webp-to-png",
+  ],
+  "rgb-to-cmyk": [
+    "hex-to-cmyk",
+    "cmyk-to-hex",
+    "rgb-to-hex",
+    "color-converter",
   ],
 };
 

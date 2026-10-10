@@ -882,6 +882,54 @@ const TOOL_SEO: Record<
       "cmyk to hex converter free, convert cmyk to hex free, cmyk to hex free, convert cmyk to hex, cmyk to hex converter",
     focusKeyword: "cmyk to hex converter free",
   },
+  "target-heart-rate-calculator": {
+    title: "Target Heart Rate Calculator Free | Calculate Target Heart Rate Online",
+    description:
+      "Calculate Target Heart Rate free. This target heart rate calculator free uses 220 minus age for heart rate zones. Heart Rate Zone Calculator free — no software and no signup.",
+    keywords:
+      "target heart rate calculator free, calculate target heart rate free, heart rate zone calculator free, calculate target heart rate, target heart rate calculator",
+    focusKeyword: "target heart rate calculator free",
+  },
+  "sales-tax-calculator": {
+    title: "Sales Tax Calculator Free | Calculate Sales Tax Online",
+    description:
+      "Calculate Sales Tax free. This sales tax calculator free adds or removes sales tax from a price. Sales Tax Calculator free — no software and no signup.",
+    keywords:
+      "sales tax calculator free, calculate sales tax free, add sales tax free, calculate sales tax, sales tax calculator",
+    focusKeyword: "sales tax calculator free",
+  },
+  "hash-generator": {
+    title: "MD5 Hash Generator Free | SHA-256 Hash Online",
+    description:
+      "Generate MD5 Hash free. This md5 hash generator free also builds a SHA-256 checksum in your browser. SHA256 Generator free — no software and no signup.",
+    keywords:
+      "md5 hash generator free, sha256 hash generator free, md5 generator free, sha256 generator, hash generator",
+    focusKeyword: "md5 hash generator free",
+  },
+  "cm-to-inches": {
+    title: "CM to Inches Converter Free | Convert CM to Inches Online",
+    description:
+      "Convert CM to Inches free. This cm to inches converter free turns centimeters into inches, or inches back to centimeters. CM to Inches free — no software and no signup.",
+    keywords:
+      "cm to inches converter free, convert cm to inches free, cm to inches free, convert cm to inches, cm to inches",
+    focusKeyword: "cm to inches converter free",
+  },
+  "image-resizer": {
+    title: "Image Resizer Free | Resize Image Online",
+    description:
+      "Resize Image free. This image resizer free changes width and height of a JPG or PNG in your browser. Resize Image Online free — no software and no signup.",
+    keywords:
+      "image resizer free, resize image free, resize image online free, resize image, image resizer",
+    focusKeyword: "image resizer free",
+  },
+  "rgb-to-cmyk": {
+    title: "RGB to CMYK Converter Free | Convert RGB to CMYK Online",
+    description:
+      "Convert RGB to CMYK free. This rgb to cmyk converter free turns RGB values into CMYK percentages. RGB to CMYK free — no software and no signup.",
+    keywords:
+      "rgb to cmyk converter free, convert rgb to cmyk free, rgb to cmyk free, convert rgb to cmyk, rgb to cmyk converter",
+    focusKeyword: "rgb to cmyk converter free",
+  },
 };
 
 const pageSeo: Record<string, SeoEntry> = {
@@ -889,10 +937,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/",
     "Home",
     "Free BMI, TDEE, PDF, and Image Tools Online | SmartToolX",
-    "Free BMI, TDEE, and macro calculator. Convert KG to LBS, WebP to PNG, and JPG to PDF in your browser. Instant results. No signup.",
+    "Free BMI, TDEE, target heart rate, sales tax, and macro calculator. Convert CM to inches, resize images, and JPG to PDF. Instant results. No signup.",
     {
       keywords:
-        "macro calculator, kg to lbs, webp to png, hourly to salary, url encoder, cmyk to hex, tdee calculator, image compressor, free PDF converter, SmartToolX",
+        "target heart rate calculator, sales tax calculator, cm to inches, image resizer, md5 hash generator, rgb to cmyk, tdee calculator, free PDF converter, SmartToolX",
       h1: "Free online calculators and PDF converter",
       focusKeyword: "free online calculators",
       schemaType: "WebSite",
@@ -913,10 +961,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/calculators",
     "Calculators",
     "Free Online Calculators | SmartToolX",
-    "Health and finance calculators for macros, TDEE, hourly to salary, calories, sleep, protein, ideal weight, mortgage, ROI, inflation, CAGR, period dates, BMI, EMI, GPA, FD, GST, SIP, and more. Open a tool, enter numbers, and see the result.",
+    "Health and finance calculators for target heart rate, sales tax, macros, TDEE, hourly to salary, calories, sleep, protein, ideal weight, mortgage, ROI, inflation, CAGR, period dates, BMI, EMI, GPA, FD, GST, SIP, and more. Open a tool, enter numbers, and see the result.",
     {
       keywords:
-        "macro calculator, hourly to salary calculator, tdee calculator, roi calculator, protein calculator, BMI calculator, EMI calculator, sleep calculator, mortgage calculator, online calculators, calorie calculator",
+        "target heart rate calculator, sales tax calculator, macro calculator, hourly to salary calculator, tdee calculator, BMI calculator, EMI calculator, sleep calculator, mortgage calculator, online calculators",
       focusKeyword: "online calculators",
     },
   ),
@@ -924,10 +972,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/converters",
     "Converters",
     "Free Online Converters | SmartToolX",
-    "Convert KG to LBS, currency, units, PX to REM, aspect ratio, number to words, temperature, time zones, Unix timestamps, GPA, and more without leaving the page. Live rates for money, standard factors for the rest.",
+    "Convert CM to inches, KG to LBS, currency, units, PX to REM, aspect ratio, number to words, temperature, time zones, Unix timestamps, GPA, and more without leaving the page. Live rates for money, standard factors for the rest.",
     {
       keywords:
-        "kg to lbs, aspect ratio calculator, px to rem converter, unix timestamp converter, number to words, GPA calculator, unit converter, currency converter, time zone converter, temperature converter",
+        "cm to inches, kg to lbs, aspect ratio calculator, px to rem converter, unix timestamp converter, number to words, unit converter, currency converter, time zone converter, temperature converter",
       focusKeyword: "unit converter",
     },
   ),
@@ -935,10 +983,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/text-tools",
     "Text Tools",
     "Free Text Tools Online | SmartToolX",
-    "Encode a URL, count words, remove duplicate lines, word frequency, find and replace, format JSON, generate random numbers, passwords, and QR codes, change case, and build URL slugs. Paste text and copy the result.",
+    "Generate an MD5 or SHA-256 hash, encode a URL, count words, remove duplicate lines, word frequency, find and replace, format JSON, generate random numbers, passwords, and QR codes. Paste text and copy the result.",
     {
       keywords:
-        "url encoder, url decoder, remove duplicate lines, word frequency counter, find and replace, JSON formatter, word counter, QR code generator, password generator, text tools",
+        "md5 hash generator, sha256 generator, url encoder, url decoder, remove duplicate lines, word frequency counter, find and replace, JSON formatter, word counter, text tools",
       focusKeyword: "text tools",
     },
   ),
@@ -946,10 +994,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/finance",
     "Finance",
     "Free Finance Calculators | SmartToolX",
-    "Hourly to salary, mortgage, ROI, inflation, CAGR, EMI, FD, GST, SIP, compound interest, tips, discounts, and live currency conversion for everyday money decisions.",
+    "Sales tax, hourly to salary, mortgage, ROI, inflation, CAGR, EMI, FD, GST, SIP, compound interest, tips, discounts, and live currency conversion for everyday money decisions.",
     {
       keywords:
-        "hourly to salary calculator, roi calculator, inflation calculator, CAGR calculator, mortgage calculator, loan EMI calculator, FD calculator, GST calculator, SIP calculator, finance calculator",
+        "sales tax calculator, hourly to salary calculator, roi calculator, inflation calculator, mortgage calculator, loan EMI calculator, GST calculator, SIP calculator, finance calculator",
       focusKeyword: "finance calculator",
     },
   ),
@@ -957,10 +1005,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/file-converter",
     "File Converter",
     "Free PDF Converter Online | SmartToolX",
-    "Free PDF converter online. WebP to PNG, image compressor, JPG to PDF, JPG to PNG, WebP to JPG, PPT to PDF, PDF to Word, Word to PDF, compress PDF, merge PDF, split PDF, and PNG to JPG. No signup. Files stay in your browser.",
+    "Free PDF converter online. Image resizer, WebP to PNG, image compressor, JPG to PDF, JPG to PNG, WebP to JPG, PPT to PDF, PDF to Word, Word to PDF, compress PDF, merge PDF, split PDF, and PNG to JPG. No signup. Files stay in your browser.",
     {
       keywords:
-        "webp to png, image compressor, free PDF converter, JPG to PNG, WebP to JPG, PDF to Word online free, compress PDF online, merge PDF, split PDF, Word to PDF, PNG to JPG",
+        "image resizer, webp to png, image compressor, free PDF converter, JPG to PNG, WebP to JPG, PDF to Word online free, compress PDF online, merge PDF, split PDF, PNG to JPG",
       focusKeyword: "free PDF converter",
       h1: "Free PDF Converter Online",
     },
@@ -969,10 +1017,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/colors",
     "Color Tools",
     "Free Color Tools Online | SmartToolX",
-    "Free color tools online. CMYK to HEX, HEX to CMYK, picker, mixer, tetradic palette, converter, gradient, or contrast checker in your browser. No account and no upload.",
+    "Free color tools online. RGB to CMYK, CMYK to HEX, HEX to CMYK, picker, mixer, tetradic palette, converter, gradient, or contrast checker in your browser. No account and no upload.",
     {
       keywords:
-        "cmyk to hex, hex to cmyk, tetradic color generator, color mixer, color tools, free color tools, online color tools, color converter, free color picker tools",
+        "rgb to cmyk, cmyk to hex, hex to cmyk, tetradic color generator, color mixer, color tools, free color tools, online color tools, color converter, free color picker tools",
       focusKeyword: "color tools",
       h1: "Free Color Tools Online",
     },

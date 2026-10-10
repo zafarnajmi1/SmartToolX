@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Field, Input, Result, Select, Textarea } from "@/components/ui/Form";
 
 function parseNumber(value: string) {
@@ -3571,6 +3571,491 @@ export function KgToLbsConverter() {
         <Result
           label="Pounds"
           value={ready ? `${lbValue.toFixed(4).replace(/\.?0+$/, "")} lb` : "—"}
+        />
+      </Box>
+    </div>
+  );
+}
+
+function md5Hex(message: string) {
+  const K = [
+    0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee, 0xf57c0faf, 0x4787c62a, 0xa8304613, 0xfd469501,
+    0x698098d8, 0x8b44f7af, 0xffff5bb1, 0x895cd7be, 0x6b901122, 0xfd987193, 0xa679438e, 0x49b40821,
+    0xf61e2562, 0xc040b340, 0x265e5a51, 0xe9b6c7aa, 0xd62f105d, 0x02441453, 0xd8a1e681, 0xe7d3fbc8,
+    0x21e1cde6, 0xc33707d6, 0xf4d50d87, 0x455a14ed, 0xa9e3e905, 0xfcefa3f8, 0x676f02d9, 0x8d2a4c8a,
+    0xfffa3942, 0x8771f681, 0x6d9d6122, 0xfde5380c, 0xa4beea44, 0x4bdecfa9, 0xf6bb4b60, 0xbebfbc70,
+    0x289b7ec6, 0xeaa127fa, 0xd4ef3085, 0x04881d05, 0xd9d4d039, 0xe6db99e5, 0x1fa27cf8, 0xc4ac5665,
+    0xf4292244, 0x432aff97, 0xab9423a7, 0xfc93a039, 0x655b59c3, 0x8f0ccc92, 0xffeff47d, 0x85845dd1,
+    0x6fa87e4f, 0xfe2ce6e0, 0xa3014314, 0x4e0811a1, 0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391,
+  ];
+  const S = [
+    7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9,
+    14, 20, 5, 9, 14, 20, 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 6, 10, 15, 21,
+    6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21,
+  ];
+  const msg = new TextEncoder().encode(message);
+  const n = msg.length;
+  const paddedLen = (((n + 8) >>> 6) << 6) + 64;
+  const padded = new Uint8Array(paddedLen);
+  padded.set(msg);
+  padded[n] = 0x80;
+  const view = new DataView(padded.buffer);
+  const bitLen = n * 8;
+  view.setUint32(paddedLen - 8, bitLen >>> 0, true);
+  view.setUint32(paddedLen - 4, Math.floor(bitLen / 0x100000000), true);
+
+  let h0 = 0x67452301;
+  let h1 = 0xefcdab89;
+  let h2 = 0x98badcfe;
+  let h3 = 0x10325476;
+
+  for (let i = 0; i < paddedLen; i += 64) {
+    const M = new Uint32Array(16);
+    for (let j = 0; j < 16; j++) M[j] = view.getUint32(i + j * 4, true);
+    let a = h0;
+    let b = h1;
+    let c = h2;
+    let d = h3;
+    for (let j = 0; j < 64; j++) {
+      let f: number;
+      let g: number;
+      if (j < 16) {
+        f = (b & c) | (~b & d);
+        g = j;
+      } else if (j < 32) {
+        f = (d & b) | (~d & c);
+        g = (5 * j + 1) % 16;
+      } else if (j < 48) {
+        f = b ^ c ^ d;
+        g = (3 * j + 5) % 16;
+      } else {
+        f = c ^ (b | ~d);
+        g = (7 * j) % 16;
+      }
+      f = (f + a + K[j] + M[g]) | 0;
+      const next = d;
+      d = c;
+      c = b;
+      b = (b + (((f << S[j]) | (f >>> (32 - S[j]))) | 0)) | 0;
+      a = next;
+    }
+    h0 = (h0 + a) | 0;
+    h1 = (h1 + b) | 0;
+    h2 = (h2 + c) | 0;
+    h3 = (h3 + d) | 0;
+  }
+
+  function hex(n: number) {
+    return (n >>> 0)
+      .toString(16)
+      .padStart(8, "0")
+      .match(/../g)!
+      .reverse()
+      .join("");
+  }
+  return hex(h0) + hex(h1) + hex(h2) + hex(h3);
+}
+
+const HEART_ZONES = [
+  { label: "Warm-up (50–60%)", low: 0.5, high: 0.6 },
+  { label: "Fat burn (60–70%)", low: 0.6, high: 0.7 },
+  { label: "Aerobic (70–80%)", low: 0.7, high: 0.8 },
+  { label: "Anaerobic (80–90%)", low: 0.8, high: 0.9 },
+  { label: "Max effort (90–100%)", low: 0.9, high: 1 },
+] as const;
+
+export function TargetHeartRateCalculator() {
+  const [age, setAge] = useState("");
+  const [resting, setResting] = useState("");
+  const result = useMemo(() => {
+    const years = parseNumber(age);
+    if (years == null || years < 1 || years > 120) return null;
+    const max = 220 - years;
+    const rest = parseNumber(resting);
+    const useKarvonen = rest != null && rest >= 30 && rest < max;
+    const bpm = (pct: number) =>
+      Math.round(useKarvonen ? rest + (max - rest) * pct : max * pct);
+    return {
+      max: Math.round(max),
+      karvonen: useKarvonen,
+      zones: HEART_ZONES.map((zone) => ({
+        label: zone.label,
+        range: `${bpm(zone.low)}–${bpm(zone.high)} bpm`,
+      })),
+    };
+  }, [age, resting]);
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Age (years)">
+          <Input
+            type="number"
+            min="1"
+            step="1"
+            inputMode="numeric"
+            placeholder="30"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+          />
+        </Field>
+        <Field label="Resting heart rate (optional)">
+          <Input
+            type="number"
+            min="0"
+            step="1"
+            inputMode="numeric"
+            placeholder="60"
+            value={resting}
+            onChange={(e) => setResting(e.target.value)}
+          />
+        </Field>
+      </div>
+      <Box>
+        <Result
+          label="Max heart rate"
+          value={result ? `${result.max} bpm` : "—"}
+          steel
+        />
+        {result
+          ? result.zones.map((zone) => (
+              <Result key={zone.label} label={zone.label} value={zone.range} />
+            ))
+          : HEART_ZONES.map((zone) => (
+              <Result key={zone.label} label={zone.label} value="—" />
+            ))}
+      </Box>
+    </div>
+  );
+}
+
+export function SalesTaxCalculator() {
+  const [amount, setAmount] = useState("");
+  const [rate, setRate] = useState("7");
+  const [mode, setMode] = useState("add");
+  const parsed = parseNumber(amount);
+  const pct = parseNumber(rate);
+  const valid =
+    parsed != null && pct != null && parsed >= 0 && pct >= 0 && pct < 1000;
+  const adding = mode === "add";
+  const tax = !valid
+    ? null
+    : adding
+      ? (parsed * pct) / 100
+      : parsed - parsed / (1 + pct / 100);
+  const other = !valid || tax == null ? null : adding ? parsed + tax : parsed - tax;
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="What do you want to do">
+          <Select value={mode} onChange={(e) => setMode(e.target.value)}>
+            <option value="add">Add sales tax to a price</option>
+            <option value="remove">Take sales tax out of a price</option>
+          </Select>
+        </Field>
+        <Field label={adding ? "Amount before tax" : "Amount including tax"}>
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={amount}
+            placeholder="100"
+            onChange={(e) => setAmount(e.target.value)}
+          />
+        </Field>
+        <Field label="Sales tax percent">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={rate}
+            placeholder="7"
+            onChange={(e) => setRate(e.target.value)}
+          />
+        </Field>
+      </div>
+      <Box>
+        <Result label="Tax amount" value={tax == null ? "—" : money(tax)} />
+        <Result
+          label={adding ? "Amount with tax" : "Amount before tax"}
+          value={other == null ? "—" : money(other)}
+          steel
+        />
+      </Box>
+    </div>
+  );
+}
+
+export function HashGenerator() {
+  const [text, setText] = useState("");
+  const [sha, setSha] = useState("");
+  const md5 = useMemo(() => (text ? md5Hex(text) : ""), [text]);
+
+  useEffect(() => {
+    if (!text) {
+      setSha("");
+      return;
+    }
+    let cancelled = false;
+    const bytes = new TextEncoder().encode(text);
+    void crypto.subtle.digest("SHA-256", bytes).then((buf) => {
+      if (cancelled) return;
+      const hex = [...new Uint8Array(buf)]
+        .map((b) => b.toString(16).padStart(2, "0"))
+        .join("");
+      setSha(hex);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [text]);
+
+  return (
+    <div className="grid gap-6">
+      <Textarea
+        rows={5}
+        value={text}
+        placeholder="Paste text to hash"
+        onChange={(e) => setText(e.target.value)}
+      />
+      <Box>
+        <Result label="MD5" value={md5 || "—"} steel />
+        <Result label="SHA-256" value={sha || "—"} />
+      </Box>
+    </div>
+  );
+}
+
+const CM_PER_INCH = 2.54;
+
+export function CmToInchesConverter() {
+  const [cm, setCm] = useState("");
+  const [inches, setInches] = useState("");
+
+  function onCm(next: string) {
+    setCm(next);
+    const value = parseNumber(next);
+    if (value == null) {
+      setInches("");
+      return;
+    }
+    setInches((value / CM_PER_INCH).toFixed(4).replace(/\.?0+$/, ""));
+  }
+
+  function onInches(next: string) {
+    setInches(next);
+    const value = parseNumber(next);
+    if (value == null) {
+      setCm("");
+      return;
+    }
+    setCm((value * CM_PER_INCH).toFixed(4).replace(/\.?0+$/, ""));
+  }
+
+  const cmValue = parseNumber(cm);
+  const inValue = parseNumber(inches);
+  const ready =
+    cmValue != null &&
+    inValue != null &&
+    Number.isFinite(cmValue) &&
+    Number.isFinite(inValue);
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Centimeters (cm)">
+          <Input
+            type="number"
+            step="any"
+            inputMode="decimal"
+            placeholder="170"
+            value={cm}
+            onChange={(e) => onCm(e.target.value)}
+          />
+        </Field>
+        <Field label="Inches (in)">
+          <Input
+            type="number"
+            step="any"
+            inputMode="decimal"
+            placeholder="66.929"
+            value={inches}
+            onChange={(e) => onInches(e.target.value)}
+          />
+        </Field>
+      </div>
+      <Box>
+        <Result
+          label="Centimeters"
+          value={ready ? `${cmValue.toFixed(4).replace(/\.?0+$/, "")} cm` : "—"}
+          steel
+        />
+        <Result
+          label="Inches"
+          value={ready ? `${inValue.toFixed(4).replace(/\.?0+$/, "")} in` : "—"}
+        />
+      </Box>
+    </div>
+  );
+}
+
+export function ImageResizer() {
+  const [file, setFile] = useState<File | null>(null);
+  const [origW, setOrigW] = useState(0);
+  const [origH, setOrigH] = useState(0);
+  const [width, setWidth] = useState("");
+  const [height, setHeight] = useState("");
+  const [lock, setLock] = useState("yes");
+  const [error, setError] = useState("");
+  const [busy, setBusy] = useState(false);
+
+  async function loadFile(next: File | undefined) {
+    if (!next) return;
+    setError("");
+    try {
+      const bitmap = await createImageBitmap(next);
+      setFile(next);
+      setOrigW(bitmap.width);
+      setOrigH(bitmap.height);
+      setWidth(String(bitmap.width));
+      setHeight(String(bitmap.height));
+      bitmap.close();
+    } catch {
+      setError("Could not read this image.");
+    }
+  }
+
+  function onWidth(next: string) {
+    setWidth(next);
+    const w = parseNumber(next);
+    if (lock !== "yes" || w == null || origW <= 0) return;
+    setHeight(String(Math.max(1, Math.round((w * origH) / origW))));
+  }
+
+  function onHeight(next: string) {
+    setHeight(next);
+    const h = parseNumber(next);
+    if (lock !== "yes" || h == null || origH <= 0) return;
+    setWidth(String(Math.max(1, Math.round((h * origW) / origH))));
+  }
+
+  async function download() {
+    if (!file) return;
+    const w = parseNumber(width);
+    const h = parseNumber(height);
+    if (w == null || h == null || w < 1 || h < 1 || w > 8192 || h > 8192) {
+      setError("Width and height must be between 1 and 8192 pixels.");
+      return;
+    }
+    setBusy(true);
+    setError("");
+    try {
+      const bitmap = await createImageBitmap(file);
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.round(w);
+      canvas.height = Math.round(h);
+      const ctx = canvas.getContext("2d");
+      if (!ctx) throw new Error("Could not resize this image.");
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = "high";
+      ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+      bitmap.close();
+      const type = file.type === "image/jpeg" ? "image/jpeg" : "image/png";
+      const blob = await new Promise<Blob | null>((resolve) =>
+        canvas.toBlob(resolve, type, type === "image/jpeg" ? 0.92 : undefined),
+      );
+      if (!blob) throw new Error("Could not resize this image.");
+      const base = file.name.replace(/\.[^/.]+$/, "");
+      const ext = type === "image/jpeg" ? "jpg" : "png";
+      const href = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = href;
+      link.download = `${base}-${canvas.width}x${canvas.height}.${ext}`;
+      link.click();
+      URL.revokeObjectURL(href);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Could not resize this image.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  const ready =
+    file != null &&
+    parseNumber(width) != null &&
+    parseNumber(height) != null &&
+    !busy;
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Image">
+          <Input
+            type="file"
+            accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
+            onChange={(e) => void loadFile(e.target.files?.[0])}
+          />
+        </Field>
+        <Field label="Width (px)">
+          <Input
+            type="number"
+            min="1"
+            step="1"
+            inputMode="numeric"
+            placeholder="1920"
+            value={width}
+            onChange={(e) => onWidth(e.target.value)}
+          />
+        </Field>
+        <Field label="Height (px)">
+          <Input
+            type="number"
+            min="1"
+            step="1"
+            inputMode="numeric"
+            placeholder="1080"
+            value={height}
+            onChange={(e) => onHeight(e.target.value)}
+          />
+        </Field>
+        <Field label="Aspect ratio">
+          <Select value={lock} onChange={(e) => setLock(e.target.value)}>
+            <option value="yes">Keep original ratio</option>
+            <option value="no">Free size</option>
+          </Select>
+        </Field>
+        <button
+          type="button"
+          disabled={!ready}
+          onClick={() => void download()}
+          className={`font-display mt-2 w-full rounded-[5px] py-[14px] text-[15px] font-bold ${
+            ready
+              ? "bg-steel text-bg cursor-pointer"
+              : "bg-surface-2 text-text-dim cursor-not-allowed"
+          }`}
+        >
+          {busy ? "Resizing…" : "Download resized image"}
+        </button>
+        {error ? (
+          <div className="text-[13px] text-[#E17B6B]">{error}</div>
+        ) : null}
+      </div>
+      <Box>
+        <Result
+          label="Original size"
+          value={origW ? `${origW} × ${origH} px` : "—"}
+          steel
+        />
+        <Result
+          label="New size"
+          value={
+            parseNumber(width) != null && parseNumber(height) != null
+              ? `${Math.round(parseNumber(width)!)} × ${Math.round(parseNumber(height)!)} px`
+              : "—"
+          }
         />
       </Box>
     </div>
