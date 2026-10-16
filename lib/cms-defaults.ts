@@ -930,6 +930,14 @@ const TOOL_SEO: Record<
       "rgb to cmyk converter free, convert rgb to cmyk free, rgb to cmyk free, convert rgb to cmyk, rgb to cmyk converter",
     focusKeyword: "rgb to cmyk converter free",
   },
+  "pregnancy-week-calculator": {
+    title: "Pregnancy Calculator Free | Pregnancy Week Calculator",
+    description:
+      "Pregnancy calculator free. This pregnancy week calculator shows how many weeks pregnant you are, your due date, month, and baby development week by week. Pregnancy calculator — no software and no signup.",
+    keywords:
+      "pregnancy calculator, pregnancy calculator free, pregnancy week calculator free, how many weeks pregnant calculator, baby development week by week, pregnancy delivery calculator free, gestational age calculator, 40 weeks pregnant baby size, due date calculator, pregnancy week by week",
+    focusKeyword: "pregnancy week calculator free",
+  },
 };
 
 const pageSeo: Record<string, SeoEntry> = {
@@ -937,10 +945,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/",
     "Home",
     "Free BMI, TDEE, PDF, and Image Tools Online | SmartToolX",
-    "Free BMI, TDEE, target heart rate, sales tax, and macro calculator. Convert CM to inches, resize images, and JPG to PDF. Instant results. No signup.",
+    "Free pregnancy week calculator, BMI, TDEE, target heart rate, sales tax, and macro calculator. Convert CM to inches, resize images, and JPG to PDF. Instant results. No signup.",
     {
       keywords:
-        "target heart rate calculator, sales tax calculator, cm to inches, image resizer, md5 hash generator, rgb to cmyk, tdee calculator, free PDF converter, SmartToolX",
+        "pregnancy week calculator, pregnancy calculator, target heart rate calculator, sales tax calculator, cm to inches, image resizer, tdee calculator, free PDF converter, SmartToolX",
       h1: "Free online calculators and PDF converter",
       focusKeyword: "free online calculators",
       schemaType: "WebSite",
@@ -961,10 +969,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/calculators",
     "Calculators",
     "Free Online Calculators | SmartToolX",
-    "Health and finance calculators for target heart rate, sales tax, macros, TDEE, hourly to salary, calories, sleep, protein, ideal weight, mortgage, ROI, inflation, CAGR, period dates, BMI, EMI, GPA, FD, GST, SIP, and more. Open a tool, enter numbers, and see the result.",
+    "Health and finance calculators for pregnancy week, due date, target heart rate, sales tax, macros, TDEE, hourly to salary, calories, sleep, protein, ideal weight, mortgage, ROI, inflation, CAGR, period dates, BMI, EMI, GPA, FD, GST, SIP, and more. Open a tool, enter numbers, and see the result.",
     {
       keywords:
-        "target heart rate calculator, sales tax calculator, macro calculator, hourly to salary calculator, tdee calculator, BMI calculator, EMI calculator, sleep calculator, mortgage calculator, online calculators",
+        "pregnancy calculator, pregnancy week calculator, due date calculator, target heart rate calculator, sales tax calculator, macro calculator, tdee calculator, BMI calculator, EMI calculator, sleep calculator, online calculators",
       focusKeyword: "online calculators",
     },
   ),

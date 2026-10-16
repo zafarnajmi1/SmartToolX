@@ -1,7 +1,12 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Field, Input, Result, Select, Textarea } from "@/components/ui/Form";
+import {
+  PREGNANCY_WEEKS,
+  gestationFromLmp,
+  pregnancyMonthFromWeek,
+} from "@/lib/pregnancy-weeks";
 
 function parseNumber(value: string) {
   if (value.trim() === "") return null;
@@ -4058,6 +4063,240 @@ export function ImageResizer() {
           }
         />
       </Box>
+    </div>
+  );
+}
+
+const PREGNANCY_TRIMESTERS = [
+  {
+    label: "First trimester",
+    months: "Months 1–3",
+    groups: [
+      { label: "Month 1", weeks: [1, 4] as const },
+      { label: "Month 2", weeks: [5, 8] as const },
+      { label: "Month 3", weeks: [9, 13] as const },
+    ],
+  },
+  {
+    label: "Second trimester",
+    months: "Months 4–6",
+    groups: [
+      { label: "Month 4", weeks: [14, 17] as const },
+      { label: "Month 5", weeks: [18, 21] as const },
+      { label: "Month 6", weeks: [22, 27] as const },
+    ],
+  },
+  {
+    label: "Third trimester",
+    months: "Months 7–9",
+    groups: [
+      { label: "Month 7", weeks: [28, 31] as const },
+      { label: "Month 8", weeks: [32, 35] as const },
+      { label: "Month 9", weeks: [36, 40] as const },
+    ],
+  },
+];
+
+function pregnancyWeekChipClass(active: boolean) {
+  return `font-mono inline-flex size-10 items-center justify-center rounded-full border-2 text-[13px] font-medium ${
+    active
+      ? "border-amber bg-amber text-bg"
+      : "border-amber text-text-dim hover:bg-amber/10 hover:text-amber"
+  }`;
+}
+
+export function PregnancyWeekCalculator() {
+  const [lmp, setLmp] = useState("");
+  const currentRef = useRef<HTMLDivElement>(null);
+  const result = useMemo(() => gestationFromLmp(lmp), [lmp]);
+
+  useEffect(() => {
+    if (!result) return;
+    currentRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, [result]);
+
+  const remainingLabel =
+    result == null
+      ? "—"
+      : result.overdue
+        ? `${Math.abs(result.remaining)} days past due`
+        : `${result.remaining} days`;
+  const progressPercent =
+    result == null
+      ? 0
+      : Math.min(100, Math.round((result.weekNumber / 40) * 100));
+
+  return (
+    <div className="grid gap-8">
+      <div className="grid items-stretch gap-4 md:grid-cols-2">
+        <div className="border-amber bg-bg flex flex-col justify-center rounded-[16px] border-2 px-[22px] py-[22px]">
+          <Field label="Last period (first day)">
+            <Input
+              type="date"
+              className="tz-picker-icon !border-amber"
+              value={lmp}
+              max={localISODate(new Date())}
+              onChange={(e) => setLmp(e.target.value)}
+            />
+          </Field>
+          <p className="text-text-dim mt-4 text-[13px] leading-[1.5]">
+            Uses Naegele’s rule (280 days from the first day of the last period).
+            This is a screening estimate, not medical advice.
+          </p>
+        </div>
+        <div className="border-amber bg-bg grid grid-cols-2 gap-x-5 gap-y-5 rounded-[16px] border-2 px-[22px] py-[22px]">
+          <Result label="Due date" value={result?.due ?? "—"} steel />
+          <Result
+            label="How many weeks pregnant"
+            value={
+              result
+                ? `${result.weeksComplete}w ${result.weekDays}d`
+                : "—"
+            }
+          />
+          <Result
+            label="Pregnancy week"
+            value={result ? `Week ${result.weekNumber}` : "—"}
+            steel
+          />
+          <Result label="Days until due" value={remainingLabel} />
+          <Result label="Trimester" value={result?.trimester ?? "—"} />
+          <Result
+            label="Month"
+            value={result ? `Month ${result.month}` : "—"}
+            steel
+          />
+          {result ? (
+            <div className="col-span-2 flex items-center gap-3">
+              <div className="bg-line h-1.5 min-w-0 flex-1 overflow-hidden rounded-full">
+                <div
+                  className="bg-amber h-full rounded-full"
+                  style={{
+                    width: `${progressPercent}%`,
+                  }}
+                />
+              </div>
+              <div className="text-amber w-10 shrink-0 text-right font-mono text-[12px]">
+                {progressPercent}%
+              </div>
+            </div>
+          ) : null}
+        </div>
+      </div>
+      <div>
+        <h2 className="font-display text-[22px] font-semibold">
+          Baby growth week by week
+        </h2>
+        <p className="text-text-dim mt-2 max-w-[720px] text-[15px] leading-[1.6]">
+          Read typical baby size and development for each of the 40 weeks. Enter
+          a date above to highlight your current week. Sizes are averages.
+          Confirm care with your clinician.
+        </p>
+        <div className="border-amber mt-5 grid gap-0 overflow-hidden rounded-[16px] border-2">
+          {PREGNANCY_TRIMESTERS.map((trimester, index) => (
+            <div
+              key={trimester.label}
+              className={`px-[22px] py-5 ${index > 0 ? "border-amber/25 border-t" : ""}`}
+            >
+              <div className="mb-4 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                <div className="text-amber font-mono text-[11px] tracking-[0.08em] uppercase">
+                  {trimester.label}
+                </div>
+                <div className="text-text-dim font-mono text-[12px]">
+                  {trimester.months}
+                </div>
+              </div>
+              <div className="grid gap-3">
+                {trimester.groups.map((group) => (
+                  <div
+                    key={group.label}
+                    className="flex flex-col gap-2 sm:flex-row sm:items-center"
+                  >
+                    <div className="text-steel w-[5.5rem] shrink-0 font-mono text-[11px] tracking-[0.08em] uppercase">
+                      {group.label}
+                    </div>
+                    <div className="grid w-[280px] grid-cols-6 gap-2">
+                      {PREGNANCY_WEEKS.filter(
+                        (item) =>
+                          item.week >= group.weeks[0] &&
+                          item.week <= group.weeks[1],
+                      ).map((item) => (
+                        <a
+                          key={item.week}
+                          href={`#week-${item.week}`}
+                          className={pregnancyWeekChipClass(
+                            result?.weekNumber === item.week,
+                          )}
+                        >
+                          {item.week}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="border-amber mt-6 grid overflow-hidden rounded-[16px] border-2">
+          {PREGNANCY_WEEKS.map((item) => {
+            const current = result?.weekNumber === item.week;
+            return (
+              <div
+                key={item.week}
+                id={`week-${item.week}`}
+                ref={current ? currentRef : undefined}
+                className={`border-amber/25 border-b px-[22px] py-[22px] last:border-b-0 ${current ? "bg-amber/10" : "bg-surface"}`}
+              >
+                <div className="grid grid-cols-[2.25rem_minmax(0,1fr)] items-center gap-3">
+                  <span
+                    className={`font-mono inline-flex size-9 items-center justify-center rounded-full border-2 text-[13px] font-medium ${
+                      current
+                        ? "border-amber bg-amber text-bg"
+                        : "border-amber text-amber"
+                    }`}
+                  >
+                    {item.week}
+                  </span>
+                  <div className="min-w-0">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="font-display text-[17px] font-semibold">
+                        Week {item.week}
+                      </span>
+                      {current ? (
+                        <span className="border-amber text-amber rounded-full border px-2.5 py-0.5 font-mono text-[11px] tracking-[0.08em] uppercase">
+                          Your week
+                        </span>
+                      ) : null}
+                    </div>
+                    <div className="text-steel mt-1 font-mono text-[12px]">
+                      Month {pregnancyMonthFromWeek(item.week)} · {item.size}
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-4 grid items-stretch gap-3 md:grid-cols-2">
+                  <div className="border-amber/30 bg-bg h-full rounded-[12px] border px-4 py-4">
+                    <div className="text-amber mb-2 font-mono text-[11px] tracking-[0.08em] uppercase">
+                      Baby
+                    </div>
+                    <p className="text-text-dim text-[15px] leading-[1.65]">
+                      {item.baby}
+                    </p>
+                  </div>
+                  <div className="border-amber/30 bg-bg h-full rounded-[12px] border px-4 py-4">
+                    <div className="text-amber mb-2 font-mono text-[11px] tracking-[0.08em] uppercase">
+                      For you
+                    </div>
+                    <p className="text-text-dim text-[15px] leading-[1.65]">
+                      {item.you}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }

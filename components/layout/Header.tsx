@@ -15,32 +15,36 @@ export function Header() {
 
   return (
     <header className="border-line sticky top-0 z-20 border-b bg-[rgba(20,23,28,0.85)] backdrop-blur-[6px]">
-      <nav className="flex items-center justify-between px-12 py-[22px] max-[800px]:px-5 max-[800px]:py-[18px]">
-        <Logo />
+      <nav className="flex items-center justify-between gap-2 px-4 py-3.5 sm:gap-3 sm:px-6 lg:px-8 xl:gap-4 xl:px-12 xl:py-[22px]">
+        <Logo className="shrink-0 text-[20px] sm:text-[21px] lg:text-[18px] xl:text-[20px] 2xl:text-[22px]" />
 
-        <div className="flex items-center gap-8 text-[16px] text-text-dim max-[800px]:hidden">
+        <div className="text-text-dim hidden min-w-0 items-center gap-2.5 text-[12px] lg:flex xl:gap-4 xl:text-[14px] 2xl:gap-8 2xl:text-[16px]">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`flex items-center gap-[7px] hover:text-text ${
+              className={`flex shrink-0 items-center gap-1.5 whitespace-nowrap hover:text-text 2xl:gap-[7px] ${
                 pathname === link.href ? "text-text" : ""
               }`}
             >
-              <NavIcon name={link.icon} className="size-[15px]" />
+              <NavIcon name={link.icon} className="size-3.5 shrink-0 2xl:size-[15px]" />
               {link.label}
             </Link>
           ))}
         </div>
 
-        <div className="flex items-center gap-3">
-          <HeaderSearch className="w-[220px] max-[1100px]:w-[168px] max-[800px]:hidden" />
-          <Button href="/tools" variant="cta">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <HeaderSearch className="hidden w-[148px] lg:block xl:w-[180px] 2xl:w-[220px]" />
+          <Button
+            href="/tools"
+            variant="cta"
+            className="shrink-0 whitespace-nowrap !px-4 !py-2 !text-[14px] lg:!px-3 lg:!py-1.5 lg:!text-[13px] 2xl:!px-4 2xl:!py-2 2xl:!text-[14px]"
+          >
             All Tools {"->"}
           </Button>
           <button
             type="button"
-            className="border-line text-text-dim hidden size-9 cursor-pointer items-center justify-center rounded-[3px] border max-[800px]:flex"
+            className="border-line text-text-dim flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-[3px] border lg:hidden"
             aria-expanded={open}
             aria-label="Open menu"
             onClick={() => setOpen((value) => !value)}
@@ -55,7 +59,7 @@ export function Header() {
       </nav>
 
       {open ? (
-        <div className="border-line hidden border-t px-5 py-4 max-[800px]:block">
+        <div className="border-line border-t px-4 py-4 sm:px-6 lg:hidden">
           <HeaderSearch className="mb-3 w-full" onSelect={() => setOpen(false)} />
           <div className="flex flex-col gap-1">
             {navLinks.map((link) => (
@@ -67,7 +71,7 @@ export function Header() {
                 }`}
                 onClick={() => setOpen(false)}
               >
-                <NavIcon name={link.icon} className="size-4" />
+                <NavIcon name={link.icon} className="size-4 shrink-0" />
                 {link.label}
               </Link>
             ))}
