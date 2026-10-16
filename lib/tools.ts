@@ -819,6 +819,14 @@ export const tools: Tool[] = [
     description: "Convert RGB color values to CMYK percentages. Free in your browser.",
     category: "color",
   },
+  {
+    slug: "pregnancy-week-calculator",
+    name: "Pregnancy Week Calculator",
+    icon: "40w",
+    description:
+      "Due date, how many weeks pregnant, and baby growth week by week from your last period.",
+    category: "health",
+  },
 ];
 
 export const featuredSlugs = [
@@ -858,7 +866,7 @@ export const categoryPages = {
   calculators: {
     title: "Calculators",
     description:
-      "Health, finance, and everyday calculators including target heart rate, sales tax, macros, TDEE, hourly to salary, sleep, protein, ideal weight, mortgage, ROI, inflation, CAGR, period, BMI, EMI, GPA, and FD.",
+      "Health, finance, and everyday calculators including pregnancy week, due date, target heart rate, sales tax, macros, TDEE, hourly to salary, sleep, protein, ideal weight, mortgage, ROI, inflation, CAGR, period, BMI, EMI, GPA, and FD.",
     slugs: [
       ...tools
         .filter(
@@ -1339,6 +1347,18 @@ const relatedBySlug: Record<string, readonly string[]> = {
     "cmyk-to-hex",
     "rgb-to-hex",
     "color-converter",
+  ],
+  "pregnancy-week-calculator": [
+    "pregnancy-due-date-calculator",
+    "ovulation-calculator",
+    "period-calculator",
+    "water-intake-calculator",
+  ],
+  "pregnancy-due-date-calculator": [
+    "pregnancy-week-calculator",
+    "ovulation-calculator",
+    "period-calculator",
+    "water-intake-calculator",
   ],
 };
 

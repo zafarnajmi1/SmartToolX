@@ -3012,6 +3012,41 @@ const custom: Record<string, Partial<ToolContent>> = {
       },
     ],
   },
+  "pregnancy-week-calculator": {
+    keyword: "pregnancy week calculator free",
+    articleTitle: "How to calculate pregnancy weeks free",
+    paragraphs: [
+      "Calculate how many weeks pregnant you are with this pregnancy week calculator free. It uses Naegele’s rule: add 280 days to the first day of your last period for the due date. Gestational age is the number of days since that date.",
+      "How to use this pregnancy delivery calculator: enter the first day of your last period. You get due date, current week and day, trimester, and days left. Scroll the baby growth week by week guide for size and development in each of the 40 weeks.",
+      "This pregnancy week calculator free page is built for desktop and mobile. Pregnancy calculator, gestational age calculator, and 40 weeks pregnant baby size notes stay on this page. No account, no install, and no signup. Results are a screening estimate, not medical advice.",
+    ],
+    faqs: [
+      {
+        q: "How do I calculate how many weeks pregnant I am?",
+        a: "Enter the first day of your last period. Weeks pregnant are days since that date divided by seven. The pregnancy week calculator shows weeks, leftover days, and the matching week in the guide.",
+      },
+      {
+        q: "How is the due date calculated?",
+        a: "Due date is 280 days (40 weeks) from the first day of the last period. Only some babies arrive on that exact day.",
+      },
+      {
+        q: "What happens in each week of baby growth?",
+        a: "The guide below the calculator covers weeks 1 to 40 with typical size, baby development, and notes for you. Enter a date to highlight your current week.",
+      },
+      {
+        q: "Is the pregnancy week calculator free?",
+        a: "Yes. You can use this pregnancy calculator free with no signup and no software to install.",
+      },
+      {
+        q: "Is this a medical diagnosis?",
+        a: "No. Dates and week notes are informational. Confirm care, scans, and warning signs with your clinician.",
+      },
+      {
+        q: "Can I use the pregnancy week calculator on mobile?",
+        a: "Yes. This pregnancy week calculator free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
 };
 
 export function getToolContent(slug: string): ToolContent | null {
