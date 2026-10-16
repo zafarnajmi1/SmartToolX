@@ -63,6 +63,7 @@ import {
   HashGenerator,
   CmToInchesConverter,
   ImageResizer,
+  PregnancyWeekCalculator,
 } from "@/components/tools/ExtraWidgets";
 import {
   AnalogousColorGenerator,
@@ -322,6 +323,8 @@ export function ToolWidget({ slug }: { slug: string }) {
       return <ImageResizer />;
     case "rgb-to-cmyk":
       return <RgbToCmyk />;
+    case "pregnancy-week-calculator":
+      return <PregnancyWeekCalculator />;
     default:
       return null;
   }
