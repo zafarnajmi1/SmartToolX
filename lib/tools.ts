@@ -827,6 +827,53 @@ export const tools: Tool[] = [
       "Due date, how many weeks pregnant, and baby growth week by week from your last period.",
     category: "health",
   },
+  {
+    slug: "calorie-deficit-calculator",
+    name: "Calorie Deficit Calculator",
+    icon: "DEF",
+    description:
+      "Daily calorie target from TDEE and a weekly weight-loss goal. Free in your browser.",
+    category: "health",
+  },
+  {
+    slug: "car-loan-calculator",
+    name: "Car Loan Calculator",
+    icon: "CAR",
+    description:
+      "Monthly car loan payment from vehicle price, down payment, rate, and term.",
+    category: "finance",
+  },
+  {
+    slug: "uuid-generator",
+    name: "UUID Generator",
+    icon: "UUID",
+    description:
+      "Free UUID generator online. Create UUID v4 / GUID strings in your browser.",
+    category: "text",
+  },
+  {
+    slug: "grade-calculator",
+    name: "Grade Calculator",
+    icon: "GRD",
+    description:
+      "Weighted course grade and the score you need on the final exam.",
+    category: "convert",
+  },
+  {
+    slug: "jpg-to-webp",
+    name: "JPG to WebP Converter",
+    icon: "WEBP",
+    description:
+      "Convert JPG to WebP online free. Download a WebP in your browser. No account.",
+    category: "files",
+  },
+  {
+    slug: "cmyk-to-rgb",
+    name: "CMYK to RGB",
+    icon: "RGB",
+    description: "Convert CMYK percentages to RGB color values. Free in your browser.",
+    category: "color",
+  },
 ];
 
 export const featuredSlugs = [
@@ -858,6 +905,7 @@ export const fileConverterSlugs = [
   "image-compressor",
   "webp-to-png",
   "image-resizer",
+  "jpg-to-webp",
 ] as const;
 
 export const toolCount = tools.length;
@@ -866,7 +914,7 @@ export const categoryPages = {
   calculators: {
     title: "Calculators",
     description:
-      "Health, finance, and everyday calculators including pregnancy week, due date, target heart rate, sales tax, macros, TDEE, hourly to salary, sleep, protein, ideal weight, mortgage, ROI, inflation, CAGR, period, BMI, EMI, GPA, and FD.",
+      "Health, finance, and everyday calculators including calorie deficit, car loan, pregnancy week, due date, target heart rate, sales tax, macros, TDEE, hourly to salary, sleep, protein, ideal weight, mortgage, ROI, inflation, CAGR, period, BMI, EMI, GPA, and FD.",
     slugs: [
       ...tools
         .filter(
@@ -875,24 +923,25 @@ export const categoryPages = {
         .map((tool) => tool.slug),
       "date-difference-calculator",
       "gpa-calculator",
+      "grade-calculator",
     ],
   },
   converters: {
     title: "Converters",
     description:
-      "CM to inches, KG to LBS, currency, units, PX to REM, aspect ratio, time zones, Unix timestamps, GPA, and more. Convert without leaving the page.",
+      "Grade calculator, CM to inches, KG to LBS, currency, units, PX to REM, aspect ratio, time zones, Unix timestamps, GPA, and more. Convert without leaving the page.",
     slugs: tools.filter((tool) => tool.category === "convert").map((t) => t.slug),
   },
   "text-tools": {
     title: "Text Tools",
     description:
-      "MD5 and SHA-256 hash generator, encode URLs, count words, word frequency, remove duplicate lines, find and replace, format JSON, generate random numbers, and transform text in a click.",
+      "UUID generator, MD5 and SHA-256 hash generator, encode URLs, count words, word frequency, remove duplicate lines, find and replace, format JSON, generate random numbers, and transform text in a click.",
     slugs: tools.filter((tool) => tool.category === "text").map((t) => t.slug),
   },
   finance: {
     title: "Finance",
     description:
-      "Sales tax, hourly to salary, mortgage, ROI, inflation, CAGR, EMI, FD, GST, SIP, percentages, and currency tools for money decisions.",
+      "Car loan, sales tax, hourly to salary, mortgage, ROI, inflation, CAGR, EMI, FD, GST, SIP, percentages, and currency tools for money decisions.",
     slugs: [
       ...tools.filter((tool) => tool.category === "finance").map((t) => t.slug),
       "currency-converter",
@@ -901,13 +950,13 @@ export const categoryPages = {
   "file-converter": {
     title: "Free PDF Converter Online",
     description:
-      "Free PDF converter online. Image resizer, WebP to PNG, compress image, PDF to Word, compress PDF, merge PDF, split PDF, PNG to JPG, JPG to PNG, WebP to JPG, and more. Files stay in your browser.",
+      "Free PDF converter online. JPG to WebP, image resizer, WebP to PNG, compress image, PDF to Word, compress PDF, merge PDF, split PDF, PNG to JPG, JPG to PNG, WebP to JPG, and more. Files stay in your browser.",
     slugs: [...fileConverterSlugs],
   },
   colors: {
     title: "Free Color Tools Online",
     description:
-      "Browse free color tools in your browser. RGB to CMYK, CMYK to HEX, HEX to CMYK, pickers, converters, mixers, palettes, gradients, and contrast checkers. No account.",
+      "Browse free color tools in your browser. CMYK to RGB, RGB to CMYK, CMYK to HEX, HEX to CMYK, pickers, converters, mixers, palettes, gradients, and contrast checkers. No account.",
     slugs: [
       "color-picker",
       "hex-to-rgb",
@@ -942,6 +991,7 @@ export const categoryPages = {
       "hex-to-cmyk",
       "cmyk-to-hex",
       "rgb-to-cmyk",
+      "cmyk-to-rgb",
     ],
   },
 } as const;
@@ -1217,6 +1267,7 @@ const relatedBySlug: Record<string, readonly string[]> = {
     "temperature-converter",
   ],
   "jpg-to-png": [
+    "jpg-to-webp",
     "png-to-jpg",
     "webp-to-jpg",
     "jpg-to-pdf",
@@ -1229,6 +1280,7 @@ const relatedBySlug: Record<string, readonly string[]> = {
     "color-palette-generator",
   ],
   "tdee-calculator": [
+    "calorie-deficit-calculator",
     "target-heart-rate-calculator",
     "macro-calculator",
     "calorie-calculator",
@@ -1279,6 +1331,7 @@ const relatedBySlug: Record<string, readonly string[]> = {
     "bmr-calculator",
   ],
   "hourly-to-salary-calculator": [
+    "car-loan-calculator",
     "sales-tax-calculator",
     "roi-calculator",
     "loan-emi-calculator",
@@ -1325,6 +1378,7 @@ const relatedBySlug: Record<string, readonly string[]> = {
     "tip-calculator",
   ],
   "hash-generator": [
+    "uuid-generator",
     "url-encoder",
     "base64-encoder",
     "json-formatter",
@@ -1343,8 +1397,48 @@ const relatedBySlug: Record<string, readonly string[]> = {
     "webp-to-png",
   ],
   "rgb-to-cmyk": [
+    "cmyk-to-rgb",
     "hex-to-cmyk",
     "cmyk-to-hex",
+    "rgb-to-hex",
+    "color-converter",
+  ],
+  "calorie-deficit-calculator": [
+    "tdee-calculator",
+    "calorie-calculator",
+    "macro-calculator",
+    "bmr-calculator",
+    "protein-calculator",
+  ],
+  "car-loan-calculator": [
+    "loan-emi-calculator",
+    "mortgage-calculator",
+    "simple-interest-calculator",
+    "percentage-calculator",
+  ],
+  "uuid-generator": [
+    "hash-generator",
+    "password-generator",
+    "random-number-generator",
+    "base64-encoder",
+  ],
+  "grade-calculator": [
+    "gpa-calculator",
+    "percentage-calculator",
+    "age-calculator",
+    "date-difference-calculator",
+  ],
+  "jpg-to-webp": [
+    "jpg-to-png",
+    "webp-to-jpg",
+    "webp-to-png",
+    "image-compressor",
+    "image-resizer",
+  ],
+  "cmyk-to-rgb": [
+    "rgb-to-cmyk",
+    "cmyk-to-hex",
+    "hex-to-cmyk",
     "rgb-to-hex",
     "color-converter",
   ],

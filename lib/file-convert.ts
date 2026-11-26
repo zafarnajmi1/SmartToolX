@@ -554,6 +554,35 @@ export async function jpgToPng(files: File[]): Promise<ConvertedFile> {
   };
 }
 
+export async function jpgToWebp(files: File[]): Promise<ConvertedFile> {
+  if (!files.length) throw new Error("Upload a JPG image.");
+  const outputs: { name: string; bytes: Uint8Array }[] = [];
+  for (const file of files) {
+    const bitmap = await createImageBitmap(file);
+    const canvas = document.createElement("canvas");
+    canvas.width = bitmap.width;
+    canvas.height = bitmap.height;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) throw new Error("Could not convert this JPG.");
+    ctx.drawImage(bitmap, 0, 0);
+    bitmap.close();
+    const bytes = await canvasToBytes(canvas, "image/webp", 0.92);
+    outputs.push({ name: `${baseName(file)}.webp`, bytes });
+  }
+  if (outputs.length === 1) {
+    return {
+      blob: new Blob([asArrayBuffer(outputs[0].bytes)], { type: "image/webp" }),
+      name: outputs[0].name,
+    };
+  }
+  const zip = new JSZip();
+  for (const item of outputs) zip.file(item.name, item.bytes);
+  return {
+    blob: await zip.generateAsync({ type: "blob" }),
+    name: "jpg-to-webp.zip",
+  };
+}
+
 export async function webpToPng(files: File[]): Promise<ConvertedFile> {
   if (!files.length) throw new Error("Upload a WebP image.");
   const outputs: { name: string; bytes: Uint8Array }[] = [];

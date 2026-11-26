@@ -938,6 +938,54 @@ const TOOL_SEO: Record<
       "pregnancy calculator, pregnancy calculator free, pregnancy week calculator free, how many weeks pregnant calculator, baby development week by week, pregnancy delivery calculator free, gestational age calculator, 40 weeks pregnant baby size, due date calculator, pregnancy week by week",
     focusKeyword: "pregnancy week calculator free",
   },
+  "calorie-deficit-calculator": {
+    title: "Calorie Deficit Calculator Free | Calculate Calorie Deficit Online",
+    description:
+      "Calculate Calorie Deficit free. This calorie deficit calculator free finds a daily calorie target from TDEE and a weekly weight-loss goal. Calorie Deficit Calculator Online free — no software and no signup.",
+    keywords:
+      "calorie deficit calculator free, calculate calorie deficit free, calorie deficit calculator online free, maintenance calorie calculator, calorie deficit calculator",
+    focusKeyword: "calorie deficit calculator free",
+  },
+  "car-loan-calculator": {
+    title: "Car Loan Calculator Free | Calculate Car Loan Payment Online",
+    description:
+      "Calculate Car Loan Payment free. This car loan calculator free shows monthly payment from vehicle price, down payment, rate, and term. Auto Loan Calculator free — no software and no signup.",
+    keywords:
+      "car loan calculator free, auto loan calculator free, car loan payment calculator free, calculate car loan, car loan calculator",
+    focusKeyword: "car loan calculator free",
+  },
+  "uuid-generator": {
+    title: "UUID Generator Free | Generate UUID Online",
+    description:
+      "Generate UUID free. This uuid generator free creates UUID v4 and GUID strings in your browser. UUID Generator Online free — no software and no signup.",
+    keywords:
+      "uuid generator free, generate uuid free, guid generator free, uuid v4 generator, uuid generator",
+    focusKeyword: "uuid generator free",
+  },
+  "grade-calculator": {
+    title: "Grade Calculator Free | Final Grade Calculator Online",
+    description:
+      "Calculate Grade free. This grade calculator free finds a weighted course grade and the score you need on the final exam. Final Grade Calculator free — no software and no signup.",
+    keywords:
+      "grade calculator free, final grade calculator free, weighted grade calculator free, calculate grade, grade calculator",
+    focusKeyword: "grade calculator free",
+  },
+  "jpg-to-webp": {
+    title: "JPG to WebP Converter Free | Convert JPG to WebP Online",
+    description:
+      "Convert JPG to WebP free. This jpg to webp converter free turns a JPEG into a WebP you can download instantly. JPG to WebP free — no software and no signup.",
+    keywords:
+      "jpg to webp converter free, convert jpg to webp free, jpeg to webp free, convert jpg to webp, jpg to webp converter",
+    focusKeyword: "jpg to webp converter free",
+  },
+  "cmyk-to-rgb": {
+    title: "CMYK to RGB Converter Free | Convert CMYK to RGB Online",
+    description:
+      "Convert CMYK to RGB free. This cmyk to rgb converter free turns CMYK percentages into RGB color values. CMYK to RGB free — no software and no signup.",
+    keywords:
+      "cmyk to rgb converter free, convert cmyk to rgb free, cmyk to rgb free, convert cmyk to rgb, cmyk to rgb converter",
+    focusKeyword: "cmyk to rgb converter free",
+  },
 };
 
 const pageSeo: Record<string, SeoEntry> = {
@@ -945,10 +993,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/",
     "Home",
     "Free BMI, TDEE, PDF, and Image Tools Online | SmartToolX",
-    "Free pregnancy week calculator, BMI, TDEE, target heart rate, sales tax, and macro calculator. Convert CM to inches, resize images, and JPG to PDF. Instant results. No signup.",
+    "Free calorie deficit, car loan, grade, BMI, and TDEE calculators. Generate a UUID, convert JPG to WebP and CMYK to RGB. Instant results. No signup.",
     {
       keywords:
-        "pregnancy week calculator, pregnancy calculator, target heart rate calculator, sales tax calculator, cm to inches, image resizer, tdee calculator, free PDF converter, SmartToolX",
+        "calorie deficit calculator, car loan calculator, grade calculator, uuid generator, jpg to webp, cmyk to rgb, pregnancy calculator, tdee calculator, SmartToolX",
       h1: "Free online calculators and PDF converter",
       focusKeyword: "free online calculators",
       schemaType: "WebSite",
@@ -958,10 +1006,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/tools",
     "All Tools",
     "All Free Tools | SmartToolX",
-    "Browse every SmartToolX calculator, converter, text tool, file converter, and color tool. Macro calculator, KG to LBS, WebP to PNG, hourly to salary, URL encoder, CMYK to HEX, TDEE, JPG to PDF, and more. Each one runs in your browser.",
+    "Browse every SmartToolX calculator, converter, text tool, file converter, and color tool. Calorie deficit, car loan, grade calculator, UUID generator, JPG to WebP, CMYK to RGB, TDEE, JPG to PDF, and more. Each one runs in your browser.",
     {
       keywords:
-        "macro calculator, kg to lbs, webp to png, hourly to salary calculator, url encoder, cmyk to hex, tdee calculator, free online tools, JPG to PDF, SmartToolX tools",
+        "calorie deficit calculator, car loan calculator, grade calculator, uuid generator, jpg to webp, cmyk to rgb, tdee calculator, free online tools, JPG to PDF, SmartToolX tools",
       focusKeyword: "free online tools",
     },
   ),
@@ -969,10 +1017,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/calculators",
     "Calculators",
     "Free Online Calculators | SmartToolX",
-    "Health and finance calculators for pregnancy week, due date, target heart rate, sales tax, macros, TDEE, hourly to salary, calories, sleep, protein, ideal weight, mortgage, ROI, inflation, CAGR, period dates, BMI, EMI, GPA, FD, GST, SIP, and more. Open a tool, enter numbers, and see the result.",
+    "Health and finance calculators for calorie deficit, car loan, pregnancy week, due date, target heart rate, sales tax, macros, TDEE, hourly to salary, calories, sleep, protein, ideal weight, mortgage, ROI, inflation, CAGR, period dates, BMI, EMI, GPA, FD, GST, SIP, and more. Open a tool, enter numbers, and see the result.",
     {
       keywords:
-        "pregnancy calculator, pregnancy week calculator, due date calculator, target heart rate calculator, sales tax calculator, macro calculator, tdee calculator, BMI calculator, EMI calculator, sleep calculator, online calculators",
+        "calorie deficit calculator, car loan calculator, pregnancy calculator, pregnancy week calculator, due date calculator, target heart rate calculator, sales tax calculator, macro calculator, tdee calculator, BMI calculator, online calculators",
       focusKeyword: "online calculators",
     },
   ),
@@ -980,10 +1028,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/converters",
     "Converters",
     "Free Online Converters | SmartToolX",
-    "Convert CM to inches, KG to LBS, currency, units, PX to REM, aspect ratio, number to words, temperature, time zones, Unix timestamps, GPA, and more without leaving the page. Live rates for money, standard factors for the rest.",
+    "Grade calculator, convert CM to inches, KG to LBS, currency, units, PX to REM, aspect ratio, number to words, temperature, time zones, Unix timestamps, GPA, and more without leaving the page. Live rates for money, standard factors for the rest.",
     {
       keywords:
-        "cm to inches, kg to lbs, aspect ratio calculator, px to rem converter, unix timestamp converter, number to words, unit converter, currency converter, time zone converter, temperature converter",
+        "grade calculator, final grade calculator, cm to inches, kg to lbs, aspect ratio calculator, px to rem converter, unix timestamp converter, number to words, unit converter, currency converter",
       focusKeyword: "unit converter",
     },
   ),
@@ -991,10 +1039,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/text-tools",
     "Text Tools",
     "Free Text Tools Online | SmartToolX",
-    "Generate an MD5 or SHA-256 hash, encode a URL, count words, remove duplicate lines, word frequency, find and replace, format JSON, generate random numbers, passwords, and QR codes. Paste text and copy the result.",
+    "Generate a UUID or GUID, an MD5 or SHA-256 hash, encode a URL, count words, remove duplicate lines, word frequency, find and replace, format JSON, generate random numbers, passwords, and QR codes. Paste text and copy the result.",
     {
       keywords:
-        "md5 hash generator, sha256 generator, url encoder, url decoder, remove duplicate lines, word frequency counter, find and replace, JSON formatter, word counter, text tools",
+        "uuid generator, guid generator, md5 hash generator, sha256 generator, url encoder, url decoder, remove duplicate lines, word frequency counter, find and replace, JSON formatter, text tools",
       focusKeyword: "text tools",
     },
   ),
@@ -1002,10 +1050,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/finance",
     "Finance",
     "Free Finance Calculators | SmartToolX",
-    "Sales tax, hourly to salary, mortgage, ROI, inflation, CAGR, EMI, FD, GST, SIP, compound interest, tips, discounts, and live currency conversion for everyday money decisions.",
+    "Car loan, sales tax, hourly to salary, mortgage, ROI, inflation, CAGR, EMI, FD, GST, SIP, compound interest, tips, discounts, and live currency conversion for everyday money decisions.",
     {
       keywords:
-        "sales tax calculator, hourly to salary calculator, roi calculator, inflation calculator, mortgage calculator, loan EMI calculator, GST calculator, SIP calculator, finance calculator",
+        "car loan calculator, auto loan calculator, sales tax calculator, hourly to salary calculator, roi calculator, inflation calculator, mortgage calculator, loan EMI calculator, GST calculator, finance calculator",
       focusKeyword: "finance calculator",
     },
   ),
@@ -1013,10 +1061,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/file-converter",
     "File Converter",
     "Free PDF Converter Online | SmartToolX",
-    "Free PDF converter online. Image resizer, WebP to PNG, image compressor, JPG to PDF, JPG to PNG, WebP to JPG, PPT to PDF, PDF to Word, Word to PDF, compress PDF, merge PDF, split PDF, and PNG to JPG. No signup. Files stay in your browser.",
+    "Free PDF converter online. JPG to WebP, image resizer, WebP to PNG, image compressor, JPG to PDF, JPG to PNG, WebP to JPG, PPT to PDF, PDF to Word, Word to PDF, compress PDF, merge PDF, split PDF, and PNG to JPG. No signup. Files stay in your browser.",
     {
       keywords:
-        "image resizer, webp to png, image compressor, free PDF converter, JPG to PNG, WebP to JPG, PDF to Word online free, compress PDF online, merge PDF, split PDF, PNG to JPG",
+        "jpg to webp, jpeg to webp, image resizer, webp to png, image compressor, free PDF converter, JPG to PNG, WebP to JPG, PDF to Word online free, compress PDF online, merge PDF",
       focusKeyword: "free PDF converter",
       h1: "Free PDF Converter Online",
     },
@@ -1025,10 +1073,10 @@ const pageSeo: Record<string, SeoEntry> = {
     "/colors",
     "Color Tools",
     "Free Color Tools Online | SmartToolX",
-    "Free color tools online. RGB to CMYK, CMYK to HEX, HEX to CMYK, picker, mixer, tetradic palette, converter, gradient, or contrast checker in your browser. No account and no upload.",
+    "Free color tools online. CMYK to RGB, RGB to CMYK, CMYK to HEX, HEX to CMYK, picker, mixer, tetradic palette, converter, gradient, or contrast checker in your browser. No account and no upload.",
     {
       keywords:
-        "rgb to cmyk, cmyk to hex, hex to cmyk, tetradic color generator, color mixer, color tools, free color tools, online color tools, color converter, free color picker tools",
+        "cmyk to rgb, rgb to cmyk, cmyk to hex, hex to cmyk, tetradic color generator, color mixer, color tools, free color tools, online color tools, color converter",
       focusKeyword: "color tools",
       h1: "Free Color Tools Online",
     },

@@ -3047,6 +3047,168 @@ const custom: Record<string, Partial<ToolContent>> = {
       },
     ],
   },
+  "calorie-deficit-calculator": {
+    keyword: "calorie deficit calculator free",
+    articleTitle: "How to calculate a calorie deficit free",
+    paragraphs: [
+      "Calculate Calorie Deficit free with this calorie deficit calculator. It estimates TDEE with the Mifflin-St Jeor equation, then subtracts the daily calories that match your weekly loss goal. About 3,500 kcal equals one pound, and about 7,700 kcal equals one kilogram.",
+      "How to calculate a calorie deficit: enter age, height in cm, weight in kg, sex, and activity. Pick a weekly loss goal. Target calories are TDEE minus the daily deficit.",
+      "This calorie deficit calculator free page is built for desktop and mobile. Calorie Deficit Calculator Online free means no account, no install, and no signup. Results are a screening estimate, not medical advice.",
+    ],
+    faqs: [
+      {
+        q: "How do I calculate a calorie deficit?",
+        a: "Enter age, height, weight, sex, and activity. The calorie deficit calculator estimates TDEE, then subtracts calories for your weekly loss goal.",
+      },
+      {
+        q: "How many calories is a 1 lb deficit?",
+        a: "A common estimate is 3,500 kcal per pound, so 1 lb a week is about 500 kcal a day below maintenance.",
+      },
+      {
+        q: "Is the calorie deficit calculator free?",
+        a: "Yes. You can calculate a calorie deficit free with no signup and no software to install.",
+      },
+      {
+        q: "Can I calculate a calorie deficit on mobile?",
+        a: "Yes. This calorie deficit calculator free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "car-loan-calculator": {
+    keyword: "car loan calculator free",
+    articleTitle: "How to calculate a car loan payment free",
+    paragraphs: [
+      "Calculate Car Loan Payment free with this car loan calculator. It uses the standard amortizing loan formula on the amount financed after your down payment.",
+      "How to calculate a car loan: enter vehicle price, down payment, annual interest percent, and term in months such as 36, 48, 60, or 72. Monthly payment, interest, and total payable appear on the right.",
+      "This car loan calculator free page is built for desktop and mobile. Auto Loan Calculator free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I calculate a car loan payment?",
+        a: "Enter price, down payment, rate, and months. The car loan calculator shows the monthly payment in your browser.",
+      },
+      {
+        q: "What is the car loan payment formula?",
+        a: "Payment = P × r × (1 + r)^n / ((1 + r)^n − 1), where P is the amount financed, r is the monthly rate, and n is the number of months.",
+      },
+      {
+        q: "Is the car loan calculator free?",
+        a: "Yes. You can calculate a car loan free with no signup and no software to install.",
+      },
+      {
+        q: "Can I calculate a car loan on mobile?",
+        a: "Yes. This car loan calculator free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "uuid-generator": {
+    keyword: "uuid generator free",
+    articleTitle: "How to generate a UUID free",
+    paragraphs: [
+      "Generate UUID free with this uuid generator. It creates RFC 4122 UUID version 4 (random) strings, also called GUIDs, in your browser.",
+      "How to generate a UUID: choose how many IDs you need, then click Generate. Each UUID v4 uses 122 random bits plus the version and variant bits.",
+      "This uuid generator free page is built for desktop and mobile. UUID Generator Online free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I generate a UUID?",
+        a: "Click Generate. The uuid generator creates a UUID v4 string in your browser. You can make up to 20 at once.",
+      },
+      {
+        q: "What is a UUID v4?",
+        a: "UUID version 4 is a 128-bit identifier with random bits. It is written as 8-4-4-4-12 hex groups, such as 550e8400-e29b-41d4-a716-446655440000.",
+      },
+      {
+        q: "Is the UUID generator free?",
+        a: "Yes. You can generate a UUID free with no signup and no software to install.",
+      },
+      {
+        q: "Can I generate a UUID on mobile?",
+        a: "Yes. This uuid generator free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "grade-calculator": {
+    keyword: "grade calculator free",
+    articleTitle: "How to calculate a grade free",
+    paragraphs: [
+      "Calculate Grade free with this grade calculator. Use it as a final grade calculator to see what you need on the exam, or as a weighted grade calculator for course work.",
+      "How to calculate a final grade: tap What I need, then enter your current grade, the grade you want, and how much the final is worth. Needed score = (desired × 100 − current × (100 − exam weight)) / exam weight. For My grades, add each assignment score and weight.",
+      "This grade calculator free page is built for desktop and mobile. Final Grade Calculator free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I calculate what I need on the final?",
+        a: "Enter your current grade, the overall you want, and the final exam weight. The grade calculator shows the exam score you need.",
+      },
+      {
+        q: "How do I calculate a weighted grade?",
+        a: "Tap My grades. Add each assignment with a score and a weight. You can add or remove rows. The average is weighted by those values.",
+      },
+      {
+        q: "Is the grade calculator free?",
+        a: "Yes. You can calculate a grade free with no signup and no software to install.",
+      },
+      {
+        q: "Can I calculate a grade on mobile?",
+        a: "Yes. This grade calculator free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "jpg-to-webp": {
+    keyword: "jpg to webp converter free",
+    articleTitle: "How to convert JPG to WebP free",
+    paragraphs: [
+      "Convert JPG to WebP free with this jpg to webp converter. It turns a JPEG into a WebP you can download instantly.",
+      "How to convert JPG to WebP: add a JPG above, click Convert to WebP, then download the WebP. The file stays in your browser.",
+      "This jpg to webp converter free page is built for desktop and mobile. JPG to WebP free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I convert JPG to WebP?",
+        a: "Add a JPG above, click Convert to WebP, and download the WebP. The JPG to WebP converter runs in your browser.",
+      },
+      {
+        q: "Does the image leave my device?",
+        a: "No. Convert runs locally. The image is not uploaded to a server.",
+      },
+      {
+        q: "Is the jpg to webp converter free?",
+        a: "Yes. You can convert jpg to webp free with no signup and no software to install.",
+      },
+      {
+        q: "Can I convert jpg to webp on mobile?",
+        a: "Yes. This jpg to webp free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
+  "cmyk-to-rgb": {
+    keyword: "cmyk to rgb converter free",
+    articleTitle: "How to convert CMYK to RGB free",
+    paragraphs: [
+      "Convert CMYK to RGB free with this cmyk to rgb converter. It maps cyan, magenta, yellow, and key percentages to red, green, and blue.",
+      "How to convert CMYK to RGB: enter four values such as 0, 30, 74, 9. Copy the RGB values for screens and the web.",
+      "This cmyk to rgb converter free page is built for desktop and mobile. CMYK to RGB free means no account, no install, and no signup.",
+    ],
+    faqs: [
+      {
+        q: "How do I convert CMYK to RGB?",
+        a: "Enter C, M, Y, and K. The cmyk to rgb converter shows RGB values in your browser.",
+      },
+      {
+        q: "Is CMYK to RGB exact for print?",
+        a: "CMYK to screen RGB is an estimate. Press shops still proof colors on their own ICC profiles.",
+      },
+      {
+        q: "Is the CMYK to RGB converter free?",
+        a: "Yes. You can convert CMYK to RGB free with no signup and no software to install.",
+      },
+      {
+        q: "Can I convert CMYK to RGB on mobile?",
+        a: "Yes. This cmyk to rgb free tool works in a mobile browser. Open the page and get your result.",
+      },
+    ],
+  },
 };
 
 export function getToolContent(slug: string): ToolContent | null {

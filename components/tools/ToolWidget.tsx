@@ -64,6 +64,10 @@ import {
   CmToInchesConverter,
   ImageResizer,
   PregnancyWeekCalculator,
+  CalorieDeficitCalculator,
+  CarLoanCalculator,
+  UuidGenerator,
+  GradeCalculator,
 } from "@/components/tools/ExtraWidgets";
 import {
   AnalogousColorGenerator,
@@ -88,6 +92,7 @@ import {
   HexToCmyk,
   CmykToHex,
   RgbToCmyk,
+  CmykToRgb,
   HslToHex,
   ImageColorPaletteExtractor,
   MonochromaticPaletteGenerator,
@@ -325,6 +330,18 @@ export function ToolWidget({ slug }: { slug: string }) {
       return <RgbToCmyk />;
     case "pregnancy-week-calculator":
       return <PregnancyWeekCalculator />;
+    case "calorie-deficit-calculator":
+      return <CalorieDeficitCalculator />;
+    case "car-loan-calculator":
+      return <CarLoanCalculator />;
+    case "uuid-generator":
+      return <UuidGenerator />;
+    case "grade-calculator":
+      return <GradeCalculator />;
+    case "jpg-to-webp":
+      return <FileConverter id="jpg-to-webp" />;
+    case "cmyk-to-rgb":
+      return <CmykToRgb />;
     default:
       return null;
   }

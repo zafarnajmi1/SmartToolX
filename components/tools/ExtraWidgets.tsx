@@ -551,7 +551,15 @@ export function PregnancyDueDateCalculator() {
   return (
     <div className="grid gap-8 md:grid-cols-2">
       <Field label="Last period (first day)">
-        <Input type="date" value={lmp} max={localISODate(new Date())} onChange={(e) => setLmp(e.target.value)} />
+        <Input
+          type="date"
+          value={lmp}
+          max={localISODate(new Date())}
+          onChange={(e) => {
+            setLmp(e.target.value);
+            e.target.blur();
+          }}
+        />
       </Field>
       <Box>
         <Result label="Due date" value={due ?? "—"} />
@@ -584,7 +592,15 @@ export function OvulationCalculator() {
     <div className="grid gap-8 md:grid-cols-2">
       <div className="grid gap-4">
         <Field label="Last period (first day)">
-          <Input type="date" value={lmp} max={localISODate(new Date())} onChange={(e) => setLmp(e.target.value)} />
+          <Input
+            type="date"
+            value={lmp}
+            max={localISODate(new Date())}
+            onChange={(e) => {
+              setLmp(e.target.value);
+              e.target.blur();
+            }}
+          />
         </Field>
         <Field label="Cycle length (days)">
           <Input type="number" value={cycle} placeholder="0" onChange={(e) => setCycle(e.target.value)} />
@@ -1502,7 +1518,10 @@ export function PeriodCalculator() {
             type="date"
             value={lmp}
             max={localISODate(new Date())}
-            onChange={(e) => setLmp(e.target.value)}
+            onChange={(e) => {
+              setLmp(e.target.value);
+              e.target.blur();
+            }}
           />
         </Field>
         <Field label="Cycle length (days)">
@@ -4098,7 +4117,7 @@ const PREGNANCY_TRIMESTERS = [
 ];
 
 function pregnancyWeekChipClass(active: boolean) {
-  return `font-mono inline-flex size-10 items-center justify-center rounded-full border-2 text-[13px] font-medium ${
+  return `font-mono inline-flex size-8 items-center justify-center rounded-full border-2 text-[12px] font-medium sm:size-10 sm:text-[13px] ${
     active
       ? "border-amber bg-amber text-bg"
       : "border-amber text-text-dim hover:bg-amber/10 hover:text-amber"
@@ -4112,8 +4131,12 @@ export function PregnancyWeekCalculator() {
 
   useEffect(() => {
     if (!result) return;
-    currentRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-  }, [result]);
+    if (window.matchMedia("(pointer: coarse)").matches) return;
+    const id = window.setTimeout(() => {
+      currentRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 150);
+    return () => window.clearTimeout(id);
+  }, [result?.weekNumber]);
 
   const remainingLabel =
     result == null
@@ -4129,14 +4152,17 @@ export function PregnancyWeekCalculator() {
   return (
     <div className="grid gap-8">
       <div className="grid items-stretch gap-4 md:grid-cols-2">
-        <div className="border-amber bg-bg flex flex-col justify-center rounded-[16px] border-2 px-[22px] py-[22px]">
+        <div className="border-amber bg-bg flex flex-col justify-center rounded-[16px] border-2 px-4 py-4 sm:px-[22px] sm:py-[22px]">
           <Field label="Last period (first day)">
             <Input
               type="date"
               className="tz-picker-icon !border-amber"
               value={lmp}
               max={localISODate(new Date())}
-              onChange={(e) => setLmp(e.target.value)}
+              onChange={(e) => {
+                setLmp(e.target.value);
+                e.target.blur();
+              }}
             />
           </Field>
           <p className="text-text-dim mt-4 text-[13px] leading-[1.5]">
@@ -4144,10 +4170,10 @@ export function PregnancyWeekCalculator() {
             This is a screening estimate, not medical advice.
           </p>
         </div>
-        <div className="border-amber bg-bg grid grid-cols-2 gap-x-5 gap-y-5 rounded-[16px] border-2 px-[22px] py-[22px]">
+        <div className="border-amber bg-bg grid grid-cols-2 gap-x-3 gap-y-5 rounded-[16px] border-2 px-4 py-4 min-[480px]:gap-x-5 sm:px-[22px] sm:py-[22px]">
           <Result label="Due date" value={result?.due ?? "—"} steel />
           <Result
-            label="How many weeks pregnant"
+            label="Weeks pregnant"
             value={
               result
                 ? `${result.weeksComplete}w ${result.weekDays}d`
@@ -4196,7 +4222,7 @@ export function PregnancyWeekCalculator() {
           {PREGNANCY_TRIMESTERS.map((trimester, index) => (
             <div
               key={trimester.label}
-              className={`px-[22px] py-5 ${index > 0 ? "border-amber/25 border-t" : ""}`}
+              className={`px-4 py-4 sm:px-[22px] sm:py-5 ${index > 0 ? "border-amber/25 border-t" : ""}`}
             >
               <div className="mb-4 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                 <div className="text-amber font-mono text-[11px] tracking-[0.08em] uppercase">
@@ -4215,7 +4241,7 @@ export function PregnancyWeekCalculator() {
                     <div className="text-steel w-[5.5rem] shrink-0 font-mono text-[11px] tracking-[0.08em] uppercase">
                       {group.label}
                     </div>
-                    <div className="grid w-[280px] grid-cols-6 gap-2">
+                    <div className="grid w-full max-w-[280px] grid-cols-6 gap-1.5 sm:gap-2">
                       {PREGNANCY_WEEKS.filter(
                         (item) =>
                           item.week >= group.weeks[0] &&
@@ -4246,7 +4272,7 @@ export function PregnancyWeekCalculator() {
                 key={item.week}
                 id={`week-${item.week}`}
                 ref={current ? currentRef : undefined}
-                className={`border-amber/25 border-b px-[22px] py-[22px] last:border-b-0 ${current ? "bg-amber/10" : "bg-surface"}`}
+                className={`border-amber/25 border-b px-4 py-4 last:border-b-0 sm:px-[22px] sm:py-[22px] ${current ? "bg-amber/10" : "bg-surface"}`}
               >
                 <div className="grid grid-cols-[2.25rem_minmax(0,1fr)] items-center gap-3">
                   <span
@@ -4297,6 +4323,637 @@ export function PregnancyWeekCalculator() {
           })}
         </div>
       </div>
+    </div>
+  );
+}
+
+const KCAL_PER_KG = 7700;
+const KCAL_PER_LB = 3500;
+
+export function CalorieDeficitCalculator() {
+  const [age, setAge] = useState("");
+  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState("");
+  const [sex, setSex] = useState("male");
+  const [activity, setActivity] = useState("1.55");
+  const [goal, setGoal] = useState("0.5lb");
+  const result = useMemo(() => {
+    const a = parseNumber(age);
+    const h = parseNumber(height);
+    const w = parseNumber(weight);
+    const factor = Number(activity);
+    if (
+      a == null ||
+      h == null ||
+      w == null ||
+      a <= 0 ||
+      h < 50 ||
+      h > 280 ||
+      w <= 0 ||
+      !Number.isFinite(factor)
+    ) {
+      return null;
+    }
+    const bmr = mifflin(w, h, a, sex === "male");
+    const tdee = bmr * factor;
+    const weeklyLb =
+      goal === "0.5lb"
+        ? 0.5
+        : goal === "1.5lb"
+          ? 1.5
+          : goal === "2lb"
+            ? 2
+            : goal === "0.25kg"
+              ? 0.25 * 2.2046226218
+              : goal === "0.5kg"
+                ? 0.5 * 2.2046226218
+                : goal === "0.75kg"
+                  ? 0.75 * 2.2046226218
+                  : 1;
+    const weeklyKg =
+      goal === "0.25kg"
+        ? 0.25
+        : goal === "0.5kg"
+          ? 0.5
+          : goal === "0.75kg"
+            ? 0.75
+            : weeklyLb / 2.2046226218;
+    const dailyDeficit = goal.endsWith("lb")
+      ? (weeklyLb * KCAL_PER_LB) / 7
+      : (weeklyKg * KCAL_PER_KG) / 7;
+    const target = tdee - dailyDeficit;
+    if (![bmr, tdee, dailyDeficit, target].every((n) => Number.isFinite(n))) {
+      return null;
+    }
+    return {
+      bmr: Math.round(bmr),
+      tdee: Math.round(tdee),
+      deficit: Math.round(dailyDeficit),
+      target: Math.round(target),
+      kgWeek: weeklyKg,
+      lbWeek: weeklyLb,
+    };
+  }, [age, height, weight, sex, activity, goal]);
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Age (years)">
+          <Input
+            type="number"
+            min="1"
+            step="1"
+            inputMode="numeric"
+            value={age}
+            placeholder="30"
+            onChange={(e) => setAge(e.target.value)}
+          />
+        </Field>
+        <Field label="Height (cm)">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={height}
+            placeholder="170"
+            onChange={(e) => setHeight(e.target.value)}
+          />
+        </Field>
+        <Field label="Weight (kg)">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={weight}
+            placeholder="70"
+            onChange={(e) => setWeight(e.target.value)}
+          />
+        </Field>
+        <Field label="Sex">
+          <Select value={sex} onChange={(e) => setSex(e.target.value)}>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </Select>
+        </Field>
+        <Field label="Activity level">
+          <Select value={activity} onChange={(e) => setActivity(e.target.value)}>
+            <option value="1.2">Sedentary (desk work, little exercise)</option>
+            <option value="1.375">Light (exercise 1 to 3 days a week)</option>
+            <option value="1.55">Moderate (exercise 3 to 5 days a week)</option>
+            <option value="1.725">Active (exercise 6 to 7 days a week)</option>
+            <option value="1.9">Very active (hard training or physical job)</option>
+          </Select>
+        </Field>
+        <Field label="Weekly loss goal">
+          <Select value={goal} onChange={(e) => setGoal(e.target.value)}>
+            <option value="0.5lb">0.5 lb per week</option>
+            <option value="1lb">1 lb per week</option>
+            <option value="1.5lb">1.5 lb per week</option>
+            <option value="2lb">2 lb per week</option>
+            <option value="0.25kg">0.25 kg per week</option>
+            <option value="0.5kg">0.5 kg per week</option>
+            <option value="0.75kg">0.75 kg per week</option>
+          </Select>
+        </Field>
+      </div>
+      <Box>
+        <Result
+          label="Target calories"
+          value={result ? `${result.target} kcal` : "—"}
+          steel
+        />
+        <Result
+          label="Daily deficit"
+          value={result ? `${result.deficit} kcal` : "—"}
+        />
+        <Result
+          label="Maintenance (TDEE)"
+          value={result ? `${result.tdee} kcal` : "—"}
+          steel
+        />
+        <Result label="BMR" value={result ? `${result.bmr} kcal` : "—"} />
+        <Result
+          label="Estimated weekly loss"
+          value={
+            result
+              ? `${result.kgWeek.toFixed(2)} kg (${result.lbWeek.toFixed(2)} lb)`
+              : "—"
+          }
+        />
+      </Box>
+    </div>
+  );
+}
+
+export function CarLoanCalculator() {
+  const [price, setPrice] = useState("");
+  const [down, setDown] = useState("");
+  const [rate, setRate] = useState("");
+  const [months, setMonths] = useState("");
+  const result = useMemo(() => {
+    const vehicle = parseNumber(price);
+    const deposit = parseNumber(down) ?? 0;
+    const annual = parseNumber(rate);
+    const term = parseNumber(months);
+    if (
+      vehicle == null ||
+      annual == null ||
+      term == null ||
+      vehicle <= 0 ||
+      deposit < 0 ||
+      deposit >= vehicle ||
+      term <= 0 ||
+      annual < 0
+    ) {
+      return null;
+    }
+    const principal = vehicle - deposit;
+    const monthlyRate = annual / 12 / 100;
+    const n = Math.trunc(term);
+    if (n < 1) return null;
+    const payment =
+      monthlyRate === 0
+        ? principal / n
+        : (principal * monthlyRate * (1 + monthlyRate) ** n) /
+          ((1 + monthlyRate) ** n - 1);
+    if (!Number.isFinite(payment) || payment <= 0) return null;
+    const total = payment * n;
+    return { payment, total, interest: total - principal, principal };
+  }, [price, down, rate, months]);
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="Vehicle price">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={price}
+            placeholder="28000"
+            onChange={(e) => setPrice(e.target.value)}
+          />
+        </Field>
+        <Field label="Down payment">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={down}
+            placeholder="4000"
+            onChange={(e) => setDown(e.target.value)}
+          />
+        </Field>
+        <Field label="Annual interest percent">
+          <Input
+            type="number"
+            min="0"
+            step="any"
+            inputMode="decimal"
+            value={rate}
+            placeholder="6.5"
+            onChange={(e) => setRate(e.target.value)}
+          />
+        </Field>
+        <Field label="Loan term (months)">
+          <Input
+            type="number"
+            min="1"
+            step="1"
+            inputMode="numeric"
+            value={months}
+            placeholder="60"
+            onChange={(e) => setMonths(e.target.value)}
+          />
+        </Field>
+      </div>
+      <Box>
+        <Result
+          label="Monthly payment"
+          value={result == null ? "—" : money(result.payment)}
+          hint="/mo"
+          steel
+        />
+        <Result
+          label="Amount financed"
+          value={result == null ? "—" : money(result.principal)}
+        />
+        <Result
+          label="Total interest"
+          value={result == null ? "—" : money(result.interest)}
+          steel
+        />
+        <Result
+          label="Total payable"
+          value={result == null ? "—" : money(result.total)}
+        />
+      </Box>
+    </div>
+  );
+}
+
+function uuidV4() {
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
+  const bytes = new Uint8Array(16);
+  crypto.getRandomValues(bytes);
+  bytes[6] = (bytes[6] & 0x0f) | 0x40;
+  bytes[8] = (bytes[8] & 0x3f) | 0x80;
+  const hex = [...bytes].map((b) => b.toString(16).padStart(2, "0")).join("");
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+}
+
+function makeUuids(count: number) {
+  const n = Math.min(20, Math.max(1, count));
+  return Array.from({ length: n }, () => uuidV4()).join("\n");
+}
+
+export function UuidGenerator() {
+  const [count, setCount] = useState("1");
+  const [ids, setIds] = useState(() => makeUuids(1));
+
+  function generate() {
+    const n = parseNumber(count);
+    setIds(makeUuids(n == null ? 1 : Math.trunc(n)));
+  }
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <Field label="How many">
+          <Input
+            type="number"
+            min="1"
+            max="20"
+            step="1"
+            inputMode="numeric"
+            value={count}
+            placeholder="1"
+            onChange={(e) => setCount(e.target.value)}
+          />
+        </Field>
+        <button
+          type="button"
+          onClick={generate}
+          className="bg-amber font-display text-bg w-fit rounded-[3px] px-6 py-[13px] text-[16px] font-semibold"
+        >
+          Generate
+        </button>
+      </div>
+      <Box>
+        <Result label="UUID v4" value={ids || "—"} steel />
+      </Box>
+    </div>
+  );
+}
+
+function letterGrade(score: number) {
+  if (score >= 90) return "A";
+  if (score >= 80) return "B";
+  if (score >= 70) return "C";
+  if (score >= 60) return "D";
+  return "F";
+}
+
+function formatGrade(score: number, digits = 1) {
+  return `${score.toFixed(digits)}% (${letterGrade(score)})`;
+}
+
+type GradeRow = { id: number; name: string; grade: string; weight: string };
+
+function emptyGradeRows(): GradeRow[] {
+  return [
+    { id: 1, name: "", grade: "", weight: "" },
+    { id: 2, name: "", grade: "", weight: "" },
+    { id: 3, name: "", grade: "", weight: "" },
+  ];
+}
+
+export function GradeCalculator() {
+  const [mode, setMode] = useState("final");
+  const [current, setCurrent] = useState("");
+  const [desired, setDesired] = useState("");
+  const [examWeight, setExamWeight] = useState("");
+  const [rows, setRows] = useState<GradeRow[]>(emptyGradeRows);
+  const [nextId, setNextId] = useState(4);
+
+  const result = useMemo(() => {
+    if (mode === "weighted") {
+      const filled = rows
+        .map((row) => ({
+          grade: parseNumber(row.grade),
+          weight: parseNumber(row.weight),
+        }))
+        .filter(
+          (row): row is { grade: number; weight: number } =>
+            row.grade != null &&
+            row.weight != null &&
+            row.grade >= 0 &&
+            row.grade <= 100 &&
+            row.weight > 0,
+        );
+      if (!filled.length) return null;
+      const weightSum = filled.reduce((sum, row) => sum + row.weight, 0);
+      const grade =
+        filled.reduce((sum, row) => sum + row.grade * row.weight, 0) / weightSum;
+      if (!Number.isFinite(grade)) return null;
+      return { current: grade, needed: null as number | null, weightSum };
+    }
+    const now = parseNumber(current);
+    const want = parseNumber(desired);
+    const weight = parseNumber(examWeight);
+    if (
+      now == null ||
+      want == null ||
+      weight == null ||
+      now < 0 ||
+      now > 100 ||
+      want < 0 ||
+      want > 100 ||
+      weight <= 0 ||
+      weight >= 100
+    ) {
+      return null;
+    }
+    const needed = (want * 100 - now * (100 - weight)) / weight;
+    if (!Number.isFinite(needed)) return null;
+    return { current: now, needed, weightSum: null as number | null };
+  }, [mode, current, desired, examWeight, rows]);
+
+  const want = parseNumber(desired);
+  const note =
+    result == null
+      ? mode === "final"
+        ? "Enter your current grade, the grade you want, and how much the final is worth."
+        : "Add at least one assignment with a grade and a weight."
+      : mode === "weighted"
+        ? result.weightSum != null && Math.abs(result.weightSum - 100) > 0.05
+          ? `Weights add to ${result.weightSum.toFixed(0)}%. The average uses only the weights you entered.`
+          : "A is 90–100, B 80–89, C 70–79, D 60–69, F below 60."
+        : result.needed == null
+          ? null
+          : result.needed <= 0
+            ? "You already have this overall grade, even if the final is 0%."
+            : result.needed > 100
+              ? "A 100% on the final is not enough for this goal. Raise the current grade or lower the goal."
+              : `Score ${result.needed.toFixed(1)}% or higher on the final to finish with ${want == null ? "your goal" : `${want.toFixed(0)}%`}.`;
+
+  function updateRow(id: number, key: keyof GradeRow, value: string) {
+    setRows((currentRows) =>
+      currentRows.map((row) => (row.id === id ? { ...row, [key]: value } : row)),
+    );
+  }
+
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-4">
+        <div className="grid grid-cols-2 gap-2">
+          <button
+            type="button"
+            onClick={() => setMode("final")}
+            className={`font-display cursor-pointer rounded-[5px] px-3 py-3 text-[14px] font-semibold ${
+              mode === "final"
+                ? "bg-amber text-bg"
+                : "border-line text-text border"
+            }`}
+          >
+            What I need
+          </button>
+          <button
+            type="button"
+            onClick={() => setMode("weighted")}
+            className={`font-display cursor-pointer rounded-[5px] px-3 py-3 text-[14px] font-semibold ${
+              mode === "weighted"
+                ? "bg-amber text-bg"
+                : "border-line text-text border"
+            }`}
+          >
+            My grades
+          </button>
+        </div>
+        {mode === "final" ? (
+          <>
+            <p className="text-text-dim text-[13px] leading-snug">
+              Find the score you need on the final exam.
+            </p>
+            <Field label="Current grade">
+              <Input
+                type="number"
+                min="0"
+                max="100"
+                step="any"
+                inputMode="decimal"
+                value={current}
+                placeholder="85"
+                onChange={(e) => setCurrent(e.target.value)}
+              />
+            </Field>
+            <p className="text-text-dim -mt-2 text-[12px]">Your average right now, as a percent.</p>
+            <Field label="Grade you want">
+              <Input
+                type="number"
+                min="0"
+                max="100"
+                step="any"
+                inputMode="decimal"
+                value={desired}
+                placeholder="90"
+                onChange={(e) => setDesired(e.target.value)}
+              />
+            </Field>
+            <p className="text-text-dim -mt-2 text-[12px]">The overall percent you want in the class.</p>
+            <Field label="Final is worth">
+              <Input
+                type="number"
+                min="0"
+                max="100"
+                step="any"
+                inputMode="decimal"
+                value={examWeight}
+                placeholder="20"
+                onChange={(e) => setExamWeight(e.target.value)}
+              />
+            </Field>
+            <p className="text-text-dim -mt-2 text-[12px]">How much of the course the final counts, such as 20.</p>
+          </>
+        ) : (
+          <>
+            <p className="text-text-dim text-[13px] leading-snug">
+              Enter each assignment. Name is optional. Weights can be any size, such as 25 and 25, or 2 and 1.
+            </p>
+            {rows.map((row, index) => (
+              <div
+                key={row.id}
+                className="border-line grid gap-3 rounded-[6px] border px-3 py-3"
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-text-dim font-mono text-[12px] tracking-[0.08em] uppercase">
+                    Assignment {index + 1}
+                  </span>
+                  {rows.length > 1 ? (
+                    <button
+                      type="button"
+                      className="text-text-dim hover:text-[#E17B6B] cursor-pointer px-2 py-1 font-mono text-[16px]"
+                      onClick={() =>
+                        setRows((currentRows) =>
+                          currentRows.filter((item) => item.id !== row.id),
+                        )
+                      }
+                      aria-label={`Remove assignment ${index + 1}`}
+                    >
+                      ✕
+                    </button>
+                  ) : null}
+                </div>
+                <Field label="Name (optional)">
+                  <Input
+                    value={row.name}
+                    placeholder={
+                      index === 0
+                        ? "Homework"
+                        : index === 1
+                          ? "Quizzes"
+                          : "Midterm"
+                    }
+                    onChange={(e) => updateRow(row.id, "name", e.target.value)}
+                  />
+                </Field>
+                <div className="grid grid-cols-2 gap-3">
+                  <Field label="Grade %">
+                    <Input
+                      type="number"
+                      min="0"
+                      max="100"
+                      step="any"
+                      inputMode="decimal"
+                      value={row.grade}
+                      placeholder="90"
+                      onChange={(e) => updateRow(row.id, "grade", e.target.value)}
+                    />
+                  </Field>
+                  <Field label="Weight">
+                    <Input
+                      type="number"
+                      min="0"
+                      step="any"
+                      inputMode="decimal"
+                      value={row.weight}
+                      placeholder="25"
+                      onChange={(e) => updateRow(row.id, "weight", e.target.value)}
+                    />
+                  </Field>
+                </div>
+              </div>
+            ))}
+            {rows.length < 12 ? (
+              <button
+                type="button"
+                onClick={() => {
+                  setRows((currentRows) => [
+                    ...currentRows,
+                    { id: nextId, name: "", grade: "", weight: "" },
+                  ]);
+                  setNextId((id) => id + 1);
+                }}
+                className="border-line text-text font-display cursor-pointer w-fit rounded-[5px] border px-4 py-2.5 text-[14px] font-semibold"
+              >
+                Add assignment
+              </button>
+            ) : null}
+          </>
+        )}
+      </div>
+      <Box>
+        {mode === "final" ? (
+          <>
+            <Result
+              label="You need on the final"
+              value={
+                result?.needed == null
+                  ? "—"
+                  : result.needed <= 0
+                    ? "Already there"
+                    : result.needed > 100
+                      ? `${result.needed.toFixed(1)}%`
+                      : formatGrade(result.needed)
+              }
+              steel
+            />
+            <Result
+              label="Current grade"
+              value={result ? formatGrade(result.current) : "—"}
+            />
+            <Result
+              label="Goal"
+              value={want == null ? "—" : formatGrade(want, 0)}
+            />
+          </>
+        ) : (
+          <>
+            <Result
+              label="Your average"
+              value={result ? formatGrade(result.current, 2) : "—"}
+              steel
+            />
+            <Result
+              label="Weights entered"
+              value={
+                result?.weightSum == null
+                  ? "—"
+                  : `${result.weightSum.toFixed(0)}%`
+              }
+            />
+          </>
+        )}
+        {note ? (
+          <p className="text-text-dim text-[13px] leading-snug">{note}</p>
+        ) : null}
+      </Box>
     </div>
   );
 }

@@ -16,6 +16,7 @@ import {
   webpToPng,
   wordToPdf,
   compressImages,
+  jpgToWebp,
   type ConvertedFile,
 } from "@/lib/file-convert";
 import { Field, Select } from "@/components/ui/Form";
@@ -36,7 +37,8 @@ type FileToolId =
   | "webp-to-jpg"
   | "jpg-to-png"
   | "webp-to-png"
-  | "image-compressor";
+  | "image-compressor"
+  | "jpg-to-webp";
 
 type ToolConfig = {
   accept: string;
@@ -243,6 +245,18 @@ const configs: Record<FileToolId, ToolConfig> = {
     resultIcon: "IMG",
     downloadLabel: "Download",
     convert: (files) => compressImages(files),
+  },
+  "jpg-to-webp": {
+    accept: ".jpg,.jpeg,image/jpeg",
+    multiple: true,
+    minFiles: 1,
+    maxMb: 100,
+    dropIcon: "JPG",
+    dropTitle: "Drop your JPG images here",
+    button: "Convert to WebP",
+    resultIcon: "WEBP",
+    downloadLabel: "Download WebP",
+    convert: (files) => jpgToWebp(files),
   },
 };
 

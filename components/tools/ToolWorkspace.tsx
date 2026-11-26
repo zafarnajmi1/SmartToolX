@@ -14,8 +14,8 @@ export function ToolWorkspace({
   children: ReactNode;
 }) {
   return (
-    <div className="border-line bg-surface overflow-hidden rounded-[8px] border">
-      <div className="border-line flex items-start gap-4 border-b px-[22px] py-[26px]">
+    <div className="border-line bg-surface overflow-x-clip rounded-[8px] border">
+      <div className="border-line flex items-start gap-4 border-b px-4 py-5 sm:px-[22px] sm:py-[26px]">
         <div className="border-amber-dim text-amber flex size-8 shrink-0 items-center justify-center rounded-[4px] border font-mono text-[13px]">
           {icon}
         </div>
@@ -26,7 +26,7 @@ export function ToolWorkspace({
           </p>
         </div>
       </div>
-      <div className="px-[22px] py-[26px]">{children}</div>
+      <div className="px-4 py-5 sm:px-[22px] sm:py-[26px]">{children}</div>
     </div>
   );
 }

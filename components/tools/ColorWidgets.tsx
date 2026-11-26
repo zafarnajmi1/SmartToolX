@@ -236,6 +236,35 @@ export function CmykToHex() {
   );
 }
 
+export function CmykToRgb() {
+  const [value, setValue] = useState("");
+  const color = useMemo(() => {
+    const parsed = parseCmyk(value);
+    return parsed ? fromRgb(cmykToRgb(parsed)) : null;
+  }, [value]);
+  return (
+    <div className="grid gap-8 md:grid-cols-2">
+      <Field label="CMYK">
+        <Input
+          value={value}
+          placeholder="0, 30, 74, 9"
+          onChange={(e) => setValue(e.target.value)}
+        />
+      </Field>
+      <Box>
+        <div className="flex items-center gap-3">
+          <Swatch hex={color?.hex ?? "#14171C"} />
+          <Result
+            label="RGB"
+            value={color ? formatRgb(color.rgb) : "—"}
+            steel
+          />
+        </div>
+      </Box>
+    </div>
+  );
+}
+
 export function RgbToCmyk() {
   const [value, setValue] = useState("");
   const color = useMemo(() => {
